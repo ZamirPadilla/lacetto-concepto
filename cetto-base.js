@@ -277,20 +277,28 @@ function renderChrome(opts={}){
     <div class="m-top"><button class="close" data-close>${xIcon}Cerrar</button><a class="m-100" href="${PAGES.tray}" aria-label="100 años de la familia Cetto, ver la trayectoria">${c100('lock',{solid:true})}</a></div>
     <ul class="mprim">
       <li><a href="${H}"${cur(opts,'home')}>Inicio</a></li>
-      <li><a href="${PAGES.tienda}" data-p="vinos">Vinos</a></li>
-      <li><a href="${PAGES.coleccion}" data-p="prem">Colección Premiada</a></li>
+      <li class="has-sub"><a href="${PAGES.tienda}" data-p="vinos">Vinos</a><ul class="msub" id="msub-vinos">
+        <li><a href="${PAGES.tienda}">Todos los vinos</a></li><li><a href="${PAGES.tienda}?tipo=tinto">Tintos</a></li><li><a href="${PAGES.tienda}?tipo=blanco">Blancos</a></li>
+        <li><a href="${PAGES.tienda}?tipo=rosado">Rosados</a></li><li><a href="${PAGES.tienda}?tipo=espumoso">Espumosos</a></li><li><a href="${PAGES.coleccion}">Colección Premiada</a></li>
+        <li><a href="${PAGES.tienda}?f=botellines">Botellines</a></li><li><a href="${PAGES.tienda}#encuentra">Encuentra tu vino</a></li></ul></li>
+      <li class="m-desk"><a href="${PAGES.coleccion}" data-p="prem">Colección Premiada</a></li>
       <li><a href="${PAGES.tienda}?tipo=gourmet" data-p="gour">Gourmet</a></li>
       <li><a href="${PAGES.tienda}" data-search data-p="buscar">Buscar</a></li>
-      <li><a href="${PAGES.exp}" data-p="exp">Experiencias</a></li>
-      <li><a href="${PAGES.regalos}" data-p="regalos">Regalos</a></li>
-      <li><a href="${PAGES.hist}" data-p="hist">Nuestra historia</a></li>
+      <li class="has-sub"><a href="${PAGES.exp}" data-p="exp">Experiencias</a><ul class="msub" id="msub-exp">
+        <li><a href="${PAGES.exp}">Todas las experiencias</a></li><li><a href="${PAGES.exp}#reservar">Reservar una cata</a></li><li><a href="${PAGES.exp}#eventos">Eventos y bodas</a></li>
+        <li><a href="${PAGES.exp}#cdmx">Boutique CDMX</a></li><li><a href="${PAGES.exp}#visita">Cómo llegar</a></li></ul></li>
+      <li class="has-sub"><a href="${PAGES.regalos}" data-p="regalos">Regalos</a><ul class="msub" id="msub-regalos">
+        <li><a href="${PAGES.regalos}">Todos los regalos</a></li><li><a href="${PAGES.regalos}#estuches">Estuches</a></li><li><a href="${PAGES.regalos}#tarjeta">Tarjeta de regalo</a></li>
+        <li><a href="${PAGES.regalos}#experiencia">Regala una experiencia</a></li><li><a href="${PAGES.regalos}#empresas">Regalos corporativos</a></li></ul></li>
+      <li class="has-sub"><a href="${PAGES.hist}" data-p="hist">Nuestra historia</a><ul class="msub" id="msub-hist">
+        <li><a href="${PAGES.hist}">Nuestra historia</a></li><li><a href="${PAGES.tray}">Trayectoria</a></li><li><a href="${H}#valle">Valle de Guadalupe</a></li></ul></li>
       <li><a href="${PAGES.club}" data-p="club">Club Cetto</a></li>
     </ul>
     <a class="btn btn-ink m-cta" href="${PAGES.exp}#reservar">Reservar una cata</a>
     <ul class="msec">
-      <li><a href="${PAGES.tienda}#encuentra">Encuentra tu vino</a></li><li><a href="${PAGES.tienda}?f=premiados">Premios</a></li>
-      <li><a href="${PAGES.tienda}?f=botellines">Botellines</a></li><li><a href="${H}#valle">Valle de Guadalupe</a></li>
-      <li><a href="${PAGES.regalos}#empresas">Regalos corporativos</a></li><li><a href="${PAGES.exp}#visita">Boutiques</a></li>
+      <li class="m-dup"><a href="${PAGES.tienda}#encuentra">Encuentra tu vino</a></li><li class="m-dup"><a href="${PAGES.tienda}?f=premiados">Premios</a></li>
+      <li class="m-dup"><a href="${PAGES.tienda}?f=botellines">Botellines</a></li><li class="m-dup"><a href="${H}#valle">Valle de Guadalupe</a></li>
+      <li class="m-dup"><a href="${PAGES.regalos}#empresas">Regalos corporativos</a></li><li class="m-dup"><a href="${PAGES.exp}#visita">Boutiques</a></li>
       <li><a href="${PAGES.ayuda}">Ayuda y envíos</a></li><li><a href="${PAGES.ayuda}#rastreo">Rastrea tu pedido</a></li>
     </ul>
   </div>
@@ -474,6 +482,12 @@ function menuPanes(){
   /* sin hover el menú queda limpio (solo los links); el panel se abre al pasar por una sección y se cierra al salir del menú */
   const open=k=>{show(k,true);if(wide.matches)m.classList.add('xp')};
   const close=()=>{m.classList.remove('xp');pr.classList.remove('sel');pr.querySelectorAll('a.cur').forEach(a=>a.classList.remove('cur'))};
+  /* celular: Vinos, Experiencias, Regalos y Nuestra historia se despliegan en lugar de navegar (su primera opción lleva a la página) */
+  {const mob=matchMedia('(max-width:900px)');pr.querySelectorAll('li.has-sub').forEach(li=>{const a=li.querySelector(':scope>a'),sub=li.querySelector('.msub');a.setAttribute('aria-controls',sub.id);
+     const sync=()=>{if(mob.matches)a.setAttribute('aria-expanded',li.classList.contains('open'));else a.removeAttribute('aria-expanded')};sync();mob.addEventListener('change',sync)});
+   pr.addEventListener('click',e=>{if(!mob.matches)return;const a=e.target.closest('li.has-sub>a');if(!a||!pr.contains(a))return;e.preventDefault();e.stopPropagation();
+     const li=a.parentElement,op=!li.classList.contains('open');pr.querySelectorAll('li.has-sub.open').forEach(x=>{if(x!==li){x.classList.remove('open');x.querySelector(':scope>a').setAttribute('aria-expanded','false')}});
+     li.classList.toggle('open',op);a.setAttribute('aria-expanded',op)},true)}
   /* Inicio no tiene panel: al pasar por él se cierra el que esté abierto */
   pr.querySelectorAll('a:not([data-p])').forEach(a=>a.addEventListener('mouseenter',()=>{clearTimeout(t);clearTimeout(ct);t=setTimeout(close,60)}));
   pr.querySelectorAll('a[data-p]').forEach(a=>{

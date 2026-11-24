@@ -452,6 +452,10 @@ html{scroll-padding-top:96px}
 .vd-dlg-in{position:relative;aspect-ratio:16/9}
 .vd-dlg-in iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
 .vd-x{position:absolute;right:0;top:-44px;color:#fff;font:500 11px/1 var(--sans);letter-spacing:.14em;text-transform:uppercase;padding:12px 0}
+.rc-m.rc-marq{overflow:hidden;cursor:auto;padding-inline:0}
+.rc-track{display:flex;width:max-content;animation:rcMarq 60s linear infinite;animation-play-state:paused;will-change:transform}
+.rc-track>.md{margin-right:18px}
+@keyframes rcMarq{to{transform:translate3d(calc(-1 * var(--mw,50%)),0,0)}}
 @media (max-width:900px){.vd{grid-template-columns:minmax(0,1fr);min-height:0}.vd-ph{order:-1;min-height:0;aspect-ratio:16/10}.vd-f img.lb{transform:scale(1.34)}.vd-play{width:64px;height:64px;margin:-32px 0 0 -32px}.vd-play::before{left:26px;top:21px;border-width:11px 0 11px 17px}}
 /* celular: la descripción de la cata, más contenida */
 @media (max-width:640px){.st-desc{font-size:18.5px;line-height:1.5;margin-top:20px}}
@@ -765,7 +769,21 @@ S.push(['resenas','Reseñas','<section class="st wrap" id="resenas" aria-labelle
 {const iv=S.findIndex(x=>x[0]==='s-video'),im=S.findIndex(x=>x[0]==='s-mesa');if(iv>-1&&im>iv){const [m]=S.splice(im,1);S.splice(iv,0,m)}}
 document.getElementById('sections').innerHTML=S.map(s=>s[2]).join('');
 /* medallas: arranca con la mejor al centro y es infinita al arrastrar o desplazar (no avanza sola) */
-{const rm=document.getElementById('rcM');if(rm){const A0=rm.children.length;loopRail(rm,{center:()=>rm.children[Math.floor((A0-1)/2)]&&[...rm.children].filter(c=>!c.dataset.clone)[Math.floor((A0-1)/2)]});
+{const rm=document.getElementById('rcM');
+ /* celular: las medallas avanzan solas en una banda continua (se mueve con transform, en la GPU: no da saltos);
+    al tocarla se detiene un momento y fuera de la vista se pausa */
+ if(rm&&rm.children.length>2&&matchMedia('(max-width:900px)').matches&&!matchMedia('(prefers-reduced-motion: reduce)').matches){
+  rm.classList.add('rc-marq');const tr=document.createElement('div');tr.className='rc-track';const it=[...rm.children];it.forEach(n=>tr.appendChild(n));
+  it.forEach(n=>{const c=n.cloneNode(true);c.setAttribute('aria-hidden','true');c.querySelectorAll('[id]').forEach(x=>x.removeAttribute('id'));c.querySelectorAll('a,button').forEach(x=>x.tabIndex=-1);tr.appendChild(c)});
+  rm.appendChild(tr);
+  const size=()=>{const w=tr.scrollWidth/2;if(!w)return;tr.style.setProperty('--mw',w+'px');tr.style.animationDuration=(w/26).toFixed(1)+'s'};
+  requestAnimationFrame(size);new ResizeObserver(size).observe(rm);
+  let vis=false,hold=0,ht;const play=()=>{tr.style.animationPlayState=vis&&!hold?'running':'paused'};
+  new IntersectionObserver(es=>{vis=es[0].isIntersecting;play()}).observe(rm);
+  rm.addEventListener('touchstart',()=>{hold=1;clearTimeout(ht);play()},{passive:true});
+  rm.addEventListener('touchend',()=>{clearTimeout(ht);ht=setTimeout(()=>{hold=0;play()},1400)},{passive:true});
+ }
+ else if(rm){const A0=rm.children.length;loopRail(rm,{center:()=>rm.children[Math.floor((A0-1)/2)]&&[...rm.children].filter(c=>!c.dataset.clone)[Math.floor((A0-1)/2)]});
  let pd=null;rm.addEventListener('pointerdown',e=>{if(e.pointerType!=='mouse'||e.button!==0)return;pd={x:e.clientX,s:rm.scrollLeft,m:false,id:e.pointerId}});
  rm.addEventListener('loopjump',e=>{if(pd)pd.s+=e.detail});
  addEventListener('pointermove',e=>{if(!pd||e.pointerId!==pd.id)return;const dx=e.clientX-pd.x;if(!pd.m&&Math.abs(dx)>5){pd.m=true;rm.classList.add('drag')}if(pd.m)rm.scrollLeft=pd.s-dx});
