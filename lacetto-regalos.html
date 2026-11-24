@@ -1,0 +1,706 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>L.A. Cetto · Regalos</title>
+<meta name="description" content="Concepto de rediseño de la página de regalos de L.A. Cetto. Imágenes y datos del sitio actual como referencia temporal.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baskervville:ital@0;1&family=DM+Sans:opsz,wght@9..40,400..600&family=Playfair:opsz,wght@5..1200,300..500&display=swap" rel="stylesheet">
+<link rel="icon" type="image/svg+xml" href="media/favicon.svg">
+<!-- compartir -->
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="apple-touch-icon" href="media/apple-touch-icon.png">
+<meta name="theme-color" content="#F3F1EC">
+<meta name="robots" content="noindex, nofollow">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="es_MX">
+<meta property="og:site_name" content="L.A. Cetto · Concepto de rediseño">
+<meta property="og:title" content="L.A. Cetto · Regalos">
+<meta property="og:description" content="Concepto de rediseño de la página de regalos de L.A. Cetto. Imágenes y datos del sitio actual como referencia temporal.">
+<meta property="og:url" content="https://zamirpadilla.github.io/lacetto-concepto/lacetto-regalos.html">
+<meta property="og:image" content="https://zamirpadilla.github.io/lacetto-concepto/media/og-banner.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Chardonnay Reserva Privada de L.A. Cetto sobre una roca frente al mar, con el texto: Una boutique de vinos, de punta a punta">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="L.A. Cetto · Regalos">
+<meta name="twitter:description" content="Concepto de rediseño de la página de regalos de L.A. Cetto. Imágenes y datos del sitio actual como referencia temporal.">
+<meta name="twitter:image" content="https://zamirpadilla.github.io/lacetto-concepto/media/og-banner.jpg">
+<!-- /compartir -->
+<link rel="stylesheet" href="cetto-base.css">
+<style>
+section[id]{scroll-margin-top:72px}
+/* ===== Portada panorámica (como Maxwell): la foto a lo ancho con un margen delgado y el texto encima ===== */
+.rg-pano{padding:clamp(8px,1vw,14px) var(--m) 0}
+.rg-pano-in{position:relative;height:clamp(560px,calc(100svh - 96px),980px);overflow:hidden;color:#fff;isolation:isolate;background:#2a1d14}
+.rg-pano-in>img{position:absolute;inset:0;z-index:-2;width:100%;height:100%;object-fit:cover;object-position:50% 46%;animation:rgSettle 2.6s var(--ease) both}
+@keyframes rgSettle{from{transform:scale(1.06)}to{transform:none}}
+.rg-pano-in::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(14,10,7,.42) 0%,rgba(14,10,7,0) 24%,rgba(14,10,7,0) 44%,rgba(14,10,7,.68) 100%)}
+.rg-pano-top{position:absolute;top:0;left:0;right:0;display:flex;justify-content:space-between;align-items:center;gap:20px;padding:clamp(18px,2.2vw,32px) clamp(22px,3vw,52px)}
+.rg-pano .crumbs{padding:0;color:rgba(255,255,255,.72)}
+.rg-pano .crumbs a:hover,.rg-pano .crumbs span[aria-current]{color:#fff}
+.rg-pano-k{font:500 11.5px/1 var(--sans);letter-spacing:.16em;text-transform:uppercase}
+.rg-pano-b{position:absolute;left:0;right:0;bottom:0;display:grid;grid-template-columns:minmax(0,1fr) minmax(280px,440px);gap:24px 48px;align-items:end;padding:0 clamp(22px,3vw,52px) clamp(26px,3.4vw,56px)}
+.rg-h1{font:400 clamp(48px,6.6vw,116px)/.94 var(--serif);letter-spacing:-.022em}
+.rg-pano-r{justify-self:end;text-align:right}
+.rg-pano-r p{font-size:16.5px;line-height:1.55;color:rgba(255,255,255,.9)}
+.rg-pano-a{display:flex;justify-content:flex-end;flex-wrap:wrap;gap:10px 30px;margin-top:18px}
+.rg-pano .ul,.rg-ban .ul{color:#fff}
+
+/* ===== Estuches: dos banners altos, foto con el texto encima ===== */
+.rg-duo{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(10px,1.2vw,18px);padding:clamp(10px,1.2vw,18px) var(--m) 0}
+.rg-ban{position:relative;aspect-ratio:4/5;max-height:calc(100svh - 40px);min-height:520px;width:100%;overflow:hidden;color:#fff;isolation:isolate;background:#1e1d1c}
+.rg-ban>img{position:absolute;inset:0;z-index:-2;width:100%;height:100%;object-fit:cover;transition:transform 1.8s var(--ease)}
+.rg-ban:hover>img{transform:scale(1.035)}
+.rg-ban::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(12,9,6,.18) 0%,rgba(12,9,6,0) 22%,rgba(12,9,6,0) 42%,rgba(12,9,6,.74) 100%)}
+.rg-ban-tx{position:absolute;left:0;right:0;bottom:0;padding:0 clamp(22px,3vw,52px) clamp(26px,3.2vw,52px)}
+.rg-ban-k{font:500 11.5px/1 var(--sans);letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.86);font-variant-numeric:lining-nums tabular-nums}
+.rg-ban-k s{color:rgba(255,255,255,.55);margin-right:4px}
+.rg-ban h2{margin-top:14px;font:400 clamp(36px,3.6vw,60px)/1.02 var(--serif);letter-spacing:-.015em}
+.rg-ban p{margin-top:14px;max-width:40ch;font-size:16px;line-height:1.55;color:rgba(255,255,255,.88)}
+.rg-ban-a{display:flex;flex-wrap:wrap;gap:10px 30px;margin-top:22px}
+
+/* ===== Encuentra el regalo: la frase y el carrusel de cards como el de la portada ===== */
+.rg-find-top{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:clamp(24px,5vw,88px);align-items:end;margin-bottom:clamp(30px,3.6vw,52px)}
+.rg-why-row:empty{display:none}
+.rg-rail{padding-inline:var(--m);scroll-padding-inline:var(--m)}
+.rg-vc-cta{background:var(--ink);color:var(--bg)}
+.rg-vc-cta a{display:flex;flex-direction:column;height:100%;padding:clamp(22px,2.2vw,32px);color:inherit}
+.rg-vc-cta .k{font:500 11px/1 var(--sans);letter-spacing:.16em;text-transform:uppercase;color:rgba(243,241,236,.6)}
+.rg-vc-cta b{margin-top:auto;font:400 clamp(28px,2.4vw,40px)/1.05 var(--serif)}
+.rg-vc-cta p{margin:14px 0 22px;font-size:14.5px;line-height:1.5;color:rgba(243,241,236,.72)}
+.rg-vc-cta .ul{align-self:flex-start;color:var(--bg)}
+
+/* ===== Arma tu caja: idea → armar → tarjeta (la experiencia de la portada, con otra cara) ===== */
+.rg-box{background:var(--bg2)}
+.rgb-view:not([hidden]){animation:rgbIn .6s var(--ease) both}
+@keyframes rgbIn{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+.rg-box-in{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,7fr);gap:clamp(32px,6vw,104px);align-items:center}
+.rgb-k{display:block;margin-bottom:14px;font:500 11px/1 var(--sans);letter-spacing:.16em;text-transform:uppercase;color:var(--ink2)}
+.rg-box .p{margin:16px 0 28px}
+.rgb-acts{display:flex;flex-wrap:wrap;align-items:center;gap:14px 28px}
+.rg-slots{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));border-top:1px solid var(--line);border-left:1px solid var(--line)}
+.rg-slots>*{position:relative;display:block;width:100%;aspect-ratio:1/2.1;border-right:1px solid var(--line);border-bottom:1px solid var(--line);overflow:hidden;isolation:isolate;background:var(--bg)}
+.rg-slots img{position:absolute;left:50%;bottom:6%;height:84%;width:auto;max-width:none;transform:translateX(-50%);filter:drop-shadow(5px 4px 7px rgba(46,33,20,.16));transition:transform .7s var(--ease)}
+.rg-slots>*:hover img{transform:translate(-50%,-8px)}
+.rg-crate-note span:last-child{white-space:nowrap}
+.rgb-hd{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,.8fr);gap:16px 48px;align-items:end;margin-bottom:clamp(22px,2.6vw,36px)}
+.rgb-steps{list-style:none;display:flex;flex-wrap:wrap;align-items:center;gap:8px 18px;margin:0 0 18px;padding:0;font:500 11px/1 var(--sans);letter-spacing:.14em;text-transform:uppercase;color:var(--ink3)}
+.rgb-steps li{display:flex;align-items:center;gap:9px}
+.rgb-steps li+li::before{content:"";width:22px;height:1px;margin-right:9px;background:currentColor;opacity:.4}
+.rgb-steps li span{font:400 14px/1 var(--serif);letter-spacing:0}
+.rgb-steps li.on{color:var(--ink)}
+.rgb-steps li.done{color:var(--ink2)}
+.rgb-t{font:400 clamp(34px,3.4vw,54px)/1.04 var(--serif);letter-spacing:-.015em}
+.rgb-sub{justify-self:end;max-width:44ch;font-size:15.5px;line-height:1.55;color:var(--ink2)}
+.rgb-crate .rg-crate-top{align-items:center}
+.rgb-tot{margin-left:auto}
+.rgb-clear{font:500 11px/1 var(--sans);letter-spacing:.12em;text-transform:uppercase;color:var(--ink2);padding:6px 0;transition:color .2s,opacity .2s}
+.rgb-clear:hover{color:var(--ink)}
+.rgb-clear:disabled{opacity:.35;cursor:default}
+.rgb-slots>button{cursor:pointer}
+.rgb-slots>*{aspect-ratio:1/1.45}
+.rgb-slots img{height:88%;bottom:5%}
+.rgb-x{position:absolute;top:8px;right:8px;z-index:2;display:grid;place-items:center;width:24px;height:24px;border-radius:50%;background:var(--ink);color:var(--bg);font:400 15px/1 var(--sans);font-style:normal;opacity:0;transform:scale(.8);transition:opacity .25s,transform .25s}
+.rgb-slots>button:hover .rgb-x,.rgb-slots>button:focus-visible .rgb-x{opacity:1;transform:none}
+@media (hover:none){.rgb-x{opacity:1;transform:none}}
+.rgb-slots>button.in img{animation:rgbDrop .6s var(--ease) both}
+@keyframes rgbDrop{from{opacity:0;transform:translate(-50%,-28px)}to{opacity:1;transform:translateX(-50%)}}
+.rgb-empty{display:grid!important;place-items:center}
+.rgb-empty i{font:400 clamp(24px,2.4vw,38px)/1 var(--serif);font-style:normal;color:rgba(43,44,45,.16)}
+.rgb-pick.box{background:none;padding:0;margin-top:clamp(26px,3vw,40px)}
+.rgb-next{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px 32px;margin-top:clamp(24px,2.8vw,36px)}
+.rgb-next p{font:italic 400 clamp(18px,1.4vw,21px)/1.4 var(--serif);color:var(--ink2)}
+.rgb-next .btn svg,.rgb-card .btn svg{margin-left:10px}
+.rg-box .btn:disabled{opacity:.35;cursor:not-allowed}
+.rgb-card .rgb-t2{margin:0 0 14px}
+.rgb-card .rg-card-bg{background:var(--bg)}
+.rgb-sum{display:flex;align-items:center;justify-content:space-between;gap:16px;margin:4px 0 26px;padding:12px 16px;background:var(--bg)}
+.rgb-mini{list-style:none;display:flex;gap:6px;margin:0;padding:0}
+.rgb-mini li{display:grid;place-items:end center;width:24px;height:70px}
+.rgb-mini img{height:100%;width:auto}
+.rgb-sum-t{font-size:14px;line-height:1.4;color:var(--ink2);text-align:right;font-variant-numeric:lining-nums tabular-nums}
+.rgb-sum-t b{display:block;font:400 20px/1.2 var(--sans);color:var(--ink)}
+
+.rg-find-top{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:clamp(24px,5vw,88px);align-items:end;margin-bottom:clamp(28px,3.4vw,48px)}
+.rg-sent{font:400 clamp(30px,3.7vw,58px)/1.28 var(--serif);letter-spacing:-.014em}
+.rg-sent select{font:inherit;font-style:italic;letter-spacing:inherit;color:inherit;background:transparent;border:0;border-radius:0;-webkit-appearance:none;appearance:none;padding:0 .62em 0 0;transition:opacity .25s;margin:0;cursor:pointer;max-width:100%;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 8'><path d='M1 1.5l5 5 5-5' fill='none' stroke='%232B2C2D' stroke-width='1.2'/></svg>");background-repeat:no-repeat;background-position:right .06em center;background-size:.38em}
+.rg-sent select:focus-visible{outline:2px solid var(--ink);outline-offset:4px}
+.rg-sent select:hover{opacity:.7}
+.rg-sent select{display:none}
+.rg-cyc{font:inherit;font-style:italic;letter-spacing:inherit;color:inherit;background:none;border:0;padding:0;margin:0;cursor:pointer;display:inline-block;transition:opacity .28s var(--ease),transform .38s var(--ease)}
+.rg-cyc:hover{opacity:.62}
+.rg-cyc:focus-visible{outline:2px solid var(--ink);outline-offset:4px}
+.rg-cyc.sw{opacity:0;transform:translateY(-.18em)}
+.rg-hint{display:block;margin-top:clamp(14px,1.6vw,20px);font:500 10.5px/1.4 var(--sans);letter-spacing:.14em;text-transform:uppercase;color:var(--ink3)}
+.rg-measure{position:fixed;left:-9999px;top:0;visibility:hidden;white-space:pre;font-style:italic;pointer-events:none}
+.rg-why{font:italic 400 clamp(18px,1.4vw,21px)/1.45 var(--serif);color:var(--ink2);max-width:38ch}
+.rg-why-row{display:flex;flex-wrap:wrap;gap:12px 26px;align-items:center;margin-top:18px}
+.rg-why-row [hidden]{display:none}
+.rg-est{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:clamp(28px,5vw,88px);align-items:center}
+.rg-est+.rg-est{margin-top:clamp(64px,8vw,124px)}
+.rg-est.rev{grid-template-columns:minmax(0,5fr) minmax(0,7fr)}
+.rg-est.rev .rg-stage{order:2}
+.rg-est h3{font:400 clamp(36px,3.8vw,60px)/1 var(--serif);letter-spacing:-.016em;margin:18px 0 8px}
+.rg-est .sub{font-size:16px;color:var(--ink2);max-width:44ch}
+.rg-five{list-style:none;margin:22px 0 0;border-top:1px solid var(--line)}
+.rg-five button{display:grid;gap:4px;width:100%;padding:12px 0 11px;border-bottom:1px solid var(--line);text-align:left;transition:background .25s}
+.rg-five button b{font:400 20px/1.2 var(--serif);color:var(--ink3);transition:color .25s}
+.rg-five button i{font-style:normal;font-size:13.5px;color:var(--ink2);max-height:0;overflow:hidden;transition:max-height .45s var(--ease)}
+.rg-five button[aria-pressed="true"] b,.rg-five button:hover b{color:var(--ink)}
+.rg-five button[aria-pressed="true"] i{max-height:4.5em}
+.rg-crate{background:var(--bg);padding:clamp(14px,2vw,26px)}
+.rg-crate-top{display:flex;justify-content:space-between;align-items:baseline;gap:12px;font-size:14px;color:var(--ink2);margin-bottom:14px}
+.rg-crate-top b{font:400 22px/1.2 var(--serif);color:var(--ink)}
+.rg-crate-top span{font-variant-numeric:lining-nums tabular-nums}
+.rg-crate-note{display:flex;justify-content:space-between;gap:12px;margin-top:14px;font-size:13px;color:var(--ink3)}
+.rg-f input::placeholder,.rg-f textarea::placeholder{color:var(--ink3);opacity:.7}
+.rg-msg{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:clamp(32px,6vw,104px);align-items:center}
+.rg-card-bg{background:var(--bg2);padding:clamp(28px,5vw,84px) clamp(20px,4vw,64px);display:grid;place-items:center;overflow:hidden}
+.rg-card{width:100%;max-width:540px;aspect-ratio:7/5;background:var(--panel);box-shadow:0 30px 60px rgba(43,44,45,.16),0 2px 0 rgba(43,44,45,.05);padding:clamp(20px,3vw,40px);display:flex;flex-direction:column;transform:rotate(-1.6deg)}
+.rg-card .hd{display:flex;justify-content:space-between;align-items:flex-start;gap:12px}
+.rg-card .hd img{height:clamp(30px,3vw,42px);width:auto}
+.rg-card small{font:500 10.5px/1.4 var(--sans);letter-spacing:.09em;text-transform:uppercase;color:var(--ink3)}
+.rg-card .m{font:italic 400 clamp(19px,1.9vw,27px)/1.38 var(--serif);margin:auto 0;padding:14px 0;overflow-wrap:anywhere}
+.rg-card .ft{display:flex;justify-content:space-between;align-items:baseline;gap:12px}
+.rg-card .ft span{font:400 clamp(16px,1.4vw,19px)/1.2 var(--serif)}
+.rg-f .fg{margin-bottom:20px}
+.rg-f label,.rg-f .lb{display:block;font:500 11px/1.4 var(--sans);letter-spacing:.09em;text-transform:uppercase;color:var(--ink3);margin-bottom:4px}
+.rg-f input,.rg-f textarea,.rg-f select{width:100%;background:transparent;border:0;border-bottom:1px solid rgba(43,44,45,.6);border-radius:0;padding:8px 0 10px;font:inherit;font-size:16px;color:var(--ink);outline:none;transition:border-color .2s}
+.rg-f select{-webkit-appearance:none;appearance:none;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 8'><path d='M1 1.5l5 5 5-5' fill='none' stroke='%232B2C2D' stroke-width='1.2'/></svg>");background-repeat:no-repeat;background-position:right 2px center;background-size:10px;padding-right:20px}
+.rg-f textarea{resize:vertical;min-height:84px}
+.rg-f input:focus,.rg-f textarea:focus,.rg-f select:focus{border-color:var(--ink)}
+.rg-f input:focus-visible,.rg-f textarea:focus-visible,.rg-f select:focus-visible{box-shadow:0 2px 0 var(--ink)}
+.rg-f [aria-invalid="true"]{border-color:var(--wine);box-shadow:0 2px 0 var(--wine)}
+.rg-e{display:block;font-style:normal;font-size:12.5px;color:var(--wine);margin-top:6px}
+.rg-e:empty{display:none}
+.rg-f .two{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:0 24px}
+.rg-f .cnt{display:block;text-align:right;font-size:12px;color:var(--ink3);margin-top:6px}
+.rg-msg-act{display:flex;flex-wrap:wrap;align-items:center;gap:12px 24px;margin-top:4px}
+.rg-saved{font-size:13.5px;color:var(--ink2);margin-top:12px;min-height:1.4em}
+.rg-gc{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);gap:clamp(32px,6vw,104px);align-items:center}
+.rg-gc-stage{position:relative;padding:clamp(28px,4vw,64px) clamp(8px,2vw,32px) clamp(48px,6vw,96px);display:grid;place-items:center}
+.rg-gcard{position:relative;width:100%;max-width:500px;aspect-ratio:1.586;background:#1E1D1C;color:#EEE9E1;padding:clamp(18px,2.4vw,30px);display:flex;flex-direction:column;justify-content:space-between;overflow:hidden;isolation:isolate;box-shadow:0 34px 60px rgba(30,29,28,.3);transform:rotate(1.4deg)}
+.rg-gcard::before{content:"";position:absolute;inset:-50%;background-image:var(--grain);opacity:.18;mix-blend-mode:overlay;z-index:-1}
+.rg-gcard::after{content:"";position:absolute;right:-18%;top:-40%;width:70%;aspect-ratio:1;border:1px solid rgba(238,233,225,.14);border-radius:50%;z-index:-1}
+.rg-gcard .hd{display:flex;justify-content:space-between;align-items:flex-start}
+.rg-gcard .hd img{height:clamp(30px,3vw,40px);filter:brightness(0) invert(.92)}
+.rg-gcard .amt{font:400 clamp(40px,4.6vw,70px)/1 var(--sans);letter-spacing:-.03em;font-variant-numeric:lining-nums tabular-nums}
+.rg-gcard .ft{display:flex;justify-content:space-between;align-items:flex-end;gap:12px}
+.rg-gcard small{font:500 10.5px/1.4 var(--sans);letter-spacing:.09em;text-transform:uppercase;color:rgba(238,233,225,.6)}
+.rg-gcard .to{font:italic 400 clamp(15px,1.3vw,18px)/1.2 var(--serif)}
+.rg-amts{display:flex;flex-wrap:wrap;gap:8px 26px;margin:10px 0 24px}
+.rg-amts button{font:400 20px/1.2 var(--sans);color:var(--ink3);padding-bottom:4px;border-bottom:1px solid transparent;font-variant-numeric:lining-nums tabular-nums}
+.rg-amts button[aria-pressed="true"]{color:var(--ink);border-color:var(--ink)}
+.rg-other{display:none}
+.rg-other.on{display:block}
+.rg-done{display:none;border-top:1px solid var(--ink);padding-top:18px}
+.rg-done.on{display:block}
+.rg-done b{display:block;font:400 clamp(26px,2.4vw,34px)/1.15 var(--serif);margin-bottom:10px}
+.rg-done p{color:var(--ink2);max-width:46ch}
+.rg-done small{display:block;margin-top:14px;font-size:12.5px;color:var(--ink3)}
+.rg-done-act{display:flex;flex-wrap:wrap;align-items:center;gap:12px 24px;margin-top:20px}
+.rg-exp{position:relative;margin:0 var(--m);min-height:min(78svh,720px);display:flex;align-items:flex-end;color:#fff;overflow:hidden;background:#2a241e}
+.rg-exp>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 45%}
+.rg-exp::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(16,12,9,.3) 0%,rgba(16,12,9,0) 24%,rgba(16,12,9,.22) 54%,rgba(16,12,9,.86) 100%),linear-gradient(270deg,rgba(16,12,9,.42) 0%,rgba(16,12,9,0) 42%)}
+.rg-exp .xin{position:relative;z-index:2;width:100%;padding:0 var(--m) clamp(28px,4vw,56px);display:grid;grid-template-columns:minmax(0,1fr) minmax(260px,390px);gap:32px;align-items:end}
+.rg-exp p{color:rgba(255,255,255,.92);margin-bottom:22px;text-shadow:0 1px 18px rgba(0,0,0,.35)}
+.rg-exp .ctas{display:flex;flex-wrap:wrap;align-items:center;gap:14px 26px}
+.rg-biz{background:var(--bg2)}
+.rg-biz-in{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(32px,6vw,104px);align-items:start}
+/* el formulario te acompaña mientras bajas por el texto y la foto */
+@media (min-width:901px){.rg-biz .rg-form{position:sticky;top:calc(var(--hh,72px) + 28px)}}
+.rg-biz .p{margin-top:18px}
+.rg-steps{list-style:none;margin-top:34px;border-top:1px solid var(--ink)}
+.rg-steps li{display:grid;grid-template-columns:28px minmax(0,1fr);gap:4px 12px;padding:16px 0 15px;border-bottom:1px solid var(--line)}
+.rg-steps li span{font:500 12px/1.7 var(--sans);color:var(--ink3);grid-row:1/3}
+.rg-steps li b{font:400 20px/1.2 var(--serif)}
+.rg-steps li p{font-size:14px;color:var(--ink2)}
+.rg-biz-ph{position:relative;aspect-ratio:16/10;overflow:hidden;margin-top:34px}
+.rg-biz-ph img{width:100%;height:100%;object-fit:cover}
+.rg-form{background:var(--panel);padding:clamp(22px,3vw,44px)}
+.rg-form h3{font:400 clamp(26px,2.3vw,34px)/1.1 var(--serif);margin-bottom:6px}
+.rg-form .hint{font-size:14px;color:var(--ink2);margin-bottom:26px}
+.rg-form .btn{width:100%;margin-top:6px}
+.rg-form .legal-s{font-size:12px;color:var(--ink3);margin-top:12px;text-align:center}
+
+@media (max-width:1100px){.rg-pano-b{grid-template-columns:minmax(0,1fr)}.rg-pano-r{justify-self:start;text-align:left}.rg-pano-a{justify-content:flex-start}}
+@media (max-width:900px){
+  .rg-duo{grid-template-columns:minmax(0,1fr)}
+  .rg-ban{max-height:none;min-height:0}
+  .rg-find-top,.rg-box-in,.rg-msg,.rg-gc,.rg-biz-in,.rg-exp .xin,.rgb-hd{grid-template-columns:minmax(0,1fr)}
+  .rgb-sub{justify-self:start}
+  .rg-msg .rg-card-bg{order:2}
+  .rg-rail .vc{flex-basis:calc((100% - 6px) / 2)}
+}
+@media (max-width:640px){
+  .rg-pano-in{height:min(86svh,720px)}
+  .rg-h1{font-size:clamp(44px,12.5vw,60px)}
+  .rg-pano-k{display:none}
+  .rg-sent{font-size:26px}
+  .rg-f .two{grid-template-columns:minmax(0,1fr)}
+  .rg-gcard .amt{font-size:clamp(40px,12vw,56px)}
+  .rg-slots{gap:3px;border:0}
+  .rg-slots>*{border:1px solid var(--line)}
+  .rg-rail .vc{flex-basis:78%;min-height:380px}
+  .rgb-slots{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .rgb-slots>*{aspect-ratio:1/1.2}
+  .rgb-x{top:5px;right:5px;width:20px;height:20px;font-size:13px}
+  .rgb-sum{flex-direction:column;align-items:flex-start}
+  .rgb-sum-t{text-align:left}
+}
+@media (prefers-reduced-motion:reduce){.rg-pano-in>img,.rgb-view:not([hidden]),.rgb-slots>button.in img{animation:none}}
+</style>
+</head>
+<body>
+<div id="chromeTop"></div>
+
+<main>
+<!-- Portada: un banner panorámico (como Maxwell). La foto ocupa todo; arriba la ruta, abajo el título y la invitación -->
+<section class="rg-pano" aria-labelledby="rgT">
+  <div class="rg-pano-in">
+    <img src="media/rg-brindis.jpg" alt="Dos copas de vino tinto brindando en una mesa con velas" fetchpriority="high">
+    <div class="rg-pano-top">
+      <nav class="crumbs" aria-label="Ruta"><a href="lacetto-home-concepto.html">Inicio</a><span aria-hidden="true">/</span><span aria-current="page">Regalos</span></nav>
+      <span class="rg-pano-k">Regalos L.A. Cetto</span>
+    </div>
+    <div class="rg-pano-b">
+      <h1 class="rg-h1 lines" id="rgT" data-now><span class="ln"><span>Regala una </span></span><span class="ln"><span>botella con historia </span></span></h1>
+      <div class="rg-pano-r">
+        <p>Estuches listos para regalar, cajas que armas tú y tarjetas de regalo. Con tu mensaje impreso, dentro del paquete.</p>
+        <div class="rg-pano-a"><a class="ul" href="#encuentra">Encuentra el regalo</a><a class="ul" href="#caja">Arma una caja</a></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Estuches: dos banners altos lado a lado, la foto con el texto encima -->
+<section class="rg-duo" id="estuches" aria-label="Estuches">
+  <article class="rg-ban">
+    <img src="media/rg-cava.jpg" alt="Botellas guardadas en la cava de L.A. Cetto" loading="lazy">
+    <div class="rg-ban-tx">
+      <span class="rg-ban-k">Estuche · <span id="bouPr"></span></span>
+      <h2>Colección Boutique</h2>
+      <p>Los cinco vinos de la línea Boutique, cuatro tintos y un blanco, en un solo estuche para quien ya sabe de vino.</p>
+      <div class="rg-ban-a"><button class="ul" type="button" data-add="estbou" aria-label="Agregar la Colección Boutique al carrito">Agregar al carrito</button><a class="ul" href="lacetto-ficha.html?p=estbou" aria-label="Ver el estuche Colección Boutique">Ver estuche</a></div>
+    </div>
+  </article>
+  <article class="rg-ban">
+    <img src="media/rg-reserva.jpg" alt="Botellas de la línea Reserva Privada sobre una mesa de mármol" loading="lazy">
+    <div class="rg-ban-tx">
+      <span class="rg-ban-k">Estuche · <s id="rpCmp"></s> <span id="rpPr"></span></span>
+      <h2>Reserva Privada</h2>
+      <p>Nebbiolo y Petite Sirah de la línea Reserva Privada, con dos copas sin tallo para abrirlos en pareja.</p>
+      <div class="rg-ban-a"><button class="ul" type="button" data-add="estrp" aria-label="Agregar el estuche Reserva Privada al carrito">Agregar al carrito</button><a class="ul" href="lacetto-ficha.html?p=estrp" aria-label="Ver el estuche Reserva Privada">Ver estuche</a></div>
+    </div>
+  </article>
+</section>
+
+<!-- Encuentra el regalo: la frase con dos opciones y abajo el carrusel de cards, como el de la portada -->
+<section class="sec rg-find" id="encuentra" aria-labelledby="fT">
+  <h2 class="sr" id="fT">Encuentra el regalo</h2>
+  <div class="wrap rg-find-top">
+    <p class="rg-sent">Busco un regalo para
+      <label class="sr" for="fWho">Para quién</label><select id="fWho">
+        <option value="empieza">quien empieza en el vino</option>
+        <option value="sabe">quien sabe de vino</option>
+        <option value="celebra">una celebración</option>
+        <option value="mesa">quien cocina para todos</option>
+        <option value="equipo">mi equipo o clientes</option>
+      </select>
+      de
+      <label class="sr" for="fBud">Presupuesto</label><select id="fBud">
+        <option value="all">cualquier precio</option>
+        <option value="p1">hasta $250</option>
+        <option value="p2">$250 a $400</option>
+        <option value="p3">$400 a $700</option>
+        <option value="p4">más de $700</option>
+      </select>
+      <span class="rg-hint">Toca las palabras en cursiva para cambiar</span>
+    </p>
+    <div>
+      <p class="rg-why" id="fWhy" aria-live="polite"></p>
+      <div class="rg-why-row"><a class="ul" id="fBiz" href="#empresas" hidden>Cotizar por volumen</a></div>
+    </div>
+  </div>
+  <div class="vt-rail rg-rail" id="fRail" role="region" aria-label="Regalos sugeridos"><ul class="vt-track" id="fTrack"></ul></div>
+  <div class="vt-foot"><div class="vt-bar" aria-hidden="true"><i id="fBar"></i></div><a class="ul vt-all" id="fMore" href="lacetto-tienda.html?momento=regalo">Ver más en la tienda</a></div>
+</section>
+
+<!-- Arma tu caja: la misma experiencia de la portada con otra cara.
+     1) la idea del enólogo, ya armada · 2) armar: esa caja se vuelve editable y abajo eliges vinos · 3) la tarjeta con tu mensaje -->
+<section class="sec rg-box" id="caja" aria-labelledby="bT">
+  <div class="wrap">
+    <div class="rgb-view rg-box-in" id="rgbIdea">
+      <div>
+        <span class="rgb-k">Hecha a la medida</span>
+        <h2 class="h2 rise" id="bT">Arma una caja de regalo</h2>
+        <p class="p">Elige seis vinos a su gusto, agrega una tarjeta con tu mensaje y la enviamos a su puerta. En cajas de 6 aplicamos 10% de descuento.</p>
+        <div class="rgb-acts"><button class="btn btn-ink" id="rgbStart" type="button">Armar mi caja</button><button class="ul" id="rgbIdeaGo" type="button">Regalar esta idea tal cual</button></div>
+      </div>
+      <div class="rg-crate">
+        <div class="rg-crate-top"><b>Una idea para empezar</b><span id="crTot"></span></div>
+        <div class="rg-slots" id="crate"></div>
+        <div class="rg-crate-note"><span id="crNames"></span><span>6 de 6</span></div>
+      </div>
+    </div>
+
+    <div class="rgb-view rgb-build" id="rgbBuild" hidden>
+      <div class="rgb-hd">
+        <div>
+          <ol class="rgb-steps" aria-label="Pasos"><li class="on" aria-current="step"><span>01</span>Tus vinos</li><li><span>02</span>Tu tarjeta</li><li><span>03</span>Al carrito</li></ol>
+          <h2 class="rgb-t">Elige los seis vinos</h2>
+        </div>
+        <p class="rgb-sub">Empezamos con la idea del enólogo: toca una botella para quitarla y elige otra abajo.</p>
+      </div>
+      <div class="rg-crate rgb-crate">
+        <div class="rg-crate-top"><b id="rgbCount" aria-live="polite">6 de 6</b><span class="rgb-tot" id="rgbTot"></span><button class="rgb-clear" id="rgbClear" type="button">Vaciar caja</button></div>
+        <div class="rg-slots rgb-slots" id="rgbSlots"></div>
+      </div>
+      <div class="box rgb-pick">
+        <div class="pk-fil" id="rgbFil" role="group" aria-label="Filtrar vinos"></div>
+        <div class="picks" id="rgbPicks"></div>
+      </div>
+      <div class="rgb-next">
+        <p id="rgbNextT"></p>
+        <div class="rgb-acts"><button class="ul" id="rgbBack" type="button">Volver a la idea</button><button class="btn btn-ink" id="rgbNext" type="button">Siguiente: tu tarjeta<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button></div>
+      </div>
+    </div>
+
+    <div class="rgb-view rg-msg rgb-card" id="rgbCard" hidden>
+      <div>
+        <ol class="rgb-steps" aria-label="Pasos"><li class="done"><span>01</span>Tus vinos</li><li class="on" aria-current="step"><span>02</span>Tu tarjeta</li><li><span>03</span>Al carrito</li></ol>
+        <h2 class="h2 rgb-t2 rise">Que llegue con tus palabras</h2>
+        <p class="p">Lo imprimimos en una tarjeta que va dentro de la caja. Si no quieres tarjeta, déjalo en blanco.</p>
+        <form class="rg-f" id="msgForm" novalidate>
+          <div class="two">
+            <div class="fg"><label for="mTo">Para</label><input id="mTo" maxlength="40" placeholder="Mariana" autocomplete="off"></div>
+            <div class="fg"><label for="mFrom">De</label><input id="mFrom" maxlength="40" placeholder="Luis y Ana" autocomplete="off"></div>
+          </div>
+          <div class="fg"><label for="mTxt">Mensaje</label><textarea id="mTxt" maxlength="180" placeholder="Por todas las sobremesas que vienen." aria-describedby="mCnt"></textarea><span class="cnt" id="mCnt">0 / 180</span></div>
+          <div class="rgb-sum"><ul class="rgb-mini" id="rgbMini" aria-label="Tus seis vinos"></ul><span class="rgb-sum-t" id="rgbSumT"></span></div>
+          <div class="rgb-acts"><button class="btn btn-ink" id="rgbAdd">Agregar caja al carrito</button><button type="button" class="ul" id="rgbEdit">Volver a mis vinos</button></div>
+        </form>
+      </div>
+      <div class="rg-card-bg" aria-hidden="true">
+        <div class="rg-card">
+          <div class="hd"><small>Para <span id="cTo">Mariana</span></small><img src="media/logo-cetto.svg" alt=""></div>
+          <p class="m" id="cMsg">Por todas las sobremesas que vienen.</p>
+          <div class="ft"><small>Con cariño</small><span id="cFrom">Luis y Ana</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Tarjeta de regalo -->
+<section class="sec wrap" id="tarjeta" aria-labelledby="gcT">
+  <div class="rg-gc">
+    <div class="rg-gc-stage" aria-hidden="true">
+      <div class="rg-gcard">
+        <div class="hd"><img src="https://www.lacetto.mx/cdn/shop/files/cropped-Recurso-2-2-768x682-1.png?width=160" alt=""><small>Tarjeta de regalo</small></div>
+        <span class="amt" id="gcAmt">$1,000</span>
+        <div class="ft"><span class="to" id="gcTo">Para quien tú quieras</span><small>Vinos y catas</small></div>
+      </div>
+    </div>
+    <div>
+      <h2 class="h2 rise" id="gcT" style="margin:0 0 14px">Que elija su vino</h2>
+      <p class="p">Para vinos de la tienda o para una cata en el Valle. La agregas a tu carrito, pagas y la enviamos por correo el día que tú elijas.</p>
+      <form class="rg-f" id="gcForm" style="margin-top:26px" novalidate>
+        <span class="lb" id="amtL">Monto</span>
+        <div class="rg-amts" role="group" aria-labelledby="amtL" id="amts">
+          <button type="button" aria-pressed="false" data-v="500">$500</button>
+          <button type="button" aria-pressed="true" data-v="1000">$1,000</button>
+          <button type="button" aria-pressed="false" data-v="2000">$2,000</button>
+          <button type="button" aria-pressed="false" data-v="3000">$3,000</button>
+          <button type="button" aria-pressed="false" data-v="otro">Otro monto</button>
+        </div>
+        <div class="fg rg-other" id="otherBox"><label for="gcOther">Monto (desde $500)</label><input id="gcOther" type="number" min="500" max="20000" step="100" inputmode="numeric" placeholder="1500"></div>
+        <div class="two">
+          <div class="fg"><label for="gcName">Nombre de quien la recibe</label><input id="gcName" required maxlength="40" autocomplete="off"></div>
+          <div class="fg"><label for="gcMail">Su correo</label><input id="gcMail" type="email" required autocomplete="off"></div>
+        </div>
+        <div class="two">
+          <div class="fg"><label for="gcDate">Fecha de envío</label><input id="gcDate" type="date" required></div>
+          <div class="fg"><label for="gcFrom">De parte de</label><input id="gcFrom" required maxlength="40" autocomplete="name"></div>
+        </div>
+        <div class="fg"><label for="gcMsg">Mensaje (opcional)</label><textarea id="gcMsg" maxlength="180" placeholder="Para tu próxima botella favorita."></textarea></div>
+        <button class="btn btn-ink" id="gcBtn">Continuar con $1,000</button>
+      </form>
+      <div class="rg-done" id="gcDone" role="status"></div>
+    </div>
+  </div>
+</section>
+
+<!-- Experiencia -->
+<section class="rg-exp" id="experiencia" aria-labelledby="xT">
+  <img src="media/x-amigas-brindis.jpg" alt="Amigas brindando con vino blanco en el viñedo" loading="lazy">
+  <div class="xin">
+    <h2 class="h1 lines ttl" id="xT"><span class="ln"><span>Una tarde </span></span><span class="ln"><span>en el Valle </span></span></h2>
+    <div>
+      <p>Una cata en nuestra bodega del Valle de Guadalupe, para dos o para todo el grupo. Tú eliges la experiencia, la fecha y las personas, pagas y le enviamos la reservación con tu mensaje.</p>
+      <div class="ctas"><a class="btn btn-light" id="xGift" href="lacetto-experiencias.html?regalo=1#reservar">Regalar una cata</a><a class="ul" href="#tarjeta">O regala saldo</a></div>
+    </div>
+  </div>
+</section>
+
+<!-- Empresas -->
+<section class="sec rg-biz" id="empresas" aria-labelledby="zT">
+  <div class="wrap rg-biz-in">
+    <div>
+      <h2 class="h2 rise" id="zT">Para tu equipo y tus clientes</h2>
+      <p class="p">Fin de año, aniversarios, cierres de proyecto. Cotizamos por volumen, con tarjeta personalizada y entrega coordinada.</p>
+      <ol class="rg-steps">
+        <li><span>1</span><b>Cuéntanos cuántos y para cuándo</b><p>Con el número de regalos, el presupuesto y la fecha armamos la propuesta.</p></li>
+        <li><span>2</span><b>Te proponemos vinos y estuches</b><p>Del botellín de 187 ml a la Colección Boutique.</p></li>
+        <li><span>3</span><b>Tarjeta con tu logo o mensaje</b><p>Una sola versión para todos o una para cada persona.</p></li>
+        <li><span>4</span><b>Entrega coordinada</b><p>En tus oficinas o directo a cada dirección.</p></li>
+      </ol>
+      <div class="rg-biz-ph"><img src="media/rg-linea.jpg" alt="Seis vinos de L.A. Cetto en fila, de distintas líneas" loading="lazy"></div>
+    </div>
+    <div class="rg-form">
+      <form class="rg-f" id="bizForm" novalidate>
+        <h3>Solicita una cotización</h3>
+        <p class="hint">Te contactamos para afinar la propuesta.</p>
+        <div class="two">
+          <div class="fg"><label for="zCo">Empresa</label><input id="zCo" required autocomplete="organization"></div>
+          <div class="fg"><label for="zName">Tu nombre</label><input id="zName" required autocomplete="name"></div>
+        </div>
+        <div class="two">
+          <div class="fg"><label for="zMail">Correo</label><input id="zMail" type="email" required autocomplete="email"></div>
+          <div class="fg"><label for="zTel">Teléfono</label><input id="zTel" type="tel" autocomplete="tel"></div>
+        </div>
+        <div class="two">
+          <div class="fg"><label for="zQty">Número de regalos</label><select id="zQty" required><option value="">Elige</option><option>10 a 24</option><option>25 a 49</option><option>50 a 99</option><option>100 o más</option></select></div>
+          <div class="fg"><label for="zBud">Presupuesto por regalo</label><select id="zBud"><option value="">Elige</option><option>Hasta $500</option><option>$500 a $1,000</option><option>$1,000 a $2,000</option><option>Más de $2,000</option></select></div>
+        </div>
+        <div class="fg"><label for="zDate">Fecha de entrega</label><input id="zDate" type="date"></div>
+        <div class="fg"><label for="zMsg">Comentarios</label><textarea id="zMsg" placeholder="Por ejemplo: 40 regalos para clientes en CDMX y Monterrey"></textarea></div>
+        <button class="btn btn-ink">Solicitar cotización</button>
+        <p class="legal-s">Solo usamos estos datos para responder tu solicitud.</p>
+      </form>
+      <div class="rg-done" id="bizDone" role="status"></div>
+    </div>
+  </div>
+</section>
+</main>
+
+<div id="chromeBottom"></div>
+
+<script src="cetto-base.js"></script>
+<script>
+(()=>{ /* ámbito propio de la página: evita choques con globales de cetto-base.js */
+renderChrome({page:'regalos',solid:true});
+const $=id=>document.getElementById(id);
+$('xGift').href=PAGES.exp+'?regalo=1#reservar';
+
+/* Precios reales del catálogo */
+document.getElementById('rpCmp').textContent=money(P.estrp.cmp);
+document.getElementById('rpPr').textContent=money(P.estrp.price);
+document.getElementById('bouPr').textContent=money(P.estbou.price);
+
+/* ---------- Encuentra el regalo ----------
+   Estilo: misma clasificación propuesta que la tienda (1 ligero y fresco · 2 frutal y suave · 3 con cuerpo · 4 robusto).
+   El texto de por qué se escribe a partir de los vinos que realmente salen en el rango elegido. */
+const STY={nebrp:4,pslac:3,cabrp:4,charp:3,chenin:1,viog:3,psrp:4,terra:4,conc:4,prim:1,ver:1,oto:1,inv:3,champ:1,sbsb:1,cablac:3,bdz:2,sang:3,nebor:3,dlmer:2,bsyr:3,bmal:4,bpin:2,bbla:3,plyra:3,pesp:3,sbtemp:2,sbcab:3,sbzin:1,lazin:3,latemp:2,lamer:2,lafume:1,lachar:2,labdb:1,ormal:3,orens:3,ormez:3};
+const WHO={
+  empieza:{pick:id=>(STY[id]||9)<=2,order:['bdz','prim','chenin','ver','champ','sbzin','oto','sbsb','labdb','lachar','latemp','lamer','dlmer','bpin'],d:'frescos y amables, fáciles de disfrutar desde la primera copa',sup:'lo más ligero y amable',none:'ligeros',more:'estilo=1,2'},
+  sabe:{pick:id=>(STY[id]||0)>=3,order:['nebrp','sang','psrp','cabrp','terra','bmal','bsyr','conc','nebor','ormez','orens','bbla','charp','viog'],d:'con cuerpo y carácter, para quien ya tiene paladar',sup:'lo de más cuerpo',none:'con cuerpo',more:'estilo=3,4'},
+  celebra:{pick:id=>['espumoso','rosado'].includes(P[id].c)||['ver','charp','viog','bbla','estrp','estbou'].includes(id),order:['champ','estrp','prim','ver','charp','viog','bbla','estbou','bdz','sbzin'],d:'para el brindis y para seguir la fiesta',sup:'lo más festivo',none:'para brindar',more:'momento=brindis'},
+  mesa:{pick:id=>['cabrp','conc','charp','terra','chenin','pslac','cablac','nebor','ormal','lazin','latemp','oto','psrp','dlmer','passito'].includes(id),order:['cabrp','conc','charp','terra','chenin','pslac','nebor','ormal','lazin','oto','psrp','dlmer','latemp','cablac'],d:'para acompañar de la entrada al plato fuerte',sup:'lo más versátil en la mesa',none:'para la mesa',more:'momento=mesa'},
+  equipo:{pick:id=>P[id].c==='estuche'||(P[id].medals||0)>=50,order:['estrp','estbou','champ','nebrp','terra','charp','cabrp','pslac','chenin'],d:'quedan bien con todos',sup:'lo más seguro para regalar',none:'en estuche',more:'momento=regalo'}
+};
+/* Rangos iguales a los de la tienda (?rango=p1…p4) para que "Ver más" respete los dos límites */
+const BUD={all:[0,1e9],p1:[0,250],p2:[251,400],p3:[401,700],p4:[701,1e9]};
+const fWho=$('fWho'),fBud=$('fBud'),fTrack=$('fTrack'),fRail=$('fRail'),fBar=$('fBar');
+const inBud=(id,b)=>P[id].price>=b[0]&&P[id].price<=b[1];
+const giftable=id=>{const p=P[id];return p&&!p.gc&&p.c!=='gourmet'&&p.type!=='Destilado'&&(!p.ml||p.ml>=750)};
+const byMedals=(a,c)=>(P[c].medals||0)-(P[a].medals||0);
+const NUM=['','un','dos','tres','cuatro','cinco','seis','siete','ocho'],PL={tinto:['tinto','tintos'],blanco:['blanco','blancos'],rosado:['rosado','rosados'],espumoso:['espumoso','espumosos'],estuche:['estuche','estuches'],postre:['vino de postre','vinos de postre']};
+const cap1=t=>t.charAt(0).toUpperCase()+t.slice(1);
+const andJoin=a=>a.length>1?a.slice(0,-1).join(', ')+' y '+a[a.length-1]:a[0]||'';
+function compose(ids){const c={};ids.forEach(id=>{const k=PL[P[id].c]?P[id].c:'tinto';c[k]=(c[k]||0)+1});return cap1(andJoin(Object.entries(c).sort((a,b)=>b[1]-a[1]).map(([k,n])=>NUM[n]+' '+PL[k][n>1?1:0])))}
+const nm=id=>P[id].c==='estuche'?'el estuche '+P[id].name:'el '+P[id].name+' '+P[id].line;
+/* cards como las del carrusel de la portada: botella recortada, medallas, precio de socio y calificación */
+const BOT=new Set('nebrp pslac cabrp charp chenin viog psrp terra conc prim ver oto inv champ sbsb cablac bdz sang nebor dlmer bsyr bmal bpin bbla plyra pesp sbtemp sbcab sbzin lazin latemp lamer lafume lachar labdb ormal orens ormez passito estrp estbou mospal grappa'.split(' '));
+const cut=id=>BOT.has(id)?'media/bot/'+id+'.png':F(P[id].img,400);
+const esc=t=>String(t).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const laurel=(()=>{let l='';const R=13.2;
+  for(const side of [-1,1])for(let k=0;k<7;k++){const ang=side<0?112+k*20:68-k*20,rad=ang*Math.PI/180,cx=24+R*Math.cos(rad),cy=24+R*Math.sin(rad),rot=ang+(side<0?-62:62);
+    l+='<ellipse cx="'+cx.toFixed(2)+'" cy="'+cy.toFixed(2)+'" rx="3.1" ry="1.3" transform="rotate('+rot.toFixed(0)+' '+cx.toFixed(2)+' '+cy.toFixed(2)+')"/>'}
+  const st=[...Array(10)].map((_,i)=>{const a=(-90+i*36)*Math.PI/180,r=i%2?2.4:5.6;return (24+r*Math.cos(a)).toFixed(2)+','+(24.6+r*Math.sin(a)).toFixed(2)}).join(' ');
+  return '<svg viewBox="0 0 48 48" aria-hidden="true"><g fill="currentColor">'+l+'<polygon points="'+st+'"/></g></svg>'})();
+const RATE=window.RAT||{};
+const rateOf=id=>{if(RATE[id])return RATE[id];let h=0;for(const ch of id)h=(h*31+ch.charCodeAt(0))>>>0;return [Math.round((4.3+(h%7)/10)*10)/10,0]};
+function vcard(id,i){const p=P[id],m=p.medals||0,rr=rateOf(id);
+  const aw=m?'<span class="vc-aw" role="img" aria-label="'+m+' reconocimientos"><i class="md">'+laurel+'</i></span>':'';
+  const rate='<span class="vc-rate"><span class="stars" style="--r:'+rr[0]+'" aria-hidden="true"></span><span>('+rr[0].toFixed(1)+')</span><span class="sr">'+rr[0].toFixed(1)+' de 5 estrellas</span></span>';
+  return '<li class="vc" style="--i:'+i+'"><a class="vc-a" href="'+PAGES.ficha+'?p='+id+'" draggable="false"><span class="vc-img">'+aw+'<i class="vc-glow" aria-hidden="true"></i><i class="vc-sh" aria-hidden="true"></i><img src="'+cut(id)+'" alt="" loading="lazy" decoding="async" draggable="false"></span>'+
+    '<span class="vc-info"><span class="vc-line">'+p.line+'</span><span class="vc-name">'+p.name+'</span><span class="vc-price">'+(p.cmp?'<s>'+money(p.cmp)+'</s> ':'')+money(p.price)+'</span>'+rate+'</span></a>'+
+    '<button class="vc-add" type="button" data-add="'+id+'" aria-label="Agregar '+esc(p.line+' '+p.name)+' al carrito"><span>Agregar al carrito</span></button></li>'}
+const ctaCard=i=>'<li class="vc rg-vc-cta" style="--i:'+i+'"><a href="#caja"><span class="k">Hecha a la medida</span><b>Arma una caja de regalo</b><p>Seis vinos que eliges tú, una tarjeta con tu mensaje y 10% de descuento.</p><span class="ul">Armar mi caja</span></a></li>';
+let fSwap;
+function runFind(first){
+  const W=WHO[fWho.value],b=BUD[fBud.value];
+  const ok=id=>giftable(id)&&inBud(id,b);
+  const pool=[...W.order.filter(id=>P[id]&&ok(id)&&W.pick(id)),...Object.keys(P).filter(id=>ok(id)&&W.pick(id)&&!W.order.includes(id)).sort(byMedals)].slice(0,8);
+  const fill=Object.keys(P).filter(id=>ok(id)&&!pool.includes(id)).sort(byMedals).slice(0,Math.max(0,6-pool.length));
+  const ids=[...pool,...fill];
+  let why;
+  if(!ids.length)why='No tenemos vinos en este rango. Prueba otro presupuesto o regala saldo con una tarjeta de regalo.';
+  else if(!fill.length)why=compose(ids)+': '+W.d+'.';
+  else if(!pool.length)why='En este rango no tenemos vinos '+W.none+'. Te mostramos los más premiados.';
+  else why=cap1(pool.length<=2?andJoin(pool.map(nm)):compose(pool).toLowerCase())+(pool.length>1?' son ':' es ')+W.sup+' en este rango; lo completamos con '+(fill.length===1?'uno':NUM[fill.length])+' de los más premiados.';
+  const draw=()=>{fTrack.innerHTML=ids.map(vcard).join('')+ctaCard(ids.length);fRail.scrollLeft=0;fTrack.classList.remove('out','in');void fTrack.offsetWidth;fTrack.classList.add('in');fProg()};
+  clearTimeout(fSwap);if(first)draw();else{fTrack.classList.add('out');fSwap=setTimeout(draw,260)}
+  $('fWhy').textContent=why;
+  $('fMore').href=PAGES.tienda+'?'+W.more+(fBud.value!=='all'?'&rango='+fBud.value:'');
+  $('fBiz').hidden=fWho.value!=='equipo';
+}
+/* barra de avance y arrastre con el mouse, como en la portada */
+function fProg(){const max=fRail.scrollWidth-fRail.clientWidth,vis=fRail.clientWidth/fRail.scrollWidth;fBar.parentElement.style.visibility=max>4?'visible':'hidden';
+  fBar.style.width=(vis*100)+'%';fBar.style.transform='translateX('+(max>0?fRail.scrollLeft/max*(1/vis-1)*100:0)+'%)'}
+fRail.addEventListener('scroll',()=>requestAnimationFrame(fProg),{passive:true});addEventListener('resize',fProg);
+{let dg=null;fRail.addEventListener('pointerdown',e=>{if(e.pointerType!=='mouse'||e.button!==0||e.target.closest('.vc-add'))return;dg={x:e.clientX,s:fRail.scrollLeft,m:false,id:e.pointerId}});
+ addEventListener('pointermove',e=>{if(!dg||e.pointerId!==dg.id)return;const dx=e.clientX-dg.x;if(!dg.m&&Math.abs(dx)>5){dg.m=true;fRail.classList.add('drag')}if(dg.m)fRail.scrollLeft=dg.s-dx});
+ addEventListener('pointerup',e=>{if(!dg||e.pointerId!==dg.id)return;const m=dg.m;dg=null;fRail.classList.remove('drag');
+  if(m){const cards=[...fTrack.children],x=fRail.scrollLeft,near=cards.reduce((b,c)=>Math.abs(c.offsetLeft-fTrack.offsetLeft-x)<Math.abs(b.offsetLeft-fTrack.offsetLeft-x)?c:b,cards[0]);fRail.scrollTo({left:near.offsetLeft-fTrack.offsetLeft,behavior:'smooth'});
+   const block=ev=>{ev.preventDefault();ev.stopPropagation()};fRail.addEventListener('click',block,{capture:true,once:true});setTimeout(()=>fRail.removeEventListener('click',block,{capture:true}),80)}})}
+/* El select toma el ancho del texto elegido, para que la frase se lea seguida */
+/* sin menús: cada palabra en cursiva avanza a la siguiente opción al tocarla (flecha izquierda regresa) */
+[[fWho,'Para quién'],[fBud,'Presupuesto']].forEach(([sel,lbl])=>{const b=document.createElement('button');b.type='button';b.className='rg-cyc';sel.after(b);
+  const paint=()=>{b.textContent=sel.options[sel.selectedIndex].text;b.setAttribute('aria-label',lbl+': '+b.textContent+'. Toca para cambiar')};
+  const go=d=>{sel.selectedIndex=(sel.selectedIndex+d+sel.options.length)%sel.options.length;b.classList.add('sw');
+    setTimeout(()=>{paint();b.classList.remove('sw');sel.dispatchEvent(new Event('change'))},reduceMotion?0:240)};
+  b.addEventListener('click',()=>go(1));b.addEventListener('keydown',e=>{if(e.key==='ArrowLeft'){e.preventDefault();go(-1)}else if(e.key==='ArrowRight'){e.preventDefault();go(1)}});paint()});
+[fWho,fBud].forEach(s=>s.addEventListener('change',()=>runFind()));
+runFind(true);
+
+/* ---------- Arma tu caja: idea → armar → tarjeta ---------- */
+const CR=['nebrp','charp','terra','oto','champ','viog'],SIZE=6;
+let box=[...CR];
+const rankW=(a,c)=>(P[c].medals||0)-(P[a].medals||0)||P[c].price-P[a].price;
+const W750=id=>BOT.has(id)&&!P[id].nb&&!P[id].gift;
+const PICKS=['terra','nebrp','cabrp','charp','oto','prim','champ','chenin','viog','sbsb','pslac','conc'];
+const ALLW=[...PICKS,...Object.keys(P).filter(id=>W750(id)&&!PICKS.includes(id)).sort(rankW)];
+const FIL=[['todos','Todos',()=>ALLW],['tinto','Tintos',()=>ALLW.filter(id=>P[id].c==='tinto')],['blanco','Blancos',()=>ALLW.filter(id=>P[id].c==='blanco')],
+  ['rosado','Rosados y espumosos',()=>ALLW.filter(id=>P[id].c==='rosado'||P[id].c==='espumoso')],['postre','De postre',()=>ALLW.filter(id=>P[id].c==='postre')]];
+const vIdea=$('rgbIdea'),vBuild=$('rgbBuild'),vCard=$('rgbCard'),slotsEl=$('rgbSlots'),picksEl=$('rgbPicks'),filEl=$('rgbFil');
+const nameOf=id=>P[id].line+' '+P[id].name;
+const totals=()=>{const s=box.reduce((a,id)=>a+P[id].price,0),d=box.length>=SIZE?s*.1:0;return {s,d,t:s-d}};
+/* la idea del enólogo (vista inicial) */
+$('crate').innerHTML=CR.map(id=>'<span><img src="'+cut(id)+'" alt="'+esc(nameOf(id))+'" loading="lazy"></span>').join('');
+{const s=CR.reduce((a,id)=>a+P[id].price,0);$('crTot').innerHTML='<s style="color:var(--ink3)">'+money(s)+'</s> '+money(s*.9);$('crNames').textContent=andJoin(CR.map(id=>P[id].name))}
+/* cambiar de vista: la sección queda arriba para que se vea el paso completo */
+function view(v){[vIdea,vBuild,vCard].forEach(x=>x.hidden=x!==v);
+  const sec=$('caja'),t=sec.getBoundingClientRect().top;if(t<-40||t>innerHeight*.25)scrollTo({top:t+scrollY-72,behavior:reduceMotion?'auto':'smooth'});
+  if(v===vBuild){drawPicks();requestAnimationFrame(centerPicks)}if(v===vCard)paintCard()}
+let justIn=-1;
+function paintBuild(){
+  let h='';for(let i=0;i<SIZE;i++){const id=box[i];
+    h+=id?'<button type="button" data-rm="'+i+'"'+(i===justIn?' class="in"':'')+' aria-label="Quitar '+esc(nameOf(id))+'"><img src="'+cut(id)+'" alt=""><i class="rgb-x" aria-hidden="true">×</i></button>':'<span class="rgb-empty" role="img" aria-label="Lugar '+(i+1)+' vacío"><i>'+(i+1)+'</i></span>'}
+  slotsEl.innerHTML=h;justIn=-1;
+  const n=box.length,{s,t}=totals(),left=SIZE-n;
+  $('rgbCount').textContent=n+' de '+SIZE;
+  $('rgbTot').innerHTML=n?(n>=SIZE?'<s style="color:var(--ink3)">'+money(s)+'</s> '+money(t):money(s)):'';
+  $('rgbClear').disabled=!n;
+  $('rgbNext').disabled=n<SIZE;
+  $('rgbNextT').textContent=n<SIZE?(left>1?'Te faltan '+left+' vinos':'Te falta un vino')+' para completar la caja.':'Tu caja está completa: 10% de descuento aplicado.';
+  syncPicks()}
+/* filtros y carrusel de vinos (la misma estructura de la portada) */
+let fil='todos',pkFirst=null;
+filEl.innerHTML=FIL.map(([k,t,f])=>'<button type="button" data-f="'+k+'" aria-pressed="'+(k==='todos')+'"><i class="pf-d pf-'+k+'" aria-hidden="true"></i>'+t+'<small>'+f().length+'</small></button>').join('');
+const mid=a=>{const o=[];a.forEach((id,i)=>i%2?o.push(id):o.unshift(id));return o};
+function centerPicks(){const el=pkFirst&&picksEl.querySelector('[data-pick="'+pkFirst+'"]:not([data-clone])');if(!el||!picksEl.clientWidth)return;
+  const pr=picksEl.getBoundingClientRect(),er=el.getBoundingClientRect();picksEl.scrollLeft+=er.left+er.width/2-(pr.left+pr.width/2)}
+function drawPicks(){const list=FIL.find(f=>f[0]===fil)[2]();pkFirst=list[0];
+  picksEl.innerHTML=mid(list).map(id=>{const p=P[id];return '<button class="pick" type="button" data-pick="'+id+'" aria-label="Agregar '+esc(nameOf(id))+' a la caja"><span class="fld"><img src="'+cut(id)+'" alt="" loading="lazy"><span class="pk-n" aria-hidden="true"></span></span><b>'+p.name+'</b><span>'+p.line+'</span><span style="color:var(--ink)">'+money(p.price)+'</span></button>'}).join('');syncPicks();loopRail(picksEl,{center:()=>picksEl.querySelector('[data-pick="'+pkFirst+'"]:not([data-clone])')})}
+function syncPicks(){const cnt={};box.forEach(id=>cnt[id]=(cnt[id]||0)+1);picksEl.classList.toggle('full',box.length>=SIZE);
+  picksEl.querySelectorAll('[data-pick]').forEach(b=>{const k=cnt[b.dataset.pick]||0;b.classList.toggle('in',k>0);b.querySelector('.pk-n').textContent=k?k:''})}
+filEl.addEventListener('click',e=>{const b=e.target.closest('[data-f]');if(!b||b.dataset.f===fil)return;fil=b.dataset.f;filEl.querySelectorAll('button').forEach(x=>x.setAttribute('aria-pressed',x===b));
+  picksEl.classList.add('swap');setTimeout(()=>{drawPicks();centerPicks();picksEl.classList.remove('swap')},180)});
+{let pd=null;picksEl.addEventListener('pointerdown',e=>{if(e.pointerType!=='mouse'||e.button!==0)return;pd={x:e.clientX,s:picksEl.scrollLeft,m:false,id:e.pointerId}});
+ picksEl.addEventListener('loopjump',e=>{if(pd)pd.s+=e.detail});
+ addEventListener('pointermove',e=>{if(!pd||e.pointerId!==pd.id)return;const dx=e.clientX-pd.x;if(!pd.m&&Math.abs(dx)>5){pd.m=true;picksEl.classList.add('drag')}if(pd.m)picksEl.scrollLeft=pd.s-dx});
+ addEventListener('pointerup',e=>{if(!pd||e.pointerId!==pd.id)return;const m=pd.m;pd=null;picksEl.classList.remove('drag');
+  if(m){const block=ev=>{ev.preventDefault();ev.stopPropagation()};picksEl.addEventListener('click',block,{capture:true,once:true});setTimeout(()=>picksEl.removeEventListener('click',block,{capture:true}),80)}})}
+picksEl.addEventListener('click',e=>{const b=e.target.closest('[data-pick]');if(!b)return;
+  if(box.length>=SIZE){b.animate([{transform:'translateX(0)'},{transform:'translateX(-4px)'},{transform:'translateX(4px)'},{transform:'none'}],{duration:260});return}
+  box.push(b.dataset.pick);justIn=box.length-1;paintBuild()});
+slotsEl.addEventListener('click',e=>{const b=e.target.closest('[data-rm]');if(!b)return;box.splice(+b.dataset.rm,1);paintBuild()});
+$('rgbClear').onclick=()=>{box.length=0;paintBuild()};
+$('rgbStart').onclick=()=>{paintBuild();view(vBuild)};
+$('rgbIdeaGo').onclick=()=>{box=[...CR];paintBuild();view(vCard)};
+$('rgbBack').onclick=()=>view(vIdea);
+$('rgbNext').onclick=()=>{if(box.length>=SIZE)view(vCard)};
+$('rgbEdit').onclick=()=>{paintBuild();view(vBuild)};
+
+/* ---------- La tarjeta: vista previa en vivo; el mensaje se guarda con el carrito (cettoGift, lo usa el pago) ---------- */
+const bind=(inp,out,def)=>{const el=$(inp),o=$(out);el.addEventListener('input',()=>{o.textContent=el.value.trim()||def})};
+bind('mTo','cTo','Mariana');bind('mFrom','cFrom','Luis y Ana');bind('mTxt','cMsg','Por todas las sobremesas que vienen.');
+const mTo=$('mTo'),mFrom=$('mFrom'),mTxt=$('mTxt'),mF=[mTo,mFrom,mTxt];
+mTxt.maxLength=GIFT_MAX;$('gcMsg').maxLength=GIFT_MAX;
+mTxt.addEventListener('input',()=>$('mCnt').textContent=mTxt.value.length+' / '+GIFT_MAX);
+{const g=giftGet();if(g){mTo.value=g.to||'';mFrom.value=g.from||'';mTxt.value=g.msg||'';mF.forEach(i=>i.dispatchEvent(new Event('input')))}}
+function paintCard(){const {s,d,t}=totals();
+  $('rgbMini').innerHTML=box.map(id=>'<li><img src="'+cut(id)+'" alt="'+esc(nameOf(id))+'"></li>').join('');
+  $('rgbSumT').innerHTML='<b>'+money(t)+'</b>'+(d?'Incluye 10% de descuento de caja':'Caja de '+box.length);
+  $('rgbAdd').innerHTML='Agregar caja al carrito · '+money(t)}
+$('msgForm').addEventListener('submit',e=>{e.preventDefault();
+  const g={to:mTo.value.trim(),from:mFrom.value.trim(),msg:mTxt.value.trim()};if(g.to||g.msg)giftSet(g);
+  box.forEach(id=>add(id,1,true));
+  box=[...CR];view(vIdea);setTimeout(()=>openDrawer('cart'),300)});
+
+/* ---------- Errores de formulario: mensaje con id, aria-invalid y aria-describedby solo mientras haya error ---------- */
+function fErr(el,msg){let e=$('e-'+el.id);if(!e){e=document.createElement('em');e.className='rg-e';e.id='e-'+el.id;el.after(e)}
+  e.textContent=msg||'';if(msg){el.setAttribute('aria-invalid','true');el.setAttribute('aria-describedby',e.id)}else{el.removeAttribute('aria-invalid');el.removeAttribute('aria-describedby')}return !msg}
+function checkForm(f,msgs){let first=null;
+  f.querySelectorAll('[required]').forEach(el=>{if(el.closest('[hidden]')||el.offsetParent===null&&el.type!=='hidden'&&!el.closest('.rg-other.on'))return;
+    const v=el.value.trim();let m='';
+    if(!v)m=msgs[el.id]||'Completa este dato.';else if(el.type==='email'&&!el.checkValidity())m='Revisa el correo.';else if(el.type==='number'&&!el.checkValidity())m=msgs[el.id+'Min']||'Revisa el monto.';
+    fErr(el,m);if(m&&!first)first=el});
+  if(first)first.focus();return !first}
+document.querySelectorAll('#gcForm [required],#bizForm [required]').forEach(el=>el.addEventListener(el.tagName==='SELECT'?'change':'input',()=>fErr(el,'')));
+
+/* ---------- Tarjeta de regalo ---------- */
+let gcV=1000;
+const gcBtn=document.getElementById('gcBtn'),other=document.getElementById('gcOther');
+function setAmt(v){gcV=v;document.getElementById('gcAmt').textContent=money(v);gcBtn.textContent='Continuar con '+money(v)}
+document.getElementById('amts').addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;
+  document.querySelectorAll('#amts button').forEach(x=>x.setAttribute('aria-pressed',x===b));
+  const o=b.dataset.v==='otro';document.getElementById('otherBox').classList.toggle('on',o);other.required=o;
+  if(o){other.focus();setAmt(Math.max(500,+other.value||1500))}else setAmt(+b.dataset.v)});
+other.addEventListener('input',()=>setAmt(Math.max(500,Math.round(+other.value||500))));
+document.getElementById('gcName').addEventListener('input',e=>document.getElementById('gcTo').textContent=e.target.value.trim()?'Para '+e.target.value.trim():'Para quien tú quieras');
+const gcDate=document.getElementById('gcDate'),today=new Date();
+const ymd=d=>d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
+gcDate.min=ymd(today);gcDate.value=gcDate.min;
+/* La tarjeta se agrega al carrito como producto (gcId) y el pago la cobra con el resto del pedido */
+$('gcForm').addEventListener('submit',e=>{e.preventDefault();
+  if(!checkForm(e.target,{gcName:'Escribe el nombre de quien la recibe.',gcMail:'Escribe su correo: ahí le llega la tarjeta.',gcDate:'Elige la fecha de envío.',gcFrom:'Escribe de parte de quién es.',gcOther:'Escribe un monto desde $500.',gcOtherMin:'Escribe un monto de $500 a $20,000, en múltiplos de $100.'}))return;
+  const n=$('gcName').value.trim(),m=$('gcMail').value.trim(),from=$('gcFrom').value.trim(),msg=$('gcMsg').value.trim().slice(0,GIFT_MAX);
+  const d=new Date(gcDate.value+'T12:00:00').toLocaleDateString('es-MX',{day:'numeric',month:'long'});
+  add(gcId(gcV),1,true);
+  if(msg||!giftGet())giftSet({to:n,from,msg});
+  e.target.style.display='none';const done=$('gcDone'),x=t=>t.replace(/[<>&]/g,'');
+  done.innerHTML='<b>Tarjeta de '+money(gcV)+' para '+x(n)+', en tu carrito</b><p>Al pagar, la enviamos a '+x(m)+' el '+d+(msg?' con tu mensaje':'')+'. Puede usarla en la tienda o en una cata en el Valle.</p><div class="rg-done-act"><button class="btn btn-ink" type="button" id="gcCart">Ver carrito</button><button class="ul" type="button" id="gcAgain">Regalar otra</button></div><small>Prototipo: no se envía ni se cobra nada.</small>';
+  done.classList.add('on');
+  $('gcCart').onclick=()=>openDrawer('cart');
+  $('gcAgain').onclick=()=>{done.classList.remove('on');e.target.reset();gcDate.value=gcDate.min;setAmt(1000);document.querySelectorAll('#amts button').forEach(x=>x.setAttribute('aria-pressed',x.dataset.v==='1000'));$('otherBox').classList.remove('on');$('gcTo').textContent='Para quien tú quieras';e.target.style.display='';$('gcName').focus()};
+  setTimeout(()=>openDrawer('cart'),350)});
+
+/* ---------- Empresas ---------- */
+document.getElementById('zDate').min=ymd(today);
+document.getElementById('bizForm').addEventListener('submit',e=>{e.preventDefault();
+  if(!checkForm(e.target,{zCo:'Escribe el nombre de la empresa.',zName:'Escribe tu nombre.',zMail:'Escribe tu correo para enviarte la propuesta.',zQty:'Elige cuántos regalos necesitas.'}))return;
+  const n=document.getElementById('zName').value.trim().split(' ')[0].replace(/[<>&]/g,''),q=document.getElementById('zQty').value;
+  e.target.style.display='none';const done=document.getElementById('bizDone');
+  done.innerHTML='<b>Gracias, '+n+'</b><p>Recibimos tu solicitud de '+q.toLowerCase()+' regalos. Te contactaremos para afinar la propuesta.</p><small>Concepto: no se envió ningún dato.</small>';done.classList.add('on')});
+
+observeReveals();
+})();
+</script>
+</body>
+</html>

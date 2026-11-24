@@ -1,0 +1,791 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>L.A. Cetto · Pago</title>
+<meta name="description" content="Concepto de rediseño del pago de L.A. Cetto: contacto, entrega y pago con Mercado Pago en una sola página. Prototipo: no se procesa ningún pago.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baskervville:ital@0;1&family=DM+Sans:opsz,wght@9..40,400..600&family=Playfair:opsz,wght@5..1200,300..500&display=swap" rel="stylesheet">
+<link rel="icon" type="image/svg+xml" href="media/favicon.svg">
+<!-- compartir -->
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="apple-touch-icon" href="media/apple-touch-icon.png">
+<meta name="theme-color" content="#F3F1EC">
+<meta name="robots" content="noindex, nofollow">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="es_MX">
+<meta property="og:site_name" content="L.A. Cetto · Concepto de rediseño">
+<meta property="og:title" content="L.A. Cetto · Pago">
+<meta property="og:description" content="Concepto de rediseño del pago de L.A. Cetto: contacto, entrega y pago con Mercado Pago en una sola página. Prototipo: no se procesa ningún pago.">
+<meta property="og:url" content="https://zamirpadilla.github.io/lacetto-concepto/lacetto-pago.html">
+<meta property="og:image" content="https://zamirpadilla.github.io/lacetto-concepto/media/og-banner.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Chardonnay Reserva Privada de L.A. Cetto sobre una roca frente al mar, con el texto: Una boutique de vinos, de punta a punta">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="L.A. Cetto · Pago">
+<meta name="twitter:description" content="Concepto de rediseño del pago de L.A. Cetto: contacto, entrega y pago con Mercado Pago en una sola página. Prototipo: no se procesa ningún pago.">
+<meta name="twitter:image" content="https://zamirpadilla.github.io/lacetto-concepto/media/og-banner.jpg">
+<!-- /compartir -->
+<link rel="stylesheet" href="cetto-base.css">
+<style>
+.pg{padding-top:clamp(28px,4.4vw,64px);padding-bottom:var(--sec)}
+.pg-h1{font:400 clamp(42px,5vw,80px)/.96 var(--serif);letter-spacing:-.02em}
+/* Baskervville usa números de estilo antiguo: en esta página, siempre alineados */
+.pg-h1,.pg-st-h h2,.pg-opt b,.pg-tl b,.pg-it b,.pg-who b,.pg-x h3,.pg-blk p{font-variant-numeric:lining-nums}
+.pg-okno{font:500 11.5px/1.3 var(--sans);letter-spacing:.09em;text-transform:uppercase;color:var(--ink3);margin-bottom:18px}
+.pg-okno b{font-weight:500;color:var(--ink);letter-spacing:.06em;font-variant-numeric:tabular-nums}
+.pg-head{margin-bottom:clamp(28px,3.4vw,48px)}
+.pg-co{display:grid;grid-template-columns:minmax(0,1fr) minmax(340px,430px);gap:clamp(32px,6vw,112px);align-items:start}
+
+/* Pasos */
+.pg-st{border-top:1px solid var(--line);padding:22px 0 26px;scroll-margin-top:92px}
+.pg-st.on{border-top-color:var(--ink)}
+.pg-st:last-of-type{border-bottom:1px solid var(--line)}
+.pg-st-h{display:grid;grid-template-columns:44px minmax(0,1fr) auto;align-items:baseline;gap:0 12px}
+.pg-st-h .n{font:500 11px/1 var(--sans);letter-spacing:.09em;color:var(--ink3)}
+.pg-st-h h2{font:400 clamp(26px,2.3vw,34px)/1.1 var(--serif);letter-spacing:-.01em;color:var(--ink3);transition:color .3s}
+.pg-st.on h2,.pg-st.done h2{color:var(--ink)}
+.pg-st-h .pg-sm{grid-column:2/3;font-size:14px;color:var(--ink2);margin-top:6px;display:none;overflow-wrap:anywhere}
+.pg-st.done .pg-sm{display:block}
+.pg-edit{display:none;font:500 11.5px/1 var(--sans);letter-spacing:.09em;text-transform:uppercase;border-bottom:1px solid currentColor;padding-bottom:4px}
+.pg-edit,.pg-sum-tg{transition:opacity .25s}.pg-edit:hover,.pg-sum-tg:hover{opacity:.62}
+.pg-st.done .pg-edit{display:inline-block}
+.pg-st-b{display:none;padding:26px 0 0 56px}
+.pg-st.on .pg-st-b{display:block;animation:pgIn .5s var(--ease) both}
+@keyframes pgIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.pg-act{display:flex;flex-wrap:wrap;align-items:center;gap:14px 26px;margin-top:8px}
+.pg-act .note{font-size:13px;color:var(--ink3)}
+
+/* Campos */
+.pg-fg{margin-bottom:22px;min-width:0}
+.pg-fg label,.pg-lab{display:block;font:500 11px/1.4 var(--sans);letter-spacing:.09em;text-transform:uppercase;color:var(--ink3);margin-bottom:4px}
+.pg-fg input,.pg-fg select,.pg-fg textarea{width:100%;background:transparent;border:0;border-bottom:1px solid rgba(43,44,45,.6);border-radius:0;padding:8px 0 10px;font:inherit;font-size:16px;color:var(--ink);outline:0;-webkit-appearance:none;appearance:none}
+.pg-fg textarea{resize:vertical;min-height:76px;line-height:1.5}
+.pg-fg select{background:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%232B2C2D' stroke-width='1.6'><path d='M6 9l6 6 6-6'/></svg>") no-repeat right 2px center;padding-right:22px;cursor:pointer}
+.pg-fg input:focus,.pg-fg select:focus,.pg-fg textarea:focus{border-color:var(--ink)}
+.pg-fg input:focus-visible,.pg-fg select:focus-visible,.pg-fg textarea:focus-visible,.pg-cpn input:focus-visible{box-shadow:0 2px 0 var(--ink)}
+.pg-ageerr{color:var(--wine);font-size:12.5px;margin:-8px 0 14px 27px}
+.pg-st-h h2:focus,.pg-sum-h h2:focus,.pg-h1:focus{outline:none}
+.pg-fg input::placeholder,.pg-fg textarea::placeholder{color:var(--ink3);opacity:.75}
+.pg-fg .err{display:none;color:var(--wine);font-size:12.5px;margin-top:6px}
+.pg-fg.bad input,.pg-fg.bad select{border-color:var(--wine)}
+.pg-fg.bad .err{display:block}
+.pg-fg .hint{font-size:12.5px;color:var(--ink3);margin-top:6px}
+.pg-row{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 28px}
+.pg-row3{display:grid;grid-template-columns:minmax(0,2fr) minmax(0,1fr) minmax(0,1fr);gap:0 24px}
+.pg-chk{display:flex;gap:10px;align-items:flex-start;font-size:14px;line-height:1.5;color:var(--ink2);margin:0 0 14px;cursor:pointer}
+.pg-chk input{width:17px;height:17px;margin-top:2px;accent-color:var(--ink);flex:0 0 auto}
+.pg-chk.bad{color:var(--wine)}
+.pg-chk.bad input{outline:1px solid var(--wine);outline-offset:2px}
+.pg-who{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:8px 20px;padding:16px 18px;background:var(--bg2);margin-bottom:24px}
+.pg-who b{font:400 20px/1.2 var(--serif)}
+.pg-who span{font-size:14px;color:var(--ink2);overflow-wrap:anywhere}
+.pg-who .pg-edit{display:inline-block}
+.pg-login{font-size:14px;color:var(--ink2);margin-bottom:22px}
+.pg-login a{color:var(--ink);border-bottom:1px solid currentColor}
+
+/* Opciones (radio) */
+.pg-opts{display:grid;gap:10px;margin-bottom:26px}
+.pg-opt{border:1px solid var(--line);transition:border-color .25s,background .25s}
+.pg-opt:has(>label>input:checked){border-color:var(--ink);background:var(--panel)}
+.pg-opt>label{display:grid;grid-template-columns:20px minmax(0,1fr) auto;gap:2px 14px;align-items:center;padding:16px 18px;cursor:pointer}
+.pg-opt>label input{width:18px;height:18px;accent-color:var(--ink);margin:0}
+.pg-opt b{font:400 19px/1.25 var(--serif)}
+.pg-opt small{grid-column:2/3;font-size:13px;color:var(--ink2);line-height:1.45}
+.pg-opt .r{grid-row:1/2;grid-column:3/4;font-size:14px;text-align:right;white-space:nowrap}
+.pg-opt .r.free{color:var(--ink2)}
+.pg-opt .tags{display:flex;gap:6px;flex-wrap:wrap}
+.pg-opt .tags i{font:500 10.5px/1 var(--sans);letter-spacing:.08em;text-transform:uppercase;font-style:normal;border:1px solid var(--line);padding:5px 6px 4px;color:var(--ink2)}
+.pg-pane{display:none;padding:4px 18px 20px 52px}
+.pg-opt:has(>label>input:checked) .pg-pane{display:block}
+.pg-pane p{font-size:14px;color:var(--ink2);max-width:52ch}
+.pg-pane .pg-fg:last-child{margin-bottom:0}
+.pg-bts{display:grid;gap:8px}
+.pg-bt{display:grid;grid-template-columns:20px minmax(0,1fr);gap:2px 12px;padding:12px 0;border-bottom:1px solid var(--line);cursor:pointer}
+.pg-bt:last-child{border-bottom:0}
+.pg-bt input{width:16px;height:16px;accent-color:var(--ink);margin:3px 0 0}
+.pg-opt .pg-bt b{font:400 17px/1.3 var(--serif)}
+.pg-bt span{grid-column:2/3;font-size:13px;color:var(--ink2)}
+.pg-eta{display:flex;gap:10px;align-items:baseline;font-size:14px;color:var(--ink2);margin:-6px 0 22px}
+.pg-opt .pg-eta b{font:500 14px/1.4 var(--sans);color:var(--ink)}
+.pg-demo-l{font:500 11px/1 var(--sans);letter-spacing:.09em;text-transform:uppercase;color:var(--ink3);border-bottom:1px dashed currentColor;padding-bottom:3px}
+.pg-demo-l:hover{color:var(--ink)}
+.pg-mock{font-size:12px;color:var(--ink3);margin-top:12px}
+.pg-msi{display:flex;flex-wrap:wrap;gap:8px;margin:2px 0 20px}
+.pg-msi label{position:relative;cursor:pointer}
+.pg-msi input{position:absolute;opacity:0;pointer-events:none}
+.pg-msi span{display:block;padding:10px 14px;border:1px solid var(--line);font-size:13.5px;transition:border-color .2s,background .2s}
+.pg-msi input:checked+span{border-color:var(--ink);background:var(--ink);color:var(--bg)}
+.pg-msi input:focus-visible+span{outline:2px solid var(--ink);outline-offset:2px}
+.pg-fine{font-size:12.5px;color:var(--ink3);margin-top:16px;max-width:60ch}
+.pg-fine a{color:var(--ink2);border-bottom:1px solid currentColor}
+.pg-addr{margin-bottom:22px}
+
+/* Resumen */
+.pg-sum{position:sticky;top:96px;background:var(--bg2)}
+.pg-sum-tg{display:none}
+.pg-sum-b{padding:26px 26px 24px}
+.pg-sum-h{display:flex;justify-content:space-between;align-items:baseline;gap:12px;padding-bottom:14px;border-bottom:1px solid var(--line)}
+.pg-sum-h h2{font:400 24px/1.1 var(--serif)}
+.pg-sum-h span{font-size:13px;color:var(--ink2)}
+.pg-items{max-height:min(46vh,420px);overflow:auto;margin-right:-8px;padding-right:8px}
+.pg-it{display:grid;grid-template-columns:54px minmax(0,1fr) auto;gap:14px;align-items:center;padding:12px 0;border-bottom:1px solid var(--line)}
+.pg-it .fld{width:54px;height:68px;background:var(--bg)}
+.pg-it .fld::after{display:none}
+.pg-it .fld img{height:90%}
+.pg-it small{display:block;font:500 10.5px/1.4 var(--sans);letter-spacing:.09em;text-transform:uppercase;color:var(--ink3)}
+.pg-it b{display:block;font:400 16.5px/1.2 var(--serif)}
+.pg-it b em{font:400 12.5px/1.3 var(--sans);font-style:normal;color:var(--ink2);display:block;margin-top:1px}
+.pg-it .qty{margin-top:7px;background:var(--bg)}
+.pg-it .price{font-size:14.5px;text-align:right;white-space:nowrap}
+.pg-it .price s{display:block;font-size:12px;color:var(--ink3)}
+.pg-hint{font-size:13px;color:var(--ink2);padding:12px 0;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;gap:12px;align-items:baseline}
+.pg-hint a{font:500 11px/1 var(--sans);letter-spacing:.09em;text-transform:uppercase;border-bottom:1px solid currentColor;padding-bottom:3px;white-space:nowrap;color:var(--ink)}
+.pg-hint .ok{color:var(--ink);font-weight:500}
+.pg-gift{padding:14px 0 4px;border-bottom:1px solid var(--line)}
+.pg-gift .pg-chk{margin-bottom:10px;color:var(--ink)}
+.pg-gift .gb{display:none;padding:4px 0 8px}
+.pg-gift.on .gb{display:block}
+.pg-gift .pg-fg{margin-bottom:14px}
+.pg-gift .cnt{font-size:12px;color:var(--ink3);text-align:right;margin-top:4px}
+.pg-gift .note{font-size:12.5px;color:var(--ink3)}
+.pg-cpn{display:flex;gap:10px;padding:16px 0 4px}
+.pg-cpn input{flex:1;min-width:0;background:transparent;border:0;border-bottom:1px solid rgba(43,44,45,.6);border-radius:0;padding:8px 0;font:inherit;font-size:15px;color:var(--ink);outline:0;text-transform:uppercase}
+.pg-cpn input::placeholder{text-transform:none;color:var(--ink3)}
+.pg-cpn input:focus{border-color:var(--ink)}
+.pg-cpn button{font:500 11.5px/1 var(--sans);letter-spacing:.09em;text-transform:uppercase;border-bottom:1px solid currentColor;padding:0 0 4px;align-self:flex-end;margin-bottom:6px}
+.pg-cpn-m{font-size:12.5px;color:var(--wine);min-height:18px;margin-bottom:6px}
+.pg-lines{padding-top:10px}
+.pg-lines .ln{display:flex;justify-content:space-between;gap:12px;font-size:14.5px;margin-bottom:6px}
+.pg-lines .ln span:first-child{color:var(--ink2)}
+.pg-lines .tot{font:500 21px/1.2 var(--sans);font-variant-numeric:lining-nums tabular-nums;margin:12px 0 2px;padding-top:12px;border-top:1px solid var(--line)}
+.pg-lines .tot span:first-child{color:var(--ink)}
+.pg-lines .msi{font-size:12.5px;color:var(--ink3);text-align:right}
+.pg-trust{list-style:none;margin-top:18px;padding-top:16px;border-top:1px solid var(--line);display:grid;gap:8px;font-size:12.5px;color:var(--ink2)}
+.pg-trust li{display:flex;gap:10px;align-items:center}
+.pg-trust svg{flex:0 0 auto;opacity:.7}
+
+/* Barra fija en móvil */
+.pg-bar{display:none}
+
+/* Vacío */
+.pg-empty{max-width:760px;padding-block:clamp(24px,6vw,96px) clamp(40px,6vw,80px)}
+.pg-empty p{font-size:16px;color:var(--ink2);max-width:44ch;margin:22px 0 30px}
+.pg-empty .ctas{display:flex;flex-wrap:wrap;align-items:center;gap:14px 26px}
+.pg-empty .bt3{display:flex;gap:var(--g);margin-top:clamp(40px,6vw,80px);max-width:560px}
+.pg-empty .bt3 .fld{flex:1;aspect-ratio:3/4}
+.pg-proto{margin-top:34px;padding-top:18px;border-top:1px dashed var(--line);display:flex;flex-wrap:wrap;gap:8px 18px;align-items:baseline;font-size:13px;color:var(--ink3)}
+
+/* Confirmación */
+.pg-ok-top{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:clamp(24px,5vw,88px);align-items:end;padding-bottom:clamp(32px,4vw,56px)}
+.pg-ok-top .lead{font-size:16px;color:var(--ink2);max-width:44ch}
+.pg-ok-top .ctas{display:flex;flex-wrap:wrap;align-items:center;gap:14px 26px;margin-top:24px}
+.pg-ok-top .made{font-size:14px;color:var(--ink2)}
+.pg-ok-top .made b{color:var(--ink);font-weight:500}
+.pg-tl{list-style:none;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-top:1px solid var(--line);margin-bottom:clamp(36px,5vw,72px)}
+.pg-tl li{position:relative;padding:22px 16px 0 0}
+.pg-tl li::before{content:"";position:absolute;left:0;right:0;top:-1px;height:1px;background:var(--ink);transform:scaleX(0);transform-origin:left}
+.pg-tl li.done::before{transform:none}
+.pg-tl li i{position:absolute;left:0;top:-5px;width:9px;height:9px;border-radius:50%;background:var(--bg);border:1px solid var(--ink3)}
+.pg-tl li.done i{background:var(--ink);border-color:var(--ink)}
+.pg-tl li.now i{box-shadow:0 0 0 5px rgba(43,44,45,.12)}
+.pg-tl b{display:block;font:400 21px/1.2 var(--serif);color:var(--ink3)}
+.pg-tl li.done b{color:var(--ink)}
+.pg-tl span{display:block;font-size:13px;color:var(--ink2);margin-top:4px}
+.pg-ok-grid{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:clamp(28px,5vw,88px);align-items:start}
+.pg-ok-grid h2{font:500 11.5px/1.3 var(--sans);letter-spacing:.09em;text-transform:uppercase;padding-bottom:12px;border-bottom:1px solid var(--ink)}
+.pg-ok-grid .pg-it{grid-template-columns:54px minmax(0,1fr) auto}
+.pg-ok-grid .pg-it .fld{background:var(--bg2)}
+.pg-ok-grid .q{font-size:13px;color:var(--ink2);margin-top:3px;display:block}
+.pg-blk{padding:16px 0 18px;border-bottom:1px solid var(--line)}
+.pg-blk .cap{color:var(--ink3);display:block;margin-bottom:6px}
+.pg-blk p{font-size:15px;color:var(--ink)}
+.pg-blk p+p{margin-top:2px}
+.pg-blk small{display:block;font-size:13px;color:var(--ink2);margin-top:6px}
+.pg-blk .ref{font:500 21px/1.2 var(--sans);letter-spacing:.06em;margin:4px 0;font-variant-numeric:lining-nums tabular-nums}
+.pg-blk .due{color:var(--wine);font-weight:500}
+.pg-blk blockquote{font:italic 400 18px/1.45 var(--serif);color:var(--ink2);margin-top:4px}
+.pg-xs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--g);margin-top:clamp(48px,6vw,96px)}
+.pg-x{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);background:var(--bg2);min-height:300px}
+.pg-x .im{position:relative;overflow:hidden;background:var(--bg3)}
+.pg-x .im img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform 1.2s var(--ease)}
+.pg-x .im.fld{position:relative;background:var(--bg3)}
+.pg-x .im.fld img{inset:auto;left:0;top:8%;width:100%;height:80%;object-fit:contain}
+.pg-x:hover .im img{transform:scale(1.04)}
+.pg-x:hover .im.fld img{transform:translateY(-8px)}
+.pg-x .tx{display:flex;flex-direction:column;padding:clamp(20px,2.2vw,32px)}
+.pg-x .tx .cap{color:var(--ink3)}
+.pg-x .tx h3{font:400 clamp(26px,2.3vw,34px)/1.08 var(--serif);margin:12px 0 10px;letter-spacing:-.01em}
+.pg-x .tx p{font-size:14px;color:var(--ink2)}
+.pg-x .tx .ul{margin-top:auto;align-self:flex-start;padding-top:18px}
+
+/* Procesando */
+.pg-busy{position:fixed;inset:0;z-index:120;background:rgba(243,241,236,.94);display:none;place-items:center;text-align:center;padding:var(--m)}
+.pg-busy.on{display:grid}
+.pg-busy b{display:block;font:400 clamp(28px,3vw,40px)/1.15 var(--serif)}
+.pg-busy span{display:block;font-size:14px;color:var(--ink2);margin-top:10px}
+.pg-busy i{display:block;width:120px;height:1px;background:var(--line);margin:24px auto 0;position:relative;overflow:hidden}
+.pg-busy i::after{content:"";position:absolute;inset:0;background:var(--ink);transform-origin:left;animation:pgLoad 1.4s var(--ease) both}
+@keyframes pgLoad{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+
+.pg [hidden]{display:none!important}
+
+@media (max-width:1100px){
+  .pg-co{grid-template-columns:minmax(0,1fr) minmax(320px,380px);gap:40px}
+  .pg-x{grid-template-columns:1fr;min-height:0}
+  .pg-x .im{aspect-ratio:16/10}
+}
+@media (max-width:900px){
+  .pg{padding-top:20px}
+  .pg-co{grid-template-columns:1fr;gap:0}
+  .pg-head{margin-bottom:22px}
+  .pg-sum{position:relative;top:auto;order:-1;margin:0 calc(var(--m) * -1) 26px}
+  .pg-sum-tg{display:flex;align-items:center;justify-content:space-between;gap:12px;width:100%;padding:16px var(--m);font-size:14px}
+  .pg-sum-tg .l{display:inline-flex;align-items:center;gap:10px}
+  .pg-sum-tg svg{transition:transform .3s}
+  .pg-sum-tg[aria-expanded="true"] svg{transform:rotate(180deg)}
+  .pg-sum-tg .price{font:500 17px/1 var(--sans)}
+  .pg-sum-b{display:none;padding:0 var(--m) 20px}
+  .pg-sum.open .pg-sum-b{display:block}
+  .pg-items{max-height:none}
+  .pg-st-b{padding-left:0}
+  .pg-st-h{grid-template-columns:34px minmax(0,1fr) auto}
+  .pg-co .pg-act .btn{display:none}
+  .pg-bar{position:fixed;left:0;right:0;bottom:0;z-index:45;display:flex;align-items:center;gap:16px;background:var(--bg);border-top:1px solid var(--line);padding:12px var(--m) calc(12px + env(safe-area-inset-bottom))}
+  .pg-bar[hidden]{display:none}
+  .pg-bar .t{display:flex;flex-direction:column;min-width:0}
+  .pg-bar .t small{font:500 10.5px/1.3 var(--sans);letter-spacing:.09em;text-transform:uppercase;color:var(--ink3)}
+  .pg-bar .t b{font:500 19px/1.15 var(--sans);white-space:nowrap;font-variant-numeric:lining-nums tabular-nums}
+  .pg-bar .btn{flex:1;padding:0 14px;min-width:0}
+  body.pg-has-bar{padding-bottom:calc(76px + env(safe-area-inset-bottom))}
+  .pg-ok-top{grid-template-columns:1fr;align-items:start}
+  .pg-tl{grid-template-columns:1fr;border-top:0;border-left:1px solid var(--line);margin-left:4px}
+  .pg-tl li{padding:0 0 22px 22px}
+  .pg-tl li::before{left:-1px;right:auto;top:0;bottom:0;width:1px;height:auto;transform:scaleY(0);transform-origin:top}
+  .pg-tl li.done::before{transform:none}
+  .pg-tl li i{left:-5px;top:6px}
+  .pg-ok-grid{grid-template-columns:1fr}
+  .pg-xs{grid-template-columns:1fr}
+  .pg-x{grid-template-columns:minmax(0,1fr) minmax(0,1.1fr)}
+  .pg-x .im{aspect-ratio:auto;min-height:220px}
+}
+@media (max-width:640px){
+  .pg-row,.pg-row3{grid-template-columns:1fr}
+  .pg-row3>.pg-fg:first-child{grid-column:auto}
+  .pg-row3.card{grid-template-columns:repeat(2,minmax(0,1fr));gap:0 20px}
+  .pg-row3.card>.pg-fg:first-child{grid-column:1/-1}
+  .pg-opt>label{padding:14px 14px;gap:2px 12px}
+  .pg-pane{padding:4px 14px 18px 14px}
+  .pg-opt .r{font-size:13px}
+  .pg-opt .r.tags{display:none}
+  .pg-x{grid-template-columns:1fr}
+  .pg-x .im{min-height:0;aspect-ratio:16/10}
+  .pg-back-x{display:none}
+}
+@media (prefers-reduced-motion:reduce){
+  .pg-st.on .pg-st-b{animation:none}
+  .pg-busy i::after{animation:none}
+}
+</style>
+</head>
+<body>
+<div id="chromeTop"></div>
+
+<main class="pg wrap" id="pg">
+
+  <!-- Pago -->
+  <div id="co" hidden>
+    <header class="pg-head">
+      <h1 class="pg-h1">Finaliza tu pedido</h1>
+    </header>
+    <div class="pg-co">
+      <div class="pg-main">
+
+        <section class="pg-st" id="st1" aria-labelledby="st1T">
+          <div class="pg-st-h"><span class="n">01</span><h2 id="st1T" tabindex="-1">Contacto</h2><button class="pg-edit" data-edit="1" aria-label="Cambiar contacto">Cambiar</button><p class="pg-sm" id="st1S"></p></div>
+          <div class="pg-st-b">
+            <div class="pg-who" id="who" hidden></div>
+            <p class="pg-login" id="loginAsk">¿Ya tienes cuenta? <a id="loginLink" href="#">Entra</a> y llenamos esto por ti.</p>
+            <div id="cFields">
+              <div class="pg-fg" id="fgMail" data-acc><label for="cMail">Correo</label><input type="email" id="cMail" autocomplete="email" inputmode="email" placeholder="tu@correo.com"><p class="err">Escribe un correo válido para enviarte la confirmación.</p></div>
+              <div class="pg-row">
+                <div class="pg-fg" id="fgName" data-acc><label for="cName">Nombre completo</label><input type="text" id="cName" autocomplete="name" maxlength="60"><p class="err">Escribe tu nombre.</p></div>
+                <div class="pg-fg" id="fgTel"><label for="cTel">Teléfono</label><input type="tel" id="cTel" autocomplete="tel" inputmode="tel" placeholder="10 dígitos"><p class="err">Necesitamos 10 dígitos para la paquetería.</p></div>
+              </div>
+            </div>
+            <label class="pg-chk" id="ageL"><input type="checkbox" id="cAge" aria-required="true"> <span>Confirmo que tengo 18 años o más. Solo vendemos y entregamos a mayores de edad; quien reciba puede tener que mostrar una identificación.</span></label>
+            <p class="pg-ageerr" id="ageErr" hidden>Confirma que tienes 18 años o más para continuar.</p>
+            <label class="pg-chk"><input type="checkbox" id="cNews"> <span>Quiero recibir preventas, catas y nuevas añadas por correo.</span></label>
+            <div class="pg-act"><button class="btn btn-ink" data-next="1">Continuar a entrega</button></div>
+          </div>
+        </section>
+
+        <section class="pg-st" id="st2" aria-labelledby="st2T">
+          <div class="pg-st-h"><span class="n">02</span><h2 id="st2T" tabindex="-1">Entrega</h2><button class="pg-edit" data-edit="2" aria-label="Cambiar entrega">Cambiar</button><p class="pg-sm" id="st2S"></p></div>
+          <div class="pg-st-b">
+            <div class="pg-opts" role="radiogroup" aria-label="Forma de entrega">
+              <div class="pg-opt">
+                <label><input type="radio" name="dmode" value="envio" checked><b>Envío a domicilio</b><span class="r price" id="shipR"></span><small>A todo México. Llega en 4 a 9 días hábiles: 1 o 2 para preparar tu pedido y 3 a 7 de camino.</small></label>
+                <div class="pg-pane">
+                  <div class="pg-who pg-addr" id="addrSaved" hidden></div>
+                  <div id="addrFields">
+                  <div class="pg-fg" id="fgAddr"><label for="dAddr">Calle y número</label><input type="text" id="dAddr" autocomplete="address-line1"><p class="err">Escribe la calle y el número.</p></div>
+                  <div class="pg-row">
+                    <div class="pg-fg" id="fgCol"><label for="dCol">Colonia</label><input type="text" id="dCol" autocomplete="address-line2"><p class="err">Escribe la colonia.</p></div>
+                    <div class="pg-fg" id="fgCp"><label for="dCp">Código postal</label><input type="text" id="dCp" autocomplete="postal-code" inputmode="numeric" maxlength="5"><p class="err">El código postal tiene 5 dígitos.</p></div>
+                  </div>
+                  <div class="pg-row">
+                    <div class="pg-fg" id="fgCity"><label for="dCity">Ciudad</label><input type="text" id="dCity" autocomplete="address-level2"><p class="err">Escribe la ciudad.</p></div>
+                    <div class="pg-fg" id="fgState"><label for="dState">Estado</label><select id="dState" autocomplete="address-level1"><option value="">Elige tu estado</option></select><p class="err">Elige tu estado.</p></div>
+                  </div>
+                  </div>
+                  <div class="pg-fg"><label for="dRef">Indicaciones para la entrega (opcional)</label><input type="text" id="dRef" maxlength="120" placeholder="Portón negro, tocar el timbre"></div>
+                  <p class="pg-eta" id="etaE"></p>
+                </div>
+              </div>
+              <div class="pg-opt">
+                <label><input type="radio" name="dmode" value="boutique"><b>Recoger en boutique</b><span class="r price free">Sin costo</span><small>Lista en 1 o 2 días hábiles. Te avisamos por correo.</small></label>
+                <div class="pg-pane">
+                  <div class="pg-bts" id="bts" role="radiogroup" aria-label="Boutique"></div>
+                  <p class="pg-eta" id="etaB" style="margin:14px 0 0"></p>
+                </div>
+              </div>
+            </div>
+            <div class="pg-act"><button class="btn btn-ink" data-next="2">Continuar al pago</button></div>
+          </div>
+        </section>
+
+        <section class="pg-st" id="st3" aria-labelledby="st3T">
+          <div class="pg-st-h"><span class="n">03</span><h2 id="st3T" tabindex="-1">Pago</h2><span></span></div>
+          <div class="pg-st-b">
+            <div class="pg-opts" role="radiogroup" aria-label="Forma de pago">
+              <div class="pg-opt">
+                <label><input type="radio" name="pay" value="tarjeta" checked><b>Tarjeta de crédito o débito</b><span class="r tags"><i>Visa</i><i>Mastercard</i><i>Amex</i></span><small>Hasta 3 meses sin intereses con tarjetas participantes.</small></label>
+                <div class="pg-pane">
+                  <div class="pg-fg" id="fgKNum"><label for="kNum">Número de tarjeta</label><input type="text" id="kNum" inputmode="numeric" autocomplete="cc-number" maxlength="19" placeholder="0000 0000 0000 0000"><p class="err">Revisa el número: son 16 dígitos (15 en American Express).</p></div>
+                  <div class="pg-row3 card">
+                    <div class="pg-fg" id="fgKName"><label for="kName">Nombre en la tarjeta</label><input type="text" id="kName" autocomplete="cc-name"><p class="err">Escribe el nombre como aparece en la tarjeta.</p></div>
+                    <div class="pg-fg" id="fgKExp"><label for="kExp">Vence</label><input type="text" id="kExp" inputmode="numeric" autocomplete="cc-exp" maxlength="5" placeholder="MM/AA"><p class="err">Revisa mes y año: la tarjeta no debe estar vencida.</p></div>
+                    <div class="pg-fg" id="fgKCvv"><label for="kCvv">CVV</label><input type="text" id="kCvv" inputmode="numeric" autocomplete="cc-csc" maxlength="4" placeholder="123"><p class="err">El CVV tiene 3 o 4 dígitos.</p></div>
+                  </div>
+                  <span class="pg-lab" id="msiL">Forma de pago</span>
+                  <div class="pg-msi" role="radiogroup" aria-labelledby="msiL" id="msi"></div>
+                  <button type="button" class="pg-demo-l" id="kDemo">Usar datos de prueba</button>
+                  <p class="pg-mock">Prototipo: estos datos no se guardan ni se envían a ningún lado.</p>
+                </div>
+              </div>
+              <div class="pg-opt">
+                <label><input type="radio" name="pay" value="mercadopago"><b>Cuenta de Mercado Pago</b><span class="r"></span><small>Paga con tu saldo o tus tarjetas guardadas.</small></label>
+                <div class="pg-pane"><p>Te llevamos a Mercado Pago para confirmar el pago y regresas aquí con tu pedido listo.</p></div>
+              </div>
+              <div class="pg-opt">
+                <label><input type="radio" name="pay" value="oxxo"><b>Efectivo en OXXO</b><span class="r"></span><small>Te damos una referencia para pagar en cualquier tienda.</small></label>
+                <div class="pg-pane"><p>Al confirmar generamos tu referencia. Preparamos tu pedido en cuanto se acredita el pago.</p></div>
+              </div>
+              <div class="pg-opt">
+                <label><input type="radio" name="pay" value="spei"><b>Transferencia SPEI</b><span class="r"></span><small>Desde la banca en línea de tu banco.</small></label>
+                <div class="pg-pane"><p>Al confirmar te damos una CLABE y el monto exacto. Los pagos por SPEI se acreditan en minutos.</p></div>
+              </div>
+            </div>
+            <label class="pg-chk"><input type="checkbox" id="fInv"> <span>Necesito factura</span></label>
+            <div class="pg-row" id="invF" hidden>
+              <div class="pg-fg" id="fgRfc"><label for="iRfc">RFC</label><input type="text" id="iRfc" maxlength="13" autocomplete="off" style="text-transform:uppercase"><p class="err">El RFC tiene 12 o 13 caracteres.</p></div>
+              <div class="pg-fg"><label for="iRs">Razón social</label><input type="text" id="iRs" autocomplete="organization"></div>
+            </div>
+            <div class="pg-act"><button class="btn btn-ink" id="payBtn" data-next="3">Pagar</button></div>
+            <p class="pg-fine">Al pagar aceptas los <a href="lacetto-ayuda.html#terminos">términos de venta</a>. Pago procesado por Mercado Pago. Por normas sanitarias no aceptamos devoluciones voluntarias de vino ni destilados; si algo llega dañado, incompleto o equivocado, <a href="lacetto-ayuda.html#devoluciones">lo resolvemos</a>.</p>
+          </div>
+        </section>
+      </div>
+
+      <aside class="pg-sum" id="sum" aria-labelledby="sumT">
+        <button class="pg-sum-tg" id="sumTg" aria-expanded="false" aria-controls="sumB"><span class="l">Ver resumen<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></span><span class="price" id="tgTot"></span></button>
+        <div class="pg-sum-b" id="sumB">
+          <div class="pg-sum-h"><h2 id="sumT" tabindex="-1">Resumen</h2><span id="sumN"></span></div>
+          <div class="pg-items" id="sumItems"></div>
+          <p class="sr" id="sumLive" aria-live="polite" aria-atomic="true"></p>
+          <div id="sumHints"></div>
+          <div class="pg-gift" id="gift">
+            <label class="pg-chk"><input type="checkbox" id="gOn"> <span>Es para regalo</span></label>
+            <div class="gb">
+              <div class="pg-row">
+                <div class="pg-fg"><label for="gTo">Para</label><input type="text" id="gTo" maxlength="40" placeholder="Quien lo recibe"></div>
+                <div class="pg-fg"><label for="gFrom">De</label><input type="text" id="gFrom" maxlength="40" placeholder="Tu nombre"></div>
+              </div>
+              <div class="pg-fg"><label for="gMsg">Tu mensaje</label><textarea id="gMsg" maxlength="180" rows="3" placeholder="Para la próxima sobremesa larga."></textarea><p class="cnt"><span id="gCnt">0</span>/<span id="gMax">180</span></p></div>
+              <p class="note">Va en una tarjeta impresa y el paquete no lleva precios.</p>
+            </div>
+          </div>
+          <form class="pg-cpn" id="cpn" novalidate><label class="sr" for="cpnIn">Código de descuento o tarjeta de regalo</label><input id="cpnIn" placeholder="Código de descuento o tarjeta de regalo" autocomplete="off"><button>Aplicar</button></form>
+          <p class="pg-cpn-m" id="cpnM" role="status"></p>
+          <div class="pg-lines" id="sumLines"></div>
+          <ul class="pg-trust">
+            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="5" y="11" width="14" height="9" rx="1"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>Pago seguro con Mercado Pago</li>
+            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M3 7h11v9H3zM14 10h4l3 3v3h-7"/><circle cx="7" cy="17.5" r="1.6"/><circle cx="17" cy="17.5" r="1.6"/></svg>Envío a todo México, gratis desde $799</li>
+            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M8.5 12.5l2.4 2.4 4.6-5"/></svg>Si algo llega dañado, lo reponemos</li>
+          </ul>
+        </div>
+      </aside>
+    </div>
+  </div>
+
+  <!-- Carrito vacío -->
+  <section class="pg-empty" id="empty" hidden aria-labelledby="emT">
+    <h1 class="pg-h1" id="emT" tabindex="-1">Tu carrito está vacío</h1>
+    <p id="emP">Empieza por un momento, una línea o arma tu caja de 6 con 10% de descuento.</p>
+    <div class="ctas"><a class="btn btn-ink" id="emShop" href="#">Ir a la tienda</a><a class="ul" id="emFind" href="#">Encuentra tu vino</a></div>
+    <div class="pg-proto"><span>Prototipo</span><button class="pg-demo-l" id="demo">Cargar una caja de ejemplo</button></div>
+  </section>
+
+  <!-- Confirmación -->
+  <section id="ok" hidden aria-labelledby="okT">
+    <div class="pg-ok-top">
+      <div>
+        <p class="pg-okno"><span id="okCap">Pedido confirmado</span> · <b id="okNo"></b></p>
+        <h1 class="pg-h1" id="okT"></h1>
+      </div>
+      <div>
+        <p class="lead" id="okLead"></p>
+        <div class="ctas" id="okCtas"></div>
+      </div>
+    </div>
+    <ol class="pg-tl" id="okTl" aria-label="Estado del pedido"></ol>
+    <div class="pg-ok-grid">
+      <div><h2>Lo que pediste</h2><div id="okItems"></div><div class="pg-lines" id="okLines"></div></div>
+      <div><h2>Detalles</h2><div id="okDet"></div></div>
+    </div>
+    <div class="pg-xs" id="okXs"></div>
+  </section>
+</main>
+
+<div class="pg-bar" id="bar" hidden><div class="t"><small>Total</small><b class="price" id="barTot"></b></div><button class="btn btn-ink" id="barBtn">Continuar</button></div>
+<div class="pg-busy" id="busy" role="status" aria-live="polite"><div><b id="busyT">Procesando tu pago</b><span id="busyS">No cierres esta ventana.</span><i></i></div></div>
+
+<div id="chromeBottom"></div>
+
+<script src="cetto-base.js"></script>
+<script>
+renderChrome({solid:true,page:'pago',minimal:true});
+(function(){
+'use strict';
+const $=id=>document.getElementById(id);
+const esc=s=>String(s==null?'':s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const DEMO=['terra','nebrp','charp','oto','champ','cabrp'];
+const BOUT=[
+  {k:'ens',n:'Boutique Ensenada',a:'México 1 2768, Ensenada, B.C.'},
+  {k:'tij',n:'Boutique Tijuana',a:'Av. Cañón Johnson 2108, Tijuana, B.C.'},
+  {k:'valle',n:'Bodega Valle de Guadalupe',a:'Carretera Tecate–Ensenada km 73.5, Valle de Guadalupe, B.C.'},
+  {k:'cdmx',n:'Boutique CDMX',a:'Monte Athos 315, Lomas de Chapultepec, CDMX'}
+];
+const STATES=['Aguascalientes','Baja California','Baja California Sur','Campeche','Chiapas','Chihuahua','Ciudad de México','Coahuila','Colima','Durango','Estado de México','Guanajuato','Guerrero','Hidalgo','Jalisco','Michoacán','Morelos','Nayarit','Nuevo León','Oaxaca','Puebla','Querétaro','Quintana Roo','San Luis Potosí','Sinaloa','Sonora','Tabasco','Tamaulipas','Tlaxcala','Veracruz','Yucatán','Zacatecas'];
+const PAYN={tarjeta:'Tarjeta',mercadopago:'Cuenta de Mercado Pago',oxxo:'Efectivo en OXXO',spei:'Transferencia SPEI'};
+
+/* ---------- Fechas: reglas compartidas de cetto-base.js (eta, fmtD, addBiz) ---------- */
+const E=eta('envio'),EB=eta('boutique');
+const ISO=v=>{if(!v)return null;const d=new Date(v);return isNaN(d)?null:d};
+const noDot=s=>String(s||'').replace(/\.\s*$/,'');
+const WINE_C=['tinto','blanco','rosado','espumoso','postre','destilado'];
+const unit=(id,q)=>{const p=P[id],w=p.gc?['tarjeta','tarjetas']:p.c==='estuche'?['estuche','estuches']:WINE_C.includes(p.c)?['botella','botellas']:['pieza','piezas'];return q+' '+(q>1?w[1]:w[0])};
+const pname=p=>p.gc?money(p.price):p.name;
+const ensureP=items=>Object.keys(items||{}).forEach(k=>{const m=/^gc(\d+)$/.exec(k);if(m)gcId(+m[1])});
+function dueOf(o){const d=ISO(o.payDue);if(d)return d;const x=new Date(o.date);x.setDate(x.getDate()+2);x.setHours(23,59,0,0);return x}
+function etaTxtOf(o){const dv=o.delivery||{},pick=dv.mode==='boutique';
+  if(o.payStatus==='pendiente')return pick?'Lista 1 o 2 días hábiles después de que se acredite tu pago':'Llega de 4 a 9 días hábiles después de que se acredite tu pago';
+  if(dv.txt)return dv.txt;
+  const a=ISO(dv.etaFrom),b=ISO(dv.eta);
+  if(a&&b)return (pick?'Lista para recoger entre el ':'Llega entre el ')+fmtD(a)+' y el '+fmtD(b);
+  if(dv.etaFrom&&dv.eta)return 'Llega entre el '+dv.etaFrom+' y el '+dv.eta;
+  return eta(pick?'boutique':'envio',o.paidAt||o.date).txt}
+
+/* ---------- Estado ---------- */
+const u=user();
+const S={step:1,done:0,mode:'envio',bout:'ens',pay:'tarjeta',msi:1,editContact:!u};
+
+/* ---------- Totales: los mismos del carrito (totals de cetto-base.js) ---------- */
+const T=()=>totals(S.mode);
+const nItems=()=>Object.values(cart).reduce((a,q)=>a+q,0);
+
+/* ---------- Resumen ---------- */
+function itemRow(id,q,edit){const p=P[id];
+  return '<div class="pg-it"><span class="fld"><img src="'+F(p.img,200)+'" alt=""></span><div><small>'+esc(p.line)+'</small><b>'+esc(pname(p))+(p.sub?'<em>'+esc(p.sub)+'</em>':'')+'</b>'+
+   (edit?'<div class="qty"><button type="button" aria-label="Quitar una '+esc(p.name)+'" data-pq="'+id+'" data-d="-1">−</button><span>'+q+'</span><button type="button" aria-label="Agregar una '+esc(p.name)+'" data-pq="'+id+'" data-d="1">+</button></div>':'<span class="q">'+unit(id,q)+' · '+money(p.price)+' c/u</span>')+
+   '</div><span class="price">'+money(p.price*q)+'</span></div>';
+}
+function renderSum(){
+  const t=T(),n=t.n;
+  $('sumN').textContent=n+(n===1?' artículo':' artículos');
+  $('sumItems').innerHTML=Object.entries(cart).map(([id,q])=>itemRow(id,q,true)).join('');
+  let h='';
+  if(t.bottles>0&&t.bottles<6)h+='<p class="pg-hint"><span>Agrega '+(6-t.bottles)+' botella'+(6-t.bottles>1?'s':'')+' de 750 ml y tu caja de 6 tiene 10% de descuento.</span><a href="'+PAGES.tienda+'">Elegir</a></p>';
+  else if(t.bottles>=6)h+='<p class="pg-hint"><span class="ok">Caja de 6: 10% aplicado a tus vinos.</span></p>';
+  if(S.mode==='envio'&&t.net<FREE)h+='<p class="pg-hint"><span>Te faltan '+money(FREE-t.net)+' para el envío gratis.</span><a href="'+PAGES.tienda+'">Agregar</a></p>';
+  if(!isMember())h+='<p class="pg-hint"><span>Con tu cuenta pagas '+Math.round(MEMBER*100)+'% menos en vinos y gourmet.</span><a href="'+PAGES.cuenta+'?volver=pago">Entrar</a></p>';
+  $('sumHints').innerHTML=h;
+  const shipTxt=S.mode==='boutique'?'Recoger en boutique · sin costo':(t.ship?money(t.ship):'Gratis');
+  $('sumLines').innerHTML='<div class="ln"><span>Subtotal</span><span class="price">'+money(t.sub)+'</span></div>'+
+   (t.box?'<div class="ln"><span>Caja de 6 (10%)</span><span class="price">−'+money(t.box)+'</span></div>':'')+
+   (t.mem?'<div class="ln"><span>Precio de socio ('+Math.round(MEMBER*100)+'%)</span><span class="price">−'+money(t.mem)+'</span></div>':'')+
+   '<div class="ln"><span>Envío</span><span class="price">'+shipTxt+'</span></div>'+
+   '<div class="ln tot"><span>Total</span><span class="price">'+money(t.tot)+'</span></div>'+
+   (S.pay==='tarjeta'?'<p class="msi">o 3 meses sin intereses de '+money(t.tot/3)+' con tarjeta</p>':'');
+  $('tgTot').textContent=money(t.tot);
+  $('shipR').textContent=t.net>=FREE?'Gratis':money(SHIP);
+  $('shipR').classList.toggle('free',t.net>=FREE);
+  renderMsi();updatePay();
+}
+$('sumItems').addEventListener('click',e=>{const b=e.target.closest('[data-pq]');if(!b)return;
+  const id=b.dataset.pq,d=b.dataset.d,nm=P[id]?pname(P[id]):'';setQ(id,(cart[id]||0)+ +d);
+  if(!nItems()){$('sumItems').innerHTML='';show('empty');$('emT').focus({preventScroll:true});return}
+  renderSum();const q=cart[id]||0;
+  $('sumLive').textContent=(q?nm+': '+q+' en tu pedido.':'Quitamos '+nm+' de tu pedido.')+' Total '+money(T().tot)+'.';
+  const back=$('sumItems').querySelector('[data-pq="'+id+'"][data-d="'+d+'"]');
+  (back||$('sumT')).focus({preventScroll:!back});
+});
+$('sumTg').onclick=()=>{const o=$('sum').classList.toggle('open');$('sumTg').setAttribute('aria-expanded',o);$('sumTg').querySelector('.l').firstChild.textContent=o?'Ocultar resumen':'Ver resumen'};
+/* Regalo: viene de la caja de la portada o de Regalos (cettoGift) y se guarda mientras escribes */
+$('gMsg').maxLength=GIFT_MAX;$('gMax').textContent=GIFT_MAX;
+const saveGift=()=>{if($('gOn').checked)giftSet({to:$('gTo').value,from:$('gFrom').value,msg:$('gMsg').value});else giftSet(null)};
+$('gOn').onchange=e=>{$('gift').classList.toggle('on',e.target.checked);saveGift();if(e.target.checked)setTimeout(()=>$('gTo').focus(),30)};
+$('gMsg').oninput=e=>{$('gCnt').textContent=e.target.value.length;saveGift()};
+$('gTo').oninput=saveGift;$('gFrom').oninput=saveGift;
+{const g=giftGet();if(g){$('gOn').checked=true;$('gift').classList.add('on');$('gTo').value=g.to||'';$('gFrom').value=g.from||'';$('gMsg').value=(g.msg||'').slice(0,GIFT_MAX);$('gCnt').textContent=$('gMsg').value.length}}
+$('cpn').onsubmit=e=>{e.preventDefault();const v=$('cpnIn').value.trim();$('cpnM').textContent=v?'El código '+v.toUpperCase()+' no es válido o ya venció. Revisa que esté escrito igual que en tu tarjeta o correo.':'Escribe un código de descuento o de tarjeta de regalo.'};
+$('cpnIn').oninput=()=>$('cpnM').textContent='';
+
+/* ---------- Pasos ---------- */
+function setStep(n){
+  S.step=n;
+  [1,2,3].forEach(i=>{const s=$('st'+i);s.classList.toggle('on',i===n);s.classList.toggle('done',i<n||(i!==n&&i<=S.done));});
+  updateSums();updatePay();
+}
+function updateSums(){
+  $('st1S').textContent=[$('cMail').value.trim(),$('cName').value.trim()].filter(Boolean).join(' · ');
+  if(S.mode==='envio'){
+    $('st2S').textContent='Envío a domicilio · '+[$('dAddr').value.trim(),$('dCol').value.trim(),'CP '+$('dCp').value.trim(),$('dCity').value.trim()].filter(Boolean).join(', ')+'. '+E.txt+'.';
+  }else{const b=BOUT.find(x=>x.k===S.bout);$('st2S').textContent='Recoger en '+b.n+' · sin costo. Lista entre el '+fmtD(EB.from)+' y el '+fmtD(EB.to)+'.'}
+}
+function fieldOk(fg,ok){const f=$(fg);f.classList.toggle('bad',!ok);
+  const inp=f.querySelector('input,select,textarea'),er=f.querySelector('.err');
+  if(er&&!er.id)er.id=fg+'Err';
+  if(inp){if(ok){inp.removeAttribute('aria-invalid');inp.removeAttribute('aria-describedby')}else{inp.setAttribute('aria-invalid','true');if(er)inp.setAttribute('aria-describedby',er.id)}}
+  return ok}
+function ageOk(a){$('ageL').classList.toggle('bad',!a);$('ageErr').hidden=a;if(a){$('cAge').removeAttribute('aria-invalid');$('cAge').removeAttribute('aria-describedby')}else{$('cAge').setAttribute('aria-invalid','true');$('cAge').setAttribute('aria-describedby','ageErr')}}
+function validate(n){
+  let ok=true,first=null;const chk=(fg,cond)=>{if(!fieldOk(fg,cond)){ok=false;first=first||$(fg).querySelector('input,select')}};
+  if(n===1){
+    chk('fgMail',/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test($('cMail').value.trim()));
+    chk('fgName',$('cName').value.trim().length>1);
+    chk('fgTel',$('cTel').value.replace(/\D/g,'').length>=10);
+    if(!ok&&!S.editContact){S.editContact=true;renderWho()}
+    const a=$('cAge').checked;ageOk(a);if(!a){ok=false;first=first||$('cAge')}
+  }
+  if(n===2&&S.mode==='envio'){
+    chk('fgAddr',$('dAddr').value.trim().length>2);
+    chk('fgCol',$('dCol').value.trim().length>1);
+    chk('fgCp',/^\d{5}$/.test($('dCp').value.trim()));
+    chk('fgCity',$('dCity').value.trim().length>1);
+    chk('fgState',!!$('dState').value);
+    if(!ok&&S.addrSaved){S.addrSaved=false;renderAddr()}
+  }
+  if(n===3&&S.pay==='tarjeta'){
+    const num=$('kNum').value.replace(/\D/g,'');
+    chk('fgKNum',num.length===16||(num.length===15&&/^3[47]/.test(num)));
+    chk('fgKName',$('kName').value.trim().length>1);
+    const m=/^(\d{2})\/(\d{2})$/.exec($('kExp').value.trim());let okE=false;
+    if(m){const mo=+m[1],yr=2000+(+m[2]);okE=mo>=1&&mo<=12&&new Date(yr,mo,1)>new Date()}
+    chk('fgKExp',okE);
+    chk('fgKCvv',/^\d{3,4}$/.test($('kCvv').value.trim()));
+  }
+  if(n===3&&$('fInv').checked)chk('fgRfc',/^[A-ZÑ&]{3,4}\d{6}[A-Z0-9]{3}$/i.test($('iRfc').value.trim()));
+  if(first){first.focus({preventScroll:true});first.scrollIntoView({behavior:reduceMotion?'auto':'smooth',block:'center'})}
+  return ok;
+}
+function next(n){
+  if(!validate(n))return;
+  if(n<3){S.done=Math.max(S.done,n);setStep(n+1);const s=$('st'+(n+1));setTimeout(()=>s.scrollIntoView({behavior:reduceMotion?'auto':'smooth',block:'start'}),40);setTimeout(()=>$('st'+(n+1)+'T').focus({preventScroll:true}),reduceMotion?60:420)}
+  else pay();
+}
+document.addEventListener('click',e=>{
+  const nb=e.target.closest('[data-next]');if(nb){e.preventDefault();next(+nb.dataset.next);return}
+  const eb=e.target.closest('[data-edit]');if(eb){e.preventDefault();const k=+eb.dataset.edit;if(eb.closest('#who')){S.editContact=true;renderWho();$('cMail').focus();return}setStep(k);$('st'+k).scrollIntoView({behavior:reduceMotion?'auto':'smooth',block:'start'});setTimeout(()=>$('st'+k+'T').focus({preventScroll:true}),reduceMotion?60:420)}
+});
+document.querySelectorAll('.pg-fg input,.pg-fg select').forEach(i=>{const clr=()=>{const f=i.closest('.pg-fg');if(f.classList.contains('bad')&&f.id)fieldOk(f.id,true);else f.classList.remove('bad')};i.addEventListener('input',clr);i.addEventListener('change',clr)});
+$('cAge').onchange=()=>{if($('cAge').checked)ageOk(true)};
+$('cMail').addEventListener('input',updateSums);$('cName').addEventListener('input',updateSums);
+
+/* ---------- Contacto ---------- */
+function renderWho(){
+  const has=!!u;$('who').hidden=!has||S.editContact;document.querySelectorAll('[data-acc]').forEach(f=>f.hidden=has&&!S.editContact);$('loginAsk').hidden=has;
+  if(has)$('who').innerHTML='<div><b>Compras como '+esc(String(u.name||'').split(' ')[0])+'</b><br><span>'+esc(u.email||'')+'</span></div><button class="pg-edit" data-edit="1">Cambiar</button>';
+}
+$('loginLink').href=PAGES.cuenta+'?volver=pago';
+if(u){$('cMail').value=u.email||'';$('cName').value=u.name||'';if(u.tel)$('cTel').value=u.tel}
+renderWho();
+
+/* ---------- Entrega ---------- */
+$('dState').insertAdjacentHTML('beforeend',STATES.map(s=>'<option>'+s+'</option>').join(''));
+$('bts').innerHTML=BOUT.map((b,i)=>'<label class="pg-bt"><input type="radio" name="bout" value="'+b.k+'"'+(i===0?' checked':'')+'><b>'+b.n+'</b><span>'+b.a+'</span></label>').join('');
+$('etaE').innerHTML='<span>Si pides hoy, llega</span><b>entre el '+fmtD(E.from)+' y el '+fmtD(E.to)+'</b>';
+$('etaB').innerHTML='<span>Lista para recoger</span><b>entre el '+fmtD(EB.from)+' y el '+fmtD(EB.to)+'</b>';
+/* Dirección guardada (con sesión): de tu cuenta o de tu último envío */
+const lastShip=u?(store.get('cettoOrders',[])||[]).find(o=>o&&o.delivery&&o.delivery.mode==='envio'&&o.delivery.addr&&(!o.email||!u.email||o.email===u.email)):null;
+function savedAddr(){
+  if(u&&u.addr&&u.addr.addr)return u.addr;
+  if(!lastShip)return null;const dv=lastShip.delivery;let a=dv.addr,col=dv.col||'',city=dv.city||'',st=dv.state||'';
+  if(!col&&a.includes(', ')){const i=a.lastIndexOf(', ');col=a.slice(i+2);a=a.slice(0,i)}
+  if(!st&&city.includes(', ')){const i=city.lastIndexOf(', '),tail=city.slice(i+2);if(STATES.includes(tail)){st=tail;city=city.slice(0,i)}}
+  return {addr:a,col,cp:dv.cp||'',city,state:st};
+}
+const SA=savedAddr();
+if(SA){$('dAddr').value=SA.addr||'';$('dCol').value=SA.col||'';$('dCp').value=SA.cp||'';$('dCity').value=SA.city||'';if(STATES.includes(SA.state))$('dState').value=SA.state;S.addrSaved=true}
+function renderAddr(){
+  const on=!!(SA&&S.addrSaved);$('addrSaved').hidden=!on;$('addrFields').hidden=on;
+  if(on)$('addrSaved').innerHTML='<div><b>Enviar a</b><br><span>'+esc([$('dAddr').value.trim(),$('dCol').value.trim(),'CP '+$('dCp').value.trim(),$('dCity').value.trim(),$('dState').value].filter(Boolean).join(', '))+'</span></div><button type="button" class="pg-edit" id="addrEdit">Cambiar</button>';
+  const b=$('addrEdit');if(b)b.onclick=()=>{S.addrSaved=false;renderAddr();$('dAddr').focus()};
+}
+renderAddr();
+document.querySelectorAll('input[name=dmode]').forEach(r=>r.onchange=()=>{S.mode=r.value;renderSum();updateSums()});
+$('bts').addEventListener('change',e=>{S.bout=e.target.value;updateSums()});
+$('dCp').addEventListener('input',e=>e.target.value=e.target.value.replace(/\D/g,'').slice(0,5));
+
+/* ---------- Pago ---------- */
+function renderMsi(){const t=T();const cur=S.msi;
+  $('msi').innerHTML=[[1,'Una sola exhibición · '+money(t.tot)],[3,'3 meses sin intereses de '+money(t.tot/3)]].map(([k,l])=>'<label><input type="radio" name="msi" value="'+k+'"'+(k===cur?' checked':'')+'><span>'+l+'</span></label>').join('');
+}
+$('msi').addEventListener('change',e=>{S.msi=+e.target.value;updatePay()});
+document.querySelectorAll('input[name=pay]').forEach(r=>r.onchange=()=>{S.pay=r.value;renderSum()});
+$('fInv').onchange=e=>$('invF').hidden=!e.target.checked;
+$('kNum').addEventListener('input',e=>{const v=e.target.value.replace(/\D/g,'').slice(0,16);e.target.value=v.replace(/(.{4})(?=.)/g,'$1 ')});
+$('kExp').addEventListener('input',e=>{let v=e.target.value.replace(/\D/g,'').slice(0,4);if(v.length>2)v=v.slice(0,2)+'/'+v.slice(2);e.target.value=v});
+$('kCvv').addEventListener('input',e=>e.target.value=e.target.value.replace(/\D/g,'').slice(0,4));
+$('kDemo').onclick=()=>{$('kNum').value='4000 0000 0000 0000';$('kName').value='Ana Prueba';$('kExp').value='12/30';$('kCvv').value='123'};
+function payLabel(){const t=T();
+  return S.pay==='tarjeta'?(S.msi===3?'Pagar 3 × '+money(t.tot/3):'Pagar '+money(t.tot)):S.pay==='mercadopago'?'Ir a Mercado Pago · '+money(t.tot):S.pay==='oxxo'?'Generar referencia · '+money(t.tot):'Obtener CLABE · '+money(t.tot);
+}
+function updatePay(){
+  const t=T();$('payBtn').textContent=payLabel();
+  $('barTot').textContent=money(t.tot);
+  $('barBtn').textContent=S.step===1?'Continuar a entrega':S.step===2?'Continuar al pago':payLabel();
+}
+$('barBtn').onclick=()=>next(S.step);
+
+/* ---------- Confirmar ---------- */
+function pay(){
+  const t=T(),no='LAC-'+String(Math.floor(100000+Math.random()*900000));
+  const mode=S.mode,b=BOUT.find(x=>x.k===S.bout),now=new Date();
+  const pend=S.pay==='oxxo'||S.pay==='spei',e=pend?null:eta(mode,now);
+  const due=new Date(now);due.setDate(due.getDate()+2);due.setHours(23,59,0,0);
+  const when=e?{etaFrom:e.from.toISOString(),eta:e.to.toISOString(),txt:e.txt}:{etaFrom:null,eta:null,txt:''};
+  const name=$('cName').value.trim();
+  const order={no,date:now.toISOString(),items:Object.assign({},cart),sub:t.sub,disc:t.box,mem:t.mem,ship:t.ship,tot:t.tot,
+    delivery:mode==='envio'?Object.assign({mode,name,addr:$('dAddr').value.trim(),col:$('dCol').value.trim(),cp:$('dCp').value.trim(),city:$('dCity').value.trim(),state:$('dState').value,ref:$('dRef').value.trim()},when)
+      :Object.assign({mode,name,boutique:b.n,addr:b.a},when),
+    pay:S.pay,msi:S.pay==='tarjeta'?S.msi:1,card:S.pay==='tarjeta'&&$('kNum').value.replace(/\D/g,'').length>=4?$('kNum').value.replace(/\D/g,'').slice(-4):null,
+    gift:$('gOn').checked?{to:$('gTo').value.trim(),from:$('gFrom').value.trim(),msg:$('gMsg').value.trim().slice(0,GIFT_MAX)}:null,
+    invoice:$('fInv').checked?{rfc:$('iRfc').value.trim().toUpperCase(),rs:$('iRs').value.trim()}:null,
+    email:$('cMail').value.trim(),tel:$('cTel').value.trim(),
+    status:'confirmado',payStatus:pend?'pendiente':'pagado',paidAt:pend?null:now.toISOString(),
+    payDue:pend?due.toISOString():null,payRef:S.pay==='oxxo'?'9800 0000 0000 0000':S.pay==='spei'?'0000 0000 0000 0000 00':null};
+  const busy=$('busy');
+  $('busyT').textContent=S.pay==='mercadopago'?'Conectando con Mercado Pago':S.pay==='oxxo'?'Generando tu referencia':S.pay==='spei'?'Generando tus datos de pago':'Procesando tu pago';
+  busy.classList.add('on');
+  setTimeout(()=>{
+    const orders=store.get('cettoOrders',[]);orders.unshift(order);store.set('cettoOrders',orders);
+    Object.keys(cart).forEach(k=>delete cart[k]);saveCart();renderCart();giftSet(null);
+    /* con sesión: guarda teléfono y dirección para la próxima vez */
+    const cu=user();if(cu){let ch=false;if(!cu.tel&&order.tel){cu.tel=order.tel;ch=true}
+      if(mode==='envio'&&!(cu.addr&&cu.addr.addr)){const d=order.delivery;cu.addr={addr:d.addr,col:d.col,cp:d.cp,city:d.city,state:d.state};ch=true}
+      if(ch)store.set('cettoUser',cu)}
+    history.replaceState(null,'','?pedido='+no);
+    renderOk(order);show('ok');busy.classList.remove('on');scrollTo(0,0);
+  },reduceMotion?200:1500);
+}
+
+function renderOk(o){
+  ensureP(o.items);
+  const dv=o.delivery||{},pickup=dv.mode==='boutique',first=String(dv.name||'').split(' ')[0];
+  const pend=o.payStatus==='pendiente',due=dueOf(o),dueT=fmtD(due)+', 23:59';
+  $('okCap').textContent=pend?'Pago pendiente':'Pedido confirmado';
+  $('okNo').textContent=o.no;
+  $('okT').textContent=first?'Gracias, '+first+'.':'Gracias por tu pedido.';
+  $('okLead').innerHTML=(pend?(o.pay==='oxxo'?'Apartamos tu pedido hasta el '+dueT+'. Paga en OXXO con la referencia de abajo y lo preparamos en cuanto se acredite.':'Apartamos tu pedido hasta el '+dueT+'. Transfiere el monto exacto a la CLABE de abajo y lo preparamos en cuanto se acredite.'):
+    (pickup?'Te avisamos por correo cuando tu pedido esté listo en '+esc(dv.boutique)+'.':'Te avisamos por correo cuando tu pedido salga de la bodega, con la guía para seguirlo.'))+
+    (o.email?' La confirmación va a <b>'+esc(o.email)+'</b>.':'');
+  renderCtas(o);
+  const paid=ISO(o.paidAt)||new Date(o.date),to=ISO(dv.eta),from=ISO(dv.etaFrom);
+  const st=pend?[['Esperando pago','Antes del '+dueT],['Preparando','Al acreditarse tu pago'],pickup?['Listo para recoger','1 o 2 días hábiles después']:['En camino','Te enviamos la guía'],pickup?['Recogido','Con identificación oficial']:['Entregado','4 a 9 días hábiles después']]
+    :pickup?[['Confirmado',fmtD(paid)],['Preparando','1 o 2 días hábiles'],['Listo para recoger',from&&to?fmtD(from)+' a '+fmtD(to):(dv.eta||'')],['Recogido','Con identificación oficial']]
+    :[['Confirmado',fmtD(paid)],['Preparando','1 o 2 días hábiles'],['En camino','Te enviamos la guía'],['Entregado',to?'A más tardar el '+fmtD(to):(dv.eta?'A más tardar el '+dv.eta:'')]];
+  $('okTl').innerHTML=st.map(([b,s],i)=>'<li class="'+(i===0?(pend?'now':'done now'):'')+'"'+(i===0?' aria-current="step"':'')+'><i aria-hidden="true"></i><b>'+b+'</b><span>'+esc(s)+'</span></li>').join('');
+  $('okItems').innerHTML=Object.entries(o.items).filter(([id])=>P[id]).map(([id,q])=>itemRow(id,q,false)).join('');
+  $('okLines').innerHTML='<div class="ln"><span>Subtotal</span><span class="price">'+money(o.sub)+'</span></div>'+
+   (o.disc?'<div class="ln"><span>Caja de 6 (10%)</span><span class="price">−'+money(o.disc)+'</span></div>':'')+
+   (o.mem?'<div class="ln"><span>Precio de socio ('+Math.round(MEMBER*100)+'%)</span><span class="price">−'+money(o.mem)+'</span></div>':'')+
+   '<div class="ln"><span>Envío</span><span class="price">'+(pickup?'Recoger en boutique · sin costo':(o.ship?money(o.ship):'Gratis'))+'</span></div>'+
+   '<div class="ln tot"><span>Total</span><span class="price">'+money(o.tot)+'</span></div>'+(o.msi===3?'<p class="msi">3 meses sin intereses de '+money(o.tot/3)+'</p>':'');
+  let det='';
+  if(pend&&o.pay==='oxxo')det+='<div class="pg-blk"><span class="cap">Paga en OXXO</span><p class="ref">'+esc(o.payRef||'9800 0000 0000 0000')+'</p><small>Monto exacto: <b>'+money(o.tot)+'</b>. <span class="due">Paga antes del '+dueT+'.</span> Muestra esta referencia en caja; también te la enviamos por correo.</small></div>';
+  if(pend&&o.pay==='spei')det+='<div class="pg-blk"><span class="cap">Transfiere por SPEI</span><p class="ref">'+esc(o.payRef||'0000 0000 0000 0000 00')+'</p><small>Monto exacto: <b>'+money(o.tot)+'</b>. Concepto: '+o.no+'. Beneficiario: Mercado Pago. <span class="due">Transfiere antes del '+dueT+'.</span></small></div>';
+  if(pend)det+='<div class="pg-proto" style="margin:0 0 6px;border-top:0;padding-top:12px"><span>Prototipo</span><button type="button" class="pg-demo-l" id="simPay">Simular pago acreditado</button></div>';
+  const etxt=etaTxtOf(o);
+  det+=pickup?'<div class="pg-blk"><span class="cap">Recoges en</span><p>'+esc(dv.boutique)+'</p><small>'+esc(noDot(dv.addr))+'. '+esc(etxt)+'. Lleva una identificación oficial; entregamos solo a mayores de 18 años.</small></div>'
+    :'<div class="pg-blk"><span class="cap">Enviamos a</span><p>'+esc(dv.name)+'</p><p>'+esc([dv.addr,dv.col].filter(Boolean).join(', '))+'</p><p>CP '+esc(dv.cp)+', '+esc([dv.city,dv.state].filter(Boolean).join(', '))+'</p><small>'+esc(etxt)+'. Quien reciba debe ser mayor de 18 años y puede tener que mostrar una identificación.</small></div>';
+  det+='<div class="pg-blk"><span class="cap">Pago</span><p>'+PAYN[o.pay]+(o.card?' terminación '+o.card:'')+(pend?' · pendiente':'')+'</p>'+(o.msi===3?'<small>3 meses sin intereses de '+money(o.tot/3)+'</small>':'')+(o.invoice?'<small>Factura para '+esc(o.invoice.rfc)+(o.invoice.rs?' · '+esc(o.invoice.rs):'')+'. Te la enviamos por correo.</small>':'')+'</div>';
+  if(o.gift)det+='<div class="pg-blk"><span class="cap">Para regalo'+(o.gift.to?' · para '+esc(o.gift.to):'')+(o.gift.from?' · de '+esc(o.gift.from):'')+'</span>'+(o.gift.msg?'<blockquote>“'+esc(o.gift.msg)+'”</blockquote>':'<small>Sin mensaje.</small>')+'<small>Va en una tarjeta impresa y el paquete no lleva precios.</small></div>';
+  $('okDet').innerHTML=det;
+  const sp=$('simPay');
+  if(sp)sp.onclick=()=>{const all=store.get('cettoOrders',[]),x=all.find(y=>y.no===o.no);if(!x)return;
+    const nw=new Date(),e=eta(x.delivery.mode,nw);x.payStatus='pagado';x.paidAt=nw.toISOString();
+    Object.assign(x.delivery,{etaFrom:e.from.toISOString(),eta:e.to.toISOString(),txt:e.txt});
+    store.set('cettoOrders',all);renderOk(x);document.title='L.A. Cetto · '+$('okCap').textContent;$('okT').focus&&$('okCap').scrollIntoView({block:'nearest'})};
+  $('okXs').innerHTML=
+   '<a class="pg-x" href="'+PAGES.exp+'#reservar"><span class="im"><img src="'+F('DSC0259.jpg',1000)+'" alt="" loading="lazy"></span><span class="tx"><span class="cap">Mientras llega</span><h3>Ven a probarlo al Valle</h3><p>Catas en la bodega del Valle de Guadalupe desde $250 por persona.</p><span class="ul">Reservar una cata</span></span></a>'+
+   '<a class="pg-x" href="'+PAGES.club+'#estaciones"><span class="im fld"><img src="'+F(P.oto.img,600)+'" alt="" loading="lazy"></span><span class="tx"><span class="cap">Club Estaciones</span><h3>El vino de cada temporada, en casa</h3><p>Una caja de 3 o 6 botellas por estación, con precio de club.</p><span class="ul">Conocer el club</span></span></a>';
+}
+function renderCtas(o){
+  const has=!!user(),track='<a class="ul" href="'+PAGES.ayuda+'?pedido='+encodeURIComponent(o.no)+'#rastreo">Rastrear pedido</a>';
+  $('okCtas').innerHTML=has?'<a class="btn btn-ink" href="'+PAGES.cuenta+'#pedidos">Ver mi pedido</a><a class="ul" href="'+PAGES.tienda+'">Seguir comprando</a>'
+   :'<button class="btn btn-ink" id="mkAcc">Crear mi cuenta con estos datos</button>'+track+'<a class="ul" href="'+PAGES.tienda+'">Seguir comprando</a><p class="made" style="flex-basis:100%">Con tu cuenta sigues tu pedido y pagas '+Math.round(MEMBER*100)+'% menos como socio en tus próximas compras.</p>';
+  const mk=$('mkAcc');
+  if(mk)mk.onclick=()=>{
+    const d=new Date(),since=d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
+    const dv=o.delivery||{},nu={name:dv.name||'',email:o.email||'',since,club:null};
+    if(o.tel)nu.tel=o.tel;
+    if(dv.mode==='envio'&&dv.addr)nu.addr={addr:dv.addr,col:dv.col||'',cp:dv.cp||'',city:dv.city||'',state:dv.state||''};
+    store.set('cettoUser',nu);paintUser();
+    $('okCtas').innerHTML='<a class="btn btn-ink" href="'+PAGES.cuenta+'#pedidos">Ver mi pedido</a>'+track+'<a class="ul" href="'+PAGES.tienda+'">Seguir comprando</a><p class="made" style="flex-basis:100%"><b>Listo, tu cuenta está creada.</b> Te enviamos un correo para que elijas tu contraseña.</p>';
+    $('okCtas').querySelector('.btn').focus();
+  };
+}
+
+/* ---------- Vistas ---------- */
+function show(v){
+  $('co').hidden=v!=='co';$('empty').hidden=v!=='empty';$('ok').hidden=v!=='ok';
+  const bar=v==='co';$('bar').hidden=!bar;document.body.classList.toggle('pg-has-bar',bar);
+  document.title='L.A. Cetto · '+(v==='ok'?$('okCap').textContent:'Pago');
+  if(v==='co'){renderSum();setStep(S.step)}
+}
+$('emShop').href=PAGES.tienda;$('emFind').href=PAGES.tienda+'#encuentra';
+$('demo').onclick=()=>{DEMO.forEach(id=>add(id,1,true));show('co');scrollTo(0,0)};
+
+/* El encabezado mínimo: en pantallas chicas solo "← Seguir" */
+const back=document.querySelector('.hdr .l a.nt:not([hidden])');
+if(back)back.innerHTML='<span aria-hidden="true">←</span> Seguir<span class="pg-back-x"> comprando</span>';
+
+/* ?ejemplo=1 llena el carrito con la caja de ejemplo (lo usa el mapa del prototipo) */
+if(new URLSearchParams(location.search).get('ejemplo')==='1'){if(!nItems())$('demo').click();history.replaceState(null,'',location.pathname)}
+const q=new URLSearchParams(location.search).get('pedido');
+const found=q&&store.get('cettoOrders',[]).find(o=>o.no===q);
+if(found){renderOk(found);show('ok')}
+else if(nItems())show('co');
+else{
+  if(q){$('emT').textContent='No encontramos ese pedido';$('emP').innerHTML='Revisa tu correo de confirmación o entra a <a class="ul" style="padding-bottom:2px" href="'+PAGES.cuenta+'#pedidos">tu cuenta</a> para ver tus pedidos.'}
+  show('empty');
+}
+})();
+</script>
+</body>
+</html>

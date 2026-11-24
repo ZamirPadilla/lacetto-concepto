@@ -1,0 +1,986 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>L.A. Cetto · Vinos</title>
+<meta name="description" content="Concepto de rediseño de la colección con filtros de L.A. Cetto. Datos e imágenes del sitio actual como referencia temporal.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baskervville:ital@0;1&family=DM+Sans:opsz,wght@9..40,400..600&family=Playfair:opsz,wght@5..1200,300..500&display=swap" rel="stylesheet">
+<link rel="icon" type="image/svg+xml" href="media/favicon.svg">
+<!-- compartir -->
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="apple-touch-icon" href="media/apple-touch-icon.png">
+<meta name="theme-color" content="#F3F1EC">
+<meta name="robots" content="noindex, nofollow">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="es_MX">
+<meta property="og:site_name" content="L.A. Cetto · Concepto de rediseño">
+<meta property="og:title" content="L.A. Cetto · Vinos">
+<meta property="og:description" content="Concepto de rediseño de la colección con filtros de L.A. Cetto. Datos e imágenes del sitio actual como referencia temporal.">
+<meta property="og:url" content="https://zamirpadilla.github.io/lacetto-concepto/lacetto-tienda.html">
+<meta property="og:image" content="https://zamirpadilla.github.io/lacetto-concepto/media/og-banner.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Chardonnay Reserva Privada de L.A. Cetto sobre una roca frente al mar, con el texto: Una boutique de vinos, de punta a punta">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="L.A. Cetto · Vinos">
+<meta name="twitter:description" content="Concepto de rediseño de la colección con filtros de L.A. Cetto. Datos e imágenes del sitio actual como referencia temporal.">
+<meta name="twitter:image" content="https://zamirpadilla.github.io/lacetto-concepto/media/og-banner.jpg">
+<!-- /compartir -->
+<link rel="stylesheet" href="cetto-base.css">
+<style>
+/* ---------- Intro ---------- */
+.t-intro{display:grid;grid-template-columns:minmax(0,1fr) minmax(280px,400px);gap:clamp(24px,4vw,72px);align-items:end;padding-top:clamp(20px,2.6vw,40px)}
+.t-h1{font:400 clamp(52px,7.4vw,118px)/.92 var(--serif);letter-spacing:-.022em}
+.t-intro .p{margin-top:18px;max-width:48ch}
+.qcard{display:grid;grid-template-columns:112px minmax(0,1fr);gap:16px;align-items:stretch;background:var(--bg2);text-align:left;transition:background .25s}
+.qcard:hover{background:var(--bg3)}
+.qcard .ph{position:relative;overflow:hidden;min-height:132px}
+.qcard .ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform 1s var(--ease)}
+.qcard:hover .ph img{transform:scale(1.05)}
+.qcard .tx{padding:16px 16px 16px 0;display:flex;flex-direction:column;justify-content:space-between;gap:12px}
+.qcard b{font:400 22px/1.15 var(--serif);display:block}
+.qcard small{display:block;font-size:13.5px;color:var(--ink2);margin-top:4px}
+.qcard .ul{align-self:flex-start;font-size:11px}
+
+/* ---------- Banner de línea ---------- */
+.lb{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(24px,4vw,72px);align-items:stretch;padding-top:clamp(20px,2.6vw,40px)}
+.lb-t{display:flex;flex-direction:column;justify-content:space-between;gap:28px;padding-bottom:6px}
+.lb-t blockquote{font:italic 400 clamp(21px,1.8vw,27px)/1.35 var(--serif);max-width:28ch;margin-top:22px}
+.lb-t cite{display:block;font:500 11px/1.3 var(--sans);letter-spacing:.09em;text-transform:uppercase;color:var(--ink3);font-style:normal;margin-top:12px}
+.lb-facts{display:flex;flex-wrap:wrap;gap:8px 28px;font-size:14px;color:var(--ink2);border-top:1px solid var(--line);padding-top:16px}
+.lb-facts b{font-weight:500;color:var(--ink)}
+.fan{position:relative;background:var(--bg2);min-height:clamp(340px,36vw,520px);overflow:hidden;isolation:isolate}
+.fan .b{position:absolute;bottom:4%;aspect-ratio:1;height:84%;left:50%;transform:translateX(-50%);background:var(--bg2)}
+.fan .b.c{z-index:2}
+.fan .b img{width:100%;height:100%;object-fit:contain;mix-blend-mode:multiply;position:relative;z-index:1;transition:transform 1s var(--ease)}
+.fan .b::after{content:"";position:absolute;left:50%;bottom:3.3%;width:30%;height:5%;transform:translateX(-50%);background:radial-gradient(closest-side,rgba(38,28,20,.32),rgba(38,28,20,0))}
+.fan .b.l{transform:translateX(-112%) scale(.86);transform-origin:bottom center}
+.fan .b.r{transform:translateX(12%) scale(.86);transform-origin:bottom center}
+.fan:hover .b.c img{transform:translateY(-12px)}
+.fan .lbl{position:absolute;left:16px;bottom:14px;z-index:3}
+
+/* Estaciones: la botella gira y cambia de etiqueta */
+.es-stage{position:relative;min-height:clamp(380px,40vw,580px);overflow:hidden;isolation:isolate;transition:background-color 1s var(--ease);perspective:1100px;display:grid;place-items:center}
+.es-rot{position:relative;height:92%;aspect-ratio:1;will-change:transform;background:inherit}
+.es-rot .bw{position:absolute;inset:0;transform:scaleX(var(--sq,1));transition:transform .5s var(--ease);background:inherit}
+.es-rot img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;mix-blend-mode:multiply;-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat}
+.es-rot img.nx{opacity:0}
+.es-rot.wipe img.cu{-webkit-mask-image:linear-gradient(90deg,transparent 0 45%,#000 55% 100%);mask-image:linear-gradient(90deg,transparent 0 45%,#000 55% 100%);-webkit-mask-size:260% 100%;mask-size:260% 100%;animation:wipeCu .9s var(--ease) forwards}
+.es-rot.wipe img.nx{opacity:1;-webkit-mask-image:linear-gradient(90deg,#000 0 45%,transparent 55% 100%);mask-image:linear-gradient(90deg,#000 0 45%,transparent 55% 100%);-webkit-mask-size:260% 100%;mask-size:260% 100%;animation:wipeNx .9s var(--ease) forwards}
+@keyframes wipeCu{from{-webkit-mask-position:100% 0;mask-position:100% 0}to{-webkit-mask-position:0 0;mask-position:0 0}}
+@keyframes wipeNx{from{-webkit-mask-position:100% 0;mask-position:100% 0}to{-webkit-mask-position:0 0;mask-position:0 0}}
+.es-floor{position:absolute;left:50%;bottom:calc(4% + 3.3% * .92);width:24%;height:4.4%;transform:translateX(calc(-50% + var(--fx,0px)));background:radial-gradient(closest-side,rgba(38,28,20,.34),rgba(38,28,20,0));z-index:2;mix-blend-mode:multiply;pointer-events:none}
+.es-stage .lbl{position:absolute;left:16px;bottom:14px;z-index:3;display:flex;gap:10px;align-items:center}
+.es-name{font:400 clamp(30px,3vw,46px)/1 var(--serif);margin-top:18px;min-height:1em}
+.es-name small{display:block;font:400 14px/1.4 var(--sans);color:var(--ink2);margin-top:8px}
+.es-tabs{display:flex;flex-wrap:wrap;gap:6px 22px;margin-top:22px}
+.es-tabs button{display:inline-flex;align-items:center;gap:8px;font-size:14.5px;color:var(--ink3);padding:6px 0;border-bottom:1px solid transparent}
+.es-tabs button i{width:11px;height:11px;display:block}
+.es-tabs button[aria-pressed=true]{color:var(--ink);border-color:currentColor}
+.es-pp{display:inline-flex;align-items:center;gap:8px;margin-top:14px;font:500 11px/1 var(--sans);letter-spacing:.09em;text-transform:uppercase;color:var(--ink2);padding:6px 0}
+.es-pp:hover{color:var(--ink)}
+.es-pp .i-play{display:none}
+.es-pp[aria-pressed=true] .i-play{display:block}
+.es-pp[aria-pressed=true] .i-pause{display:none}
+.es-buy{display:flex;align-items:center;flex-wrap:wrap;gap:14px 22px}
+.es-buy .price{font-size:18px}
+
+/* ---------- Pestañas por tipo ---------- */
+.ttabs{position:relative;display:flex;gap:clamp(18px,2.3vw,34px);margin-top:clamp(28px,3.2vw,48px);border-bottom:1px solid var(--line);overflow-x:auto;scrollbar-width:none;padding-inline:var(--m)}
+.ttabs button,.fg summary .sel{position:relative}
+.ttabs::-webkit-scrollbar{display:none}
+.ttabs button{font:400 clamp(19px,1.55vw,23px)/1 var(--serif);padding:12px 0 15px;white-space:nowrap;color:var(--ink3);border-bottom:1px solid transparent;margin-bottom:-1px;display:inline-flex;align-items:flex-start;gap:5px;transition:color .2s}
+.ttabs button:hover{color:var(--ink)}
+.ttabs button sup{font:500 10.5px/1 var(--sans);letter-spacing:.03em;font-variant-numeric:tabular-nums}
+.ttabs button[aria-pressed=true]{color:var(--ink);border-color:var(--ink)}
+
+/* ---------- Barra de herramientas fija ---------- */
+.tbar{position:sticky;top:var(--hh);transition:top .5s var(--ease);z-index:30;background:var(--bg);border-bottom:1px solid var(--line)}
+.tbar-in{display:flex;align-items:center;gap:20px;min-height:56px;padding-inline:var(--m)}
+.tb-btn{display:inline-flex;align-items:center;gap:10px;font:500 12px/1 var(--sans);letter-spacing:.09em;text-transform:uppercase;white-space:nowrap}
+.tb-btn svg{flex:none}
+.tb-btn,.toggle,.more{transition:opacity .25s,color .25s}.tb-btn:hover,.more:hover{opacity:.62}.toggle:hover{color:var(--ink)}
+.tb-n{font-size:14px;color:var(--ink2);white-space:nowrap}
+.tb-n b{font-weight:500;color:var(--ink)}
+.tb-sp{flex:1}
+.tb-box{display:flex;align-items:center;gap:12px;font-size:13px;color:var(--ink2);white-space:nowrap}
+.tb-box .bar{width:96px;height:2px;background:var(--line);position:relative}
+.tb-box .bar i{position:absolute;inset:0 auto 0 0;background:var(--ink);transition:width .5s var(--ease)}
+.tb-box .ok{color:var(--wine)}
+.sort{position:relative;display:inline-flex;align-items:center;gap:8px;font-size:14px}
+.sort label{color:var(--ink3)}
+.sort select{appearance:none;-webkit-appearance:none;background:transparent;border:0;font:500 14px/1 var(--sans);color:var(--ink);padding:8px 20px 8px 0;cursor:pointer}
+.sort::after{content:"";position:absolute;right:2px;top:50%;width:6px;height:6px;border-right:1.4px solid currentColor;border-bottom:1.4px solid currentColor;transform:translateY(-70%) rotate(45deg);pointer-events:none}
+.m-only{display:none}
+
+/* ---------- Cuerpo: filtros + resultados ---------- */
+.tbody{display:grid;grid-template-columns:250px minmax(0,1fr);gap:clamp(24px,3vw,48px);padding-top:clamp(18px,2vw,28px);padding-bottom:var(--sec);transition:grid-template-columns .45s var(--ease)}
+.tbody.nof{grid-template-columns:0 minmax(0,1fr);gap:0}
+.tbody.nof .facets{opacity:0;pointer-events:none}
+.facets{position:sticky;top:calc(var(--hh) + 57px + 18px);align-self:start;max-height:calc(100vh - 72px - 57px - 36px);overflow:auto;scrollbar-width:thin;padding-right:6px;transition:opacity .3s,top .5s var(--ease)}
+.fs-h,.fs-f{display:none}
+.fg{border-top:1px solid var(--line)}
+.fg:first-of-type{border-top:0}
+.fg summary{list-style:none;display:flex;justify-content:space-between;align-items:center;gap:12px;padding:15px 0;cursor:pointer;font:500 11.5px/1.3 var(--sans);letter-spacing:.09em;text-transform:uppercase}
+.fg summary::-webkit-details-marker{display:none}
+.fg summary .sel{margin-left:auto;font-weight:500;color:var(--wine);letter-spacing:.04em}
+.fg summary i{position:relative;width:10px;height:10px;flex:none}
+.fg summary i::before,.fg summary i::after{content:"";position:absolute;left:0;right:0;top:50%;height:1.2px;background:currentColor}
+.fg summary i::after{transform:rotate(90deg);transition:transform .3s var(--ease)}
+.fg[open] summary i::after{transform:rotate(0)}
+.fg .opts{padding-bottom:16px}
+.fo{display:grid;grid-template-columns:13px minmax(0,1fr) auto;align-items:baseline;gap:10px;width:100%;padding:5px 0;font-size:14.5px;line-height:1.35;color:var(--ink2);transition:color .2s}
+.fo .mk{width:11px;height:11px;border:1px solid var(--ink3);align-self:center;transition:background .2s,border-color .2s}
+.fo:hover{color:var(--ink)}
+.fo[aria-pressed=true]{color:var(--ink)}
+.fo[aria-pressed=true] .mk{background:var(--ink);border-color:var(--ink)}
+.fo .n{font-size:12px;color:var(--ink3);font-variant-numeric:tabular-nums}
+.fo:disabled{opacity:.32;cursor:default}
+.fo.ser{font:400 17.5px/1.3 var(--serif)}
+.fo.ser .n{font-family:var(--sans)}
+.more{font:500 11px/1 var(--sans);letter-spacing:.09em;text-transform:uppercase;border-bottom:1px solid currentColor;padding-bottom:4px;margin-top:10px;color:var(--ink2)}
+/* Escala de estilo */
+.scale{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:4px}
+.scale button{display:flex;flex-direction:column;align-items:center;gap:8px;padding:12px 2px 10px;background:var(--bg2);font-size:11.5px;line-height:1.2;text-align:center;color:var(--ink2);transition:background .2s,color .2s}
+.scale button .bars{display:flex;align-items:flex-end;gap:2px;height:16px}
+.scale button .bars i{width:3px;background:var(--ink3);opacity:.35}
+.scale button .bars i.f{opacity:1}
+.scale button:hover{background:var(--bg3)}
+.scale button[aria-pressed=true]{background:var(--ink);color:var(--bg)}
+.scale button[aria-pressed=true] .bars i{background:var(--bg)}
+.scale button:disabled{opacity:.35;cursor:default}
+.scale-l{display:flex;justify-content:space-between;font-size:11.5px;color:var(--ink3);margin-top:8px}
+.toggle{display:flex;justify-content:space-between;align-items:center;width:100%;padding:7px 0;font-size:14.5px;color:var(--ink2)}
+.toggle .sw{width:30px;height:17px;border-radius:9px;background:var(--bg3);position:relative;transition:background .25s;flex:none}
+.toggle .sw::after{content:"";position:absolute;top:2px;left:2px;width:13px;height:13px;border-radius:50%;background:#fff;transition:transform .25s var(--ease)}
+.toggle[aria-pressed=true]{color:var(--ink)}
+.toggle[aria-pressed=true] .sw{background:var(--ink)}
+.toggle[aria-pressed=true] .sw::after{transform:translateX(13px)}
+
+/* Filtros activos */
+.chips{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-bottom:18px}
+.chips:empty{display:none}
+.chip{display:inline-flex;align-items:center;gap:8px;height:32px;padding:0 12px;border:1px solid var(--line);font-size:13px;background:var(--bg);transition:border-color .2s}
+.chip:hover{border-color:var(--ink)}
+.chip svg{width:11px;height:11px}
+.chips .ul{font-size:11px;margin-left:6px}
+
+/* ---------- Rejilla ---------- */
+.tgrid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(22px,2.4vw,36px) var(--g)}
+.tbody.nof .tgrid{grid-template-columns:repeat(5,minmax(0,1fr))}
+.tgrid .pc .nm{font-size:19px}
+.tgrid .pc .info{gap:3px 12px}
+.meter{grid-column:1/-1;display:flex;align-items:center;gap:3px;margin-top:5px;font-size:12px;color:var(--ink3)}
+.meter i{width:12px;height:2px;background:var(--line)}
+.meter i.f{background:var(--ink2)}
+.meter em{font-style:normal;margin-left:7px}
+.pc.out .fld img{opacity:.5}
+.pc .badge.out{color:var(--ink)}
+.qa.ntf{background:var(--bg);color:var(--ink);border-top:1px solid var(--line)}
+.qa.ntf svg{flex:none}
+.pc .bx.nc{color:var(--ink3)}
+.tgrid .pc{animation:pin .5s var(--ease) both}
+@keyframes pin{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+/* Piezas editoriales dentro de la rejilla */
+.tile{position:relative;display:flex;flex-direction:column;justify-content:space-between;overflow:hidden;isolation:isolate;color:#fff;background:var(--dark);text-align:left;min-height:100%;animation:pin .5s var(--ease) both}
+.tile>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2;transition:transform 1.2s var(--ease)}
+.tile::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(20,18,16,.28),rgba(20,18,16,0) 30%,rgba(20,18,16,0) 45%,rgba(20,18,16,.62))}
+.tile:hover>img{transform:scale(1.04)}
+.tile .tp,.tile .bt{padding:clamp(14px,1.4vw,20px)}
+.tile b{display:block;font:400 clamp(24px,2vw,30px)/1.08 var(--serif);letter-spacing:-.01em}
+.tile p{font-size:14px;line-height:1.45;opacity:.9;margin:10px 0 16px;max-width:26ch}
+.tile .ul{font-size:11px}
+.tile.tq{background:var(--dark)}
+.tile.tq::before{display:none}
+.tile.tq .tq-ph{position:relative;flex:1 1 auto;min-height:120px;overflow:hidden}
+.tile.tq .tq-ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform 1.2s var(--ease)}
+.tile.tq:hover .tq-ph img{transform:scale(1.04)}
+.tile.tq .bt{flex:none}
+.tile.tq .cap{display:block;color:rgba(238,233,225,.7);margin-bottom:10px}
+.tile.seasons{background:var(--bg2);color:var(--ink)}
+.tile.seasons::before{display:none}
+.tile.seasons .rows{display:grid;grid-template-rows:repeat(4,1fr);flex:1}
+.tile.seasons .rows span{display:flex;justify-content:space-between;align-items:center;padding:0 clamp(14px,1.4vw,20px);font:400 19px/1 var(--serif)}
+.tile.seasons .rows span small{font:400 12.5px/1 var(--sans);color:rgba(43,44,45,.7)}
+/* Sin resultados */
+.tempty{padding:clamp(40px,6vw,96px) 0;max-width:620px}
+.tempty h2{font:400 clamp(30px,3vw,44px)/1.05 var(--serif)}
+.tempty p{color:var(--ink2);margin-top:14px}
+.tempty .sug{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}
+.tempty .alts{margin-top:22px;font-size:14.5px;color:var(--ink2)}
+.tempty .alts a{color:var(--ink);border-bottom:1px solid var(--line);padding-bottom:1px;margin-right:4px}
+.tempty .alts a:hover{border-color:var(--ink)}
+
+/* ---------- Encuentra tu vino ---------- */
+.quiz{position:fixed;inset:0;z-index:90;display:grid;place-items:center;padding:clamp(0px,3vw,40px);background:rgba(20,18,16,.55);opacity:0;pointer-events:none;transition:opacity .35s}
+.quiz.on{opacity:1;pointer-events:auto}
+.qz{position:relative;width:min(1180px,100%);height:min(760px,100%);background:var(--bg);display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);overflow:hidden;transform:translateY(16px);transition:transform .5s var(--ease)}
+.quiz.on .qz{transform:none}
+.qz-ph{position:relative;overflow:hidden;background:var(--dark)}
+.qz-ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:opacity .8s var(--ease),transform 6s linear}
+.qz-ph{transition:background-color .6s}
+.qz-ph.contain{background:var(--bg2)}
+.qz-ph.contain img{object-fit:contain;mix-blend-mode:multiply;padding:8%}
+.qz-ph.contain .cap{color:var(--ink2);text-shadow:none}
+.qz-ph .cap{position:absolute;left:18px;bottom:16px;color:#fff;text-shadow:0 1px 12px rgba(0,0,0,.35)}
+.qz-r{display:flex;flex-direction:column;padding:clamp(22px,3vw,44px);overflow:auto}
+.qz-top{display:flex;justify-content:space-between;align-items:center;gap:16px}
+.qz-steps{display:flex;gap:6px}
+.qz-steps i{width:28px;height:2px;background:var(--line)}
+.qz-steps i.on{background:var(--ink)}
+.qz-x{display:inline-flex;align-items:center;gap:8px;font:500 12px/1 var(--sans);letter-spacing:.09em;text-transform:uppercase}
+.qz-body{flex:1;display:flex;flex-direction:column;justify-content:center;padding:clamp(18px,3vw,40px) 0}
+.qz-q{font:400 clamp(34px,3.6vw,56px)/1.02 var(--serif);letter-spacing:-.015em}
+.qz-q:focus{outline:none}
+.qz-sub{color:var(--ink2);margin-top:12px}
+.qz-opts{list-style:none;margin-top:clamp(20px,2.6vw,36px);border-top:1px solid var(--line)}
+.qz-opts button{display:flex;justify-content:space-between;align-items:center;gap:16px;width:100%;padding:14px 0;border-bottom:1px solid var(--line);font:400 clamp(21px,1.9vw,28px)/1.15 var(--serif);transition:padding .3s var(--ease),color .2s}
+.qz-opts button span{font:400 13px/1.3 var(--sans);color:var(--ink3);text-align:right}
+.qz-opts button:hover{padding-left:10px}
+.qz-opts button svg{opacity:0;transition:opacity .2s}
+.qz-opts button:hover svg{opacity:1}
+.qz-scale{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:var(--g);margin-top:clamp(20px,2.6vw,36px)}
+.qz-scale button{display:flex;flex-direction:column;justify-content:space-between;gap:26px;min-height:150px;padding:16px;background:var(--bg2);text-align:left;transition:background .2s}
+.qz-scale button:hover{background:var(--bg3)}
+.qz-scale button b{font:400 21px/1.1 var(--serif)}
+.qz-scale button small{display:block;font-size:12.5px;color:var(--ink2);margin-top:6px}
+.qz-scale .bars{display:flex;align-items:flex-end;gap:3px;height:26px}
+.qz-scale .bars i{width:5px;background:var(--ink)}
+.qz-scale .bars i:not(.f){opacity:.18}
+.qz-skip{align-self:flex-start;margin-top:22px}
+.qz-back{font:500 12px/1 var(--sans);letter-spacing:.09em;text-transform:uppercase;color:var(--ink2)}
+.qz-res{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--g);margin-top:24px}
+.qz-res .pc .fld{aspect-ratio:1}
+.qz-res .why{grid-column:1/-1;font-size:12.5px;color:var(--ink2);line-height:1.4;margin-top:4px}
+.qz-acts{display:flex;flex-wrap:wrap;align-items:center;gap:14px 24px;margin-top:26px}
+
+@media (max-width:1250px){
+  .tgrid{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .tbody.nof .tgrid{grid-template-columns:repeat(4,minmax(0,1fr))}
+}
+@media (max-width:900px){
+  .t-intro,.lb{grid-template-columns:minmax(0,1fr)}
+  .lb .fan,.lb .es-stage{order:-1;min-height:min(92vw,420px)}
+  .tb-box,.d-only{display:none}
+  .m-only{display:inline-flex}
+  .tbody,.tbody.nof{grid-template-columns:minmax(0,1fr);gap:0}
+  .tbody.nof .facets{opacity:1;pointer-events:auto}
+  .facets{position:fixed;left:0;right:0;bottom:0;top:auto;z-index:85;max-height:88vh;background:var(--bg);padding:0 var(--m);transform:translateY(102%);transition:transform .45s var(--ease);overscroll-behavior:contain}
+  .facets.on{transform:none}
+  .fs-h{display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:2;background:var(--bg);padding:18px 0 14px;border-bottom:1px solid var(--line)}
+  .fs-h b{font:400 26px/1 var(--serif)}
+  .fs-f{display:grid;grid-template-columns:auto minmax(0,1fr);gap:12px;position:sticky;bottom:0;background:var(--bg);padding:12px 0 calc(12px + env(safe-area-inset-bottom));border-top:1px solid var(--line)}
+  .fs-f .btn{height:50px}
+  .fg:first-of-type{border-top:0}
+  .fscrim{position:fixed;inset:0;z-index:84;background:rgba(20,18,16,.45);opacity:0;pointer-events:none;transition:opacity .3s}
+  .fscrim.on{opacity:1;pointer-events:auto}
+  .tgrid,.tbody.nof .tgrid{grid-template-columns:repeat(2,minmax(0,1fr));gap:26px var(--g)}
+  .tgrid .pc .nm{font-size:17px}
+  .tgrid .pc .info{grid-template-columns:minmax(0,1fr)}
+  .tgrid .pc .pr{text-align:left}
+  .tgrid .pc .bx{display:none}
+  .tgrid .pc .bx.mem{display:block}
+  .qz{grid-template-columns:minmax(0,1fr);grid-template-rows:150px minmax(0,1fr);height:100%}
+  .qz-scale{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .qz-scale button{min-height:118px}
+  .qz-res{grid-template-columns:repeat(3,minmax(0,1fr))}
+}
+@media (max-width:640px){
+  .tbar{top:var(--hh)}
+  .tbar-in{gap:12px}
+  .tb-sp{display:none}
+  .tb-n{font-size:13px;flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis}
+  .sort{margin-left:auto;flex:none}
+  .sort select{font-size:13px;max-width:132px;text-overflow:ellipsis}
+  .qcard{grid-template-columns:96px minmax(0,1fr)}
+  .tile b{font-size:22px}
+  .tile p{display:none}
+  .qz-res{grid-template-columns:minmax(0,1fr)}
+  .qz-res .pc{display:grid;grid-template-columns:96px minmax(0,1fr);gap:12px;align-items:center}
+  .qz-res .pc .fld{aspect-ratio:1}
+  .qz-res .pc .info{padding-top:0}
+  .qz-res .qa{display:none}
+}
+@media (prefers-reduced-motion:reduce){
+  .tgrid .pc,.tile{animation:none}
+  .es-rot.wipe img{animation-duration:.01s}
+}
+
+/* ===== Vinos v2 ===== */
+/* banner de colección (al llegar por una línea) */
+#intro.full{padding:0}
+.lhero{position:relative;height:clamp(420px,62vh,640px);overflow:hidden;display:flex;align-items:center;justify-content:center;text-align:center;color:#fff;background:#2a2420}
+.lhero>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transform:scale(1.05);animation:lhKb 16s linear both}
+@keyframes lhKb{to{transform:scale(1)}}
+.lhero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(14,11,8,.42) 0%,rgba(14,11,8,.26) 30%,rgba(14,11,8,.3) 70%,rgba(14,11,8,.46) 100%)}
+.lh-crumbs{position:absolute;z-index:2;top:clamp(16px,2vw,24px);left:var(--m);display:flex;gap:10px;font-size:13px;color:rgba(255,255,255,.82)}
+.lh-crumbs a:hover{color:#fff}
+.lh-t{position:relative;z-index:2;padding:0 var(--m)}
+.lh-k{font:500 11px/1 var(--sans);letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.78)}
+.lh-h1{margin-top:14px;font:400 clamp(40px,5.2vw,84px)/1 var(--serif);letter-spacing:.04em;text-transform:uppercase;text-shadow:0 2px 30px rgba(10,8,6,.3)}
+.lh-f{display:flex;flex-wrap:wrap;justify-content:center;gap:6px 12px;margin-top:18px;font-size:14px;color:rgba(255,255,255,.86)}
+.lh-f i{font-style:normal;opacity:.6}
+@media (prefers-reduced-motion:reduce){.lhero>img{animation:none;transform:none}}
+/* ¿No sabes cuál elegir?: sin foto, solo el texto y la flecha */
+.qc-eno{display:inline-flex;margin-top:12px;font-size:11px;color:var(--ink2)}
+.qcard{display:flex;flex-direction:column;align-items:flex-start;gap:6px;background:none;padding:0;text-align:left;grid-template-columns:none}
+.qcard:hover{background:none}
+.qcard b{font:400 clamp(22px,1.8vw,27px)/1.15 var(--serif)}
+.qcard small{margin-top:0;font-size:14px;color:var(--ink2)}
+.qc-go{display:inline-flex;align-items:center;gap:10px;margin-top:12px;font:500 11.5px/1 var(--sans);letter-spacing:.12em;text-transform:uppercase;color:var(--ink)}
+.qc-go svg{transition:transform .35s var(--ease)}
+.qcard:hover .qc-go svg{transform:translateX(4px)}
+/* caja de 6: solo el texto */
+.tb-box{gap:0}
+/* rejilla: cards del inicio, casi pegadas */
+.tgrid{gap:6px}
+.tbody.nof .tgrid{grid-template-columns:repeat(5,minmax(0,1fr))}
+.tgrid .vc{min-height:0;aspect-ratio:68/102;animation:pin .6s var(--ease) both;animation-delay:calc(var(--i) * 30ms)}
+.tgrid .vc:hover{z-index:2}
+.tgrid .vc-info{min-height:122px}
+.tgrid .vc.out .vc-img img{opacity:.5}
+.vc-tag{position:absolute;z-index:3;top:clamp(12px,1.2vw,18px);left:clamp(12px,1.2vw,18px);font:500 10.5px/1 var(--sans);letter-spacing:.12em;text-transform:uppercase;color:var(--ink2)}
+.vc-price s{opacity:.55;margin-right:2px}
+.tgrid .tile{min-height:0}
+/* filtros: plegados, más aire; se abre uno a la vez */
+.fg summary{padding:18px 0;font-size:11px;letter-spacing:.14em}
+.fg[open] .opts{animation:fgIn .4s var(--ease)}
+@keyframes fgIn{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
+.fo.ser{font-size:16.5px}
+/* estilo: un punto que crece de ligero a robusto */
+.fo.est{font:400 16.5px/1.3 var(--serif)}
+.fo.est .n{font-family:var(--sans)}
+.fo.est .dot{width:var(--d);height:var(--d);border-radius:50%;border:1px solid var(--ink2);justify-self:center;align-self:center;transition:background .2s,border-color .2s}
+.fo.est[aria-pressed=true] .dot{background:var(--ink);border-color:var(--ink)}
+.est-l{margin-top:8px;font-size:12px;color:var(--ink3)}
+@media (max-width:900px){.lhero{height:clamp(360px,56svh,520px)}}
+
+
+/* líneas de arriba y abajo de "Ocultar filtros", más tenues */
+.ttabs{border-bottom-color:rgba(43,44,45,.08)}
+.tbar{border-bottom-color:rgba(43,44,45,.08)}
+
+/* ===== Escena del buscador: fondo desenfocado + botella real fija ===== */
+.qz-ph{background:#2a241e;isolation:isolate}
+.qz-bg i{position:absolute;inset:-8%;background-size:cover;background-position:50% 50%;filter:blur(8px) saturate(1) brightness(.84);transform:scale(1.04);opacity:0;transition:opacity .85s var(--ease)}
+.qz-bg i.on{opacity:1}
+.qz-ph.ai .qz-bg i{filter:none;transform:none;inset:0}
+/* la mesa: el fondo se oscurece hacia abajo para que la botella se asiente; viñeta suave alrededor */
+.qz-ph::before{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;
+  background:linear-gradient(0deg,rgba(14,10,6,.62) 0%,rgba(14,10,6,.28) 18%,rgba(14,10,6,0) 40%),radial-gradient(ellipse 80% 70% at 50% 42%,rgba(0,0,0,0) 45%,rgba(0,0,0,.38) 100%)}
+/* la botella: siempre en el mismo lugar y del mismo alto */
+.qz-bt{position:absolute;z-index:2;left:0;right:0;bottom:15%;height:62%}
+.qz-bt img{position:absolute;inset:auto;left:50%;bottom:0;height:100%;width:auto;max-width:none;object-fit:contain;transform:translateX(-50%);opacity:0;transition:opacity .55s var(--ease);
+  filter:drop-shadow(14px 10px 18px rgba(10,7,4,.45)) drop-shadow(2px 2px 3px rgba(10,7,4,.35))}
+.qz-bt img.on{opacity:1}
+.qz-bt::after{content:"";position:absolute;left:50%;bottom:-10px;width:min(30%,150px);height:22px;transform:translateX(-50%);border-radius:50%;background:radial-gradient(closest-side,rgba(8,5,2,.6),rgba(8,5,2,0))}
+.qz-ph .cap{z-index:3}
+@media (max-width:900px){.qz-bt{bottom:22px;height:calc(100% - 44px)}.qz-bt::after{bottom:-8px;height:14px}}
+/* ===== Vinos v3 ===== */
+.fg{border-top-color:rgba(43,44,45,.08)}
+.fg[open] .opts{animation:none}
+.fg .opts{overflow:hidden}
+/* buscador: botella del vino sugerido al pasar por una opción */
+.qz-ph.bot{background:#ECE9E2}
+.qz-ph.bot img{object-fit:contain;mix-blend-mode:normal;padding:12% 18% 14%;filter:drop-shadow(10px 14px 16px rgba(46,33,20,.22)) drop-shadow(2px 3px 3px rgba(46,33,20,.2))}
+.qz-ph.bot::after{content:"";position:absolute;left:50%;bottom:12.5%;width:22%;height:14px;transform:translateX(-50%);border-radius:50%;background:radial-gradient(closest-side,rgba(38,26,14,.32),rgba(38,26,14,0))}
+@media (max-width:900px){.qz-ph.bot img{padding:12px 0 36px}.qz-ph.bot::after{bottom:30px;width:16%}}
+/* estilo: una gota que crece y se oscurece */
+.qz-scale button{justify-content:flex-start;gap:22px}
+.qz-drop{display:block;width:var(--s);height:var(--s);border-radius:50%;margin-top:auto;
+  background:radial-gradient(circle at 34% 30%,rgba(255,255,255,.55),rgba(255,255,255,0) 42%),var(--c);box-shadow:inset 0 -3px 6px rgba(0,0,0,.12);transition:transform .45s var(--ease)}
+.qz-scale button>span:last-child{margin-top:auto}
+.qz-scale button:hover .qz-drop{transform:scale(1.12)}
+/* resultado del buscador con las cards nuevas */
+.qz-res .vc{aspect-ratio:auto;min-height:0;display:flex;flex-direction:column}
+.qz-res .vc-a{height:auto}
+.qz-res .vc-img{flex:none;height:clamp(150px,24vh,230px)}
+.qz-res .vc-info{min-height:0;padding:10px 10px 16px}
+.qz-res .vc-aw .md{width:30px;height:30px}.qz-res .vc-aw .md svg{width:22px;height:22px}
+.qz-res .why{display:block;margin-top:6px;font-size:12px;line-height:1.4;color:var(--ink2)}
+</style>
+</head>
+<body>
+<div id="chromeTop"></div>
+
+<main id="main">
+  <div class="wrap"><nav class="crumbs" id="crumbs" aria-label="Ruta"></nav></div>
+  <section class="wrap" id="intro" aria-labelledby="tTitle"></section>
+
+  <nav class="ttabs" id="ttabs" aria-label="Tipo de producto"></nav>
+
+  <div class="tbar" id="tbar">
+    <div class="tbar-in">
+      <button class="tb-btn d-only" id="fToggle" aria-expanded="true" aria-controls="facets"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M4 7h10M18 7h2M4 17h4M12 17h8"/><circle cx="16" cy="7" r="2"/><circle cx="10" cy="17" r="2"/></svg><span>Ocultar filtros</span></button>
+      <button class="tb-btn m-only" id="fOpen" aria-expanded="false" aria-controls="facets"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M4 7h10M18 7h2M4 17h4M12 17h8"/><circle cx="16" cy="7" r="2"/><circle cx="10" cy="17" r="2"/></svg><span id="fOpenT">Filtrar</span></button>
+      <span class="tb-n" id="tCount" aria-live="polite"></span>
+      <span class="tb-sp"></span>
+      <button class="tb-box" id="tbBox" title="Ver carrito"><span id="tbBoxT"></span></button>
+      <div class="sort"><label for="sortSel" class="d-only">Ordenar</label><select id="sortSel" aria-label="Ordenar"></select></div>
+    </div>
+  </div>
+
+  <div class="tbody wrap" id="tbody">
+    <aside class="facets" id="facets" aria-label="Filtros">
+      <div class="fs-h"><b id="fsT">Filtrar</b><button class="qz-x" id="fClose" type="button">Cerrar</button></div>
+      <div id="fgroups"></div>
+      <div class="fs-f"><button class="btn" id="fClear">Limpiar</button><button class="btn btn-ink" id="fApply">Ver resultados</button></div>
+    </aside>
+    <div class="tres">
+      <h2 class="sr" id="resT">Resultados</h2>
+      <div class="chips" id="chips"></div>
+      <div class="tgrid" id="tgrid"></div>
+      <div class="tempty" id="tempty" hidden></div>
+    </div>
+  </div>
+
+  <section class="wrap" aria-label="Compra con confianza" style="padding-bottom:var(--sec)">
+    <div class="trust">
+      <div><b>Envío a todo México</b><span id="trustShip">Gratis desde $799. Llega en 4 a 9 días hábiles.</span></div>
+      <div><b>Caja de 6, 10% menos</b>Mezcla los vinos que quieras.</div>
+      <div><b>Recoge en boutique</b>Ensenada, Tijuana, Valle y CDMX.</div>
+      <div><b>Te asesoramos</b>Por WhatsApp, al <a class="ul-in" href="https://wa.me/525579740223" target="_blank" rel="noopener">55 7974 0223</a>.</div>
+    </div>
+  </section>
+</main>
+
+<div id="chromeBottom"></div>
+<div class="fscrim" id="fscrim"></div>
+
+<div class="quiz" id="quiz" role="dialog" aria-modal="true" aria-label="Encuentra tu vino" aria-hidden="true" inert>
+  <div class="qz">
+    <div class="qz-ph" id="qzPh"><div class="qz-bg" aria-hidden="true"><i></i><i></i></div><div class="qz-bt"><img alt=""><img alt=""></div><span class="cap" id="qzCap"></span></div>
+    <div class="qz-r">
+      <div class="qz-top"><div class="qz-steps" id="qzSteps" aria-hidden="true"><i></i><i></i><i></i></div><button class="qz-x" id="qzClose" type="button">Cerrar</button></div>
+      <p class="sr" id="qzLive" aria-live="polite"></p>
+      <div class="qz-body" id="qzBody"></div>
+    </div>
+  </div>
+</div>
+
+<script src="cetto-base.js"></script>
+<script>
+/* ======================================================================
+   Colección con filtros. Datos de producto: catálogo público de lacetto.mx.
+   Estilo (ligero → robusto) y momentos: clasificación editorial de propuesta,
+   hecha a partir de las notas de cata y frases de ocasión de cada ficha.
+   ====================================================================== */
+/* Foto de cada momento (en el buscador cambia al pasar el mouse por la opción) */
+const MOMIMG={diario:['media/f-picnic.jpg','50% 50%'],cena:['media/f-rp-cab-mesa.jpg','50% 50%'],tarde:['media/f-amigos-brindis.jpg','50% 45%'],asada:['media/f-dl-terra-plato.jpg','45% 60%'],
+  pareja:['media/f-brindis-rosado.jpg','45% 50%'],brindis:['media/f-brindis-blanco-sq.jpg','50% 50%'],regalo:['media/f-rp-neb-flatlay.jpg','50% 50%']};
+/* Foto de cada platillo para "¿Qué habrá en la mesa?" (si no hay foto, se muestra la botella sugerida) */
+const MARIMG={carne:['media/f-dl-terra-plato.jpg','45% 60%','terra'],mar:['media/f-brindis-mar.jpg','50% 50%'],pasta:['media/f-otono-pizza.jpg','50% 62%','oto'],queso:['media/f-rp-petite-flatlay.jpg','60% 50%','psrp'],
+  mex:['media/f-rp-petite-nogada.jpg','40% 50%','psrp'],nada:['media/f-brindis-blanco.jpg','48% 50%']};
+/* Momentos de todos los días para la tienda (la cocina mexicana vive en "Para comer con") */
+const MOM={cena:'Una cena especial',diario:'Para todos los días',tarde:'Una reunión con amigos',asada:'Una carne asada',pareja:'Una noche para dos',brindis:'Para celebrar',regalo:'Para regalar'};
+const EST={1:'Ligero y fresco',2:'Frutal y suave',3:'Con cuerpo',4:'Robusto'};
+const ESTS={1:'Ligero',2:'Suave',3:'Con cuerpo',4:'Robusto'};
+const MAR={carne:'Carnes rojas',aves:'Aves y cerdo',mar:'Pescados y mariscos',pasta:'Pastas y pizza',queso:'Quesos y botanas',mex:'Cocina mexicana',asia:'Cocina asiática',postre:'Postres'};
+const MARX={carne:/\b(res|cortes?|cordero|sirloin|hamburguesas?|estofados?|guisos?|barbacoa|mixiote|carne asada)\b|carnes? (rojas|asadas|al carbón|al horno|de res|a la parrilla)|carnes con|cocción prolongada/i,aves:/\baves\b|cerdo|carnes? blancas|pollo/i,mar:/pescados?|mariscos?|ceviches?|sushi/i,pasta:/pastas?|pizzas?|risotto|ragú/i,queso:/quesos?|charcuter|carnes frías|tapas|tablas|botanas?|aperitivos?/i,mex:/mole|tacos|mixiote|barbacoa|mexican/i,asia:/asiática|oriental|china|japonesa|vietnamita|sushi/i,postre:/postre|chocolate/i};
+const PRE={p1:['Hasta $250',0,250],p2:['$250 a $400',251,400],p3:['$400 a $700',401,700],p4:['Más de $700',701,1e9]};
+const LINES={'reserva-privada':'Reserva Privada','don-luis':'Don Luis','boutique':'Boutique','estaciones':'Estaciones','peninsula':'Península','sierra-blanca':'Sierra Blanca','uvas-organicas':'Uvas Orgánicas','la-cetto':'L.A. Cetto','champbrule':'Champbrulé'};
+const LSLUG=Object.fromEntries(Object.entries(LINES).map(([k,v])=>[v,k]));
+const SIZES={s750:'750 ml',s375:'375 ml',s187:'187 ml',s250:'250 ml',sgal:'4 y 5 litros',s500:'500 g'};
+const FLAGS={premiados:'Con reconocimientos',organico:'Uvas orgánicas',disp:'Solo disponibles'};
+const TIPOS=[['todo','Todo'],['tinto','Tintos'],['blanco','Blancos'],['rosado','Rosados'],['espumoso','Espumoso'],['postre','Postre y destilados'],['estuche','Estuches'],['gourmet','Gourmet']];
+const TIPOTXT={
+  todo:n=>'',
+  tinto:n=>n+' tintos, del Gamay ligero de Otoño al Nebbiolo Reserva Privada.',
+  blanco:n=>n+' blancos, del Sauvignon Blanc más fresco al Chardonnay con barrica.',
+  rosado:n=>n+' rosados para tardes de calor y mesas ligeras.',
+  espumoso:n=>'Champbrulé Brut: burbujas finas para brindar sin esperar demasiado.',
+  postre:n=>n+' vinos de postre y destilados para la sobremesa.',
+  estuche:n=>n+' estuches listos para regalar, con tarjeta para tu mensaje.',
+  gourmet:n=>n+' productos para la mesa: aceite de oliva, vinagres y aceitunas.'
+};
+const TX={nebrp:[4,'cena regalo pareja'],pslac:[3,'diario mesa'],cabrp:[4,'cena mesa regalo'],charp:[3,'cena brindis'],chenin:[1,'tarde mesa diario'],viog:[3,'brindis tarde'],psrp:[4,'cena'],terra:[4,'cena regalo'],conc:[4,'cena'],prim:[1,'tarde brindis'],ver:[1,'brindis tarde'],oto:[1,'tarde mesa diario'],inv:[3,'cena tarde'],champ:[1,'brindis pareja'],sbsb:[1,'tarde diario'],cablac:[3,'diario'],bdz:[2,'tarde diario'],passito:[0,'mesa regalo pareja'],sang:[3,'cena regalo'],nebor:[3,'mesa'],estrp:[0,'regalo'],estbou:[0,'regalo'],
+ dlmer:[2,'cena pareja'],bsyr:[3,'cena regalo pareja'],bmal:[4,'cena pareja'],bpin:[2,'cena pareja'],bbla:[3,'brindis cena'],plyra:[3,'diario'],pesp:[3,'cena'],sbtemp:[2,'tarde diario'],sbcab:[3,'diario'],sbzin:[1,'tarde'],lazin:[3,'tarde mesa'],latemp:[2,'mesa diario'],lamer:[2,'diario tarde'],lafume:[1,'diario brindis'],lachar:[2,'tarde diario'],labdb:[1,'diario tarde'],ormal:[3,'mesa'],orens:[3,'cena'],ormez:[3,'cena'],mospal:[0,'regalo pareja'],grappa:[0,'regalo'],terra375:[4,'cena'],cabrp375:[4,'cena'],fume375:[1,'diario'],cab375:[3,'diario'],bdb187:[1,'diario'],bdz187:[2,'diario'],ps187:[3,'diario'],cab187:[3,'diario']};
+const REC=['nebrp','terra','cabrp','oto','charp','champ','prim','viog','pslac','sang','conc','psrp','chenin','ver','inv','sbsb','bdz','cablac','dlmer','bsyr','bmal','bpin','bbla','plyra','pesp','nebor','ormal','orens','ormez','sbtemp','sbcab','sbzin','lazin','latemp','lamer','lafume','lachar','labdb','passito','mospal','grappa','estrp','estbou','terra375','cabrp375','fume375','bdb187','bdz187','ps187','cab187','cab375'];
+const IDS=[...REC.filter(id=>P[id]),...Object.keys(P).filter(id=>!REC.includes(id)&&!P[id].gc)];
+const RANK=Object.fromEntries(IDS.map((id,i)=>[id,i]));
+const norm=s=>(s||'').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'');
+const grapesOf=id=>(P[id].u||'').replace(/French Colombard/g,'Colombard').split(/, | y /).map(s=>s.trim()).filter(Boolean);
+const sizeOf=p=>p.ml>=4000?'sgal':p.ml===500?'s500':'s'+p.ml;
+/* Cocina mexicana: criterio del maridaje "Cocina mexicana" */
+const isMex=id=>{const p=P[id];if(p.c==='gourmet'||p.c==='estuche')return false;return MARX.mex.test(p.mar||p.desc||'')||!!(TX[id]&&TX[id][1].split(' ').includes('mesa'))};
+const marOf=id=>{const p=P[id];if(p.c==='gourmet'||p.c==='estuche')return [];const t=p.mar||p.desc;const r=Object.keys(MARX).filter(k=>k!=='mex'&&MARX[k].test(t));if(isMex(id))r.splice(Object.keys(MARX).indexOf('mex'),0,'mex');return r};
+const nbs=s=>String(s||'').replace(/L\.A\. Cetto/g,'L.A.\u00a0Cetto');
+const tipoOf=id=>P[id].c==='destilado'?'postre':P[id].c;
+/* Atributos de cada producto por faceta */
+const ATT={
+  mom:id=>{const p=P[id],m=TX[id]?TX[id][1].split(' ').filter(x=>x!=='mesa'):[];if(p.c==='tinto'&&MARX.carne.test(p.mar||p.desc||''))m.push('asada');return m},
+  est:id=>(TX[id]&&TX[id][0]?[String(TX[id][0])]:[]),
+  mar:id=>marOf(id),
+  precio:id=>Object.keys(PRE).filter(k=>P[id].price>=PRE[k][1]&&P[id].price<=PRE[k][2]),
+  linea:id=>LSLUG[P[id].line]?[LSLUG[P[id].line]]:[],
+  uva:id=>grapesOf(id),
+  tam:id=>[sizeOf(P[id])],
+  flag:id=>[...(P[id].medals?['premiados']:[]),...(P[id].line==='Uvas Orgánicas'?['organico']:[]),...(P[id].out?[]:['disp'])]
+};
+const FACETS=[
+  {k:'mom',t:'Momento',lab:k=>MOM[k],keys:Object.keys(MOM),ser:1},
+  {k:'est',t:'Estilo',lab:k=>EST[k],keys:['1','2','3','4'],scale:1},
+  {k:'mar',t:'Para comer con',lab:k=>MAR[k],keys:Object.keys(MAR)},
+  {k:'precio',t:'Precio',lab:k=>PRE[k][0],keys:Object.keys(PRE)},
+  {k:'linea',t:'Línea',lab:k=>LINES[k],keys:Object.keys(LINES)},
+  {k:'uva',t:'Uva',lab:k=>k,keys:null,more:8},
+  {k:'tam',t:'Tamaño',lab:k=>SIZES[k],keys:Object.keys(SIZES)},
+  {k:'flag',t:'Además',lab:k=>FLAGS[k],keys:Object.keys(FLAGS),toggle:1}
+];
+const ALLUVAS=(()=>{const c={};IDS.forEach(id=>grapesOf(id).forEach(g=>c[g]=(c[g]||0)+1));return Object.keys(c).sort((a,b)=>c[b]-c[a]||a.localeCompare(b,'es'))})();
+FACETS.find(f=>f.k==='uva').keys=ALLUVAS;
+const SORTS={rec:'Recomendados',prem:'Más premiados',asc:'Precio: menor a mayor',desc:'Precio: mayor a menor',est:'De ligero a robusto'};
+
+/* ---------- Estado + URL ---------- */
+const S={tipo:'todo',q:'',max:0,sort:'rec',banner:'',sets:{}};
+FACETS.forEach(f=>S.sets[f.k]=new Set());
+const URLK={mom:'momento',est:'estilo',mar:'maridaje',precio:'rango',linea:'linea',uva:'uva',tam:'tam',flag:'f'};
+(function readURL(){
+  const u=new URLSearchParams(location.search);
+  const t=u.get('tipo');if(t){const m={tintos:'tinto',blancos:'blanco',rosados:'rosado',ensamble:'tinto',estuches:'estuche'};S.tipo=TIPOS.some(x=>x[0]===t)?t:(m[t]||'todo')}
+  FACETS.forEach(f=>{const v=u.get(URLK[f.k]);if(v)v.split(',').forEach(x=>{if(f.keys.includes(x))S.sets[f.k].add(x)})});
+  (u.get('f')||'').split(',').forEach(x=>{
+    if(x==='botellines'){S.sets.tam.add('s375');S.sets.tam.add('s187')}
+    else if(x==='gourmet')S.tipo='gourmet';
+    else if(x==='estuches')S.tipo='estuche';
+    else if(x==='organicos')S.sets.linea.add('uvas-organicas');
+    else if(x==='postre')S.tipo='postre';
+  });
+  const mo=u.get('momento');if(mo){const al={celebrar:'brindis'};if(al[mo])S.sets.mom.add(al[mo]);else if(mo==='mesa')S.sets.mar.add('mex');else if(MAR[mo])S.sets.mar.add(mo)}
+  const pr=+u.get('precio');if(pr>0)S.max=pr;
+  S.q=u.get('q')||'';
+  if(SORTS[u.get('orden')])S.sort=u.get('orden');
+  if(S.sets.linea.size===1&&u.get('linea'))S.banner=[...S.sets.linea][0];
+})();
+function writeURL(){
+  const u=new URLSearchParams();
+  if(S.tipo!=='todo')u.set('tipo',S.tipo);
+  FACETS.forEach(f=>{if(S.sets[f.k].size)u.set(URLK[f.k],[...S.sets[f.k]].join(','))});
+  if(S.max)u.set('precio',S.max);
+  if(S.q)u.set('q',S.q);
+  if(S.sort!=='rec')u.set('orden',S.sort);
+  const qs=u.toString();
+  try{history.replaceState(null,'',location.pathname+(qs?'?'+qs:'')+location.hash)}catch(e){}
+}
+
+/* ---------- Filtrado ---------- */
+function match(id,skip){
+  const p=P[id];
+  if(skip!=='tipo'&&S.tipo!=='todo'&&tipoOf(id)!==S.tipo)return false;
+  if(S.max&&p.price>S.max)return false;
+  if(S.q&&!qHits().set.has(id))return false;
+  for(const f of FACETS){
+    if(f.k===skip)continue;
+    const sel=S.sets[f.k];if(!sel.size)continue;
+    const a=ATT[f.k](id);
+    if(f.k==='flag'){for(const x of sel)if(!a.includes(x))return false}
+    else if(![...sel].some(x=>a.includes(x)))return false;
+  }
+  return true;
+}
+/* Búsqueda: la misma función que el buscador del encabezado (searchIds en cetto-base.js) */
+let _qc={q:null};
+function qHits(){if(_qc.q!==S.q){const ids=S.q?searchIds(S.q):[];_qc={q:S.q,set:new Set(ids),rank:Object.fromEntries(ids.map((id,i)=>[id,i]))}}return _qc}
+const results=()=>IDS.filter(id=>match(id));
+function sorted(list){
+  const by={
+    rec:(a,b)=>S.q?(qHits().rank[a]-qHits().rank[b]):RANK[a]-RANK[b],
+    prem:(a,b)=>(P[b].medals||0)-(P[a].medals||0)||RANK[a]-RANK[b],
+    asc:(a,b)=>P[a].price-P[b].price,
+    desc:(a,b)=>P[b].price-P[a].price,
+    est:(a,b)=>((TX[a]&&TX[a][0])||9)-((TX[b]&&TX[b][0])||9)||RANK[a]-RANK[b]
+  }[S.sort];
+  return list.slice().sort((a,b)=>(P[a].out?1:0)-(P[b].out?1:0)||by(a,b));
+}
+const countFor=(fk,key)=>IDS.filter(id=>match(id,fk)&&(fk==='flag'?ATT.flag(id).includes(key)&&[...S.sets.flag].every(x=>ATT.flag(id).includes(x)):ATT[fk](id).includes(key))).length;
+
+/* ---------- Tarjeta: la misma del inicio (al estilo Taylors): la botella sobre su card, el texto limpio abajo y,
+   al pasar el mouse, la botella crece y aparece "Agregar al carrito" ---------- */
+const RATE=window.RAT||{};
+const rateOf=id=>{if(RATE[id])return RATE[id];let h=0;for(const ch of id)h=(h*31+ch.charCodeAt(0))>>>0;return [Math.round((4.3+(h%7)/10)*10)/10,0]};
+function tcard(id,i){
+  const p=P[id],m=p.medals||0;
+  const aw=m?'<span class="vc-aw" role="img" aria-label="'+m+' reconocimientos" title="'+m+' reconocimientos">'+(m>=80?'<i class="md">'+AW_TROPHY+'</i>':'')+'<i class="md">'+AW_LAUREL+'</i></span>':'';
+  const tag=p.out?'<span class="vc-tag">Agotado</span>':p.cmp?'<span class="vc-tag">Precio de temporada</span>':'';
+  const size=p.ml&&(p.ml!==750||p.c==='gourmet')?' <small'+(p.c==='gourmet'?' class="sz"':'')+'>'+(p.type==='Aceitunas'?p.ml+' g':p.ml>=1000?p.ml/1000+' L':p.ml+' ml')+'</small>':'';
+  const was=p.cmp?'<s>'+money(p.cmp)+'</s> ':'';
+  const price=isWine(id)?'Socios: '+money(memberPrice(p.price))+' <i aria-hidden="true">|</i> '+was+money(p.price):was+money(p.price);
+  const rr=rateOf(id),meta=m?'<span class="vc-rec">'+m+' reconocimientos</span>':'<span class="vc-rate"'+(rr[1]?'':' data-ejemplo')+'><span class="stars" style="--r:'+rr[0]+'" aria-hidden="true"></span><span>('+rr[0].toFixed(1)+')</span><span class="sr">'+rr[0].toFixed(1)+' de 5 estrellas</span></span>';
+  const btn=p.out?'<a class="vc-add" href="'+PAGES.ficha+'?p='+id+'#avisame" aria-label="Agotado: avísame cuando llegue '+p.line+' '+p.name+'"><span>Avísame cuando llegue</span></a>'
+    :'<button class="vc-add" type="button" data-add="'+id+'" aria-label="Agregar '+p.line+' '+p.name+' al carrito"><span>Agregar al carrito</span></button>';
+  return '<article class="vc tc'+(p.out?' out':'')+'" style="--i:'+Math.min(i,12)+'"><a class="vc-a" href="'+PAGES.ficha+'?p='+id+'" draggable="false">'+
+    '<span class="vc-img">'+tag+aw+'<i class="vc-glow" aria-hidden="true"></i><i class="vc-sh" aria-hidden="true"></i><img src="media/bot/'+id+'.png" alt="'+p.line+' '+p.name+'" loading="lazy" decoding="async" draggable="false"></span>'+
+    '<span class="vc-info"><span class="vc-line">'+p.line+'</span><span class="vc-name">'+p.name+size+'</span><span class="vc-price">'+price+'</span>'+meta+'</span></a>'+btn+'</article>';
+}
+/* Piezas editoriales que se intercalan en la rejilla */
+const TILES=[
+  [5,()=>'<button class="tile tq" data-quiz><span class="tq-ph"><img src="media/f-rp-neb-flatlay.jpg" alt="" loading="lazy"></span><span class="bt"><span class="cap">Encuentra tu vino</span><b>Tres preguntas, un minuto.</b><p>Dinos el momento, lo que vas a comer y cómo te gusta. Te sugerimos tres.</p><span class="ul">Empezar</span></span></button>'],
+  [8,()=>'<a class="tile" href="'+PAGES.coleccion+'"><img src="media/cp-vina.jpg" alt="" loading="lazy" style="object-position:42% 60%"><div class="tp"><span class="cap">Colección Premiada</span></div><div class="bt"><b>Los más premiados de la familia.</b><p>Reserva Privada y Don Luis, con la botella en 3D y sus medallas.</p><span class="ul">Ver la colección</span></div></a>'],
+  [12,()=>'<a class="tile" href="'+PAGES.home+'#caja"><img src="'+F('DSC9652.jpg',800)+'" alt="" loading="lazy"><div class="tp"><span class="cap">Arma tu caja</span></div><div class="bt"><b>Seis botellas, 10% menos.</b><p>Mezcla tintos, blancos y rosados. El descuento se aplica solo.</p><span class="ul">Armar mi caja</span></div></a>'],
+  [21,()=>'<a class="tile seasons" href="?linea=estaciones"><div class="tp"><span class="cap">Línea Estaciones</span><b style="margin-top:10px">Un vino para cada temporada.</b></div><div class="rows">'+['prim','ver','oto','inv'].map((id,i)=>'<span class="s'+(i+1)+'">'+P[id].name+' <small>'+money(P[id].price)+'</small></span>').join('')+'</div></a>']
+];
+
+/* Gourmet: el aceite en la cocina (foto del sitio actual), en un lugar distinto de la lista cada vez */
+TILES.splice(1+Math.floor(Math.random()*(TILES.length-1)),0,[0,()=>'<a class="tile tq" href="'+PAGES.ficha+'?p=ac750"><span class="tq-ph"><img src="'+F('Mesa_de_trabajo_38-100.jpg',900)+'" alt="" loading="lazy" style="object-position:50% 30%"></span><span class="bt"><span class="cap">Gourmet L.A. Cetto</span><b>Más allá de la copa.</b><p>Aceite de oliva extra virgen, de aceitunas seleccionadas y notas herbales. Plata en Virtus 2026.</p><span class="ul">Conoce el aceite</span></span></a>']);
+/* dónde caen las piezas: fila y columna, con dos o tres filas de vinos entre una y otra y nunca en la misma columna que la anterior */
+const TILEPOS=(()=>{const out=[];let row=1+Math.floor(Math.random()*2);for(let t=0;t<TILES.length;t++){let c;do{c=Math.floor(Math.random()*4)}while(out.length&&c===out[out.length-1][1]);out.push([row,c]);row+=3+Math.floor(Math.random()*2)}return out})();
+/* ---------- Render ---------- */
+const $=id=>document.getElementById(id);
+function renderTabs(){
+  $('ttabs').innerHTML=TIPOS.map(([k,l])=>{const n=IDS.filter(id=>(k==='todo'||tipoOf(id)===k)&&match(id,'tipo')).length;
+    return '<button type="button" data-tipo="'+k+'" aria-pressed="'+(S.tipo===k)+'">'+l+'<span class="sr">, '+n+(n===1?' producto':' productos')+'</span><sup aria-hidden="true">'+n+'</sup></button>'}).join('');
+}
+function renderFacets(){
+  const ae=document.activeElement,inF=ae&&ae.closest&&ae.closest('#fgroups');
+  const fkey=inF?(ae.dataset.f?'[data-f="'+ae.dataset.f+'"][data-v="'+ae.dataset.v+'"]':ae.dataset.more?'[data-more="'+ae.dataset.more+'"]':ae.tagName==='SUMMARY'?'.fg[data-k="'+ae.parentNode.dataset.k+'"] summary':null):null;
+  const open=new Set([...document.querySelectorAll('.fg[open]')].map(d=>d.dataset.k));
+  const first=!$('fgroups').children.length;
+  $('fgroups').innerHTML=FACETS.map(f=>{
+    const sel=S.sets[f.k],isOpen=first?false:open.has(f.k);
+    let body;
+    if(f.scale){
+      /* estilo: un punto que crece de ligero a robusto, en lugar de barras */
+      body=f.keys.map(k=>{const n=countFor('est',k);return '<button class="fo est" data-f="est" data-v="'+k+'" aria-pressed="'+sel.has(k)+'" style="--d:'+(3+2*k)+'px"'+(n||sel.has(k)?'':' disabled')+'><span class="dot" aria-hidden="true"></span><span>'+EST[k]+'</span><span class="n">'+n+'</span></button>'}).join('')+'<p class="est-l">Del más ligero al más intenso</p>';
+    }else if(f.toggle){
+      body=f.keys.map(k=>'<button class="toggle" data-f="flag" data-v="'+k+'" aria-pressed="'+sel.has(k)+'">'+FLAGS[k]+'<span class="sw"></span></button>').join('');
+    }else{
+      const keys=['tam','linea','uva'].includes(f.k)?f.keys.filter(k=>countFor(f.k,k)||sel.has(k)):f.keys;
+      const showAll=f.more&&($('fgroups').dataset['all'+f.k]==='1');
+      const vis=f.more&&!showAll?keys.slice(0,f.more).concat(keys.slice(f.more).filter(k=>sel.has(k))):keys;
+      body=vis.map(k=>{const n=countFor(f.k,k);return '<button class="fo'+(f.ser?' ser':'')+'" data-f="'+f.k+'" data-v="'+k+'" aria-pressed="'+sel.has(k)+'"'+(n||sel.has(k)?'':' disabled')+'><span class="mk"></span><span>'+f.lab(k)+'</span><span class="n">'+n+'</span></button>'}).join('')+
+        (f.more&&keys.length>f.more?'<button class="more" data-more="'+f.k+'">'+(showAll?'Ver menos':'Ver las '+keys.length)+'</button>':'');
+    }
+    return '<details class="fg" data-k="'+f.k+'"'+(isOpen?' open':'')+'><summary>'+f.t+(sel.size?'<span class="sel"><span class="sr">, </span>'+sel.size+'<span class="sr"> elegidos</span></span>':'')+'<i aria-hidden="true"></i></summary><div class="opts">'+body+'</div></details>';
+  }).join('');
+  if(fkey){const el=$('fgroups').querySelector(fkey);if(el)el.focus({preventScroll:true})}
+  if(!first&&!reduceMotion)$('fgroups').querySelectorAll('.fg[open] .opts').forEach(o=>o.animate([{opacity:.55},{opacity:1}],{duration:380,easing:'ease-out'}));
+}
+function chipsList(){
+  const c=[];
+  FACETS.forEach(f=>S.sets[f.k].forEach(v=>c.push([f.k,v,f.lab(v)])));
+  if(S.max)c.push(['max','','Hasta '+money(S.max)]);
+  if(S.q)c.push(['q','','“'+S.q+'”']);
+  return c;
+}
+function renderChips(){
+  const c=chipsList();
+  $('chips').innerHTML=c.map(([k,v,l])=>'<button class="chip" data-rm="'+k+'" data-v="'+v+'" aria-label="Quitar '+l+'">'+l+xIcon+'</button>').join('')+(c.length>1?'<button class="ul" id="clearAll">Limpiar todo</button>':'');
+  const n=c.length;$('fOpenT').textContent=n?'Filtrar ('+n+')':'Filtrar';
+}
+function renderGrid(){
+  const list=sorted(results());
+  const n=list.length;
+  $('tCount').innerHTML='<b>'+n+'</b> '+(n===1?'producto':'productos');
+  $('fApply').textContent=n?'Ver '+n+' '+(n===1?'producto':'productos'):'Sin resultados';
+  const showTiles=S.sort==='rec'&&!chipsList().length&&S.tipo!=='gourmet'&&S.tipo!=='estuche';
+  let html='',ti=0,slot=0;
+  const cols=Math.max(1,getComputedStyle($('tgrid')).gridTemplateColumns.split(' ').length),at=(()=>{let pc=-1;return TILEPOS.map(([r,c])=>{let k=c%cols;if(k===pc&&cols>1)k=(k+1)%cols;pc=k;return r*cols+k})})();
+  const putTiles=()=>{while(showTiles&&TILES[ti]&&at[ti]===slot){html+=TILES[ti][1]();ti++;slot++}};
+  list.forEach((id,i)=>{putTiles();html+=tcard(id,i);slot++});putTiles();
+  $('tgrid').innerHTML=html;
+  $('tempty').hidden=!!n;$('tgrid').hidden=!n;
+  if(!n)renderEmpty();
+}
+function renderEmpty(){
+  const c=chipsList();
+  const sug=c.map(([k,v,l])=>{const bak=snapshot();removeChip(k,v);const m=results().length;restore(bak);return [k,v,l,m]}).filter(x=>x[3]>0).sort((a,b)=>b[3]-a[3]).slice(0,3);
+  const onlyQ=S.q&&c.length===1;
+  const esc=t=>String(t).replace(/[<>&"]/g,'');
+  const ideas=[['carne','Para carne'],['mariscos','Para mariscos'],['mole','Con mole'],['nebbiolo','Nebbiolo'],['rosado','Rosados'],['botellin','Botellines'],['regalo','Para regalar']];
+  $('tempty').innerHTML=(onlyQ?'<h2>No encontramos «'+esc(S.q)+'».</h2><p>Prueba con una uva, un tipo de vino o lo que vas a comer. También puedes filtrar por momento o estilo.</p>':'<h2>Ningún vino cumple todo eso.</h2><p>Prueba quitando un filtro. Estos son los que más abren la búsqueda:</p>')+
+    '<div class="sug">'+(onlyQ?'':sug.map(([k,v,l,m])=>'<button class="btn" data-rm="'+k+'" data-v="'+v+'">Quitar «'+l+'» · '+m+(m===1?' vino':' vinos')+'</button>').join(''))+'<button class="btn'+(onlyQ?' btn-ink':' btn-ink')+'" data-clear>Ver todo</button>'+(onlyQ?'<button class="btn" data-quiz>Encuentra tu vino</button>':'')+'</div>'+
+    (S.q?'<p class="alts">Búsquedas que sí funcionan: '+ideas.filter(([q])=>searchIds(q).length).map(([q,l])=>'<a href="'+PAGES.tienda+'?q='+encodeURIComponent(q)+'">'+l+'</a>').join(' · ')+'</p>':'');
+}
+const snapshot=()=>({tipo:S.tipo,q:S.q,max:S.max,sets:Object.fromEntries(Object.entries(S.sets).map(([k,s])=>[k,new Set(s)]))});
+const restore=b=>{S.tipo=b.tipo;S.q=b.q;S.max=b.max;S.sets=b.sets};
+function removeChip(k,v){if(k==='max')S.max=0;else if(k==='q')S.q='';else S.sets[k].delete(v)}
+
+/* Encabezado: genérico, de línea o Estaciones */
+function renderIntro(){
+  const crumbs=['<a href="'+PAGES.home+'">Inicio</a>'];
+  const tl=TIPOS.find(t=>t[0]===S.tipo)[1];
+  if(S.banner){crumbs.push('<a href="'+PAGES.tienda+'">Vinos</a>','<span aria-current="page">'+LINES[S.banner]+'</span>')}
+  else if(S.tipo!=='todo'){crumbs.push('<a href="'+PAGES.tienda+'" data-tipo="todo">Vinos</a>','<span aria-current="page">'+tl+'</span>')}
+  else crumbs.push('<span aria-current="page">Vinos</span>');
+  $('crumbs').innerHTML=crumbs.join('<span aria-hidden="true">/</span>');
+  stopSeasons();
+  /* al llegar por una colección: banner a todo lo ancho con su foto (como Taylors); la ruta va dentro del banner */
+  $('crumbs').parentElement.hidden=!!S.banner;$('intro').classList.toggle('full',!!S.banner);
+  if(S.banner)return renderHero(S.banner,crumbs);
+  const n=IDS.filter(id=>S.tipo==='todo'||tipoOf(id)===S.tipo).length;
+  $('intro').innerHTML='<div class="t-intro"><div><h1 class="t-h1" id="tTitle">'+(S.tipo==='todo'?'Vinos':tl)+'</h1>'+(TIPOTXT[S.tipo](n)?'<p class="p">'+TIPOTXT[S.tipo](n)+'</p>':'')+'</div>'+
+    '<button class="qcard" data-quiz><b>¿No sabes cuál elegir?</b><small>Tres preguntas y te sugerimos tres vinos.</small><span class="qc-go">Encuentra tu vino<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></button><button type="button" class="ul qc-eno" onclick="openEno()">o pregúntale al enólogo digital</button></div>';
+  document.title='L.A. Cetto · '+(S.tipo==='todo'?'Vinos':tl);
+}
+const LB={'reserva-privada':['nebrp','cabrp','charp'],'don-luis':['terra','conc','viog'],'boutique':['sang','bsyr','bpin'],'peninsula':['plyra','pesp'],'sierra-blanca':['sbsb','sbtemp','sbzin'],'uvas-organicas':['nebor','ormal','orens'],'la-cetto':['pslac','cablac','chenin'],'champbrule':['champ']};
+function lineFacts(slug){
+  const ids=IDS.filter(id=>P[id].line===LINES[slug]&&!P[id].nb);
+  const pr=ids.map(id=>P[id].price),med=ids.reduce((a,id)=>a+(P[id].medals||0),0);
+  const cols=[...new Set(ids.map(id=>({tinto:'tintos',blanco:'blancos',rosado:'rosados',espumoso:'espumoso',postre:'de postre'})[P[id].c]).filter(Boolean))];
+  return '<div class="lb-facts"><span><b>'+ids.length+'</b> '+(ids.length===1?'vino':'vinos')+'</span><span>Desde <b>'+money(Math.min(...pr))+'</b></span><span>'+cols.join(', ')+'</span>'+(med?'<span><b>'+med+'</b> reconocimientos</span>':'')+'</div>';
+}
+/* Banner de colección: foto de la línea, nombre al centro y tres datos */
+const LHERO={'reserva-privada':['media/f-rp-petite-nogada.jpg','50% 50%'],'don-luis':['media/f-dl-merlot-nogada.jpg','50% 45%'],'estaciones':['media/f-otono-pizza.jpg','50% 62%'],
+  'champbrule':['media/m-brindis.jpg','50% 40%'],'uvas-organicas':['media/hist-vinedo.jpg','50% 55%'],'sierra-blanca':['media/m-tarde-2.jpg','50% 50%'],
+  'boutique':['media/v-mesa.jpg','50% 50%'],'la-cetto':['media/f-amigos-brindis.jpg','50% 50%'],'peninsula':['media/f-brindis-mar.jpg','50% 55%']};
+function renderHero(slug,crumbs){
+  const h=LHERO[slug]||['media/cp-vina.jpg','50% 50%'];
+  const ids=IDS.filter(id=>P[id].line===LINES[slug]&&!P[id].nb),pr=ids.map(id=>P[id].price),med=ids.reduce((a,id)=>a+(P[id].medals||0),0);
+  const facts=[ids.length+(ids.length===1?' vino':' vinos'),pr.length?'Desde '+money(Math.min(...pr)):'',med?med+' reconocimientos':''].filter(Boolean);
+  $('intro').innerHTML='<div class="lhero"><img src="'+h[0]+'" alt="" style="object-position:'+h[1]+'"><nav class="lh-crumbs" aria-label="Ruta">'+crumbs.join('<span aria-hidden="true">/</span>')+'</nav>'+
+    '<div class="lh-t"><span class="lh-k">Colección</span><h1 class="lh-h1" id="tTitle">'+nbs(LINES[slug])+'</h1><p class="lh-f">'+facts.map(f=>'<span>'+f+'</span>').join('<i aria-hidden="true">·</i>')+'</p></div></div>';
+  document.title='L.A. Cetto · '+LINES[slug];
+}
+function renderLine(slug){
+  const ids=LB[slug]||[],lead=P[ids[0]];
+  const pos=ids.length===1?['c']:ids.length===2?['l','c']:['c','l','r'];
+  const lq=ids.map(id=>P[id]).find(p=>p.q);
+  $('intro').innerHTML='<div class="lb"><div class="lb-t"><div><h1 class="t-h1" id="tTitle" style="margin-top:6px">'+nbs(LINES[slug])+'</h1>'+
+    (lq?'<blockquote>“'+lq.q+'”<cite>'+nbs(lq.name+' '+lq.line)+'</cite></blockquote>':'')+'</div>'+lineFacts(slug)+'</div>'+
+    '<div class="fan">'+ids.slice(0,3).map((id,i)=>'<a class="b '+(ids.length===2?['l','c'][i]:pos[i])+'" href="'+PAGES.ficha+'?p='+id+'" aria-label="Ver '+P[id].name+'"><img src="'+F(P[id].img,900)+'" alt="'+P[id].line+' '+P[id].name+'"></a>').join('')+'<span class="lbl cap" style="color:var(--ink2)">'+ids.map(id=>P[id].name).join(' · ')+'</span></div></div>';
+  if(ids.length===2){const b=$('intro').querySelectorAll('.fan .b');b[0].className='b l';b[0].style.transform='translateX(-88%) scale(.9)';b[1].className='b c';b[1].style.transform='translateX(-12%)'}
+  document.title='L.A. Cetto · '+LINES[slug];
+}
+/* Estaciones: la botella gira y la etiqueta cambia con cada temporada */
+const SEA=['prim','ver','oto','inv'],SEAC=['#EBD4CC','#EAE0B9','#DBA683','#C8CCD2'];
+let sI=0,sTimer=0,sRaf=0,sBusy=false,sTx=0,sTy=0,sAuto=!reduceMotion,sHold=()=>false;
+function renderSeasons(){
+  SEA.forEach(id=>{const im=new Image();im.src=F(P[id].img,900)});
+  $('intro').innerHTML='<div class="lb"><div class="lb-t"><div><h1 class="t-h1" id="tTitle" style="margin-top:6px">Estaciones</h1>'+
+    '<div class="es-name" id="esName"></div><blockquote id="esQ" style="margin-top:18px"></blockquote>'+
+    '<div class="es-tabs" role="group" aria-label="Temporada">'+SEA.map((id,i)=>'<button type="button" data-sea="'+i+'" aria-pressed="false"><i style="background:'+SEAC[i]+'" aria-hidden="true"></i>'+P[id].name+'</button>').join('')+'</div>'+
+    (reduceMotion?'':'<button class="es-pp" id="esPP" type="button" aria-pressed="false"><svg class="i-pause" width="10" height="10" viewBox="0 0 10 10" aria-hidden="true"><path d="M2 1h2v8H2zM6 1h2v8H6z" fill="currentColor"/></svg><svg class="i-play" width="10" height="10" viewBox="0 0 10 10" aria-hidden="true"><path d="M2 1l7 4-7 4z" fill="currentColor"/></svg>Pausar la rotación</button>')+'</div>'+
+    '<div class="es-buy"><span class="price" id="esP"></span><button class="btn btn-ink" id="esAdd">Agregar</button><a class="ul" id="esLink" href="#">Ver ficha</a></div></div>'+
+    '<div class="es-stage" id="esStage"><div class="es-floor" id="esFloor"></div><div class="es-rot" id="esRot"><div class="bw"><img class="cu" id="esCu" alt=""><img class="nx" id="esNx" alt=""></div></div><span class="lbl cap" style="color:rgba(43,44,45,.7)" id="esLbl"></span></div></div>';
+  setSeason(0,true);
+  const pp=$('esPP'),setAuto=v=>{sAuto=v;if(pp)pp.setAttribute('aria-pressed',!v)};
+  $('intro').querySelectorAll('[data-sea]').forEach(b=>b.onclick=()=>{setAuto(false);setSeason(+b.dataset.sea)});
+  if(pp)pp.onclick=()=>setAuto(!sAuto);
+  $('esAdd').onclick=()=>add(SEA[sI]);
+  const st=$('esStage');
+  st.addEventListener('pointermove',e=>{const r=st.getBoundingClientRect();sTx=((e.clientX-r.left)/r.width-.5)*2;sTy=((e.clientY-r.top)/r.height-.5)*2});
+  st.addEventListener('pointerleave',()=>{sTx=0;sTy=0});
+  st.addEventListener('click',()=>{setAuto(false);setSeason((sI+1)%4)});
+  /* pausa mientras el puntero o el foco están en la línea */
+  let sHover=false,sFocus=false;const lb=$('intro').querySelector('.lb');
+  lb.addEventListener('pointerenter',()=>sHover=true);lb.addEventListener('pointerleave',()=>sHover=false);
+  lb.addEventListener('focusin',()=>sFocus=true);lb.addEventListener('focusout',e=>{if(!lb.contains(e.relatedTarget))sFocus=false});
+  sHold=()=>sHover||sFocus;
+  if(!reduceMotion){let t0=performance.now(),ry=0,rx=0;const loop=t=>{const idle=Math.sin((t-t0)/1700)*7;const tr=sTx*14+idle,tx=-sTy*5;ry+=(tr-ry)*.07;rx+=(tx-rx)*.07;const el=$('esRot');if(!el)return;el.style.transform='rotateY('+ry.toFixed(2)+'deg) rotateX('+rx.toFixed(2)+'deg)';$('esFloor').style.setProperty('--fx',(ry*.9).toFixed(1)+'px');sRaf=requestAnimationFrame(loop)};sRaf=requestAnimationFrame(loop)}
+  if(!reduceMotion)sTimer=setInterval(()=>{if(sAuto&&!sHold()&&!document.hidden&&inView(st))setSeason((sI+1)%4)},4800);
+}
+const inView=el=>{const r=el.getBoundingClientRect();return r.bottom>0&&r.top<innerHeight};
+function stopSeasons(){clearInterval(sTimer);cancelAnimationFrame(sRaf)}
+function setSeason(i,first){
+  if(sBusy&&!first)return;
+  const p=P[SEA[i]],prev=sI;sI=i;
+  $('esStage').style.backgroundColor=SEAC[i];
+  $('esName').innerHTML=p.name+' <small>'+p.sub+'</small>';
+  $('esQ').textContent='“'+p.q+'”';
+  $('esP').textContent=money(p.price);
+  $('esLink').href=PAGES.ficha+'?p='+SEA[i];
+  $('esLbl').textContent='Estaciones '+p.name+' · 750 ml';
+  $('intro').querySelectorAll('[data-sea]').forEach((b,k)=>b.setAttribute('aria-pressed',k===i));
+  const cu=$('esCu'),nx=$('esNx'),rot=$('esRot');
+  cu.alt='Estaciones '+p.name;
+  if(first||reduceMotion){cu.src=F(p.img,900);return}
+  sBusy=true;nx.src=F(p.img,900);
+  const go=()=>{rot.classList.remove('wipe');void rot.offsetWidth;rot.classList.add('wipe');rot.querySelector('.bw').style.setProperty('--sq','.93');
+    setTimeout(()=>{rot.querySelector('.bw').style.setProperty('--sq','1')},420);
+    setTimeout(()=>{cu.src=nx.src;rot.classList.remove('wipe');sBusy=false},920)};
+  nx.decode?nx.decode().then(go,go):go();
+}
+
+/* Caja de 6 en la barra */
+function renderBox(){
+  const b=bottles();
+  $('tbBoxT').innerHTML=b>=6?'<span class="ok">Caja de 6: 10% aplicado</span>':b?'Tu caja: '+b+' de 6 para el 10%':'Arma una caja de 6 y ahorra 10%';
+}
+
+function renderAll(scrollTop){
+  renderTabs();renderFacets();renderChips();renderGrid();writeURL();
+  if(scrollTop){const y=$('tbody').getBoundingClientRect().top+scrollY-(innerWidth<=640?62:72)-$('tbar').offsetHeight;if(scrollY>y)scrollTo({top:y,behavior:reduceMotion?'auto':'smooth'})}
+}
+
+/* filtros: se abre un grupo a la vez y se despliega/recoge suave (alto y opacidad), para no ver todas las opciones de golpe */
+const FG_E='cubic-bezier(.4,0,.2,1)',FG_D=460;
+function fgSet(d,open){const o=d.querySelector('.opts');if(!o)return;if(d._an){d._an.cancel();d._an=null}
+  if(reduceMotion){d.open=open;return}
+  if(open){d.open=true;const h=o.scrollHeight;d._an=o.animate([{height:'0px',opacity:0,offset:0},{height:(h*.6)+'px',opacity:.35,offset:.55},{height:h+'px',opacity:1,offset:1}],{duration:FG_D,easing:FG_E});d._an.onfinish=()=>d._an=null}
+  else{const h=o.offsetHeight;d._an=o.animate([{height:h+'px',opacity:1,offset:0},{height:(h*.4)+'px',opacity:0,offset:.45},{height:'0px',opacity:0,offset:1}],{duration:FG_D,easing:FG_E,fill:'forwards'});d._an.onfinish=()=>{d.open=false;const a=d._an;d._an=null;requestAnimationFrame(()=>a&&a.cancel())}}}
+$('fgroups').addEventListener('click',e=>{const sm=e.target.closest('summary');if(!sm)return;e.preventDefault();const d=sm.parentNode,open=!d.open||!!(d._an&&d._an.effect&&d._an.effect.getKeyframes()[0].height!=='0px');
+  fgSet(d,open);if(open)$('fgroups').querySelectorAll('.fg[open]').forEach(x=>{if(x!==d)fgSet(x,false)})});
+/* ---------- Eventos ---------- */
+document.addEventListener('click',e=>{
+  const t=e.target.closest('[data-tipo]');
+  if(t){e.preventDefault();S.tipo=t.dataset.tipo;if(S.banner){S.banner='';S.sets.linea.clear()}renderIntro();renderAll(true);return}
+  const f=e.target.closest('[data-f]');
+  if(f&&!f.disabled){const s=S.sets[f.dataset.f],v=f.dataset.v;s.has(v)?s.delete(v):s.add(v);if(f.dataset.f==='linea'&&S.banner&&!s.has(S.banner)){S.banner='';renderIntro()}renderAll(innerWidth>900);return}
+  const m=e.target.closest('[data-more]');
+  if(m){const k='all'+m.dataset.more;$('fgroups').dataset[k]=$('fgroups').dataset[k]==='1'?'0':'1';renderFacets();return}
+  const r=e.target.closest('[data-rm]');
+  if(r){const kb=r.matches(':focus-visible');removeChip(r.dataset.rm,r.dataset.v);if(r.dataset.rm==='linea'&&S.banner===r.dataset.v){S.banner='';renderIntro()}renderAll(true);
+    if(kb){const nx=document.querySelector('#chips .chip')||document.querySelector('#tgrid .pc a.cover')||$('tCount');if(nx===$('tCount'))nx.tabIndex=-1;nx.focus({preventScroll:true})}return}
+  if(e.target.closest('#clearAll,[data-clear]')){clearAll();return}
+  if(e.target.closest('[data-quiz]')){e.preventDefault();openQuiz();return}
+});
+function clearAll(){FACETS.forEach(f=>S.sets[f.k].clear());S.max=0;S.q='';if(S.banner){S.banner='';renderIntro()}renderAll(true)}
+$('sortSel').innerHTML=Object.entries(SORTS).map(([k,l])=>'<option value="'+k+'"'+(S.sort===k?' selected':'')+'>'+l+'</option>').join('');
+$('sortSel').onchange=e=>{S.sort=e.target.value;renderGrid();writeURL()};
+$('fToggle').onclick=()=>{const b=$('tbody'),off=b.classList.toggle('nof');$('fToggle').setAttribute('aria-expanded',!off);$('fToggle').querySelector('span').textContent=off?'Mostrar filtros':'Ocultar filtros';syncFacets()};
+/* Filtros cerrados (hoja en celular o columna oculta en escritorio) fuera del orden de tabulación */
+const mqM=matchMedia('(max-width:900px)');
+function syncFacets(){
+  const f=$('facets'),m=mqM.matches;
+  f.inert=m?!f.classList.contains('on'):$('tbody').classList.contains('nof');
+  if(m){f.setAttribute('role','dialog');f.setAttribute('aria-modal','true');f.setAttribute('aria-labelledby','fsT');f.removeAttribute('aria-label')}
+  else{f.removeAttribute('role');f.removeAttribute('aria-modal');f.removeAttribute('aria-labelledby');f.setAttribute('aria-label','Filtros')}
+}
+/* Tab no sale de un diálogo abierto */
+function trapTab(box,e){
+  if(e.key!=='Tab')return;
+  const els=[...box.querySelectorAll('a[href],button:not([disabled]),input:not([disabled]),select,textarea,summary,[tabindex]:not([tabindex="-1"])')].filter(el=>el.getClientRects().length&&getComputedStyle(el).visibility!=='hidden');
+  if(!els.length)return;const ae=document.activeElement,i=els.indexOf(ae),out=!box.contains(ae);
+  if(e.shiftKey&&(i===0||out)){e.preventDefault();els[els.length-1].focus()}
+  else if(!e.shiftKey&&(i===els.length-1||out)){e.preventDefault();els[0].focus()}
+}
+const sheet=(on,quiet)=>{$('facets').classList.toggle('on',on);$('fscrim').classList.toggle('on',on);$('fOpen').setAttribute('aria-expanded',on);document.body.style.overflow=on?'hidden':'';syncFacets();
+  if(on)setTimeout(()=>$('fClose').focus(),60);else if(!quiet)$('fOpen').focus()};
+$('facets').addEventListener('keydown',e=>{if(mqM.matches&&$('facets').classList.contains('on'))trapTab($('facets'),e)});
+mqM.addEventListener('change',()=>{if(!mqM.matches&&$('facets').classList.contains('on'))sheet(false,true);syncFacets()});
+$('fOpen').onclick=()=>sheet(true);
+$('fClose').onclick=$('fApply').onclick=$('fscrim').onclick=()=>{sheet(false);renderAll(true)};
+$('fClear').onclick=()=>clearAll();
+$('tbBox').onclick=()=>openDrawer('cart');
+document.addEventListener('keydown',e=>{if(e.key==='Escape'){if($('quiz').classList.contains('on'))closeQuiz();else if($('facets').classList.contains('on')){sheet(false);renderAll(false)}}});
+
+/* ---------- Encuentra tu vino ---------- */
+const QA={};let qStep=0,qLast;
+const qMarOpts={...MAR,nada:'Solo la copa'};delete qMarOpts.asia;
+/* ---- Escena del buscador: siempre la misma toma. Fondo = foto del contexto desenfocada; botella real fija en el mismo
+   lugar y del mismo tamaño. Al pasar por cada opción cambian el fondo y la botella con un fundido, la silueta no se mueve ---- */
+const QSC={
+  mom:{cena:['media/m-cena-3.jpg','50% 40%','nebrp'],diario:['media/f-picnic.jpg','50% 50%','pslac'],tarde:['media/f-amigos-brindis.jpg','50% 45%','oto'],asada:['media/m-mesa.jpg','50% 60%','cabrp'],
+       pareja:['media/v-mesa.jpg','50% 50%','dlmer'],brindis:['media/f-brindis-blanco.jpg','50% 50%','champ'],regalo:['media/f-rp-neb-flatlay.jpg','50% 50%','terra']},
+  /* platillos, siguiendo "Una cena especial" */
+  mar:{carne:['media/f-dl-terra-plato.jpg','45% 70%','terra'],aves:['media/f-rp-cab-mesa.jpg','30% 60%','charp'],mar:['media/f-brindis-mar.jpg','50% 50%','bbla'],pasta:['media/f-otono-pizza.jpg','45% 70%','dlmer'],
+       queso:['media/f-rp-petite-flatlay.jpg','70% 50%','sang'],mex:['media/f-rp-petite-nogada.jpg','55% 50%','cabrp'],postre:['media/m-cena-3.jpg','50% 70%','conc'],nada:['media/v-copa.jpg','50% 50%','nebrp']},
+  /* estilo: de claro a oscuro según la intensidad */
+  est:{'1':['media/f-brindis-blanco.jpg','50% 40%','oto'],'2':['media/f-brindis-rosado.jpg','50% 50%','dlmer'],'3':['media/f-rp-cab-mesa.jpg','40% 50%','charp'],'4':['media/rg-cava.jpg','50% 50%','nebrp']}};
+const qOk=(id,a,b,c)=>!!P[id]&&!P[id].out&&isWine(id)&&(!a||ATT.mom(id).includes(a))&&(!b||b==='nada'||marOf(id).includes(b))&&(!c||c==='0'||String(TX[id]&&TX[id][0])===c);
+/* el vino que saldría primero con lo elegido hasta ahora */
+const qPick=(mom,mar,est)=>IDS.find(id=>qOk(id,mom,mar,est))||IDS.find(id=>qOk(id,mom,mar))||IDS.find(id=>qOk(id,mom))||IDS.find(id=>qOk(id));
+/* botella de cada opción: la de la escena si va con lo elegido; si no, la que se recomendaría */
+const qMarBot=v=>{const c=QSC.mar[v][2];return (QA.mom==='cena'||qOk(c,QA.mom,v))?c:(IDS.find(id=>qOk(id,QA.mom,v))||c)};
+const qEstBot=v=>IDS.find(id=>qOk(id,QA.mom,QA.mar,v))||QSC.est[v][2];
+/* Fondos generados con IA (sin botella, ver prompts-buscador-ia.md): cuando estén en media/q/, cambia QAI a true.
+   Se usan tal cual (ya vienen desenfocados) y la botella real se sigue poniendo encima */
+const QAI=false;
+const QAIN={mom:{cena:'cena',diario:'diario',tarde:'amigos',asada:'asada',pareja:'pareja',brindis:'celebrar',regalo:'regalo'},mar:{carne:'carne',aves:'aves',mar:'mar',pasta:'pasta',queso:'queso',mex:'mex',postre:'postre',nada:'nada'},est:{'1':'1','2':'2','3':'3','4':'4'}};
+if(QAI)Object.keys(QSC).forEach(g=>Object.keys(QSC[g]).forEach(k=>{QSC[g][k][0]='media/q/bg-'+g+'-'+QAIN[g][k]+'.jpg';QSC[g][k][1]='50% 50%'}));
+if(QAI)document.addEventListener('DOMContentLoaded',()=>{const ph=document.getElementById('qzPh');if(ph)ph.classList.add('ai')});
+let qBgOn=0,qBtOn=0,qBg='',qBt='',qTk=0;
+function qzScene(bg,pos,bot,cap){
+  const tk=++qTk,ph=$('qzPh'),L=ph.querySelectorAll('.qz-bg i'),B=ph.querySelectorAll('.qz-bt img');
+  if(cap!=null)$('qzCap').textContent=cap;
+  if(bg&&bg!==qBg){qBg=bg;const pre=new Image();pre.onload=pre.onerror=()=>{if(tk!==qTk&&qBg!==bg)return;const nx=L[1-qBgOn];nx.style.backgroundImage='url("'+bg+'")';nx.style.backgroundPosition=pos||'50% 50%';
+    requestAnimationFrame(()=>{nx.classList.add('on');L[qBgOn].classList.remove('on');qBgOn=1-qBgOn})};pre.src=bg}
+  if(bot&&bot!==qBt){qBt=bot;const src='media/bot/'+bot+'.png',pre=new Image();pre.onload=pre.onerror=()=>{if(qBt!==bot)return;const nx=B[1-qBtOn];nx.src=src;nx.alt=P[bot].line+' '+P[bot].name;
+    requestAnimationFrame(()=>{nx.classList.add('on');B[qBtOn].classList.remove('on');qBtOn=1-qBtOn})};pre.src=src}}
+const qName=id=>P[id].name+' · '+P[id].line;
+const qMarLab=v=>v==='nada'?'Solo la copa':'Con '+qMarOpts[v].charAt(0).toLowerCase()+qMarOpts[v].slice(1);
+const qDefault=()=>{
+  if(qStep===0){const c=QSC.mom.cena;qzScene(c[0],c[1],c[2],'Elige un momento')}
+  else if(qStep===1){const c=QSC.mom[QA.mom];qzScene(c[0],c[1],c[2],MOM[QA.mom]+' · '+qName(c[2]))}
+  else if(qStep===2){const c=QA.mar&&QSC.mar[QA.mar]?QSC.mar[QA.mar]:QSC.mom[QA.mom],b=QA.mar?qMarBot(QA.mar):c[2];qzScene(c[0],c[1],b,(QA.mar?qMarLab(QA.mar):MOM[QA.mom])+' · '+qName(b))}};
+let qHov=0;
+function qHover(b){clearTimeout(qHov);qHov=setTimeout(()=>{const k=b.dataset.qa,v=b.dataset.v;
+  if(k==='mom'){const c=QSC.mom[v];qzScene(c[0],c[1],c[2],MOM[v]+' · '+qName(c[2]))}
+  else if(k==='mar'){const c=QSC.mar[v],id=qMarBot(v);qzScene(c[0],c[1],id,qMarLab(v)+' · '+qName(id))}
+  else if(k==='est'&&v!=='0'){const c=QSC.est[v],id=qEstBot(v);qzScene(c[0],c[1],id,EST[v]+' · '+qName(id))}},70)}
+$('qzBody').addEventListener('pointerover',e=>{const b=e.target.closest('[data-qa]');if(b)qHover(b)});
+$('qzBody').addEventListener('focusin',e=>{const b=e.target.closest('[data-qa]');if(b)qHover(b)});
+$('qzBody').addEventListener('pointerleave',()=>{clearTimeout(qHov);qHov=setTimeout(qDefault,260)});
+function openQuiz(){qLast=document.activeElement;qStep=0;Object.keys(QA).forEach(k=>delete QA[k]);$('quiz').inert=false;$('quiz').classList.add('on');$('quiz').setAttribute('aria-hidden','false');document.body.style.overflow='hidden';renderQuiz()}
+function closeQuiz(){$('quiz').classList.remove('on');$('quiz').setAttribute('aria-hidden','true');$('quiz').inert=true;document.body.style.overflow='';if(location.hash==='#encuentra')try{history.replaceState(null,'',location.pathname+location.search)}catch(e){}if(qLast)qLast.focus()}
+$('qzClose').onclick=closeQuiz;
+$('quiz').addEventListener('click',e=>{if(e.target.id==='quiz')closeQuiz()});
+$('quiz').addEventListener('keydown',e=>trapTab($('quiz').querySelector('.qz'),e));
+function renderQuiz(){
+  [...$('qzSteps').children].forEach((s,i)=>s.classList.toggle('on',i<=qStep));
+  const back=qStep>0&&qStep<3?'<button class="qz-back" data-qback>← Atrás</button>':'';
+  const arr='<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M5 12h14M13 6l6 6-6 6"/></svg>';
+  let h='';
+  if(qStep===0){
+    qDefault();[...Object.values(QSC.mom),...Object.values(QSC.mar),...Object.values(QSC.est)].forEach(m=>{const i=new Image();i.src=m[0];const j=new Image();j.src='media/bot/'+m[2]+'.png'});
+    h='<h2 class="qz-q">¿Para qué momento?</h2><p class="qz-sub">Empecemos por la ocasión. Lo demás lo afinamos después.</p><ul class="qz-opts">'+Object.entries(MOM).map(([k,l])=>'<li><button data-qa="mom" data-v="'+k+'">'+l+arr+'</button></li>').join('')+'</ul>';
+  }else if(qStep===1){
+    qDefault();
+    h=back+'<h2 class="qz-q" style="margin-top:14px">¿Qué habrá en la mesa?</h2><p class="qz-sub">Si todavía no lo sabes, elige “Solo la copa”.</p><ul class="qz-opts">'+Object.entries(qMarOpts).map(([k,l])=>'<li><button data-qa="mar" data-v="'+k+'">'+l+arr+'</button></li>').join('')+'</ul>';
+  }else if(qStep===2){
+    const ex={1:'Como Chenin Blanc u Otoño',2:'Como Merlot o Blanc de Zinfandel',3:'Como Petite Sirah o Chardonnay Reserva Privada',4:'Como Nebbiolo o Terra'};
+    qDefault();
+    /* una gota que crece y se oscurece: del más ligero al más intenso */
+    const DROP={1:['#EDE2B8',20],2:['#DDA99C',26],3:['#A23E48',32],4:['#5A1A28',38]};
+    h=back+'<h2 class="qz-q" style="margin-top:14px">¿Cómo te gusta el vino?</h2><p class="qz-sub">Del más ligero al más intenso.</p><div class="qz-scale">'+[1,2,3,4].map(k=>'<button data-qa="est" data-v="'+k+'"><span class="qz-drop" style="--c:'+DROP[k][0]+';--s:'+DROP[k][1]+'px" aria-hidden="true"></span><span><b>'+EST[k]+'</b><small>'+ex[k]+'</small></span></button>').join('')+'</div><button class="ul qz-skip" data-qa="est" data-v="0">No sé, sorpréndeme</button>';
+  }else{
+    const r=quizResult();
+    {const c=QA.mar&&QSC.mar[QA.mar]?QSC.mar[QA.mar]:QSC.mom[QA.mom];qzScene(c[0],c[1],r.top[0],'Tu vino: '+qName(r.top[0]))}
+    h='<span class="cap" style="color:var(--ink3)">Tu selección</span><h2 class="qz-q" style="margin-top:12px">'+r.title+'</h2><div class="qz-res">'+r.top.map(id=>{const c=tcard(id,0);const k=c.lastIndexOf('</span></a>');return c.slice(0,k)+'<span class="why">'+r.why(id)+'</span>'+c.slice(k)}).join('')+'</div>'+
+      '<div class="qz-acts"><button class="btn btn-ink" id="qzAll">Agregar los 3 · '+money(r.top.reduce((a,id)=>a+P[id].price,0))+'</button><button class="ul" id="qzApply">'+(r.n===1?'Ver el único que coincide':'Ver los '+r.n+' vinos que coinciden')+'</button><button class="qz-back" data-qrestart>Empezar de nuevo</button></div>';
+    setTimeout(()=>{$('qzAll').onclick=()=>{r.top.forEach(id=>add(id,1,true));toast(r.top[0],1);closeQuiz()};$('qzApply').onclick=()=>{applyQuiz(r);closeQuiz()}},0);
+  }
+  $('qzBody').innerHTML=h;
+  /* cada pregunta nueva recibe el foco y se anuncia el paso */
+  const hq=$('qzBody').querySelector('.qz-q');
+  $('qzLive').textContent=qStep<3?'Pregunta '+(qStep+1)+' de 3':'Tu selección, tres vinos';
+  if(hq&&$('quiz').classList.contains('on')){hq.tabIndex=-1;setTimeout(()=>hq.focus({preventScroll:true}),30)}
+}
+$('qzBody').addEventListener('click',e=>{
+  const b=e.target.closest('[data-qa]');if(b){QA[b.dataset.qa]=b.dataset.v;qStep++;renderQuiz();return}
+  if(e.target.closest('[data-qback]')){qStep--;renderQuiz();return}
+  if(e.target.closest('[data-qrestart]')){qStep=0;renderQuiz()}
+});
+function quizResult(){
+  const m=QA.mom,x=QA.mar,es=+QA.est;
+  const pool=IDS.filter(id=>{const p=P[id];return !p.out&&p.c!=='gourmet'&&!(p.nb&&p.c!=='destilado')&&(m==='regalo'||p.c!=='estuche')&&(m==='regalo'||p.c!=='destilado')});
+  const score=id=>{const t=TX[id]||[0,''];let s=0;if(t[1].split(' ').includes(m))s+=5;if(x&&x!=='nada'&&marOf(id).includes(x))s+=3;if(es&&t[0])s+=2.4-Math.abs(t[0]-es)*1.3;s+=Math.log((P[id].medals||0)+1)*.25;return s};
+  const top=pool.sort((a,b)=>score(b)-score(a)||RANK[a]-RANK[b]).slice(0,3);
+  // filtros equivalentes: se relajan si dejan la búsqueda vacía
+  const tries=[[m,x,es],[m,x,0],[m,0,0]];let f,n=0;
+  for(const [a,b,c] of tries){const bak=snapshot();FACETS.forEach(z=>S.sets[z.k].clear());S.tipo='todo';S.max=0;S.q='';S.sets.mom.add(a);if(b&&b!=='nada')S.sets.mar.add(b);if(c)S.sets.est.add(String(c));n=results().length;restore(bak);if(n){f=[a,b,c];break}}
+  const FOOD={carne:'carnes rojas',aves:'aves y cerdo',mar:'pescados y mariscos',pasta:'pastas y pizza',queso:'quesos y botanas',mex:'cocina mexicana',postre:'postres'};
+  const trim=t=>{t=(t||'').trim().replace(/[.…\s]+$/,'');return t.length>96?t.slice(0,94).replace(/\s\S*$/,'').replace(/[,;:]$/,'')+'…':t+'.'};
+  const clean=t=>t.replace(/^(Ideal para acompañar|Acompaña muy bien con|Acompaña muy bien|Acompaña bien|Acompaña|Se recomienda con|Marida con|Perfecto para) /i,'').replace(/^./,c=>c.toLowerCase());
+  const why=id=>{const p=P[id];
+    if(x&&x!=='nada'){const fl=FOOD[x];
+      if(marOf(id).includes(x)){const parts=(p.mar||'').split(/\.\s*/).filter(Boolean);const hit=parts.find(z=>MARX[x].test(z));
+        if(hit)return 'Para '+fl+': '+trim(clean(hit));
+        const e=TX[id]&&TX[id][0];
+        if(x==='mex')return (e?'Estilo '+EST[e].toLowerCase()+', de':'De')+' nuestra selección para la mesa mexicana.';
+        return parts[0]?'Para '+fl+': '+trim(clean(parts[0])):'Va bien con '+fl+'.'}
+      const e=TX[id]&&TX[id][0];return 'Para '+fl+', por su estilo '+(e?EST[e].toLowerCase():'versátil')+'.'}
+    return p.q?trim(p.q):''};
+  return {top,n,f,why,title:'Tres vinos para '+MOM[m].charAt(0).toLowerCase()+MOM[m].slice(1).replace(/^para /,'')+(x&&x!=='nada'&&!(m==='asada'&&x==='carne')?' con '+FOOD[x]:'')+'.'};
+}
+function applyQuiz(r){
+  const [a,b,c]=r.f||[QA.mom,0,0];
+  FACETS.forEach(z=>S.sets[z.k].clear());S.tipo='todo';S.max=0;S.q='';S.banner='';
+  S.sets.mom.add(a);if(b&&b!=='nada')S.sets.mar.add(b);if(c)S.sets.est.add(String(c));
+  renderIntro();renderAll(true);
+}
+
+/* ---------- Inicio ---------- */
+renderChrome({solid:true,page:'tienda'});
+const _rc=renderCart;renderCart=function(){_rc();renderBox()};
+renderIntro();renderAll(false);renderBox();syncFacets();
+$('trustShip').textContent='Gratis desde '+money(FREE)+'. Pide hoy y '+eta('envio').txt.replace(/^Llega/,'llega')+'.';
+if(location.hash==='#encuentra')openQuiz();
+addEventListener('hashchange',()=>{if(location.hash==='#encuentra')openQuiz()});
+document.addEventListener('click',e=>{const a=e.target.closest('a[href$="#encuentra"]');if(a&&a.pathname===location.pathname){e.preventDefault();openQuiz()}});
+</script>
+</body>
+</html>

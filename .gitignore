@@ -1,0 +1,8 @@
+# solo se publica el sitio
+.claude/
+entregables/
+prompts-buscador-ia.md
+lacetto-home-v1.html
+_audit.js
+.DS_Store
+__pycache__/

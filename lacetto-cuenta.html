@@ -1,0 +1,801 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>L.A. Cetto · Mi cuenta</title>
+<meta name="description" content="Concepto de rediseño: tu cuenta L.A. Cetto con pedidos, reservas de catas, Club Estaciones y tus datos. Propuesta; los datos viven solo en este navegador.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baskervville:ital@0;1&family=DM+Sans:opsz,wght@9..40,400..600&family=Playfair:opsz,wght@5..1200,300..500&display=swap" rel="stylesheet">
+<link rel="icon" type="image/svg+xml" href="media/favicon.svg">
+<!-- compartir -->
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="apple-touch-icon" href="media/apple-touch-icon.png">
+<meta name="theme-color" content="#F3F1EC">
+<meta name="robots" content="noindex, nofollow">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="es_MX">
+<meta property="og:site_name" content="L.A. Cetto · Concepto de rediseño">
+<meta property="og:title" content="L.A. Cetto · Mi cuenta">
+<meta property="og:description" content="Concepto de rediseño: tu cuenta L.A. Cetto con pedidos, reservas de catas, Club Estaciones y tus datos. Propuesta; los datos viven solo en este navegador.">
+<meta property="og:url" content="https://zamirpadilla.github.io/lacetto-concepto/lacetto-cuenta.html">
+<meta property="og:image" content="https://zamirpadilla.github.io/lacetto-concepto/media/og-banner.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Chardonnay Reserva Privada de L.A. Cetto sobre una roca frente al mar, con el texto: Una boutique de vinos, de punta a punta">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="L.A. Cetto · Mi cuenta">
+<meta name="twitter:description" content="Concepto de rediseño: tu cuenta L.A. Cetto con pedidos, reservas de catas, Club Estaciones y tus datos. Propuesta; los datos viven solo en este navegador.">
+<meta name="twitter:image" content="https://zamirpadilla.github.io/lacetto-concepto/media/og-banner.jpg">
+<!-- /compartir -->
+<link rel="stylesheet" href="cetto-base.css">
+<style>
+#acIn section[id]{scroll-margin-top:140px}
+
+/* ---------- Acceso (mismo componente que Club · #cuenta) ---------- */
+.ac-out{padding-top:clamp(40px,5vw,80px)}
+.cl-acc{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(32px,6vw,104px);align-items:start}
+.cl-acc>div:last-child{position:sticky;top:96px}
+.ac-out h1{font:400 clamp(44px,5.6vw,88px)/.98 var(--serif);letter-spacing:-.02em;margin-top:18px}
+.ac-out .p{margin-top:18px}
+.ac-ben{list-style:none;margin-top:26px;border-top:1px solid var(--line);max-width:520px}
+.ac-ben li{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.3fr);gap:16px;padding:12px 0;border-bottom:1px solid var(--line);align-items:baseline}
+.ac-ben b{font:400 19px/1.2 var(--serif)}
+.ac-ben span{font-size:14px;color:var(--ink2)}
+.cl-card-bg{background:var(--bg2);padding:clamp(28px,4vw,64px) clamp(20px,4vw,56px);display:grid;place-items:center;overflow:hidden;margin-top:30px}
+.cl-mcard{position:relative;width:100%;max-width:470px;aspect-ratio:1.586;background:#1E1D1C;color:#EEE9E1;padding:clamp(18px,2.4vw,30px);display:flex;flex-direction:column;justify-content:space-between;overflow:hidden;isolation:isolate;box-shadow:0 34px 60px rgba(30,29,28,.3);transform:rotate(-1.4deg)}
+.cl-mcard::before{content:"";position:absolute;inset:-50%;background-image:var(--grain);opacity:.18;mix-blend-mode:overlay;z-index:-1}
+.cl-mcard::after{content:"";position:absolute;right:-22%;bottom:-48%;width:75%;aspect-ratio:1;border:1px solid rgba(238,233,225,.14);border-radius:50%;z-index:-1}
+.cl-mcard .hd{display:flex;justify-content:space-between;align-items:flex-start;gap:12px}
+.cl-mcard .hd img{height:clamp(30px,3vw,40px);filter:brightness(0) invert(.92)}
+.cl-mcard small{font:500 10.5px/1.4 var(--sans);letter-spacing:.09em;text-transform:uppercase;color:rgba(238,233,225,.6)}
+.cl-mcard .nm{font:400 clamp(26px,2.6vw,38px)/1.05 var(--serif);letter-spacing:-.01em;overflow-wrap:anywhere}
+.cl-mcard .ft{display:flex;justify-content:space-between;align-items:flex-end;gap:12px}
+.cl-mcard .pl{font:italic 400 clamp(14px,1.2vw,17px)/1.2 var(--serif)}
+.cl-panel{background:var(--bg2);padding:clamp(22px,3vw,44px)}
+.cl-tabs{display:flex;gap:26px;border-bottom:1px solid var(--line);margin-bottom:26px}
+.cl-tabs button{font:400 clamp(22px,1.9vw,28px)/1.2 var(--serif);color:var(--ink3);padding-bottom:12px;margin-bottom:-1px;border-bottom:1px solid transparent}
+.cl-tabs button[aria-selected="true"]{color:var(--ink);border-color:var(--ink)}
+.cl-f .fg{margin-bottom:20px}
+.cl-f label{display:block;font:500 11px/1.4 var(--sans);letter-spacing:.09em;text-transform:uppercase;color:var(--ink3);margin-bottom:4px}
+.cl-f input[type=text],.cl-f input[type=email],.cl-f input[type=password],.cl-f input[type=date],.cl-f input[type=tel]{width:100%;background:transparent;border:0;border-bottom:1px solid rgba(43,44,45,.6);border-radius:0;padding:8px 0 10px;font:inherit;font-size:16px;color:var(--ink);outline:none;transition:border-color .2s}
+.cl-f select{width:100%;background:transparent url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%232B2C2D' stroke-width='1.6'><path d='M6 9l6 6 6-6'/></svg>") no-repeat right 2px center;border:0;border-bottom:1px solid rgba(43,44,45,.6);border-radius:0;padding:8px 22px 10px 0;font:inherit;font-size:16px;color:var(--ink);outline:none;-webkit-appearance:none;appearance:none;cursor:pointer}
+.cl-f input:focus,.cl-f select:focus{border-color:var(--ink)}
+.cl-f input:not([type=checkbox]):focus-visible,.cl-f select:focus-visible{box-shadow:0 2px 0 var(--ink)}
+.cl-f input[aria-invalid=true]{border-color:var(--wine)}
+.cl-f .row button{color:var(--ink2);border-bottom:1px solid currentColor;font:inherit;font-size:13.5px}
+.ac-hi h1:focus{outline:none}
+.cl-f .two{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:0 24px}
+.cl-f .chk{display:flex;gap:10px;align-items:flex-start;font:400 14px/1.5 var(--sans);letter-spacing:0;text-transform:none;color:var(--ink2);margin:4px 0 14px;cursor:pointer}
+.cl-f .chk input{width:17px;height:17px;margin-top:2px;accent-color:var(--ink);flex:0 0 auto}
+.cl-f .btn{width:100%}
+.cl-f .row{display:flex;justify-content:space-between;align-items:center;gap:12px;margin:-6px 0 22px;font-size:13.5px}
+.cl-f .row a{color:var(--ink2);border-bottom:1px solid currentColor}
+.cl-err{display:none;font-size:13.5px;color:var(--wine);margin:-6px 0 16px}
+.cl-err.on{display:block}
+.cl-intent{background:var(--bg);padding:14px 16px;font-size:14px;margin-bottom:22px;border-left:2px solid var(--ink)}
+.cl-intent a{border-bottom:1px solid currentColor}
+.cl-note{font-size:12px;color:var(--ink3);margin-top:14px;text-align:center}
+.ac-demo{margin-top:14px;padding:14px 16px;border:1px dashed rgba(43,44,45,.3);display:flex;justify-content:space-between;align-items:center;gap:10px 18px;flex-wrap:wrap;font-size:13.5px;color:var(--ink2)}
+.ac-demo .cap{color:var(--ink3);font-size:10.5px;display:block;margin-bottom:2px}
+
+/* ---------- Saludo ---------- */
+.ac-hi{padding-top:clamp(40px,5vw,80px);display:grid;grid-template-columns:minmax(0,1fr) minmax(300px,460px);gap:clamp(28px,5vw,88px);align-items:end}
+.ac-hi h1{font:400 clamp(52px,7vw,116px)/.94 var(--serif);letter-spacing:-.022em;margin-top:18px}
+.ac-hi .meta{margin-top:20px;color:var(--ink2);max-width:52ch}
+.ac-hi .meta b{font-weight:500;color:var(--ink)}
+.ac-hi .cl-card-bg{margin-top:0;padding:clamp(24px,3vw,44px)}
+.ac-hi .cl-mcard{max-width:380px}
+
+/* ---------- Navegación de secciones ---------- */
+.ac-nav{position:sticky;top:var(--hh);transition:top .5s var(--ease);z-index:20;background:var(--bg);border-bottom:1px solid var(--line);margin-top:clamp(36px,4.4vw,64px)}
+.ac-nav .in{display:flex;align-items:center;gap:clamp(22px,2.8vw,44px);overflow-x:auto;scrollbar-width:none;padding-inline:var(--m)}
+.ac-nav .in::-webkit-scrollbar{display:none}
+.ac-nav a,.ac-nav button{font:500 12px/1 var(--sans);letter-spacing:.09em;text-transform:uppercase;padding:19px 0 17px;border-bottom:1px solid transparent;margin-bottom:-1px;white-space:nowrap;color:var(--ink3);transition:color .2s,border-color .2s}
+.ac-nav a:hover,.ac-nav button:hover{color:var(--ink)}
+.ac-nav a[aria-current="location"]{color:var(--ink);border-color:var(--ink)}
+.ac-nav a small{font:inherit;color:var(--ink3);margin-left:4px}
+.ac-nav .out{margin-left:auto}
+.ac-nav .out{transition:opacity .25s}.ac-nav .out:hover{opacity:.62}
+@media (max-width:480px){.ac-seas{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
+.ac-sec{padding-top:clamp(56px,6.4vw,104px)}
+.ac-sec:last-of-type{padding-bottom:var(--sec)}
+.ac-sec .sh .side p{max-width:34ch}
+
+/* ---------- Pedidos ---------- */
+.ac-ords{display:grid;gap:var(--g)}
+.ac-ord{background:var(--bg2)}
+.ac-ord>summary{list-style:none;cursor:pointer;display:grid;grid-template-columns:minmax(0,1fr) auto auto;gap:6px clamp(18px,3vw,48px);align-items:end;padding:clamp(20px,2.6vw,34px)}
+.ac-ord>summary::-webkit-details-marker{display:none}
+.ac-ord .no{color:var(--ink3)}
+.ac-ord h3{font:400 clamp(26px,2.4vw,36px)/1.1 var(--serif);margin-top:6px}
+/* Baskervville usa números de estilo antiguo: en esta página, siempre alineados */
+.ac-ord h3,.ac-bk h3,.ac-tl b,.ac-hi .meta,.cl-mcard .nm,.ac-cside h3,.ac-ben b,.ac-empty b{font-variant-numeric:lining-nums}
+.ac-ord .stt{display:inline-flex;align-items:center;gap:9px;font-size:14.5px;white-space:nowrap}
+.ac-ord .stt i{width:8px;height:8px;border-radius:50%;background:var(--wine);box-shadow:0 0 0 4px rgba(107,34,48,.14)}
+.ac-ord .stt.done i{background:var(--ink);box-shadow:none}
+.ac-ord .tot{font:500 clamp(18px,1.5vw,21px)/1 var(--sans);font-variant-numeric:lining-nums tabular-nums;text-align:right;display:flex;align-items:center;gap:16px}
+.ac-ord .tot .chev{width:12px;height:12px;position:relative;flex:0 0 auto}
+.ac-ord .tot .chev::before,.ac-ord .tot .chev::after{content:"";position:absolute;left:0;right:0;top:5.5px;height:1px;background:var(--ink);transition:transform .3s var(--ease)}
+.ac-ord .tot .chev::after{transform:rotate(90deg)}
+.ac-ord[open] .tot .chev::after{transform:none}
+.ac-ord .body{padding:0 clamp(20px,2.6vw,34px) clamp(20px,2.6vw,34px);border-top:1px solid var(--line);margin-inline:clamp(20px,2.6vw,34px);padding-inline:0}
+.ac-tl{list-style:none;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));margin:26px 0 30px}
+.ac-tl li{position:relative;padding:20px 12px 0 0;color:var(--ink3)}
+.ac-tl li::before{content:"";position:absolute;top:4px;left:0;right:0;height:1px;background:rgba(43,44,45,.22)}
+.ac-tl li::after{content:"";position:absolute;top:0;left:0;width:9px;height:9px;border-radius:50%;background:var(--bg2);box-shadow:inset 0 0 0 1px var(--ink3)}
+.ac-tl li.done{color:var(--ink)}
+.ac-tl li.done::before{background:var(--ink)}
+.ac-tl li.done::after{background:var(--ink);box-shadow:none}
+.ac-tl li.now{color:var(--ink)}
+.ac-tl li.now::before{background:linear-gradient(90deg,var(--ink) 0 9px,rgba(43,44,45,.22) 9px)}
+.ac-tl li.now::after{background:var(--wine);box-shadow:0 0 0 4px rgba(107,34,48,.16)}
+.ac-tl b{display:block;font:400 clamp(16px,1.4vw,19px)/1.2 var(--serif)}
+.ac-tl small{display:block;font-size:12.5px;color:var(--ink3);margin-top:3px}
+.ac-ob{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);gap:clamp(22px,4vw,72px)}
+.ac-items{list-style:none;border-top:1px solid var(--ink)}
+.ac-items li{display:grid;grid-template-columns:64px minmax(0,1fr) auto;gap:16px;align-items:center;padding:10px 0;border-bottom:1px solid var(--line)}
+.ac-items .fld{width:64px;height:76px;background:var(--bg3)}
+.ac-items .fld img{height:84%}
+.ac-items .fld::after{bottom:7%}
+.ac-items small{display:block;font:500 10.5px/1.4 var(--sans);letter-spacing:.09em;text-transform:uppercase;color:var(--ink3)}
+.ac-items b{font:400 19px/1.2 var(--serif)}
+.ac-items b span{font:400 13px/1.4 var(--sans);color:var(--ink2);margin-left:6px}
+.ac-items .q{font-size:14px;color:var(--ink2);text-align:right;white-space:nowrap}
+.ac-items .q .price{display:block;color:var(--ink);font-size:15px}
+.ac-dl{display:grid;grid-template-columns:auto minmax(0,1fr);gap:0 18px;font-size:14.5px;border-top:1px solid var(--ink)}
+.ac-dl dt,.ac-dl dd{padding:11px 0;border-bottom:1px solid var(--line)}
+.ac-dl dt{font:500 10.5px/1.9 var(--sans);letter-spacing:.09em;text-transform:uppercase;color:var(--ink3);padding-top:13px}
+.ac-dl dd{color:var(--ink2)}
+.ac-dl dd b{font-weight:500;color:var(--ink)}
+.ac-dl .sum{display:grid;grid-template-columns:1fr auto;gap:2px 12px}
+.ac-dl .sum .t{font:500 16px/1.4 var(--sans);color:var(--ink);font-variant-numeric:lining-nums tabular-nums}
+.ac-of{display:flex;flex-wrap:wrap;align-items:center;gap:14px 28px;margin-top:28px}
+.ac-msg{font-size:13.5px;color:var(--ink2);flex-basis:100%}
+.ac-msg:empty{display:none}
+.ac-proto{flex-basis:100%;display:flex;flex-wrap:wrap;gap:6px 16px;align-items:baseline;font-size:13px;color:var(--ink3);padding-top:14px;border-top:1px dashed var(--line)}
+.ac-proto button{font:500 11px/1 var(--sans);letter-spacing:.09em;text-transform:uppercase;color:var(--ink2);border-bottom:1px dashed currentColor;padding-bottom:3px}
+.ac-dl .due{color:var(--wine)}
+.ac-dl .ref{font-variant-numeric:tabular-nums;letter-spacing:.04em;color:var(--ink)}
+
+/* ---------- Vacíos ---------- */
+.ac-empty{background:var(--bg2);padding:clamp(28px,4vw,56px);display:grid;grid-template-columns:minmax(0,1fr) auto;gap:20px 40px;align-items:end}
+.ac-empty b{display:block;font:400 clamp(26px,2.4vw,36px)/1.1 var(--serif);margin-bottom:8px}
+.ac-empty p{color:var(--ink2);max-width:46ch}
+.ac-empty .acts{display:flex;flex-wrap:wrap;align-items:center;gap:14px 26px}
+
+/* ---------- Reservas ---------- */
+.ac-bks{border-top:1px solid var(--ink)}
+.ac-bk{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:clamp(18px,3vw,52px);align-items:center;padding:clamp(20px,2.4vw,30px) 0;border-bottom:1px solid var(--line)}
+.ac-bk .dt{width:clamp(88px,8vw,116px);aspect-ratio:1/1.08;background:var(--dark);color:#EEE9E1;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:4px}
+.ac-bk.past .dt{background:var(--bg3);color:var(--ink2)}
+.ac-bk .dt b{font:400 clamp(34px,3.2vw,48px)/.95 var(--sans);letter-spacing:-.02em;font-variant-numeric:lining-nums}
+.ac-bk .dt span{font:500 10.5px/1.3 var(--sans);letter-spacing:.09em;text-transform:uppercase;opacity:.75}
+.ac-bk .cap{color:var(--ink3)}
+.ac-bk .cap em{font-style:normal;color:var(--wine)}
+.ac-bk.past .cap em{color:var(--ink3)}
+.ac-bk h3{font:400 clamp(26px,2.4vw,36px)/1.1 var(--serif);margin:6px 0 8px}
+.ac-bk .d{font-size:14.5px;color:var(--ink2);display:flex;flex-wrap:wrap;gap:4px 18px}
+.ac-bk .d .code{font-variant-numeric:tabular-nums;letter-spacing:.04em}
+.ac-bk .acts{display:flex;flex-direction:column;align-items:flex-end;gap:14px}
+.ac-bk .acts .lk{display:flex;gap:22px}
+.ac-bk .tt{font:500 18px/1 var(--sans);font-variant-numeric:lining-nums tabular-nums}
+.ac-bk .tt s{color:var(--ink3);font-weight:400}
+.ac-bk .ac-cnote{margin-top:14px;max-width:560px}
+.ac-bk .ac-cnote .bts{display:flex;gap:18px}
+.ac-bk.canc h3{color:var(--ink3)}
+.ac-bk .ul.danger{color:var(--wine)}
+
+/* ---------- Club ---------- */
+.ac-club{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:var(--g)}
+.ac-cst{position:relative;background:var(--sc,#C8CCD2);min-height:clamp(420px,38vw,560px);display:flex;flex-direction:column;padding:clamp(18px,2vw,26px);isolation:isolate;overflow:hidden;transition:background-color .8s var(--ease)}
+.ac-cst .top{display:flex;justify-content:space-between;align-items:baseline;gap:16px}
+.ac-cst .nm{font:400 clamp(36px,3.6vw,56px)/1 var(--serif);letter-spacing:-.016em}
+.ac-cst .bt{flex:1;display:grid;place-items:center;position:relative;background:inherit}
+.ac-cst .bt img{height:min(100%,420px);max-height:clamp(280px,30vw,440px);width:100%;object-fit:contain;mix-blend-mode:multiply;position:relative;z-index:1}
+.ac-cst .bt::after{content:"";position:absolute;left:50%;bottom:6%;width:26%;height:4%;transform:translateX(-50%);background:radial-gradient(closest-side,rgba(38,28,20,.3),rgba(38,28,20,0));z-index:2;mix-blend-mode:multiply}
+.ac-cst.paused img{filter:grayscale(.85);opacity:.7}
+.ac-cside{background:var(--bg2);padding:clamp(22px,3vw,44px);display:flex;flex-direction:column}
+.ac-cside .cap{color:var(--ink3)}
+.ac-cside h3{font:400 clamp(30px,3vw,46px)/1.05 var(--serif);letter-spacing:-.012em;margin:16px 0 12px}
+.ac-cside .p{max-width:48ch}
+.ac-size{display:flex;align-items:baseline;gap:26px;margin:24px 0 18px;padding-top:20px;border-top:1px solid var(--line)}
+.ac-size .cap{margin-right:auto}
+.ac-size button{font:400 22px/1.2 var(--serif);color:var(--ink3);padding-bottom:4px;border-bottom:1px solid transparent}
+.ac-size button[aria-pressed="true"]{color:var(--ink);border-color:var(--ink)}
+.ac-csum{display:grid;grid-template-columns:1fr auto;gap:6px 16px;font-size:14.5px}
+.ac-csum s{color:var(--ink3);font-size:13px;margin-right:6px}
+.ac-csum .t{font:500 18px/1.3 var(--sans);font-variant-numeric:lining-nums tabular-nums}
+.ac-cside .acts{margin-top:auto;padding-top:26px;display:flex;flex-wrap:wrap;align-items:center;gap:14px 26px}
+.ac-cnote{background:var(--bg);padding:13px 16px;font-size:14px;border-left:2px solid var(--ink);margin-top:18px;display:flex;justify-content:space-between;gap:12px;align-items:center;flex-wrap:wrap}
+.ac-cnote button{font:500 11px/1 var(--sans);letter-spacing:.09em;text-transform:uppercase;border-bottom:1px solid currentColor;padding-bottom:4px}
+.ac-cnote[hidden]{display:none}
+.ac-join{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.25fr);gap:var(--g);background:var(--bg2)}
+.ac-join .tx{padding:clamp(24px,3.4vw,52px);display:flex;flex-direction:column;justify-content:center}
+.ac-join h3{font:400 clamp(30px,3vw,46px)/1.05 var(--serif);margin:16px 0 12px}
+.ac-join .acts{display:flex;flex-wrap:wrap;align-items:center;gap:14px 26px;margin-top:24px}
+.ac-seas{display:grid;grid-template-columns:repeat(4,minmax(0,1fr))}
+.ac-seas a{position:relative;background:var(--c);aspect-ratio:3/5;display:flex;flex-direction:column;justify-content:space-between;padding:14px 12px;isolation:isolate;overflow:hidden}
+.ac-seas a img{position:absolute;left:0;right:0;bottom:12%;height:64%;width:100%;object-fit:contain;mix-blend-mode:multiply;transition:transform .8s var(--ease)}
+.ac-seas a:hover img{transform:translateY(-8px)}
+.ac-seas b{font:400 clamp(18px,1.6vw,24px)/1 var(--serif);position:relative;z-index:1}
+.ac-seas small{font-size:12px;color:rgba(43,44,45,.75);position:relative;z-index:1}
+
+/* ---------- Datos ---------- */
+.ac-data{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:clamp(24px,5vw,88px);align-items:start}
+.ac-data .cl-panel h3{font:400 24px/1.2 var(--serif);margin:6px 0 20px}
+.ac-data .cl-panel h3:not(:first-child){margin-top:14px;padding-top:24px;border-top:1px solid var(--line)}
+.ac-data .three{display:grid;grid-template-columns:minmax(0,2fr) minmax(0,1fr);gap:0 24px}
+.ac-saved{font-size:13.5px;color:var(--ink2);margin-top:12px;text-align:center;min-height:1.5em}
+.ac-side{border-top:1px solid var(--ink)}
+.ac-side>div{padding:18px 0;border-bottom:1px solid var(--line)}
+.ac-side b{display:block;font:400 20px/1.2 var(--serif);margin-bottom:4px}
+.ac-side p{font-size:14px;color:var(--ink2);margin-bottom:10px;max-width:40ch}
+.ac-side .ul{font-size:11px}
+
+.ac-recs .prods{grid-template-columns:repeat(4,minmax(0,1fr))}
+
+@media (max-width:1100px){
+  .ac-recs .prods{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .ac-recs .pc:nth-child(n+4){display:none}
+}
+@media (max-width:900px){
+  .cl-acc,.ac-hi,.ac-ob,.ac-club,.ac-join,.ac-data{grid-template-columns:minmax(0,1fr)}
+  .cl-acc{gap:0}
+  .cl-acc>div:first-child{display:contents}
+  .cl-acc>div:last-child{position:static;order:3;margin-top:28px}
+  .cl-acc .duo-line{order:0}.ac-out h1{order:1}.ac-out .p{order:2}.ac-ben{order:4;margin-top:40px}.cl-acc .cl-card-bg{order:5}
+  .ac-hi .cl-card-bg{max-width:520px}
+  .ac-ord>summary{grid-template-columns:minmax(0,1fr) auto}
+  .ac-ord .stt{grid-row:2;grid-column:1}
+  .ac-ord .tot{grid-row:1/3;grid-column:2;align-self:center}
+  .ac-bk{grid-template-columns:auto minmax(0,1fr)}
+  .ac-bk .acts{grid-column:1/-1;flex-direction:row;flex-wrap:wrap;justify-content:space-between;align-items:center}
+  .ac-empty{grid-template-columns:minmax(0,1fr)}
+  .ac-cst{min-height:0;aspect-ratio:4/4.2}
+  .ac-recs .pc:nth-child(n+4){display:flex}
+}
+@media (max-width:640px){
+  #acIn section[id]{scroll-margin-top:120px}
+  .ac-nav{top:var(--hh)}
+  .ac-nav a,.ac-nav button{padding:17px 0 15px}
+  .ac-hi h1{font-size:clamp(46px,13vw,64px)}
+  .ac-hi .cl-card-bg{padding:22px 18px}
+  .cl-f .two,.ac-data .three{grid-template-columns:minmax(0,1fr)}
+  .ac-ben li{grid-template-columns:minmax(0,1fr);gap:2px}
+  /* línea de tiempo vertical en teléfono */
+  .ac-tl{grid-template-columns:minmax(0,1fr);margin:22px 0 24px}
+  .ac-tl li{display:flex;align-items:baseline;justify-content:space-between;gap:12px;padding:0 0 14px 24px}
+  .ac-tl li:last-child{padding-bottom:0}
+  .ac-tl li::before{top:9px;bottom:-5px;left:4px;right:auto;width:1px;height:auto}
+  .ac-tl li:last-child::before{display:none}
+  .ac-tl li.now::before{background:rgba(43,44,45,.22)}
+  .ac-tl li::after{top:5px}
+  .ac-tl b{font-size:17px}
+  .ac-tl small{margin:0;white-space:nowrap}
+  .ac-cst{aspect-ratio:auto;min-height:360px}
+  .ac-hi .cl-mcard{max-width:320px}
+  .ac-items li{grid-template-columns:56px minmax(0,1fr) auto;gap:12px}
+  .ac-items .fld{width:56px;height:68px}
+  .ac-items b{font-size:17px}
+  .ac-items b span{display:block;margin:0}
+  .ac-dl{grid-template-columns:minmax(0,1fr)}
+  .ac-dl dt{padding-bottom:0;border-bottom:0}
+  .ac-dl dd{padding-top:2px}
+  .ac-of .btn{flex:1 1 100%}
+  .ac-bk{gap:16px}
+  .ac-bk .dt{width:78px}
+  .ac-bk .dt b{font-size:38px}
+  .ac-seas a{aspect-ratio:3/4.6;padding:10px 8px}
+  .ac-seas small{display:none}
+  .cl-tabs{gap:20px}
+}
+</style>
+</head>
+<body>
+<div id="chromeTop"></div>
+
+<main>
+
+<!-- ===================== Sin sesión ===================== -->
+<section class="wrap ac-out sec" id="acOut" aria-labelledby="oT" hidden>
+  <div class="cl-acc">
+    <div>
+      <h1 id="oT">Entra o crea tu cuenta</h1>
+      <p class="p">Todo lo que compras y reservas en L.A.&nbsp;Cetto, en un solo lugar.</p>
+      <ul class="ac-ben">
+        <li><b>Tus pedidos</b><span>Cada paso de tu envío, y volver a comprar en un toque.</span></li>
+        <li><b>Tus catas</b><span>Fecha, horario y código de cada reserva en el Valle o en CDMX.</span></li>
+        <li><b>Precio de socio</b><span>5% menos en vinos y gourmet desde que inicias sesión.</span></li>
+        <li><b>Club Estaciones</b><span>Cambia el tamaño de tu caja, sáltate una estación o pausa cuando quieras.</span></li>
+      </ul>
+      <div class="cl-card-bg" aria-hidden="true">
+        <div class="cl-mcard">
+          <div class="hd"><img src="https://www.lacetto.mx/cdn/shop/files/cropped-Recurso-2-2-768x682-1.png?width=160" alt=""><small>Socio Cetto</small></div>
+          <span class="nm" id="oName">Tu nombre</span>
+          <div class="ft"><span class="pl">Precio de socio activo</span><small id="oSince"></small></div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="cl-panel">
+        <div class="cl-intent" id="oIntent" hidden>Inicia sesión o crea tu cuenta y regresas a tu pago con el carrito como lo dejaste. <a id="oGuest" href="lacetto-pago.html">Seguir como invitado</a></div>
+        <div class="cl-tabs" role="tablist" aria-label="Acceso">
+          <button role="tab" id="tabCrear" aria-selected="true" aria-controls="fCrear">Crear cuenta</button>
+          <button role="tab" id="tabEntrar" aria-selected="false" aria-controls="fEntrar">Iniciar sesión</button>
+        </div>
+        <form class="cl-f" id="fCrear" role="tabpanel" aria-labelledby="tabCrear" novalidate>
+          <div class="fg"><label for="cName">Nombre completo</label><input type="text" id="cName" required autocomplete="name" maxlength="50"></div>
+          <div class="two">
+            <div class="fg"><label for="cMail">Correo</label><input type="email" id="cMail" required autocomplete="email"></div>
+            <div class="fg"><label for="cBirth">Fecha de nacimiento</label><input type="date" id="cBirth" required autocomplete="bday"></div>
+          </div>
+          <div class="fg"><label for="cPass">Contraseña (mínimo 8 caracteres)</label><input type="password" id="cPass" required minlength="8" autocomplete="new-password"></div>
+          <label class="chk"><input type="checkbox" id="cNews"> Quiero recibir preventas y catas para socios por correo.</label>
+          <p class="cl-err" id="cErr" role="alert"></p>
+          <button class="btn btn-ink">Crear cuenta gratis</button>
+          <p class="cl-note">Solo para mayores de 18 años. Prototipo: no se envía ningún dato.</p>
+        </form>
+        <form class="cl-f" id="fEntrar" role="tabpanel" aria-labelledby="tabEntrar" novalidate hidden>
+          <div class="fg"><label for="lMail">Correo</label><input type="email" id="lMail" required autocomplete="username"></div>
+          <div class="fg"><label for="lPass">Contraseña</label><input type="password" id="lPass" required autocomplete="current-password"></div>
+          <div class="row"><label class="chk" style="margin:0"><input type="checkbox"> Mantener sesión</label><button type="button" id="forgot">¿Olvidaste tu contraseña?</button></div>
+          <p class="cl-err" id="lErr" role="alert"></p>
+          <button class="btn btn-ink">Entrar</button>
+          <p class="cl-note">Prototipo: no se envía ningún dato.</p>
+        </form>
+      </div>
+      <div class="ac-demo"><span><span class="cap">Prototipo</span>Para ver la cuenta con pedidos, una cata y club activo.</span><button class="ul" id="demo" type="button">Ver con una cuenta de ejemplo</button></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== Con sesión ===================== -->
+<div id="acIn" hidden>
+  <section class="wrap ac-hi" aria-labelledby="hiT">
+    <div>
+      <h1 class="lines" id="hiT"></h1>
+      <p class="meta" id="hiMeta"></p>
+    </div>
+    <div class="cl-card-bg" aria-hidden="true">
+      <div class="cl-mcard">
+        <div class="hd"><img src="https://www.lacetto.mx/cdn/shop/files/cropped-Recurso-2-2-768x682-1.png?width=160" alt=""><small id="mcTier">Socio Cetto</small></div>
+        <span class="nm" id="mcName"></span>
+        <div class="ft"><span class="pl" id="mcPlan">Precio de socio activo</span><small id="mcSince"></small></div>
+      </div>
+    </div>
+  </section>
+
+  <nav class="ac-nav" aria-label="Secciones de tu cuenta">
+    <div class="in">
+      <a href="#pedidos" data-nav="pedidos">Pedidos<small id="nOrd"></small></a>
+      <a href="#reservas" data-nav="reservas">Reservas<small id="nBk"></small></a>
+      <a href="#club" data-nav="club">Club Estaciones</a>
+      <a href="#datos" data-nav="datos">Mis datos</a>
+      <button class="out" type="button" data-logout>Cerrar sesión</button>
+    </div>
+  </nav>
+
+  <section class="wrap ac-sec" id="pedidos" aria-labelledby="pT">
+    <div class="sh"><h2 class="h2" id="pT">Pedidos</h2><div class="side"><p id="pSide"></p></div></div>
+    <div id="ordList"></div>
+  </section>
+
+  <section class="wrap ac-sec" id="reservas" aria-labelledby="rT">
+    <div class="sh"><h2 class="h2" id="rT">Catas y visitas</h2><div class="side"><p>Llega 15 minutos antes y presenta tu código en recepción.</p><a class="ul" href="lacetto-experiencias.html">Ver experiencias</a></div></div>
+    <div id="bkList"></div>
+  </section>
+
+  <section class="wrap ac-sec" id="club" aria-labelledby="kT">
+    <div class="sh"><h2 class="h2" id="kT">Club Estaciones</h2><div class="side"><p id="kSide"></p></div></div>
+    <div id="clubBox"></div>
+  </section>
+
+  <section class="wrap ac-sec" id="datos" aria-labelledby="dT">
+    <div class="sh"><h2 class="h2" id="dT">Mis datos</h2><div class="side"><p>Los usamos para tus envíos y para avisarte de preventas y catas.</p></div></div>
+    <div class="ac-data">
+      <form class="cl-panel cl-f" id="fDatos" novalidate>
+        <h3>Contacto</h3>
+        <div class="fg"><label for="dName">Nombre completo</label><input type="text" id="dName" autocomplete="name" maxlength="50"></div>
+        <div class="two">
+          <div class="fg"><label for="dMail">Correo</label><input type="email" id="dMail" autocomplete="email"></div>
+          <div class="fg"><label for="dTel">Teléfono (opcional)</label><input type="tel" id="dTel" autocomplete="tel" maxlength="20"></div>
+        </div>
+        <h3>Dirección de envío</h3>
+        <div class="fg"><label for="dAddr">Calle y número</label><input type="text" id="dAddr" autocomplete="address-line1" maxlength="90"></div>
+        <div class="two">
+          <div class="fg"><label for="dCol">Colonia</label><input type="text" id="dCol" autocomplete="address-line2" maxlength="60"></div>
+          <div class="fg"><label for="dCp">Código postal</label><input type="text" id="dCp" inputmode="numeric" autocomplete="postal-code" maxlength="5"></div>
+        </div>
+        <div class="two">
+          <div class="fg"><label for="dCity">Ciudad</label><input type="text" id="dCity" autocomplete="address-level2" maxlength="60"></div>
+          <div class="fg"><label for="dState">Estado</label><select id="dState" autocomplete="address-level1"><option value="">Elige tu estado</option></select></div>
+        </div>
+        <h3>Avisos</h3>
+        <label class="chk"><input type="checkbox" id="pNews"> Preventas y nuevas añadas por correo.</label>
+        <label class="chk"><input type="checkbox" id="pCatas"> Catas para socios en el Valle y en la Boutique CDMX.</label>
+        <label class="chk"><input type="checkbox" id="pWa"> Seguimiento de mis pedidos por WhatsApp.</label>
+        <p class="cl-err" id="dErr" role="alert"></p>
+        <button class="btn btn-ink" style="margin-top:10px">Guardar cambios</button>
+        <p class="ac-saved" id="dSaved" role="status"></p>
+      </form>
+      <div class="ac-side">
+        <div><b>Contraseña</b><p>Te enviamos un enlace a tu correo para crear una nueva.</p><button class="ul" type="button" id="pwBtn">Cambiar contraseña</button></div>
+        <div><b>¿Necesitas ayuda?</b><p>Envíos, devoluciones y facturación, o escríbenos directo.</p><a class="ul" href="lacetto-ayuda.html">Ir a ayuda</a></div>
+        <div><b>Cerrar sesión</b><p>Tu carrito se queda en este dispositivo.</p><button class="ul" type="button" data-logout>Cerrar sesión</button></div>
+        <p class="cl-note" style="text-align:left;margin-top:16px">Prototipo: tus datos viven solo en este navegador; no se envía nada.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="wrap ac-sec ac-recs" aria-labelledby="xT">
+    <div class="sh"><h2 class="h2" id="xT">Para tu próxima compra</h2><div class="side"><p id="xSide"></p><a class="ul" href="lacetto-tienda.html">Ver la tienda</a></div></div>
+    <div class="prods" id="recs"></div>
+  </section>
+</div>
+
+</main>
+
+<div id="chromeBottom"></div>
+
+<script src="cetto-base.js"></script>
+<script>
+(()=>{ /* ámbito propio de la página: evita choques con globales de cetto-base.js */
+renderChrome({solid:true,page:'cuenta'});
+
+const $=id=>document.getElementById(id);
+const esc=s=>String(s==null?'':s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const now=new Date();
+const iso=d=>d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
+const pd=s=>/^\d{4}-\d{2}-\d{2}$/.test(s||'')?new Date(s+'T12:00:00'):new Date(s);
+const addDays=(d,n)=>{const x=new Date(d);x.setDate(x.getDate()+n);return x};
+const fmt=(d,o)=>d.toLocaleDateString('es-MX',o||{day:'numeric',month:'long',year:'numeric'});
+const short=d=>d.toLocaleDateString('es-MX',{day:'numeric',month:'short'}).replace('.','');
+const first=n=>String(n||'').trim().split(/\s+/)[0]||'';
+const plural=(n,s,p)=>n+' '+(n===1?s:(p||s+'s'));
+const volver=new URLSearchParams(location.search).get('volver');
+const orders=()=>{const o=store.get('cettoOrders',[]);return Array.isArray(o)?o:[]};
+const bookings=()=>{const b=store.get('cettoBookings',[]);return Array.isArray(b)?b:[]};
+
+/* Estaciones: vinos reales de la línea; meses de envío y descuentos del club son propuesta (igual que en Club) */
+const SEAS=[
+  {id:'prim',n:'Primavera',mes:'marzo',m:2,c:'#EBD4CC'},
+  {id:'ver',n:'Verano',mes:'junio',m:5,c:'#EAE0B9'},
+  {id:'oto',n:'Otoño',mes:'septiembre',m:8,c:'#DBA683'},
+  {id:'inv',n:'Invierno',mes:'diciembre',m:11,c:'#C8CCD2'}
+];
+const DISC={3:.10,6:.15};
+const defNext=()=>{const mo=now.getMonth(),i=SEAS.findIndex(s=>s.m>=mo);return i<0?0:i};
+const seasIdx=name=>{const i=SEAS.findIndex(s=>s.n===name);return i<0?defNext():i};
+const PAY={tarjeta:'Tarjeta de crédito o débito',mercadopago:'Mercado Pago',oxxo:'Efectivo en OXXO',spei:'Transferencia SPEI'};
+const STATES=['Aguascalientes','Baja California','Baja California Sur','Campeche','Chiapas','Chihuahua','Ciudad de México','Coahuila','Colima','Durango','Estado de México','Guanajuato','Guerrero','Hidalgo','Jalisco','Michoacán','Morelos','Nayarit','Nuevo León','Oaxaca','Puebla','Querétaro','Quintana Roo','San Luis Potosí','Sinaloa','Sonora','Tabasco','Tamaulipas','Tlaxcala','Veracruz','Yucatán','Zacatecas'];
+/* Estado de pedidos: mismas reglas que Pago y Ayuda (fechas de cetto-base.js) */
+const ISO=v=>{if(!v)return null;const d=new Date(v);return isNaN(d)?null:d};
+const noDot=s=>String(s||'').replace(/\.\s*$/,'');
+const pname=p=>p.gc?money(p.price):p.name;
+const ensureP=items=>Object.keys(items||{}).forEach(k=>{const m=/^gc(\d+)$/.exec(k);if(m)gcId(+m[1])});
+function dueOf(o){const d=ISO(o.payDue);if(d)return d;const x=new Date(o.date);x.setDate(x.getDate()+2);x.setHours(23,59,0,0);return x}
+function etaTxtOf(o){const dv=o.delivery||{},pick=dv.mode==='boutique';
+  if(o.payStatus==='pendiente')return pick?'Lista 1 o 2 días hábiles después de que se acredite tu pago':'Llega de 4 a 9 días hábiles después de que se acredite tu pago';
+  if(dv.txt)return dv.txt;
+  const a=ISO(dv.etaFrom),b=ISO(dv.eta);
+  if(a&&b)return (pick?'Lista para recoger entre el ':'Llega entre el ')+fmtD(a)+' y el '+fmtD(b);
+  if(dv.etaFrom&&dv.eta)return 'Llega entre el '+dv.etaFrom+' y el '+dv.eta;
+  if(dv.eta)return String(dv.eta);
+  return eta(pick?'boutique':'envio',o.paidAt||o.date).txt}
+
+/* ---------- Encabezado: saludo ---------- */
+function syncHeader(){paintUser()}
+
+/* ================= Sin sesión ================= */
+$('oSince').textContent='Desde '+now.getFullYear();
+if(volver==='pago'){$('oIntent').hidden=false;$('oGuest').href=PAGES.pago}
+const tabs={crear:[$('tabCrear'),$('fCrear')],entrar:[$('tabEntrar'),$('fEntrar')]};
+function showTab(k,focus){Object.entries(tabs).forEach(([key,[t,f]])=>{const on=key===k;t.setAttribute('aria-selected',on);t.tabIndex=on?0:-1;f.hidden=!on});if(focus)tabs[k][0].focus()}
+Object.entries(tabs).forEach(([k,[t]])=>t.addEventListener('click',()=>showTab(k)));
+/* Pestañas: una sola parada de tabulador; flechas, Inicio y Fin cambian de pestaña */
+document.querySelector('.cl-tabs').addEventListener('keydown',e=>{const keys=Object.keys(tabs),i=keys.findIndex(k=>tabs[k][0]===document.activeElement);if(i<0)return;
+  let j=null;if(e.key==='ArrowRight')j=(i+1)%keys.length;else if(e.key==='ArrowLeft')j=(i-1+keys.length)%keys.length;else if(e.key==='Home')j=0;else if(e.key==='End')j=keys.length-1;
+  if(j==null)return;e.preventDefault();showTab(keys[j],true)});
+$('cName').addEventListener('input',e=>$('oName').textContent=e.target.value.trim()||'Tu nombre');
+function age(d){const b=new Date(d+'T12:00:00');let a=now.getFullYear()-b.getFullYear();const mm=now.getMonth()-b.getMonth();if(mm<0||(mm===0&&now.getDate()<b.getDate()))a--;return a}
+function fail(id,msg,inp){const e=$(id);e.textContent=msg;e.classList.add('on');
+  const f=e.closest('form');if(f)f.querySelectorAll('[aria-invalid]').forEach(x=>{x.removeAttribute('aria-invalid');if(x.getAttribute('aria-describedby')===id)x.removeAttribute('aria-describedby')});
+  if(inp){const x=$(inp);x.setAttribute('aria-invalid','true');x.setAttribute('aria-describedby',id);x.focus()}}
+/* al corregir un campo se quita su marca de error */
+document.querySelectorAll('.cl-f').forEach(f=>f.addEventListener('input',e=>{const x=e.target;if(x.getAttribute('aria-invalid')){x.removeAttribute('aria-invalid');x.removeAttribute('aria-describedby')}}));
+function signIn(u){
+  store.set('cettoUser',u);
+  if(volver==='pago'){location.href=PAGES.pago;return}
+  syncHeader();render();scrollTo({top:0,behavior:'instant'});$('hiT').focus({preventScroll:true});
+}
+$('fCrear').addEventListener('submit',e=>{e.preventDefault();$('cErr').classList.remove('on');
+  const nm=$('cName').value.trim(),bd=$('cBirth').value;
+  if(!nm)return fail('cErr','Escribe tu nombre.','cName');
+  if(!$('cMail').value||!$('cMail').checkValidity())return fail('cErr','Revisa tu correo.','cMail');
+  if(!bd)return fail('cErr','Escribe tu fecha de nacimiento.','cBirth');
+  if(age(bd)<18)return fail('cErr','Necesitas tener 18 años o más para crear una cuenta.','cBirth');
+  if($('cPass').value.length<8)return fail('cErr','La contraseña necesita al menos 8 caracteres.','cPass');
+  const news=$('cNews').checked;
+  signIn({name:nm,email:$('cMail').value.trim(),since:iso(now),club:null,prefs:{news,catas:news,wa:false}});
+});
+$('fEntrar').addEventListener('submit',e=>{e.preventDefault();$('lErr').classList.remove('on');$('lErr').style.color='';
+  const m=$('lMail');
+  if(!m.value||!m.checkValidity())return fail('lErr','Revisa tu correo.','lMail');
+  if(!$('lPass').value)return fail('lErr','Escribe tu contraseña.','lPass');
+  const nm=m.value.split('@')[0].replace(/[0-9]+/g,'').replace(/[._-]+/g,' ').trim().replace(/\b\w/g,c=>c.toUpperCase())||'Socio';
+  signIn({name:nm,email:m.value.trim(),since:iso(now),club:null,prefs:{news:true,catas:true,wa:false}});
+});
+$('forgot').addEventListener('click',e=>{e.preventDefault();const m=$('lMail'),el=$('lErr');el.style.color='var(--ink2)';
+  el.textContent=m.value&&m.checkValidity()?'Te enviaríamos un enlace a '+m.value.trim()+' para crear una nueva contraseña.':'Escribe tu correo y te enviamos un enlace para crear una nueva contraseña.';el.classList.add('on')});
+
+/* Prototipo: cuenta de ejemplo con 2 pedidos, 1 cata próxima y club activo */
+function mkOrder(no,date,items,delivery,pay,msi,gift,status){
+  const ent=Object.entries(items),sub=ent.reduce((a,[id,q])=>a+P[id].price*q,0);
+  const b=ent.reduce((a,[id,q])=>a+(isWine(id)?q:0),0),ws=ent.reduce((a,[id,q])=>a+(isWine(id)?P[id].price*q:0),0);
+  const disc=b>=6?Math.round(ws*.1):0,mem=Math.round((sub-disc)*MEMBER),net=sub-disc-mem;
+  const ship=delivery.mode==='boutique'||net>=FREE?0:SHIP,e=eta(delivery.mode,date);
+  return {no,date:date.toISOString(),items,sub,disc,mem,ship,tot:net+ship,delivery:Object.assign({},delivery,{etaFrom:e.from.toISOString(),eta:e.to.toISOString(),txt:e.txt}),
+    pay,msi,gift,status,payStatus:'pagado',paidAt:date.toISOString(),email:'ana.ramirez@example.com',tel:'55 1234 5678'};
+}
+$('demo').addEventListener('click',()=>{
+  const name='Ana Lucía Ramírez',d0=addDays(now,-2),d1=addDays(now,-41);
+  let sat=addDays(now,7);while(sat.getDay()!==6)sat=addDays(sat,1);
+  const demoOrders=[
+    mkOrder('LAC-104871',d0,{terra:2,nebrp:1,charp:2,oto:1},{mode:'envio',name,addr:'Calle Colima 210, int. 3',col:'Roma Norte',cp:'06700',city:'Ciudad de México',state:'Ciudad de México'},'tarjeta',3,null,'en camino'),
+    mkOrder('LAC-103952',d1,{champ:2,viog:1},{mode:'boutique',name,boutique:'Boutique CDMX',addr:'Monte Athos 315, Lomas de Chapultepec, CDMX'},'mercadopago',1,{to:'Mamá',from:'Ana',msg:'Para brindar por tus 60. Te quiero.'},'entregado')
+  ];
+  const keepO=orders().filter(o=>!demoOrders.some(d=>d.no===o.no));
+  store.set('cettoOrders',keepO.concat(demoOrders));
+  const demoBk={code:'CT-7K4Q',exp:'Cata Reserva Privada',price:400,date:iso(sat),time:'13:00',guests:2,total:800,place:'Valle de Guadalupe'};
+  store.set('cettoBookings',bookings().filter(b=>b.code!==demoBk.code).concat([demoBk]));
+  signIn({name,email:'ana.ramirez@example.com',tel:'55 1234 5678',since:'2025-03-14',addr:{addr:'Calle Colima 210, int. 3',col:'Roma Norte',cp:'06700',city:'Ciudad de México',state:'Ciudad de México'},club:{n:6,since:'2025-06-01',next:SEAS[defNext()].n},prefs:{news:true,catas:true,wa:false},demo:true});
+});
+
+/* ================= Con sesión ================= */
+const SIDX={confirmado:0,pagado:0,nuevo:0,recibido:0,preparando:1,'en camino':2,'en-camino':2,enviado:2,listo:2,entregado:3,recogido:3};
+function stage(o){
+  if(o.payStatus==='pendiente')return 0;
+  const t0=ISO(o.paidAt)||new Date(o.date),days=Math.floor((now-t0)/864e5);let s=days>=4?3:days>=2?2:days>=1?1:0;
+  const k=SIDX[String(o.status||'').toLowerCase()];if(k!=null&&k>s)s=k;return s;
+}
+
+function renderHi(u){
+  const os=orders(),up=bookings().filter(b=>b.date>=iso(now)&&b.status!=='cancelada');
+  const tier=u.club?'Club Estaciones':'Socio Cetto';
+  const h=$('hiT');h.classList.remove('in');
+  h.innerHTML='<span class="ln"><span>Hola, '+esc(first(u.name))+'. </span></span>';
+  requestAnimationFrame(()=>requestAnimationFrame(()=>h.classList.add('in')));
+  h.tabIndex=-1;
+  const since=pd(u.since||iso(now));
+  const bits=['En la familia desde '+fmt(since,{month:'long',year:'numeric'})];
+  bits.push(os.length?plural(os.length,'pedido'):'Aún sin pedidos');
+  if(up.length)bits.push(plural(up.length,'cata próxima','catas próximas'));
+  if(u.club)bits.push(u.club.paused?'Club en pausa':'Próxima caja: '+SEAS[seasIdx(u.club.next)].n);
+  const pend=os.filter(o=>o.payStatus==='pendiente').length;
+  if(pend)bits.push(plural(pend,'pago pendiente','pagos pendientes'));
+  $('hiMeta').innerHTML=bits.map((b,i)=>i?b:'<b>'+b+'</b>').join(' · ')+'. Tu precio de socio ('+Math.round(MEMBER*100)+'%) está activo en toda la tienda.';
+  $('mcTier').textContent=tier;
+  $('mcName').textContent=u.name;
+  $('mcPlan').textContent=u.club?(u.club.paused?'Club en pausa':(u.club.n===3?3:6)+' botellas por estación'):'Precio de socio activo';
+  $('mcSince').textContent='Desde '+since.getFullYear();
+  $('nOrd').textContent=os.length?'('+os.length+')':'';
+  $('nBk').textContent=up.length?'('+up.length+')':'';
+}
+
+/* ---------- Pedidos ---------- */
+function orderHTML(o,i){
+  ensureP(o.items);
+  const pend=o.payStatus==='pendiente',st=stage(o),dv=o.delivery||{},bout=dv.mode==='boutique',d=new Date(o.date),t0=ISO(o.paidAt)||d;
+  const due=dueOf(o),dueT=fmtD(due)+', 23:59';
+  const L=pend?['Esperando pago','Preparando',bout?'Listo para recoger':'En camino',bout?'Recogido':'Entregado']
+    :bout?['Confirmado','Preparando','Listo para recoger','Recogido']:['Confirmado','Preparando','En camino','Entregado'];
+  const when=pend?[null,null,null,null]:[t0,addDays(t0,1),addDays(t0,bout?1:2),null];
+  const items=Object.entries(o.items||{}).filter(([id])=>P[id]);
+  const n=items.reduce((a,[,q])=>a+q,0);
+  const etx=etaTxtOf(o);
+  const tl='<ol class="ac-tl" aria-label="Estado del pedido">'+L.map((l,k)=>'<li class="'+(pend?(k===0?'now':''):(k<st||(k===st&&st===3)?'done':k===st?'now':''))+'"'+(k===st?' aria-current="step"':'')+'><b>'+l+'</b><small>'+
+    (pend?(k===0?'Antes del '+dueT:''):(k<=st&&when[k]?short(when[k]):k===3&&st<3?(bout?'Cuando pases':'Estimado'):''))+'</small></li>').join('')+'</ol>';
+  const list='<ul class="ac-items">'+items.map(([id,q])=>{const p=P[id];return '<li><a class="fld" href="'+(p.gc?PAGES.regalos+'#tarjeta':PAGES.ficha+'?p='+id)+'" aria-label="Ver '+esc(p.line+' '+pname(p))+'"><img src="'+F(p.img,200)+'" alt="" loading="lazy"></a><div><small>'+esc(p.line)+'</small><b>'+esc(pname(p))+(p.sub?'<span>'+esc(p.sub)+'</span>':'')+'</b></div><span class="q">'+q+' × '+money(p.price)+'<span class="price">'+money(p.price*q)+'</span></span></li>'}).join('')+'</ul>';
+  const where=bout?'<b>Recoger en boutique</b><br>'+esc(dv.boutique||'Boutique L.A.\u00a0Cetto')+(dv.addr&&dv.addr!==dv.boutique?'<br>'+esc(dv.addr):'')
+    :([dv.name&&'<b>'+esc(dv.name)+'</b>',[dv.addr,dv.col].filter(Boolean).map(esc).join(', '),(dv.cp||dv.city)&&esc(['CP '+(dv.cp||''),[dv.city,dv.state].filter(Boolean).join(', ')].filter(x=>x&&x!=='CP ').join(', '))].filter(Boolean).join('<br>')||'Envío a domicilio');
+  const gift=o.gift?(typeof o.gift==='object'?'Para '+esc(o.gift.to||'alguien especial')+(o.gift.from?', de '+esc(o.gift.from):'')+(o.gift.msg?': “'+esc(o.gift.msg)+'”':''):'Con mensaje de regalo'):'';
+  const dl='<dl class="ac-dl">'+
+    (pend?'<dt>Por pagar</dt><dd><b>'+money(o.tot||0)+'</b> <span class="due">antes del '+dueT+'</span><br>'+(o.pay==='oxxo'?'Referencia OXXO ':'CLABE ')+'<span class="ref">'+esc(o.payRef||(o.pay==='oxxo'?'9800 0000 0000 0000':'0000 0000 0000 0000 00'))+'</span></dd>':'')+
+    '<dt>Entrega</dt><dd>'+where+'</dd>'+
+    '<dt>'+(st===3&&!pend?(bout?'Recogido':'Entregado'):(bout?'Recoger':'Llegada'))+'</dt><dd>'+(st===3&&!pend?'Completado':esc(etx))+'</dd>'+
+    '<dt>Pago</dt><dd>'+esc(PAY[o.pay]||o.pay||'Tarjeta')+(o.pay==='tarjeta'&&o.msi>1?' · '+o.msi+' meses sin intereses':'')+(pend?' · pendiente':'')+'</dd>'+
+    (gift?'<dt>Regalo</dt><dd>'+gift+'</dd>':'')+
+    '<dt>Total</dt><dd class="sum"><span>Subtotal</span><span class="price">'+money(o.sub||0)+'</span>'+(o.disc?'<span>Caja de 6 (10%)</span><span class="price">−'+money(o.disc)+'</span>':'')+(o.mem?'<span>Precio de socio ('+Math.round(MEMBER*100)+'%)</span><span class="price">−'+money(o.mem)+'</span>':'')+'<span>'+(bout?'Recoger en boutique':'Envío')+'</span><span class="price">'+(bout?'Sin costo':(o.ship?money(o.ship):'Gratis'))+'</span><span class="t">Total</span><span class="t price">'+money(o.tot||0)+'</span></dd>'+
+  '</dl>';
+  const label=pend?'Pago pendiente':st===3?(bout?'Recogido':'Entregado'):L[st];
+  return '<details class="ac-ord"'+(i===0?' open':'')+'>'+
+    '<summary><div><span class="cap no">Pedido '+esc(o.no)+' · '+plural(n,'artículo')+'</span><h3>'+fmt(d)+'</h3></div>'+
+    '<span class="stt'+(st===3&&!pend?' done':'')+'"><i aria-hidden="true"></i>'+label+'</span>'+
+    '<span class="tot"><span class="price">'+money(o.tot||0)+'</span><span class="chev" aria-hidden="true"></span></span></summary>'+
+    '<div class="body">'+tl+'<div class="ac-ob">'+list+dl+'</div>'+
+    '<div class="ac-of"><button class="btn btn-ink" type="button" data-again="'+i+'" aria-label="Volver a comprar el pedido '+esc(o.no)+'">Volver a comprar</button><a class="ul" href="'+PAGES.ayuda+'?pedido='+encodeURIComponent(o.no)+'#rastreo" aria-label="Rastrear el pedido '+esc(o.no)+'">Rastrear</a><a class="ul" href="'+PAGES.ayuda+'#contacto" aria-label="Ayuda con el pedido '+esc(o.no)+'">Ayuda con este pedido</a><p class="ac-msg" role="status"></p>'+
+    (pend?'<p class="ac-proto"><span>Prototipo</span><button type="button" data-paid="'+esc(o.no)+'" aria-label="Simular pago acreditado del pedido '+esc(o.no)+'">Simular pago acreditado</button></p>':'')+'</div></div>'+
+  '</details>';
+}
+function renderOrders(){
+  const os=orders(),el=$('ordList');
+  $('pSide').textContent=os.length?'Envío gratis desde '+money(FREE)+' y 10% en tu caja de 6, también al volver a comprar.':'';
+  el.className=os.length?'ac-ords':'';
+  el.innerHTML=os.length?os.map(orderHTML).join(''):
+    '<div class="ac-empty"><div><b>Aún no tienes pedidos</b><p>Cuando compres, aquí ves cada paso hasta tu puerta y puedes volver a pedir lo mismo en un toque.</p></div><div class="acts"><a class="btn btn-ink" href="'+PAGES.tienda+'">Ir a la tienda</a><a class="ul" href="'+PAGES.tienda+'#encuentra">Encuentra tu vino</a></div></div>';
+}
+$('ordList').addEventListener('click',e=>{
+  const pb=e.target.closest('[data-paid]');
+  if(pb){const all=orders(),x=all.find(y=>y.no===pb.dataset.paid);if(!x)return;const nw=new Date(),ee=eta((x.delivery||{}).mode,nw);
+    x.payStatus='pagado';x.paidAt=nw.toISOString();x.delivery=Object.assign(x.delivery||{},{etaFrom:ee.from.toISOString(),eta:ee.to.toISOString(),txt:ee.txt});
+    store.set('cettoOrders',all);renderOrders();renderHi(user());return}
+  const b=e.target.closest('[data-again]');if(!b)return;
+  const o=orders()[+b.dataset.again];if(!o)return;
+  const skipped=[];let added=0;
+  Object.entries(o.items||{}).forEach(([id,q])=>{if(!P[id])return;if(P[id].out){skipped.push(P[id].name);return}add(id,q,true);added+=q});
+  b.parentElement.querySelector('.ac-msg').textContent=skipped.length?(skipped.join(', ')+' no está disponible por ahora; agregamos lo demás.'):'';
+  if(added)openDrawer('cart');
+});
+
+/* ---------- Reservas ---------- */
+let icsUrls=[];
+function ics(b){
+  const [y,m,d]=b.date.split('-'),[hh,mi]=(b.time||'13:00').split(':'),cdmx=/cdmx/i.test(b.place||'');
+  const stamp=new Date().toISOString().replace(/[-:]/g,'').replace(/\.\d+/,'');
+  const s=['BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//LA Cetto concepto//ES','BEGIN:VEVENT','UID:'+b.code+'@lacetto-concepto','DTSTAMP:'+stamp,
+    'DTSTART;TZID='+(cdmx?'America/Mexico_City':'America/Tijuana')+':'+y+m+d+'T'+hh+mi+'00','DURATION:'+(/experiencia cetto/i.test(b.exp)?'PT3H':'PT1H30M'),
+    'SUMMARY:'+b.exp+' · L.A. Cetto','LOCATION:'+(cdmx?'Monte Athos 315\\, Lomas de Chapultepec\\, CDMX':'Carretera Tecate–Ensenada km 73.5\\, Valle de Guadalupe\\, B.C.'),'END:VEVENT','END:VCALENDAR'].join('\r\n');
+  const u=URL.createObjectURL(new Blob([s],{type:'text/calendar'}));icsUrls.push(u);return u;
+}
+let askCancel=null;
+function bkHTML(b){
+  const d=pd(b.date),today=iso(now),canc=b.status==='cancelada',past=!canc&&b.date<today;
+  const days=Math.round((pd(b.date)-pd(today))/864e5);
+  const when=canc?'Cancelada':past?'Visitada':days===0?'Hoy':days===1?'Mañana':'En '+days+' días';
+  const cdmx=/cdmx/i.test(b.place||'');
+  const maps='https://www.google.com/maps/search/?api=1&query='+(cdmx?'L.A.+Cetto+Boutique+Monte+Athos+315':'L.A.+Cetto+Valle+de+Guadalupe');
+  const g=+b.guests||1,pp=b.price||Math.round((b.total||0)/g);
+  const dayTxt=fmt(d,{weekday:'long',day:'numeric',month:'long'}),who=esc(b.exp)+' del '+dayTxt;
+  const ask=askCancel===b.code&&!canc&&!past?'<div class="ac-cnote" role="alert"><span>¿Cancelar tu cata del '+dayTxt+'? Te escribimos para confirmar la cancelación y tu reembolso.</span><span class="bts"><button type="button" data-cyes="'+esc(b.code)+'">Sí, cancelar</button><button type="button" data-cno>No</button></span></div>':'';
+  return '<article class="ac-bk'+(past||canc?' past':'')+(canc?' canc':'')+'">'+
+    '<div class="dt" aria-hidden="true"><span>'+fmt(d,{weekday:'short'}).replace('.','')+'</span><b>'+d.getDate()+'</b><span>'+fmt(d,{month:'short'}).replace('.','')+'</span></div>'+
+    '<div><span class="cap"><em>'+when+'</em> · '+esc(b.place||'Valle de Guadalupe')+'</span><h3>'+esc(b.exp)+'</h3>'+
+    '<div class="d"><span>'+dayTxt+', '+esc(b.time||'')+' h</span><span>'+plural(g,'persona')+' · '+money(pp)+' por persona</span><span>Código <span class="code">'+esc(b.code)+'</span></span></div>'+ask+'</div>'+
+    '<div class="acts"><span class="tt price">'+(canc?'<s>'+money(b.total||0)+'</s>':money(b.total||0))+'</span>'+
+      (canc?'<a class="ul" href="'+PAGES.exp+'#reservar" aria-label="Reservar otra fecha en lugar de '+who+'">Reservar otra fecha</a>':past?'<a class="ul" href="'+PAGES.exp+'">Volver al Valle</a>':
+      '<a class="btn btn-ink" href="'+ics(b)+'" download="reserva-lacetto-'+esc(b.code)+'.ics" aria-label="Agregar al calendario: '+who+'">Agregar al calendario</a><span class="lk"><a class="ul" href="'+PAGES.exp+'?cambiar='+encodeURIComponent(b.code)+'#reservar" aria-label="Cambiar fecha de '+who+'">Cambiar fecha</a><a class="ul" href="'+maps+'" target="_blank" rel="noopener" aria-label="Cómo llegar a '+esc(b.place||'Valle de Guadalupe')+' (se abre en otra pestaña)">Cómo llegar</a><button type="button" class="ul danger" data-cancel="'+esc(b.code)+'" aria-label="Cancelar '+who+'">Cancelar</button></span>')+'</div>'+
+  '</article>';
+}
+function renderBookings(){
+  icsUrls.forEach(u=>URL.revokeObjectURL(u));icsUrls=[];
+  const today=iso(now),old=x=>x.date<today||x.status==='cancelada',bs=bookings().slice().sort((a,b)=>{const pa=old(a),pb=old(b);return pa!==pb?(pa?1:-1):(pa?b.date.localeCompare(a.date):a.date.localeCompare(b.date))});
+  const el=$('bkList');el.className=bs.length?'ac-bks':'';
+  el.innerHTML=bs.length?bs.map(bkHTML).join(''):
+    '<div class="ac-empty"><div><b>No tienes catas reservadas</b><p>Seis experiencias en el Valle de Guadalupe, de la Cata Clásica a un recorrido de tres horas por la bodega.</p></div><div class="acts"><a class="btn btn-ink" href="'+PAGES.exp+'#reservar">Reservar cata</a><a class="ul" href="'+PAGES.exp+'">Ver experiencias</a></div></div>';
+}
+
+$('bkList').addEventListener('click',e=>{
+  const c=e.target.closest('[data-cancel]'),y=e.target.closest('[data-cyes]'),n=e.target.closest('[data-cno]');
+  if(c){askCancel=c.dataset.cancel;renderBookings();const f=$('bkList').querySelector('[data-cyes]');if(f)f.focus();return}
+  if(n){const code=askCancel;askCancel=null;renderBookings();const f=$('bkList').querySelector('[data-cancel="'+code+'"]');if(f)f.focus();return}
+  if(y){const all=bookings(),x=all.find(b=>b.code===y.dataset.cyes);if(x){x.status='cancelada';x.cancelledAt=new Date().toISOString();store.set('cettoBookings',all)}
+    askCancel=null;renderBookings();renderHi(user());}
+});
+
+/* ---------- Club ---------- */
+function renderClub(){
+  const u=user(),c=u&&u.club,el=$('clubBox');
+  if(!c){
+    $('kSide').textContent='El vino de cada temporada en casa, cuatro veces al año.';
+    el.innerHTML='<div class="ac-join"><div class="tx"><span class="cap" style="color:var(--ink3)">Aún no estás en el club</span><h3>Recibe cada estación antes que nadie</h3><p class="p">Una caja de 3 o 6 botellas de Estaciones en marzo, junio, septiembre y diciembre, con precio de club y envío incluido desde '+money(FREE)+'.</p><div class="acts"><a class="btn btn-ink" href="'+PAGES.club+'#estaciones">Conocer Club Estaciones</a></div></div>'+
+      '<div class="ac-seas">'+SEAS.map(s=>{const p=P[s.id];return '<a href="'+PAGES.ficha+'?p='+s.id+'" style="--c:'+s.c+'"><b>'+s.n+'</b><img src="'+F(p.img,400)+'" alt="Estaciones '+s.n+'" loading="lazy"><small>'+esc(p.sub)+' · '+s.mes+'</small></a>'}).join('')+'</div></div>';
+    return;
+  }
+  const i=seasIdx(c.next),s=SEAS[i],p=P[s.id],n=c.n===3?3:6,full=p.price*n,box=full*(1-DISC[n]);
+  const nxt=SEAS[(i+1)%4];
+  $('kSide').textContent='Activo desde '+fmt(pd(c.since||iso(now)),{month:'long',year:'numeric'})+'. Cambia o pausa antes de cada envío.';
+  el.innerHTML='<div class="ac-club">'+
+    '<div class="ac-cst'+(c.paused?' paused':'')+'" style="--sc:'+(c.paused?'#D6D2CC':s.c)+'"><div class="top"><span class="nm">'+s.n+'</span><span class="cap">'+esc(p.sub)+'</span></div><div class="bt"><img src="'+F(p.img,900)+'" alt="Estaciones '+s.n+', '+esc(p.sub)+'"></div></div>'+
+    '<div class="ac-cside">'+
+      '<span class="cap">'+(c.paused?'Club en pausa':'Tu próxima caja · '+s.mes)+'</span>'+
+      '<h3>'+(c.paused?'Tu club está en pausa':s.n+' llega en '+s.mes)+'</h3>'+
+      '<p class="p">'+(c.paused?'No te enviaremos cajas hasta que lo reanudes. Tu precio de socio sigue activo.':n+' botellas de Estaciones '+s.n+' ('+esc(p.sub)+'). Te escribimos una semana antes de enviarla para que confirmes tu dirección.')+'</p>'+
+      (c.skipped?'<div class="ac-cnote" role="status"><span>Te saltaste '+esc(c.skipped)+'. Tu próxima caja es '+s.n+'.</span><button type="button" data-club="undo">Deshacer</button></div>':'')+
+      (c.paused?'':'<div class="ac-size" role="group" aria-label="Tamaño de caja"><span class="cap">Tamaño</span><button type="button" data-club="n3" aria-pressed="'+(n===3)+'">3 botellas</button><button type="button" data-club="n6" aria-pressed="'+(n===6)+'">6 botellas</button></div>'+
+      '<div class="ac-csum"><span>'+n+' × '+esc(p.name)+'</span><span class="price">'+money(full)+'</span><span>Precio de club ('+Math.round(DISC[n]*100)+'%)</span><span class="price">−'+money(full-box)+'</span><span>Envío</span><span>'+(box>=FREE?'Gratis':'Se calcula al pagar')+'</span><span class="t">Por caja</span><span class="t price">'+money(box)+'</span></div>')+
+      '<div class="acts">'+(c.paused?'<button class="btn btn-ink" type="button" data-club="resume">Reanudar club</button>':
+        '<button class="btn btn-ink" type="button" data-club="skip">Saltar '+s.n+'</button><button class="ul" type="button" data-club="pause">Pausar club</button>')+
+        '<a class="ul" href="#datos">Dirección de envío</a></div>'+
+    '</div></div>';
+  if(!c.paused)$('kSide').textContent+=' Si te saltas '+s.n+', la siguiente es '+nxt.n+'.';
+}
+$('clubBox').addEventListener('click',e=>{
+  const b=e.target.closest('[data-club]');if(!b)return;
+  const u=user();if(!u||!u.club)return;const c=u.club,a=b.dataset.club;
+  if(a==='n3'||a==='n6')c.n=a==='n3'?3:6;
+  if(a==='skip'){const i=seasIdx(c.next);c.skipped=SEAS[i].n;c.next=SEAS[(i+1)%4].n}
+  if(a==='undo'&&c.skipped){c.next=c.skipped;delete c.skipped}
+  if(a==='pause'){c.paused=true;delete c.skipped}
+  if(a==='resume')delete c.paused;
+  if(a!=='skip'&&a!=='undo'&&a!=='n3'&&a!=='n6')delete c.skipped;
+  store.set('cettoUser',u);renderClub();renderHi(u);
+  const f=$('clubBox').querySelector(a==='undo'||a==='skip'?'[data-club="'+(a==='skip'?'undo':'skip')+'"]':'[data-club="'+(a==='pause'?'resume':a==='resume'?'pause':a)+'"]');
+  if(f)f.focus({preventScroll:true});
+});
+
+/* ---------- Datos ---------- */
+$('dState').insertAdjacentHTML('beforeend',STATES.map(x=>'<option>'+x+'</option>').join(''));
+$('dCp').addEventListener('input',e=>e.target.value=e.target.value.replace(/\D/g,'').slice(0,5));
+function fillData(u){
+  const last=orders().find(o=>o.delivery&&o.delivery.mode==='envio'&&o.delivery.addr);
+  let ad=u.addr&&u.addr.addr?u.addr:null;
+  if(!ad&&last){const dv=last.delivery;let a=dv.addr,col=dv.col||'',city=dv.city||'',st=dv.state||'';
+    if(!col&&a.includes(', ')){const k=a.lastIndexOf(', ');col=a.slice(k+2);a=a.slice(0,k)}
+    if(!st&&city.includes(', ')){const k=city.lastIndexOf(', '),tail=city.slice(k+2);if(STATES.includes(tail)){st=tail;city=city.slice(0,k)}}
+    ad={addr:a,col,cp:dv.cp||'',city,state:st}}
+  ad=ad||{};
+  $('dName').value=u.name||'';$('dMail').value=u.email||'';$('dTel').value=u.tel||'';
+  $('dAddr').value=ad.addr||'';$('dCol').value=ad.col||'';$('dCp').value=ad.cp||'';$('dCity').value=ad.city||'';$('dState').value=STATES.includes(ad.state)?ad.state:'';
+  const pr=u.prefs||{};$('pNews').checked=!!pr.news;$('pCatas').checked=!!pr.catas;$('pWa').checked=!!pr.wa;
+  $('dSaved').textContent='';$('dErr').classList.remove('on');
+}
+$('fDatos').addEventListener('submit',e=>{e.preventDefault();$('dErr').classList.remove('on');$('dSaved').textContent='';
+  const u=user();if(!u)return;
+  const nm=$('dName').value.trim(),cp=$('dCp').value.trim();
+  if(!nm)return fail('dErr','Escribe tu nombre.','dName');
+  if(!$('dMail').value||!$('dMail').checkValidity())return fail('dErr','Revisa tu correo.','dMail');
+  if(cp&&!/^\d{5}$/.test(cp))return fail('dErr','El código postal tiene 5 números.','dCp');
+  Object.assign(u,{name:nm,email:$('dMail').value.trim(),tel:$('dTel').value.trim(),addr:{addr:$('dAddr').value.trim(),col:$('dCol').value.trim(),cp,city:$('dCity').value.trim(),state:$('dState').value},prefs:{news:$('pNews').checked,catas:$('pCatas').checked,wa:$('pWa').checked}});
+  store.set('cettoUser',u);renderHi(u);syncHeader();
+  $('dSaved').textContent='Listo, guardamos tus cambios.';
+});
+$('pwBtn').addEventListener('click',e=>{const u=user();e.target.closest('div').querySelector('p').textContent='Te enviaríamos un enlace a '+(u?u.email:'tu correo')+'. Prototipo: no se envía nada.'});
+
+/* ---------- Para tu próxima compra ---------- */
+function renderRecs(){
+  const os=orders(),bought=new Set(),lines=new Set(),types=new Set();
+  os.forEach(o=>Object.keys(o.items||{}).forEach(id=>{if(!P[id])return;bought.add(id);lines.add(P[id].line);types.add(P[id].c)}));
+  const pool=Object.keys(P).filter(id=>isWine(id)&&!P[id].out&&!bought.has(id)&&P[id].c!=='estuche'&&P[id].c!=='gourmet');
+  const score=id=>(lines.has(P[id].line)?2:0)+(types.has(P[id].c)?1:0);
+  pool.sort((a,b)=>score(b)-score(a)||(P[b].medals||0)-(P[a].medals||0));
+  const ids=pool.slice(0,4);
+  $('xSide').textContent=os.length?'Elegidos a partir de lo que ya probaste, sin repetir.':'Los más premiados de la casa, para empezar.';
+  $('recs').innerHTML=ids.map(card).join('');
+}
+
+/* ---------- Navegación de secciones ---------- */
+const navLinks=[...document.querySelectorAll('[data-nav]')];
+const secIO=new IntersectionObserver(es=>es.forEach(en=>{if(!en.isIntersecting)return;
+  navLinks.forEach(a=>{const on=a.dataset.nav===en.target.id;if(on)a.setAttribute('aria-current','location');else a.removeAttribute('aria-current');
+    if(on){const sc=a.parentElement;if(sc.scrollWidth>sc.clientWidth)sc.scrollTo({left:Math.max(0,a.offsetLeft-parseFloat(getComputedStyle(sc).paddingLeft)),behavior:reduceMotion?'auto':'smooth'})}});
+}),{rootMargin:'-35% 0px -60% 0px'});
+['pedidos','reservas','club','datos'].forEach(id=>secIO.observe($(id)));
+document.querySelectorAll('[data-logout]').forEach(b=>b.addEventListener('click',()=>{store.del('cettoUser');syncHeader();render();scrollTo({top:0,behavior:'instant'})}));
+
+/* ---------- Render ---------- */
+function render(){
+  const u=user();
+  $('acOut').hidden=!!u;$('acIn').hidden=!u;
+  if(!u){showTab('crear');return}
+  renderHi(u);renderOrders();renderBookings();renderClub();fillData(u);renderRecs();
+}
+render();
+observeReveals();
+/* ?demo=1 abre directo la cuenta de ejemplo (lo usa el mapa del prototipo) */
+if(new URLSearchParams(location.search).get('demo')==='1'){$('demo').click();if(document.activeElement)document.activeElement.blur();history.replaceState(null,'',location.pathname+location.hash)}
+/* enlaces directos (#pedidos, #reservas, #club, #datos) una vez pintado el contenido */
+const h=location.hash.slice(1);
+if(user()&&['pedidos','reservas','club','datos'].includes(h)){
+  const sm=()=>parseFloat(getComputedStyle($(h)).scrollMarginTop)||0;
+  const go=()=>{if(Math.abs($(h).getBoundingClientRect().top-sm())>4)$(h).scrollIntoView({behavior:'instant',block:'start'})};
+  setTimeout(go,40);addEventListener('load',()=>setTimeout(go,40),{once:true});
+}
+/* otra pestaña cambió la sesión o el carrito */
+addEventListener('storage',e=>{if(['cettoUser','cettoOrders','cettoBookings'].includes(e.key)){syncHeader();render()}});
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,646 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>L.A. Cetto · Colección Premiada</title>
+<meta name="description" content="Concepto: los vinos más reconocidos de L.A. Cetto, Reserva Privada y Don Luis. Banners que se descubren al bajar, sus 1,089 reconocimientos uno por uno y el Nebbiolo en 3D. Datos del sitio actual de lacetto.mx.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baskervville:ital@0;1&family=DM+Sans:opsz,wght@9..40,400..600&family=Playfair:opsz,wght@5..1200,300..500&display=swap" rel="stylesheet">
+<link rel="icon" type="image/svg+xml" href="media/favicon.svg">
+<!-- compartir -->
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="apple-touch-icon" href="media/apple-touch-icon.png">
+<meta name="theme-color" content="#F3F1EC">
+<meta name="robots" content="noindex, nofollow">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="es_MX">
+<meta property="og:site_name" content="L.A. Cetto · Concepto de rediseño">
+<meta property="og:title" content="L.A. Cetto · Colección Premiada">
+<meta property="og:description" content="Concepto: los vinos más reconocidos de L.A. Cetto, Reserva Privada y Don Luis. Banners que se descubren al bajar, sus 1,089 reconocimientos uno por uno y el Nebbiolo en 3D. Datos del sitio actual de lacetto.mx.">
+<meta property="og:url" content="https://zamirpadilla.github.io/lacetto-concepto/lacetto-coleccion.html">
+<meta property="og:image" content="https://zamirpadilla.github.io/lacetto-concepto/media/og-banner.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Chardonnay Reserva Privada de L.A. Cetto sobre una roca frente al mar, con el texto: Una boutique de vinos, de punta a punta">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="L.A. Cetto · Colección Premiada">
+<meta name="twitter:description" content="Concepto: los vinos más reconocidos de L.A. Cetto, Reserva Privada y Don Luis. Banners que se descubren al bajar, sus 1,089 reconocimientos uno por uno y el Nebbiolo en 3D. Datos del sitio actual de lacetto.mx.">
+<meta name="twitter:image" content="https://zamirpadilla.github.io/lacetto-concepto/media/og-banner.jpg">
+<!-- /compartir -->
+<link rel="stylesheet" href="cetto-base.css">
+<style>
+/* ===== Colección Premiada: empieza oscura (la cava) y al llegar a la colección se aclara ===== */
+body.dk{background:#121110;color:#EEE9E1;--dk:#121110;--dk2:#1A1917;--lt:#EEE9E1;--lt2:rgba(238,233,225,.72);--lt3:rgba(238,233,225,.48);--gold:#F4EFE7;--gold2:#F4EFE7;--wine:#6E1F2A;
+  transition:background-color 1s var(--ease),color 1s var(--ease)}
+.dk .hdr.solid{background:rgba(18,17,16,.86);color:var(--lt);box-shadow:0 1px 0 rgba(238,233,225,.08);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px)}
+.dk .hdr.solid .logo img{filter:brightness(0) invert(.92)}
+.dk .hdr.solid .cartb .badge{background:var(--lt);color:var(--dk)}
+.dk .hdr{transition:background .6s,color .6s,box-shadow .4s,transform .5s var(--ease)}
+.dk .notes{background:var(--dk);border-color:rgba(238,233,225,.08)}
+.dk .notes-in>span{color:var(--lt2)}
+.dk :focus-visible{outline-color:var(--lt)}
+.dk .ul{color:var(--lt)}
+/* menú, carrito y buscador son paneles claros: su texto va oscuro */
+.dk .drawer,.dk .srch,.dk .pnav,.dk .age{color:var(--ink)}
+.dk .drawer .ul,.dk .srch .ul{color:var(--ink)}
+.dk .drawer :focus-visible,.dk .srch :focus-visible{outline-color:var(--ink)}
+.cp-k{font:500 11px/1.3 var(--sans);letter-spacing:.18em;text-transform:uppercase;color:var(--lt3)}
+.cp-k.g{color:var(--gold)}
+.cp-h2{font:400 clamp(40px,4.6vw,76px)/1 var(--serif);letter-spacing:-.022em}
+.cp-h2 em{font-style:italic;color:var(--gold)}
+/* palabra de fondo: rellena con un degradado muy tenue; aparece primero y, cuando llega el texto, se difumina */
+.cp-word{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%) scale(1.04);font:400 clamp(130px,22vw,380px)/.8 var(--serif);letter-spacing:-.045em;white-space:nowrap;pointer-events:none;user-select:none;
+  color:transparent;background:linear-gradient(180deg,rgba(238,233,225,.16) 0%,rgba(238,233,225,.045) 70%,rgba(238,233,225,0) 100%);-webkit-background-clip:text;background-clip:text;
+  opacity:0;transition:opacity 1.6s var(--ease),transform 2.6s var(--ease),filter 1.8s var(--ease)}
+.cp-panel.on .cp-word{opacity:1;transform:translate(-50%,-52%)}
+.cp-panel.lit .cp-word{opacity:.6;filter:blur(9px)}
+
+/* ---------- 1. Portada: la escena se queda y cada banner nuevo se descubre de abajo hacia arriba ---------- */
+.cp-stick{position:relative;height:calc(var(--n,4) * 100svh)}
+.cp-stage{position:sticky;top:0;height:100svh;overflow:hidden;background:var(--dk)}
+.cp-panel{position:absolute;inset:0;overflow:hidden;background:radial-gradient(56% 70% at 50% 56%,var(--c1),var(--c2) 76%);will-change:clip-path}
+.cp-panel::before{content:"";position:absolute;inset:-50%;background-image:var(--grain);opacity:.15;mix-blend-mode:overlay;pointer-events:none;z-index:1}
+.cp-ph{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 50%}
+.cp-panel.has-ph::after{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(90deg,rgba(10,8,7,.6) 0%,rgba(10,8,7,0) 34%,rgba(10,8,7,0) 66%,rgba(10,8,7,.6) 100%)}
+/* la botella al centro */
+.cp-b{position:absolute;z-index:2;left:50%;bottom:8svh;height:min(78svh,840px);width:auto;transform:translate(-50%,10px);opacity:0;filter:drop-shadow(0 34px 44px rgba(0,0,0,.6));transition:opacity 1.4s var(--ease),transform 1.8s var(--ease)}
+.cp-panel.on .cp-b{opacity:1;transform:translate(-50%,0)}
+.cp-sh{position:absolute;z-index:1;left:50%;bottom:calc(8svh - 10px);width:min(17vw,240px);height:26px;transform:translateX(-50%);border-radius:50%;background:radial-gradient(closest-side,rgba(0,0,0,.6),rgba(0,0,0,0))}
+/* a la izquierda el nombre y su línea; a la derecha la descripción, los reconocimientos y las notas */
+.cp-tx{position:absolute;z-index:3;bottom:clamp(64px,11vh,120px)}
+.cp-tx>*{opacity:0;transform:translateY(16px);transition:opacity 1s var(--ease),transform 1.2s var(--ease)}
+.cp-panel.lit .cp-tx>*{opacity:1;transform:none}
+.cp-tx>:nth-child(2){transition-delay:.1s}.cp-tx>:nth-child(3){transition-delay:.2s}.cp-tx>:nth-child(4){transition-delay:.3s}
+.cp-r>:nth-child(1){transition-delay:.25s}.cp-r>:nth-child(2){transition-delay:.35s}.cp-r>:nth-child(3){transition-delay:.45s}
+.cp-l{left:var(--m);width:min(34vw,500px)}
+.cp-r{right:var(--m);width:min(26vw,380px)}
+.cp-tx h1,.cp-tx h2{margin-top:16px;font:400 clamp(58px,7vw,120px)/.88 var(--serif);letter-spacing:-.03em;color:#F4EFE7}
+.cp-line{display:block;margin-top:14px;font:italic 400 clamp(22px,2vw,30px)/1.2 var(--serif);color:#F4EFE7}
+.cp-buy{display:flex;align-items:baseline;flex-wrap:wrap;gap:12px 28px;margin-top:34px}
+.cp-pr{font:400 clamp(20px,1.5vw,24px)/1 var(--serif);font-variant-numeric:lining-nums tabular-nums;color:var(--lt)}
+.cp-buy .ul{color:var(--lt)}
+.cp-aw{display:block;font:500 10.5px/1.5 var(--sans);letter-spacing:.16em;text-transform:uppercase;color:var(--lt3)}
+.cp-q{margin-top:14px;font:400 clamp(17px,1.3vw,20px)/1.5 var(--serif);color:var(--lt2)}
+.cp-notes{display:flex;flex-wrap:wrap;gap:6px 22px;list-style:none;margin:20px 0 0;padding:0;font:italic 400 clamp(17px,1.3vw,20px)/1.3 var(--serif);color:var(--lt)}
+.cp-notes li{display:inline-flex;align-items:center}
+.cp-notes li::before{content:"";width:5px;height:5px;border-radius:50%;background:currentColor;opacity:.55;margin-right:10px}
+/* línea de corte entre un banner y el siguiente: blanca, fina y discreta */
+.cp-cut{position:absolute;z-index:5;left:0;right:0;height:1px;top:0;background:linear-gradient(90deg,rgba(255,255,255,0),rgba(255,255,255,.14) 25%,rgba(255,255,255,.14) 75%,rgba(255,255,255,0));opacity:0;pointer-events:none}
+
+/* ---------- 2. Las dos líneas: Reserva Privada y Don Luis ---------- */
+.cpl{padding:clamp(96px,11vw,180px) var(--m) clamp(80px,9vw,150px);background:var(--dk)}
+.cpl-hd{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(32px,6vw,110px);align-items:end;margin-bottom:clamp(48px,6vw,96px)}
+.cpl-hd p{max-width:44ch;font:400 clamp(18px,1.45vw,22px)/1.55 var(--serif);color:var(--lt2)}
+.cpl-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(20px,3vw,48px)}
+.cpl-c{display:flex;flex-direction:column}
+.cpl-c:nth-child(2){margin-top:clamp(60px,9vw,150px)}
+.cpl-ph{position:relative;aspect-ratio:4/5;overflow:hidden;background:#1d1a17}
+.cpl-ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transform:scale(1.06);transition:transform 2.2s var(--ease)}
+.cpl-c:hover .cpl-ph img{transform:scale(1.01)}
+.cpl-ph::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(10,8,7,.55),rgba(10,8,7,0) 45%)}
+.cpl-ph .cp-k{position:absolute;z-index:2;left:clamp(18px,2vw,28px);bottom:clamp(16px,2vw,26px);color:rgba(238,233,225,.82)}
+.cpl-c h3{margin-top:28px;font:400 clamp(40px,4.2vw,68px)/.95 var(--serif);letter-spacing:-.025em}
+.cpl-c>p{margin-top:16px;max-width:44ch;font-size:15.5px;line-height:1.65;color:var(--lt2)}
+.cpl-w{list-style:none;margin:22px 0 0;padding:0}
+.cpl-w a{display:flex;align-items:baseline;justify-content:space-between;gap:16px;padding:9px 0;color:inherit}
+.cpl-w b{font:400 clamp(20px,1.6vw,24px)/1.1 var(--serif);transition:color .3s,padding .4s var(--ease)}
+.cpl-w span{font:500 10.5px/1 var(--sans);letter-spacing:.14em;text-transform:uppercase;color:var(--lt3)}
+.cpl-w a:hover b{color:#fff;padding-left:8px}
+.cpl-c .ul{align-self:flex-start;margin-top:24px}
+/* entradas escalonadas: cada pieza llega un poco después de la anterior */
+.sq>*,.sq>div>*,.sq .cpl-w li{opacity:0;transform:translateY(20px);transition:opacity 1s var(--ease),transform 1.2s var(--ease);transition-delay:calc(var(--i,0) * 90ms)}
+.sq.in>*,.sq.in>div>*,.sq.in .cpl-w li{opacity:1;transform:none}
+.sq .cpl-ph{transform:none;opacity:0;clip-path:inset(12% 0 0 0);transition:opacity 1.2s var(--ease),clip-path 1.6s var(--ease)}
+.sq.in .cpl-ph{opacity:1;clip-path:inset(0 0 0 0)}
+.sq .cpl-ph img{transform:scale(1.12)}
+.sq.in .cpl-ph img{transform:scale(1.03)}
+@media (prefers-reduced-motion:reduce){.sq>*,.sq>div>*,.sq .cpl-w li,.sq .cpl-ph{opacity:1;transform:none;clip-path:none;transition:none}}
+
+/* ---------- 3. Medallero: centrado, limpio, y continuo con el Nebbiolo en 3D (mismo fondo) ---------- */
+.cpx{position:relative;padding:0 var(--m) clamp(60px,7vw,110px);background:radial-gradient(60% 46% at 50% 26%,#1d1813 0%,#121110 70%);text-align:center}
+/* primero el medallero; con el scroll se va completo y en su lugar entra "Diez veces Bodega Mexicana del Año" */
+.cpx-run{position:relative;height:240svh}
+.cpx-st{position:sticky;top:0;height:100svh;display:grid;place-items:center;overflow:hidden}
+.cpx-st>.cpx-c,.cpx-st>.cpx-boty{grid-area:1/1;width:100%;margin:0 auto;transition:opacity 1s var(--ease),transform 1.2s var(--ease),filter 1s var(--ease)}
+.cpx.b2 .cpx-st>.cpx-c{opacity:0;transform:translateY(-9vh) scale(.98);filter:blur(4px);pointer-events:none}
+.cpx-st>.cpx-boty{opacity:0;transform:translateY(9vh);pointer-events:none}
+.cpx.b2 .cpx-st>.cpx-boty{opacity:1;transform:none;pointer-events:auto;transition-delay:.15s}
+.cpx-boty>*{opacity:0;transform:translateY(16px);transition:opacity 1s var(--ease),transform 1.2s var(--ease);transition-delay:calc(.25s + var(--i,0) * 90ms)}
+.cpx.b2 .cpx-boty>*{opacity:1;transform:none}
+.cpx-c{display:flex;flex-direction:column;align-items:center;max-width:980px;margin:0 auto}
+.cpx-big{display:block;margin-top:clamp(22px,2.4vw,34px);font:400 clamp(110px,15vw,240px)/.8 var(--serif);letter-spacing:-.05em;font-variant-numeric:lining-nums tabular-nums;
+  color:transparent;background:linear-gradient(180deg,#FFFFFF 0%,#EEE9E1 55%,#BDB7AE 100%);-webkit-background-clip:text;background-clip:text}
+.cpx-t{margin-top:clamp(14px,1.6vw,22px);font:italic 400 clamp(26px,2.6vw,42px)/1.1 var(--serif);color:var(--lt)}
+.cpx-lead{margin-top:18px;max-width:46ch;font-size:15.5px;line-height:1.65;color:var(--lt2)}
+.cpx-top{list-style:none;display:flex;flex-wrap:wrap;justify-content:center;gap:clamp(24px,4.4vw,72px);margin:clamp(44px,5vw,72px) 0 0;padding:0}
+.cpx-top a{display:grid;justify-items:center;gap:6px;color:inherit;transition:opacity .3s}
+.cpx-top a:hover{opacity:.7}
+.cpx-top b{font:400 clamp(38px,3.6vw,58px)/1 var(--serif);font-variant-numeric:lining-nums tabular-nums;color:var(--gold2)}
+.cpx-top span{font:400 17px/1.2 var(--serif);color:var(--lt)}
+.cpx-top small{font:500 10.5px/1.3 var(--sans);letter-spacing:.14em;text-transform:uppercase;color:var(--lt3)}
+.cpx-boty{display:flex;flex-direction:column;align-items:center;max-width:920px}
+.cpx-boty h3{margin-top:16px;font:400 clamp(32px,3.2vw,52px)/1.02 var(--serif);letter-spacing:-.015em}
+.cpx-boty h3 em{font-style:italic;color:var(--gold)}
+.cpx-boty p{margin-top:14px;max-width:44ch;font-size:15px;line-height:1.6;color:var(--lt2)}
+.wr{list-style:none;margin:clamp(40px,4.6vw,64px) auto 0;padding:0;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:clamp(18px,2.6vw,44px) clamp(20px,3.4vw,60px);width:min(100%,860px)}
+.wr li{display:grid;place-items:center;aspect-ratio:1;opacity:0;transform:translateY(14px) scale(.96);transition:opacity .9s var(--ease),transform 1.1s var(--ease);transition-delay:calc(.3s + var(--k) * 70ms)}
+.cpx.b2 .wr li{opacity:1;transform:none}
+.wr svg{width:100%;height:100%;color:var(--gold);overflow:visible}
+.wr text{font:400 19px var(--serif);fill:var(--gold2)}
+.cpx-next{margin-top:clamp(20px,4vw,60px);font:400 clamp(24px,2.4vw,38px)/1.2 var(--serif);color:var(--lt2)}
+.cpx-next em{color:var(--lt)}
+.cpx-next>*{display:inline-block}
+
+/* ---------- 4. El Nebbiolo en 3D ---------- */
+.cp-3d{position:relative;height:300svh;background:var(--dk)}
+.c3-stage{position:sticky;top:0;height:100svh;overflow:hidden;background:radial-gradient(38% 54% at 50% 54%,#3a1418 0%,#1a0c0e 54%,#121110 84%)}
+.c3-word{left:50%;top:50%;transform:translate(-50%,-50%);font-size:clamp(120px,20vw,340px);opacity:1;filter:none}
+.c3-canvas{position:absolute;left:50%;top:50%;width:min(40vw,560px);height:100svh;transform:translate(-50%,-50%);z-index:2}
+.c3-fallback{position:absolute;left:50%;bottom:12svh;height:68svh;transform:translateX(-50%);z-index:2;display:none;filter:drop-shadow(0 30px 40px rgba(0,0,0,.55))}
+.cp-3d.nogl .c3-fallback{display:block}
+.cp-3d.nogl .c3-canvas{display:none}
+.c3-sh{position:absolute;left:50%;bottom:calc(15svh - 8px);width:min(14vw,180px);height:22px;transform:translateX(-50%);border-radius:50%;background:radial-gradient(closest-side,rgba(0,0,0,.65),rgba(0,0,0,0));z-index:1}
+.c3-n{position:absolute;z-index:3;top:50%;width:min(25vw,360px);opacity:0;transform:translateY(calc(-50% + 18px));transition:opacity .7s var(--ease),transform .9s var(--ease);pointer-events:none}
+.c3-n.on{opacity:1;transform:translateY(-50%);pointer-events:auto}
+.c3-n.l{right:calc(50% + clamp(150px,12vw,230px));text-align:right}
+.c3-n.r{left:calc(50% + clamp(150px,12vw,230px));text-align:left}
+.c3-n.l p{margin-left:auto;max-width:32ch}
+.c3-n h2{margin-top:14px;font:400 clamp(44px,4.6vw,76px)/.95 var(--serif);letter-spacing:-.02em}
+.c3-n h3{margin-top:14px;font:400 clamp(30px,3vw,46px)/1.02 var(--serif)}
+.c3-n p{margin-top:14px;font-size:16px;line-height:1.6;color:var(--lt2)}
+.c3-n.r p{max-width:32ch}
+.c3-n .cp-buy{justify-content:flex-start}
+.c3-prog{position:absolute;z-index:3;left:50%;bottom:28px;transform:translateX(-50%);display:flex;gap:8px}
+.c3-prog i{width:28px;height:2px;background:rgba(238,233,225,.2);overflow:hidden}
+.c3-prog i b{display:block;height:100%;background:var(--lt);transform:scaleX(0);transform-origin:left}
+
+/* ---------- 5. La colección (aquí la página ya es clara) ---------- */
+.cp-car{padding:clamp(80px,9vw,140px) 0 clamp(64px,7vw,110px);background:transparent}
+.cc-hd{display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:16px 48px;padding:0 var(--m);margin-bottom:clamp(28px,3.4vw,48px)}
+.cc-hd p{max-width:40ch;color:var(--lt2);font-size:15.5px;line-height:1.55;transition:color 1s var(--ease)}
+.cc-rail{padding-inline:var(--m);scroll-padding-inline:var(--m)}
+.dk .vc{background:#23211E;transition:background-color 1s var(--ease)}
+.dk .vc-glow{background:radial-gradient(52% 40% at 50% 44%,rgba(255,236,200,.13),rgba(255,236,200,0) 72%)}
+.dk .vc-line{color:var(--lt3)}
+.dk .vc-name{color:var(--lt)}
+.dk .vc-price{color:var(--lt2)}
+.dk .vc-add{background:var(--lt);color:var(--dk)}
+.dk .vt-bar{background:rgba(238,233,225,.16)}
+.dk .vt-bar i{background:var(--lt)}
+
+/* ---------- 6. Simple y limpia (como Bijou) ---------- */
+.cp-bj{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);min-height:100svh;background:transparent;color:inherit}
+.cp-bj-ph{position:relative;overflow:hidden}
+.cp-bj-ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:46% 60%}
+.cp-bj-tx{display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:clamp(56px,7vw,120px) clamp(24px,4.4vw,80px)}
+.cp-bj-tx h2{font:400 clamp(36px,3.5vw,58px)/1.04 var(--serif);letter-spacing:-.02em;text-wrap:balance}
+.cp-bj-tx h2 em{font-style:italic}
+.cp-bj-tx p{margin-top:clamp(22px,2.6vw,36px);max-width:40ch;font-size:16.5px;line-height:1.65;color:var(--lt2);transition:color 1s var(--ease)}
+.cp-bj-tx p+p{margin-top:18px}
+.cp-bj-tx .ul{align-self:center;margin-top:30px;color:inherit}
+
+/* ---------- modo claro (desde la colección) ---------- */
+body.dk.lt{background:#F3F1EC;color:var(--ink)}
+body.dk.lt .cc-hd p,body.dk.lt .cp-bj-tx p{color:var(--ink2)}
+body.dk.lt .cp-car .cp-k{color:var(--ink3)}
+body.dk.lt .cp-car .cp-h2 em{color:var(--ink)}
+body.dk.lt .vc{background:var(--card)}
+body.dk.lt .vc-glow{background:radial-gradient(52% 40% at 50% 44%,rgba(255,255,255,.62),rgba(255,255,255,0) 72%)}
+body.dk.lt .vc-line{color:var(--ink3)}
+body.dk.lt .vc-name{color:var(--ink)}
+body.dk.lt .vc-price{color:var(--ink2)}
+body.dk.lt .vc-add{background:var(--ink);color:var(--bg)}
+body.dk.lt .vt-bar{background:rgba(43,44,45,.14)}
+body.dk.lt .vt-bar i{background:var(--ink)}
+body.dk.lt .cp-car .ul,body.dk.lt .cp-bj .ul{color:var(--ink)}
+body.dk.lt .hdr.solid{background:rgba(243,241,236,.9);color:var(--ink);box-shadow:0 1px 0 var(--line)}
+body.dk.lt .hdr.solid .logo img{filter:none}
+body.dk.lt .hdr.solid .cartb .badge{background:var(--ink);color:var(--bg)}
+body.dk footer.ft{transition:color 1s var(--ease)}
+body.dk.lt footer.ft{--fc:var(--ink);--fc2:var(--ink2);--fc3:var(--ink3);--fl:var(--line)}
+
+@media (max-width:900px){
+  .cp-word{top:34%;font-size:clamp(100px,28vw,210px)}
+  .cp-stick{height:auto}
+  .cp-stage{position:relative;height:auto;overflow:visible}
+  .cp-panel{position:relative;inset:auto;height:100svh;min-height:560px;clip-path:none!important;visibility:visible!important;will-change:auto}
+  .cp-cut{display:none}
+  .cp-b{bottom:auto;top:10svh;height:50svh}
+  .cp-sh{bottom:auto;top:calc(10svh + 50svh - 12px)}
+  .cp-l{left:var(--m);right:var(--m);width:auto;bottom:calc(92px + env(safe-area-inset-bottom))}
+  .cp-r{display:none}
+  .cp-tx h1,.cp-tx h2{font-size:clamp(48px,13vw,66px)}
+  .cp-buy{margin-top:22px}
+  .cpl-hd,.cpl-grid{grid-template-columns:minmax(0,1fr)}
+  .wr{gap:14px 18px}
+  .cpl-c:nth-child(2){margin-top:0}
+  .c3-canvas{width:86vw;top:38%;height:64svh}
+  .c3-n{top:auto;bottom:calc(92px + env(safe-area-inset-bottom));width:auto;left:var(--m)!important;right:var(--m)!important;text-align:left!important;transform:translateY(18px)}
+  .c3-n.on{transform:none}
+  .c3-n.r p{margin-left:0}
+  .c3-n .cp-buy{justify-content:flex-start}
+  .c3-stage{background:radial-gradient(60% 46% at 50% 36%,#3a1418 0%,#1a0c0e 56%,#121110 86%)}
+  .c3-sh{bottom:auto;top:calc(38% + 25svh)}
+  .c3-fallback{bottom:auto;top:15svh;height:46svh}
+  .c3-word{top:38%}
+  .c3-prog{display:none}
+  .cp-bj{grid-template-columns:minmax(0,1fr)}
+  .cp-bj-ph{aspect-ratio:4/5}
+  .cc-rail .vc{flex-basis:calc((100% - 6px) / 2)}
+}
+@media (max-width:640px){.cc-rail .vc{flex-basis:78%;min-height:380px}.wr{gap:10px 12px}.wr text{font-size:22px}.cpx-top{gap:22px 30px}}
+@media (prefers-reduced-motion:reduce){.wr li{transition:none;opacity:1;transform:none}.cpx-st>.cpx-c,.cpx-st>.cpx-boty,.cpx-boty>*{transition:opacity .4s;transform:none!important;filter:none!important}body.dk{transition:none}.cp-word,.cp-b,.cp-tx>*,.yt-grid .th img{transition:none}}
+/* ---------- 7. Catas en video ---------- */
+body.dk.lt .cp-yt .cp-k,body.dk.lt .yt-soc .cp-k{color:var(--ink3)}
+body.dk.lt .cp-yt .cp-h2 em{color:var(--ink)}
+.cp-yt{border-top:1px solid var(--line)}
+.yt-split{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);min-height:min(92svh,860px)}
+.yt-tx{display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:clamp(56px,7vw,120px) clamp(28px,6vw,110px)}
+.yt-tx p{max-width:40ch;margin-top:22px;color:var(--ink2);font-size:16px;line-height:1.6}
+.yt-cta{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:14px 28px;margin-top:30px}
+.yt-cta .ul{color:var(--ink)}
+.yt-ph{position:relative;overflow:hidden;background:#14110e;min-height:520px}
+.cp-yt .vd-f{position:absolute;inset:0;display:block;width:100%;height:100%;padding:0;border:0;color:#fff;cursor:pointer;background:none}
+.cp-yt .vd-f img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform 2s var(--ease)}
+.cp-yt .vd-f img.lb{transform:scale(1.34)}
+.cp-yt .vd-f::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(12,9,6,0) 50%,rgba(12,9,6,.62))}
+.cp-yt .vd-f:hover img{transform:scale(1.03)}
+.cp-yt .vd-f:hover img.lb{transform:scale(1.37)}
+.cp-yt .vd-play{position:absolute;z-index:1;left:50%;top:50%;width:84px;height:84px;margin:-42px 0 0 -42px;border-radius:50%;background:rgba(250,248,244,.94);box-shadow:0 10px 34px rgba(12,9,6,.25);transition:transform .6s var(--ease)}
+.cp-yt .vd-play::before{content:"";position:absolute;left:35px;top:28px;border-style:solid;border-width:14px 0 14px 22px;border-color:transparent transparent transparent var(--ink)}
+.cp-yt .vd-f:hover .vd-play{transform:scale(1.07)}
+.cp-yt .vd-meta{position:absolute;z-index:1;left:clamp(18px,2.4vw,36px);right:clamp(18px,2.4vw,36px);bottom:clamp(18px,2.4vw,34px);display:grid;gap:6px;text-align:left}
+.cp-yt .vd-meta small{font:500 10.5px/1.3 var(--sans);letter-spacing:.12em;text-transform:uppercase;opacity:.86}
+.cp-yt .vd-meta b{font:400 clamp(20px,1.9vw,30px)/1.15 var(--serif)}
+.yt-more{padding:clamp(56px,6vw,96px) var(--m) clamp(64px,7vw,110px)}
+.yt-grid{list-style:none;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:clamp(14px,1.6vw,24px);margin:22px 0 0;padding:0}
+.yt-grid button{display:block;width:100%;padding:0;border:0;background:none;color:inherit;text-align:left;cursor:pointer}
+.yt-grid .th{position:relative;display:block;aspect-ratio:16/10;overflow:hidden;background:var(--bg2)}
+.yt-grid .th img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform 1.4s var(--ease)}
+.yt-grid button:hover .th img{transform:scale(1.05)}
+.yt-grid .th::after{content:"";position:absolute;left:50%;top:50%;width:40px;height:40px;margin:-20px 0 0 -20px;border-radius:50%;background:rgba(250,248,244,.9);opacity:0;transform:scale(.9);transition:opacity .35s,transform .45s var(--ease)}
+.yt-grid button:hover .th::after{opacity:1;transform:none}
+.yt-grid b{display:block;margin-top:12px;font:400 18px/1.2 var(--serif)}
+.yt-grid b i{font-style:italic;color:var(--ink3)}
+.yt-grid small{display:block;margin-top:5px;font:500 10.5px/1.4 var(--sans);letter-spacing:.1em;text-transform:uppercase;color:var(--ink3)}
+.yt-soc{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:18px clamp(28px,4vw,56px);margin-top:clamp(56px,6vw,88px)}
+.yt-soc{flex-direction:column;gap:18px}
+.yt-soc nav{display:flex;flex-wrap:wrap;justify-content:center;gap:14px clamp(26px,3.4vw,48px)}
+.yt-soc a{display:inline-flex;align-items:center;gap:10px;color:var(--ink);font:500 11.5px/1 var(--sans);letter-spacing:.14em;text-transform:uppercase;transition:opacity .25s}
+.yt-soc a:hover{opacity:.6}
+.yt-soc a span{display:inline}
+.yt-soc b{font:inherit}
+.yt-soc small{display:none}
+.yt-dlg{width:min(1100px,92vw,calc((100svh - 140px) * 16 / 9));max-width:none;margin:auto;padding:0;border:0;background:#000;overflow:visible}
+.yt-dlg::backdrop{background:rgba(10,8,6,.84)}
+.yt-dlg-in{position:relative;aspect-ratio:16/9}
+.yt-dlg-in iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.yt-x{position:absolute;right:0;top:-44px;color:#fff;font:500 11px/1 var(--sans);letter-spacing:.14em;text-transform:uppercase;padding:12px 0}
+@media (max-width:1100px){.yt-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media (max-width:900px){.yt-split{grid-template-columns:minmax(0,1fr);min-height:0}.yt-ph{order:-1;min-height:0;aspect-ratio:16/10}.yt-grid{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;margin-inline:calc(var(--m) * -1);padding-inline:var(--m);scroll-padding-inline:var(--m);scrollbar-width:none}.yt-grid::-webkit-scrollbar{display:none}.yt-grid li{flex:0 0 70vw;scroll-snap-align:start}.cp-yt .vd-play{width:64px;height:64px;margin:-32px 0 0 -32px}.cp-yt .vd-play::before{left:26px;top:21px;border-width:11px 0 11px 17px}}
+</style>
+</head>
+<body class="dk">
+<div id="chromeTop"></div>
+
+<main>
+<h1 class="sr">Colección Premiada de L.A.&nbsp;Cetto</h1>
+<!-- 1. Como en Taylors: la escena se queda fija y cada banner nuevo se descubre de abajo hacia arriba; la línea de corte pasa por la botella,
+     que está en el mismo lugar y a la misma escala en todos. Las fotos van en media/cp/ (ver prompts-buscador-ia.md); mientras, botella sobre color -->
+<section class="cp-stick" id="cpStick" data-hero aria-label="Colección Premiada">
+  <div class="cp-stage">
+    <div class="cp-panels" id="cpTrack"></div>
+    <i class="cp-cut" id="cpCut" aria-hidden="true"></i>
+  </div>
+</section>
+
+<!-- 2. Las dos líneas de la colección -->
+<section class="cpl" aria-labelledby="lnT">
+  <div class="cpl-hd sq">
+    <div><span class="cp-k g" style="--i:0">Dos líneas, una misma búsqueda</span><h2 class="cp-h2" id="lnT" style="margin-top:20px;--i:1">Reserva Privada<br><em>y Don Luis.</em></h2></div>
+    <p style="--i:2">Los vinos que llevaron el nombre de la familia a los concursos más exigentes del mundo, nacidos en el Valle de Guadalupe.</p>
+  </div>
+  <div class="cpl-grid">
+    <article class="cpl-c sq">
+      <div class="cpl-ph"><img src="media/l-reserva.jpg" alt="Nebbiolo, Cabernet Sauvignon y Chardonnay Reserva Privada" loading="lazy" style="object-position:50% 40%"><span class="cp-k">L.A.&nbsp;Cetto · Reserva Privada</span></div>
+      <h3 style="--i:1">Reserva Privada</h3>
+      <p style="--i:2">Aquí están el Nebbiolo, nuestro vino más reconocido fuera de México, y el Chardonnay, uno de los primeros blancos con barrica del país.</p>
+      <ul class="cpl-w" id="lnRP"></ul>
+      <a class="ul" style="--i:8" href="lacetto-tienda.html?linea=reserva-privada">Ver la línea</a>
+    </article>
+    <article class="cpl-c sq">
+      <div class="cpl-ph"><img src="media/l-donluis.jpg" alt="Terra Don Luis con una copa de vino tinto" loading="lazy" style="object-position:58% 50%"><span class="cp-k">Don Luis · Selección Reservada</span></div>
+      <h3 style="--i:1">Don Luis</h3>
+      <p style="--i:2">La expresión más alta de la cava: Terra, la mezcla bordelesa de la casa; Concordia, con 12 meses de barrica, y el Viognier más premiado de México.</p>
+      <ul class="cpl-w" id="lnDL"></ul>
+      <a class="ul" style="--i:8" href="lacetto-tienda.html?linea=don-luis">Ver la línea</a>
+    </article>
+  </div>
+</section>
+
+<!-- 3. Medallero: centrado y sencillo; la cifra, los vinos que más suman y la Bodega del Año. Cierra con una frase que lleva al Nebbiolo -->
+<section class="cpx" id="cpx" aria-labelledby="awT">
+  <div class="cpx-run" id="cpxRun"><div class="cpx-st">
+  <div class="cpx-c sq">
+    <span class="cp-k g" style="--i:0">Nuestro medallero</span>
+    <b class="cpx-big" id="awN" style="--i:1" aria-hidden="true">1,089</b>
+    <h2 class="cpx-t" id="awT" style="--i:2" aria-label="1,089 reconocimientos internacionales">reconocimientos internacionales</h2>
+    <p class="cpx-lead" style="--i:3">En los concursos más exigentes del mundo, de Vinitaly a San Francisco. Estos son los vinos que más han sumado.</p>
+    <ol class="cpx-top" id="awTop" style="--i:4" aria-label="Los vinos con más reconocimientos"></ol>
+  </div>
+  <div class="cpx-boty">
+    <span class="cp-k g" style="--i:0">Reconocimientos a la vinícola</span>
+    <h3 style="--i:1"><em>Diez veces</em> Bodega Mexicana del Año</h3>
+    <p style="--i:2">El New York International Competition ha distinguido a la casa como la mejor bodega mexicana en diez ediciones.</p>
+    <ol class="wr" id="wr" style="--i:3" aria-label="Años en que fue Bodega Mexicana del Año"></ol>
+  </div>
+  </div></div>
+  <p class="cpx-next sq"><span style="--i:0">Y al frente de todos,</span> <em style="--i:1">el más premiado de la familia.</em></p>
+</section>
+
+<!-- 4. El Nebbiolo en 3D: gira al bajar y van apareciendo sus notas -->
+<section class="cp-3d" id="cp3d" aria-labelledby="c3T">
+  <div class="c3-stage">
+    <span class="cp-word c3-word" aria-hidden="true">Nebbiolo</span>
+    <i class="c3-sh" aria-hidden="true"></i>
+    <canvas class="c3-canvas" id="c3Canvas" aria-hidden="true"></canvas>
+    <img class="c3-fallback" src="media/cp/b-nebrp.png" alt="Botella de Nebbiolo Reserva Privada">
+    <div class="c3-n l on" data-at="0">
+      <span class="cp-k g">El más premiado de la familia</span>
+      <h2 id="c3T">Nebbiolo<br><em style="font-style:italic">Reserva Privada</em></h2>
+      <p id="c3Lead"></p>
+    </div>
+    <div class="c3-n r" data-at=".25"><span class="cp-k">En nariz</span><h3>Grosella, higo y cereza</h3><p>Con un delicado toque floral de jamaica.</p></div>
+    <div class="c3-n l" data-at=".5"><span class="cp-k">En boca</span><h3>Robusto y elegante</h3><p>Taninos firmes, gran complejidad y un final largo. 14 meses en barrica de roble francés.</p></div>
+    <div class="c3-n r" data-at=".75"><span class="cp-k">En la mesa</span><h3>Para cortes y quesos maduros</h3><p>Cortes de carne, platillos especiados y quesos maduros.</p><div class="cp-buy"><span class="cp-pr" id="c3Pr"></span><button class="ul" type="button" data-add="nebrp">Agregar al carrito</button></div></div>
+  </div>
+</section>
+
+<!-- 5. La colección completa: aquí la página ya es clara -->
+<section class="cp-car" id="lista" aria-labelledby="ccT">
+  <div class="cc-hd rise"><div><span class="cp-k">La colección</span><h2 class="cp-h2" id="ccT" style="margin-top:18px">Todos los <em>premiados.</em></h2></div><p>Reserva Privada y Don Luis, junto a los vinos más premiados de la casa.</p></div>
+  <div class="vt-rail cc-rail" id="ccRail" role="region" aria-label="Vinos de la colección"><ul class="vt-track" id="ccTrack"></ul></div>
+  <div class="vt-foot"><div class="vt-bar" aria-hidden="true"><i id="ccBar"></i></div><a class="ul vt-all" href="lacetto-tienda.html?f=premiados">Ver todos los vinos</a></div>
+</section>
+
+<!-- 6. Simple y limpia: foto y texto -->
+<section class="cp-bj" aria-labelledby="bjT">
+  <div class="cp-bj-ph"><img src="media/cp-vina.jpg" alt="Botellas de la línea Don Luis entre los viñedos del Valle de Guadalupe" loading="lazy"></div>
+  <div class="cp-bj-tx rise">
+    <h2 id="bjT">Premiados en el mundo<br><em>hechos en el Valle</em></h2>
+    <p>Desde 1928, la familia Cetto ha llevado el vino mexicano a los concursos más exigentes. El Nebbiolo Reserva Privada suma 163 reconocimientos; Don Luis reúne lo más alto de nuestra cava.</p>
+    <p>Hoy son 1,200 hectáreas en el Valle de Guadalupe y 26 varietales que llegan a más de 20 países.</p>
+    <a class="ul" href="lacetto-trayectoria.html">Conoce nuestra trayectoria</a>
+  </div>
+</section>
+
+<!-- 7. Catas en video: como Club Cetto (texto centrado a un lado, la cata grande a sangre del otro); abajo, más catas y las redes -->
+<section class="cp-yt" aria-labelledby="ytT">
+  <div class="yt-split">
+    <div class="yt-tx sq">
+      <span class="cp-k" style="--i:0">En YouTube · @VinosLACettoMx</span>
+      <h2 class="cp-h2" id="ytT" style="margin-top:18px;--i:1">Catas en <em>video.</em></h2>
+      <p style="--i:2">En el canal de la bodega hay más de cien videos: notas de cata oficiales, la serie Catas contigo y maridajes con cocina mexicana. Descorcha y cata con nosotros.</p>
+      <div class="yt-cta" style="--i:3"><a class="btn btn-ink" id="ytSub" href="#" target="_blank" rel="noopener">Suscríbete al canal</a><a class="ul" id="ytAll" href="#" target="_blank" rel="noopener">Ver todas las catas</a></div>
+    </div>
+    <div class="yt-ph" id="ytPl"></div>
+  </div>
+  <div class="yt-more">
+    <div class="yt-soc" style="margin-top:0"><span class="cp-k">Síguenos</span><nav aria-label="Redes sociales" id="ytSoc"></nav></div>
+  </div>
+</section>
+</main>
+
+<div id="chromeBottom"></div>
+
+<script src="cetto-base.js"></script>
+<script src="cetto-videos.js"></script>
+<script>
+(()=>{
+renderChrome({page:'coleccion'});
+/* ---------- Catas en video: la cata grande; al pasar el mouse se ve un avance y al dar clic se reproduce ahí mismo ---------- */
+{const pl=document.getElementById('ytPl');
+ const PICK=[['nebrp','8e779UQIkrc'],['psrp','KMv_LEiRgVM'],['viog','voiKhcBnQ8A'],['cabrp','px4tSXn-b78'],['terra','Cjby_9BFxJk'],['chenin','sJ7jI3XM2B8']];
+ const V=PICK.map(([pid,vid])=>{const v=YTV[pid].find(x=>x[0]===vid);return {pid,vid,t:v[1],d:v[2],k:v[3],w:v[4]}});
+ const lab=v=>(v.k==='mar'?YTK.mar:YTK[v.k]+(v.w?' · con '+v.w:''))+' · '+v.d;
+ const face=v=>'<button type="button" class="vd-f" data-v="'+v.vid+'" aria-label="Reproducir el video: '+v.t+'"><img src="'+ytThumb(v.vid,'maxresdefault')+'" alt="" loading="lazy" onload="if(this.naturalWidth<200){this.classList.add(\'lb\');this.src=\''+ytThumb(v.vid)+'\'}"><span class="vd-play" aria-hidden="true"></span><span class="vd-meta"><small>'+lab(v)+'</small><b>'+v.t+'</b></span></button>';
+ pl.innerHTML=face(V[0]);
+ ytInline(pl);
+ document.getElementById('ytSub').href=YT_CH.sub;document.getElementById('ytAll').href=YT_CH.url+'/videos';
+ const IG='<svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.4" cy="6.6" r=".9" fill="currentColor" stroke="none"/></svg>',
+   FB='<svg width="17" height="17" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M13.5 21v-7.6h2.6l.4-3h-3V8.5c0-.9.3-1.5 1.5-1.5h1.6V4.3c-.3 0-1.2-.1-2.3-.1-2.3 0-3.9 1.4-3.9 4v2.2H7.8v3h2.6V21z"/></svg>',
+   XI='<svg width="15" height="15" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M17.8 3h3.1l-6.8 7.7 8 10.3h-6.3l-4.9-6.4L5.3 21H2.2l7.3-8.3L1.9 3h6.4l4.4 5.8zm-1.1 16.2h1.7L7.4 4.7H5.6z"/></svg>',
+   YI='<svg width="18" height="13" viewBox="0 0 24 17" aria-hidden="true"><path fill="currentColor" d="M23.5 2.7A3 3 0 0 0 21.4.5C19.5 0 12 0 12 0S4.5 0 2.6.5A3 3 0 0 0 .5 2.7C0 4.6 0 8.5 0 8.5s0 3.9.5 5.8a3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1c.5-1.9.5-5.8.5-5.8s0-3.9-.5-5.8zM9.6 12.1V4.9l6.2 3.6z"/></svg>';
+ document.getElementById('ytSoc').innerHTML=[[YT_CH.url,YI,'YouTube','@VinosLACettoMx'],[YT_CH.ig,IG,'Instagram','@vinoslacetto'],[YT_CH.fb,FB,'Facebook','@VinosGpoCetto'],[YT_CH.x,XI,'X','@vinoslacetto']].map(([h,ic,n,u])=>'<a href="'+h+'" target="_blank" rel="noopener" title="'+n+' '+u+'" aria-label="'+n+' '+u+' (abre en otra pestaña)">'+ic+'<span><b>'+n+'</b><small>'+u+'</small></span></a>').join('')}
+const $=id=>document.getElementById(id),reduce=matchMedia('(prefers-reduced-motion: reduce)').matches,cl=v=>Math.min(1,Math.max(0,v));
+const fmt=n=>Math.round(n).toLocaleString('es-MX');
+/* lo que dice el medallero de lacetto.mx de cada vino */
+const HL={nebrp:'El vino mexicano más premiado en el extranjero. Vinitaly lo reconoció entre los mejores Nebbiolos fuera de Italia.',
+  cabrp:'Uno de los tintos más respetados y constantes del mercado mexicano, de generación en generación.',
+  terra:'La mezcla bordelesa de Don Luis: Cabernet, Merlot, Petit Verdot y Malbec. La máxima expresión de un legado.',
+  viog:'El Viognier más premiado de México: aromas tropicales y la frescura del Valle de Guadalupe.',
+  pslac:'Reseñado por críticos internacionales y entre los 20 vinos extranjeros más vendidos en Londres.',
+  charp:'Uno de los primeros blancos con barrica de México, con más de 35 años en el mercado.',
+  chenin:'Lanzado en 1983, un favorito del paladar francés.',
+  psrp:'Nació para el mercado internacional; su cuarta añada ya está en México.',
+  conc:'Inspirado en la mezcla australiana de Cabernet Sauvignon y Shiraz, con 12 meses de barrica.',
+  sbsb:'Un Sauvignon Blanc con barrica y frescura cítrica, favorito del mercado canadiense.'};
+
+/* ---------- 1. Banners que se van descubriendo ---------- */
+/* Fotos de cada banner (generadas a partir de ia-bases/cp-*.png, con la botella siempre en el mismo lugar): cuando estén en media/cp/, CP_FOTOS=true */
+const CP_FOTOS=false;
+const W=[
+  {id:'nebrp',word:'Nebbiolo',c1:'#4a1820',c2:'#12090a',notes:['Grosella','Higo','Cereza','Jamaica']},
+  {id:'cabrp',word:'Cabernet',c1:'#2f1a34',c2:'#0e0910',notes:['Grosella negra','Violetas','Cuero','Humo']},
+  {id:'terra',word:'Terra',c1:'#3a2a14',c2:'#0f0c08',notes:['Frutos negros','Violetas','Tabaco','Cuero']},
+  {id:'viog',word:'Viognier',c1:'#3b3115',c2:'#100e07',notes:['Flores blancas','Lima','Mandarina','Guanábana']}
+];
+const st=$('cpStick'),track=$('cpTrack'),stage=st.querySelector('.cp-stage'),cut=$('cpCut');
+st.style.setProperty('--n',W.length);
+track.innerHTML=W.map((w,i)=>{const p=P[w.id],H='h2';
+  const media=CP_FOTOS?'<img class="cp-ph" src="media/cp/cp-'+w.id+'.jpg" alt="'+p.line+' '+p.name+'"'+(i?' loading="lazy"':'')+'>'
+    :'<span class="cp-word" aria-hidden="true">'+w.word+'</span><i class="cp-sh" aria-hidden="true"></i><img class="cp-b" src="media/cp/b-'+w.id+'.png" alt="'+p.line+' '+p.name+'"'+(i?' loading="lazy"':'')+'>';
+  return '<article class="cp-panel" style="--c1:'+w.c1+';--c2:'+w.c2+';z-index:'+(i+1)+'">'+media+
+    '<div class="cp-tx cp-l"><span class="cp-k">'+String(i+1).padStart(2,'0')+' / '+String(W.length).padStart(2,'0')+'</span>'+
+    '<'+H+'>'+p.name+'</'+H+'><span class="cp-line">'+p.line+'</span>'+
+    '<div class="cp-buy"><span class="cp-pr">'+money(p.price)+'</span><button class="ul" type="button" data-add="'+w.id+'" aria-label="Agregar '+p.line+' '+p.name+' al carrito">Agregar al carrito</button><a class="ul" href="'+PAGES.ficha+'?p='+w.id+'">Ver ficha</a></div></div>'+
+    '<div class="cp-tx cp-r"><span class="cp-aw">'+p.medals+' reconocimientos internacionales</span><p class="cp-q">'+(HL[w.id]||p.q)+'</p>'+
+    '<ul class="cp-notes" aria-label="Notas de cata">'+w.notes.map(n=>'<li>'+n+'</li>').join('')+'</ul></div></article>'}).join('');
+const panels=[...track.querySelectorAll('.cp-panel')];let raf=0;
+/* secuencia de cada banner: primero la botella y el nombre de fondo; un momento después, el texto (y el nombre se difumina) */
+const lit=new Set();
+function light(k,delay){if(lit.has(k))return;lit.add(k);const el=panels[k];el.classList.add('on');setTimeout(()=>el.classList.add('lit'),reduce?0:delay)}
+const mqM=matchMedia('(max-width:900px)');
+function updStick(){if(mqM.matches){panels.forEach(el=>{el.style.clipPath='';el.style.visibility=''});return}const h=stage.clientHeight,tot=Math.max(1,st.offsetHeight-h),p=cl(-st.getBoundingClientRect().top/tot),pos=p*(W.length-1);
+  let edge=-1;
+  panels.forEach((el,k)=>{if(!k)return;const t=cl(pos-(k-1)),c=(1-t)*100;
+    el.style.clipPath=t>=1?'none':'inset('+c.toFixed(2)+'% 0 0 0)';el.style.visibility=t<=0?'hidden':'visible';
+    if(t>.02)el.classList.add('on');
+    if(t>.92)light(k,900);
+    if(t>0&&t<1)edge=c});
+  cut.style.opacity=edge<0?0:1;if(edge>=0)cut.style.top=edge+'%'}
+light(0,1500);
+/* móvil: cada banner se enciende al verse */
+{const pio=new IntersectionObserver(es=>es.forEach(en=>{if(en.isIntersecting&&mqM.matches)light(panels.indexOf(en.target),500)}),{threshold:.45});panels.forEach(p=>pio.observe(p))}
+
+/* ---------- 2. Las dos líneas ---------- */
+const lineList=ids=>ids.filter(id=>P[id]).map((id,k)=>'<li style="--i:'+(3+k)+'"><a href="'+PAGES.ficha+'?p='+id+'"><b>'+P[id].name+'</b><span>'+(P[id].medals?P[id].medals+' reconocimientos':money(P[id].price))+'</span></a></li>').join('');
+$('lnRP').innerHTML=lineList(['nebrp','cabrp','charp','psrp']);
+$('lnDL').innerHTML=lineList(['terra','viog','conc','dlmer']);
+/* las piezas con entrada escalonada aparecen al llegar a la vista */
+{const io=new IntersectionObserver(es=>es.forEach(en=>{if(en.isIntersecting){en.target.classList.add('in');io.unobserve(en.target)}}),{rootMargin:'0px 0px -12% 0px'});document.querySelectorAll('.sq').forEach(el=>io.observe(el))}
+
+/* ---------- 3. Medallero: la cifra cuenta al aparecer; debajo, los vinos que más suman ---------- */
+const TOTAL=1089;
+/* medallero → Bodega Mexicana del Año, según el avance dentro de la sección */
+{const cx=$('cpx'),run=$('cpxRun');const tick=()=>{const r=run.getBoundingClientRect(),tot=r.height-innerHeight;if(tot<=0)return;const p=-r.top/tot;
+  if(p>.5&&!cx.classList.contains('b2'))cx.classList.add('b2');else if(p<.42&&cx.classList.contains('b2'))cx.classList.remove('b2')};
+ addEventListener('scroll',()=>requestAnimationFrame(tick),{passive:true});addEventListener('resize',tick);tick()}
+$('awTop').innerHTML=['nebrp','pslac','cabrp','charp','viog'].filter(id=>P[id]).map(id=>'<li><a href="'+PAGES.ficha+'?p='+id+'"><b>'+P[id].medals+'</b><span>'+P[id].name+'</span><small>'+P[id].line+'</small></a></li>').join('');
+{const b=$('awN');let done=false;new IntersectionObserver((es,o)=>{if(!es[0].isIntersecting||done)return;done=true;o.disconnect();if(reduce){b.textContent=fmt(TOTAL);return}
+  const s0=performance.now(),T=2000;b.textContent='0';const stp=n=>{const u=Math.min(1,(n-s0)/T),e=1-Math.pow(1-u,3);b.textContent=fmt(TOTAL*e);if(u<1)requestAnimationFrame(stp)};requestAnimationFrame(stp)},{rootMargin:'0px 0px -20% 0px'}).observe(b)}
+/* Bodega Mexicana del Año: coronas de laurel con el año */
+const wreath=y=>{let l='';const R=46;for(const side of [-1,1])for(let k=0;k<9;k++){const ang=side<0?118+k*17:62-k*17,rad=ang*Math.PI/180,cx=60+R*Math.cos(rad),cy=60+R*Math.sin(rad),rot=ang+(side<0?-58:58);
+  l+='<ellipse cx="'+cx.toFixed(1)+'" cy="'+cy.toFixed(1)+'" rx="7.4" ry="2.9" transform="rotate('+rot.toFixed(0)+' '+cx.toFixed(1)+' '+cy.toFixed(1)+')"/>'}
+  return '<svg viewBox="0 0 120 120" aria-hidden="true"><g fill="currentColor" opacity=".85">'+l+'</g><path d="M44 104c5 3 10 4.5 16 4.5s11-1.5 16-4.5" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/><text x="60" y="66" text-anchor="middle">'+y+'</text></svg>'};
+const YRS=[2014,2015,2016,2017,2018,2020,2021,2023,2025,2026];
+$('wr').innerHTML=YRS.map((y,k)=>'<li style="--k:'+k+'">'+wreath(y)+'<span class="sr">'+y+'</span></li>').join('');
+
+/* ---------- 4. Botella en 3D (three.js): el perfil sale de la silueta de la foto, suavizado para que el vidrio no haga anillos;
+   la etiqueta cubre el frente y los lados, y atrás se ve el vidrio ---------- */
+const s3=$('cp3d'),c3=$('c3Canvas'),notes=[...s3.querySelectorAll('.c3-n')],prog=[...s3.querySelectorAll('.c3-prog b')];
+$('c3Lead').textContent='El vino mexicano más premiado en el extranjero. '+P.nebrp.medals+' reconocimientos internacionales.';
+$('c3Pr').textContent=money(P.nebrp.price);
+let p3=0,curN=0;
+function upd3(){const h=innerHeight,tot=Math.max(1,s3.offsetHeight-h);p3=cl(-s3.getBoundingClientRect().top/tot);
+  const n=Math.min(3,Math.floor(p3*4+.0001));if(n!==curN){curN=n;notes.forEach((x,i)=>x.classList.toggle('on',i===n))}
+  prog.forEach((b,i)=>b.style.transform='scaleX('+cl(p3*4-i).toFixed(3)+')')}
+const g3={on:false,vis:false};
+function fallback3(){s3.classList.add('nogl')}
+function start3(){
+  const T=window.THREE;if(!T){fallback3();return}
+  let R;try{R=new T.WebGLRenderer({canvas:c3,antialias:true,alpha:true,powerPreference:'high-performance'})}catch(e){fallback3();return}
+  R.setPixelRatio(Math.min(devicePixelRatio||1,2));R.outputEncoding=T.sRGBEncoding;R.toneMapping=T.ACESFilmicToneMapping;R.toneMappingExposure=1;R.physicallyCorrectLights=true;
+  const scene=new T.Scene(),cam=new T.PerspectiveCamera(24,1,.1,100);cam.position.set(0,.02,11);
+  /* estudio: cajas de luz que se reflejan en el vidrio (más brillantes que 1 para que el reflejo sea nítido) */
+  /* estudio oscuro: dos tiras de luz angostas (izquierda fría, derecha cálida) que dejan un reflejo limpio en el vidrio, sin halos en la orilla */
+  const pm=new T.PMREMGenerator(R),env=new T.Scene();env.background=new T.Color(0x000000);
+  const box=(x,y,z,w,h,c,k)=>{const m=new T.Mesh(new T.PlaneGeometry(w,h),new T.MeshBasicMaterial({color:new T.Color(c).multiplyScalar(k),side:T.DoubleSide}));m.position.set(x,y,z);m.lookAt(0,0,0);env.add(m)};
+  box(-2.4,.6,4.2,.38,7,0xffffff,3.2);box(2.9,.3,3.4,.22,7,0xffdcae,1.6);box(0,5.5,2,2.4,.5,0xffffff,.8);
+  scene.environment=pm.fromScene(env,.02).texture;
+  /* la etiqueta se ilumina de frente, como en una foto de estudio */
+  const key=new T.DirectionalLight(0xfff4e6,2.4);key.position.set(-2.2,2.6,6);scene.add(key);
+  const fill=new T.DirectionalLight(0xffe9d2,.7);fill.position.set(3,.5,5);scene.add(fill);
+  scene.add(new T.AmbientLight(0xffffff,.32));
+  const img=new Image();img.src='media/cp/b-nebrp.png';
+  img.onload=()=>{
+    const w=img.naturalWidth,h=img.naturalHeight,cv=document.createElement('canvas');cv.width=w;cv.height=h;const cx=cv.getContext('2d');cx.drawImage(img,0,0);const D=cx.getImageData(0,0,w,h).data;
+    const L=new Int16Array(h).fill(-1),Rr=new Int16Array(h).fill(-1);
+    for(let y=0;y<h;y++){for(let x=0;x<w;x++)if(D[(y*w+x)*4+3]>110){L[y]=x;break}for(let x=w-1;x>=0;x--)if(D[(y*w+x)*4+3]>110){Rr[y]=x;break}}
+    let y0=0;while(y0<h&&L[y0]<0)y0++;let y1=h-1;while(y1>0&&L[y1]<0)y1--;
+    const HB=3.4,S=HB/(y1-y0);
+    /* perfil: mediana (quita picos) y promedio amplio (quita ondas), de abajo hacia arriba */
+    const raw=[],rows=[];for(let y=y1;y>=y0;y--){rows.push(y);raw.push(Math.max(0,(Rr[y]-L[y]+1)/2))}
+    const med=raw.map((v,i)=>{const a=[];for(let k=-5;k<=5;k++){const j=i+k;if(j>=0&&j<raw.length)a.push(raw[j])}a.sort((p,q)=>p-q);return a[a.length>>1]});
+    const sm=med.map((v,i)=>{let a=0,n=0;for(let k=-14;k<=14;k++){const j=i+k;if(j>=0&&j<med.length){const wgt=1-Math.abs(k)/15;a+=med[j]*wgt;n+=wgt}}return a/n});
+    /* el cuerpo es un cilindro: un solo radio de la base al hombro (la etiqueta ya no deja escalón) */
+    {const lim=Math.floor(sm.length*.62);let mx=0;for(let i=0;i<lim;i++)mx=Math.max(mx,sm[i]);let b=0;while(b<lim&&sm[b]>mx*.955)b++;
+     const body=sm.slice(4,Math.max(5,b)).sort((p,q)=>p-q),bR=body[Math.floor(body.length*.6)]||mx;
+     for(let i=0;i<b;i++)sm[i]=bR;for(let k=0;k<14&&b+k<sm.length;k++){const f=k/14;sm[b+k]=bR*(1-f)+Math.min(bR,sm[b+k])*f}}
+    /* base redondeada, como el vidrio real */
+    const STEP=3,pts=[new T.Vector2(0,0)];const r0=sm[0]*S;pts.push(new T.Vector2(r0*.82,0),new T.Vector2(r0*.96,.012));
+    for(let i=4;i<sm.length;i+=STEP)pts.push(new T.Vector2(sm[i]*S,i*S));pts.push(new T.Vector2(sm[sm.length-1]*S*.9,(sm.length-1)*S+.004),new T.Vector2(0,(sm.length-1)*S+.006));
+    const geo=new T.LatheGeometry(pts,256);geo.computeVertexNormals();geo.translate(0,-HB/2,0);
+    /* textura desenvuelta: la etiqueta sale de la foto (sin la sombra de la orilla) y se prolonga hasta ±80°;
+       el vidrio es un solo tono y los brillos los pone el estudio, así giran bien */
+    const NP=pts.length,TH=rows.length,U=2048,tc=document.createElement('canvas');tc.width=U;tc.height=TH;const tx=tc.getContext('2d'),O=tx.createImageData(U,TH),RO=tx.createImageData(U,TH),MO=tx.createImageData(U,TH);
+    const px=(x,y)=>{x=Math.max(0,Math.min(w-1,x|0));const i=(y*w+x)*4;return [D[i],D[i+1],D[i+2]]};
+    const lumOf=q=>(q[0]*.3+q[1]*.59+q[2]*.11)/255;
+    const glass=(()=>{const cs=[];for(let j=0;j<rows.length;j+=8){const y=rows[j],l=L[y],r=Rr[y],c=(l+r)/2,rr=(r-l)/2,q=px(c+rr*.46,y);if(lumOf(q)<.3)cs.push(q)}cs.sort((a,b)=>(a[0]+a[1]+a[2])-(b[0]+b[1]+b[2]));return cs[cs.length>>1]||[30,12,14]})();
+    const rowOf=t=>{const pi=t/(TH-1)*(NP-1);const ii=Math.max(0,Math.min(rows.length-1,Math.round(pi<=3?0:pi>=NP-3?rows.length-1:(pi-3)*STEP+4)));return rows[ii]};
+    const capTop=rows.length*.74;
+    /* qué filas son etiqueta: la franja continua más larga de papel */
+    let LB=[0,0];
+    const info=rows.map((y,ri)=>{const l=L[y],r=Rr[y],c=(l+r)/2,rr=Math.max(1,(r-l)/2);let a=[0,0,0];for(const s0 of [-.52,-.46,.46,.52]){const q=px(c+rr*s0,y);a[0]+=q[0]/4;a[1]+=q[1]/4;a[2]+=q[2]/4}
+      return {y,c,rr,a,paper:lumOf(a)>.32,cap:ri>capTop&&a[0]>a[1]*1.6&&a[0]>70}});
+    {let best=[0,-1],st=-1;for(let i=0;i<=info.length;i++){const on=i<info.length&&info[i].paper;if(on&&st<0)st=i;if(!on&&st>=0){if(i-st>best[1]-best[0])best=[st,i];st=-1}}
+     /* las filas van de abajo hacia arriba: se alarga hacia abajo mientras el centro siga siendo papel */
+     while(best[0]>0&&lumOf(px(info[best[0]-1].c,info[best[0]-1].y))>.5)best[0]--;
+     info.forEach((o,i)=>o.paper=i>=best[0]&&i<best[1]);if(best[1]>best[0])LB=[info[best[1]-1].y,info[best[0]].y]}
+    /* la foto trae la luz del estudio: la orilla de la etiqueta sale oscura. Se mide el blanco del papel por columna y se empareja */
+    const NB=64,bins=Array.from({length:NB},()=>[]);
+    info.forEach(o=>{if(!o.paper)return;for(let b=0;b<NB;b++){const sv=-1+(b+.5)*2/NB;bins[b].push(lumOf(px(o.c+o.rr*sv,o.y)))}});
+    const W0=bins.map(v=>{if(!v.length)return 1;v.sort((p,q)=>p-q);return v[Math.floor(v.length*.85)]||1});
+    const Wb=W0.map((v,i)=>{let a=0,n=0;for(let k=-3;k<=3;k++){const j=i+k;if(j>=0&&j<NB){a+=W0[j];n++}}return a/n});
+    const Wc=Math.max(Wb[NB>>1],Wb[(NB>>1)-1]),gain=sv=>{const f=(sv+1)/2*NB-.5,i0=Math.max(0,Math.min(NB-1,Math.floor(f))),i1=Math.min(NB-1,i0+1),t=Math.max(0,Math.min(1,f-i0));return Math.max(1,Math.min(1.9,Wc/(Wb[i0]*(1-t)+Wb[i1]*t)))};
+    const PH=1.0,LE=1.42,sP=Math.sin(PH);
+    const mix=(p,q,f)=>[p[0]*(1-f)+q[0]*f,p[1]*(1-f)+q[1]*f,p[2]*(1-f)+q[2]*f];
+    const curv=y=>{const tp=LB[0],bt=LB[1];if(bt<=tp)return 0;const t=Math.max(0,Math.min(1,(y-tp)/(bt-tp)));return (4+18*t)*h/979};
+    const lab=(o,sv)=>{const ys=Math.max(0,Math.min(h-1,Math.round(o.y-curv(o.y)*(1-Math.sqrt(Math.max(0,1-sv*sv)))))),l=L[ys]>=0?L[ys]:L[o.y],r=Rr[ys]>=0?Rr[ys]:Rr[o.y],c=(l+r)/2,rr=Math.max(1,(r-l)/2);
+      const q=px(c+rr*sv,ys),g=gain(sv);return [Math.min(255,q[0]*g),Math.min(255,q[1]*g),Math.min(255,q[2]*g)]};
+    for(let t=0;t<TH;t++){const y=rowOf(TH-1-t),o=info[rows.indexOf(y)],a=o.a,cap=o.cap,paper=o.paper;
+      const eL=paper?lab(o,-sP):null,eR=paper?lab(o,sP):null;
+      for(let u=0;u<U;u++){let th=u/U*Math.PI*2;if(th>Math.PI)th-=Math.PI*2;const ab=Math.abs(th),k=(t*U+u)*4;
+        let col;
+        if(paper){
+          if(ab<=PH)col=lab(o,Math.sin(th)*.99);
+          else if(ab<=LE)col=th<0?eL:eR;
+          else if(ab<=LE+.025)col=mix(th<0?eL:eR,glass,(ab-LE)/.025);
+          else col=glass}
+        else if(cap){
+          if(ab<=.62)col=px(o.c+o.rr*Math.sin(th)*.98,o.y);
+          else if(ab<=.9)col=mix(px(o.c+o.rr*Math.sin(th)*.98,o.y),a,(ab-.62)/.28);
+          else col=a}
+        else col=glass;
+        O.data[k]=col[0];O.data[k+1]=col[1];O.data[k+2]=col[2];O.data[k+3]=255;
+        /* rugosidad: papel mate, vidrio pulido, cápsula satinada · metal: solo la cápsula */
+        const rough=cap?82:paper&&ab<=LE+.02?212:22;RO.data[k]=RO.data[k+1]=RO.data[k+2]=rough;RO.data[k+3]=255;
+        const mt=cap?150:0;MO.data[k]=MO.data[k+1]=MO.data[k+2]=mt;MO.data[k+3]=255}}
+    tx.putImageData(O,0,0);const map=new T.CanvasTexture(tc);map.encoding=T.sRGBEncoding;map.anisotropy=R.capabilities.getMaxAnisotropy();
+    const mk=data=>{const c2=document.createElement('canvas');c2.width=U;c2.height=TH;c2.getContext('2d').putImageData(data,0,0);return new T.CanvasTexture(c2)};
+    const mat=new T.MeshPhysicalMaterial({map,roughnessMap:mk(RO),metalnessMap:mk(MO),roughness:1,metalness:1,clearcoat:.12,clearcoatRoughness:.08,envMapIntensity:.95});
+    const bottle=new T.Mesh(geo,mat);scene.add(bottle);
+    let sw=0,sh=0;const size=()=>{const b=c3.getBoundingClientRect();if(!b.width)return;const w=Math.round(b.width),hh=Math.round(b.height);if(w===sw&&Math.abs(hh-sh)<2)return;sw=w;sh=hh;R.setSize(w,hh,false);cam.aspect=w/hh;cam.updateProjectionMatrix()};
+    size();addEventListener('resize',size);
+    /* gira con el scroll unos 120°: la etiqueta llega a los lados y atrás se ve el vidrio */
+    let rot=-1.05,t0=performance.now();g3.on=true;
+    const ease=x=>x<.5?2*x*x:1-Math.pow(-2*x+2,2)/2;
+    const loop=now=>{if(!g3.vis){g3.raf=0;return}const t=(now-t0)/1000,target=-1.05+ease(p3)*2.1;rot+=(target-rot)*.07;
+      bottle.rotation.y=rot+(reduce?0:Math.sin(t*.5)*.035);bottle.position.y=reduce?0:Math.sin(t*.8)*.025;R.render(scene,cam);g3.raf=requestAnimationFrame(loop)};
+    g3.kick=()=>{if(!g3.raf&&g3.vis)g3.raf=requestAnimationFrame(loop)};g3.kick();
+  };
+  img.onerror=fallback3;
+}
+new IntersectionObserver(es=>{g3.vis=es[0].isIntersecting;if(g3.vis&&g3.kick)g3.kick()},{rootMargin:'200px 0px'}).observe(s3);
+{const sc=document.createElement('script');sc.src='https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js';sc.onload=start3;sc.onerror=fallback3;document.head.appendChild(sc)}
+
+/* ---------- 5. Carrusel de la colección ---------- */
+const BOT=new Set('nebrp pslac cabrp charp chenin viog psrp terra conc prim ver oto inv champ sbsb dlmer'.split(' '));
+const COL=['nebrp','cabrp','charp','psrp','terra','viog','conc','pslac','chenin'];
+const vcard=(id,i)=>{const p=P[id],m=p.medals||0;
+  return '<li class="vc" style="--i:'+i+'"><a class="vc-a" href="'+PAGES.ficha+'?p='+id+'" draggable="false"><span class="vc-img">'+(m?'<span class="vc-aw" role="img" aria-label="'+m+' reconocimientos">'+(m>=80?'<i class="md">'+AW_TROPHY+'</i>':'')+'<i class="md">'+AW_LAUREL+'</i></span>':'')+'<i class="vc-glow" aria-hidden="true"></i><i class="vc-sh" aria-hidden="true"></i><img src="'+(BOT.has(id)?'media/bot/'+id+'.png':F(p.img,400))+'" alt="" loading="lazy" draggable="false"></span>'+
+    '<span class="vc-info"><span class="vc-line">'+p.line+'</span><span class="vc-name">'+p.name+'</span><span class="vc-price">Socios: '+money(memberPrice(p.price))+' <i aria-hidden="true">|</i> '+money(p.price)+'</span>'+(m?'<span class="vc-rec">'+m+' reconocimientos</span>':'')+'</span></a>'+
+    '<button class="vc-add" type="button" data-add="'+id+'" aria-label="Agregar '+p.line+' '+p.name+' al carrito"><span>Agregar al carrito</span></button></li>'};
+const ccTrack=$('ccTrack'),ccRail=$('ccRail'),ccBar=$('ccBar');
+ccTrack.innerHTML=COL.map(vcard).join('');ccTrack.classList.add('in');
+function ccProg(){const max=ccRail.scrollWidth-ccRail.clientWidth,vis=ccRail.clientWidth/ccRail.scrollWidth;ccBar.parentElement.style.visibility=max>4?'visible':'hidden';ccBar.style.width=(vis*100)+'%';ccBar.style.transform='translateX('+(max>0?ccRail.scrollLeft/max*(1/vis-1)*100:0)+'%)'}
+ccRail.addEventListener('scroll',()=>requestAnimationFrame(ccProg),{passive:true});addEventListener('resize',ccProg);ccProg();
+{let dg=null;ccRail.addEventListener('pointerdown',e=>{if(e.pointerType!=='mouse'||e.button!==0||e.target.closest('.vc-add'))return;dg={x:e.clientX,s:ccRail.scrollLeft,m:false,id:e.pointerId}});
+ addEventListener('pointermove',e=>{if(!dg||e.pointerId!==dg.id)return;const dx=e.clientX-dg.x;if(!dg.m&&Math.abs(dx)>5){dg.m=true;ccRail.classList.add('drag')}if(dg.m)ccRail.scrollLeft=dg.s-dx});
+ addEventListener('pointerup',e=>{if(!dg||e.pointerId!==dg.id)return;const m=dg.m;dg=null;ccRail.classList.remove('drag');
+  if(m){const block=ev=>{ev.preventDefault();ev.stopPropagation()};ccRail.addEventListener('click',block,{capture:true,once:true});setTimeout(()=>ccRail.removeEventListener('click',block,{capture:true}),80)}})}
+
+/* ---------- oscuro → claro: desde la colección, la página entera se aclara con un fundido ---------- */
+const car=$('lista');
+const updMode=()=>{const r=car.getBoundingClientRect();document.body.classList.toggle('lt',r.top<innerHeight*.6)};
+
+/* ---------- scroll ---------- */
+const onScroll=()=>{if(!raf)raf=requestAnimationFrame(()=>{raf=0;updStick();upd3();updMode()})};
+addEventListener('scroll',onScroll,{passive:true});addEventListener('resize',()=>{updStick();upd3();updMode()});updStick();upd3();updMode();
+observeReveals();
+})();
+</script>
+</body>
+</html>

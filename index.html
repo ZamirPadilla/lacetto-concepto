@@ -1,0 +1,262 @@
+<!doctype html>
+<html lang="es-MX">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>L.A. Cetto · Concepto de rediseño</title>
+<meta name="description" content="Mapa del prototipo navegable del concepto de rediseño de L.A. Cetto: recorridos, pantallas y estado de la demo.">
+<!-- compartir -->
+<link rel="icon" type="image/svg+xml" href="media/favicon.svg">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="apple-touch-icon" href="media/apple-touch-icon.png">
+<meta name="theme-color" content="#F3F1EC">
+<meta name="robots" content="noindex, nofollow">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="es_MX">
+<meta property="og:site_name" content="L.A. Cetto · Concepto de rediseño">
+<meta property="og:title" content="L.A. Cetto · Concepto de rediseño">
+<meta property="og:description" content="Mapa del prototipo navegable del concepto de rediseño de L.A. Cetto: recorridos, pantallas y estado de la demo.">
+<meta property="og:url" content="https://zamirpadilla.github.io/lacetto-concepto/">
+<meta property="og:image" content="https://zamirpadilla.github.io/lacetto-concepto/media/og-banner.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Chardonnay Reserva Privada de L.A. Cetto sobre una roca frente al mar, con el texto: Una boutique de vinos, de punta a punta">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="L.A. Cetto · Concepto de rediseño">
+<meta name="twitter:description" content="Mapa del prototipo navegable del concepto de rediseño de L.A. Cetto: recorridos, pantallas y estado de la demo.">
+<meta name="twitter:image" content="https://zamirpadilla.github.io/lacetto-concepto/media/og-banner.jpg">
+<!-- /compartir -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baskervville:ital@0;1&family=DM+Sans:opsz,wght@9..40,400..600&family=Playfair:opsz,wght@5..1200,300..500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="cetto-base.css">
+<style>
+body{background:var(--bg)}
+.mp-top{display:flex;justify-content:space-between;align-items:center;gap:20px;padding:22px var(--m);border-bottom:1px solid var(--line)}
+.mp-top img{height:44px;filter:brightness(0);opacity:.85}
+.mp-top .cap{color:var(--ink3);text-align:right}
+.mp-hero{display:grid;grid-template-columns:1.3fr minmax(360px,.7fr);gap:clamp(32px,6vw,96px);align-items:end;padding:clamp(48px,7vw,104px) var(--m) clamp(40px,5vw,72px)}
+.mp-hero h1{font:400 clamp(44px,6.4vw,96px)/1.02 var(--serif);letter-spacing:-.025em;max-width:13ch}
+.mp-hero h1 i{font-style:italic}
+.mp-hero .lead{font-size:clamp(16px,1.3vw,18.5px);color:var(--ink2);max-width:52ch;margin-top:26px}
+.mp-hero .ctas{display:flex;flex-wrap:wrap;align-items:center;gap:16px 28px;margin-top:34px}
+.qr{background:var(--bg2);padding:24px;display:grid;grid-template-columns:auto 1fr;gap:20px;align-items:center}
+.qr #qr{width:116px;height:116px;background:#fff;padding:8px}
+.qr #qr img,.qr #qr canvas{width:100%!important;height:100%!important}
+.qr b{display:block;font:400 22px/1.2 var(--serif);margin-bottom:6px}
+.qr p{font-size:13px;color:var(--ink2)}
+.qr code{display:block;margin-top:10px;font:500 12.5px/1.3 var(--sans);letter-spacing:.02em;word-break:break-all}
+.mp-sec{padding:clamp(48px,6vw,96px) var(--m);border-top:1px solid var(--line)}
+.mp-sec>.hd{display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:end;margin-bottom:clamp(28px,3.5vw,48px)}
+.mp-sec>.hd h2{font:400 clamp(32px,3.6vw,52px)/1.08 var(--serif);letter-spacing:-.02em}
+.mp-sec>.hd p{color:var(--ink2);max-width:46ch;justify-self:end;font-size:15px}
+/* Recorridos */
+.flows{list-style:none}
+.flow{display:grid;grid-template-columns:56px minmax(220px,.8fr) 2fr;gap:24px;padding:26px 0;border-top:1px solid var(--line);align-items:start}
+.flow:last-child{border-bottom:1px solid var(--line)}
+.flow .n{font:400 15px/1.6 var(--serif);color:var(--ink3)}
+.flow h3{font:400 26px/1.15 var(--serif);letter-spacing:-.01em}
+.flow p{font-size:14px;color:var(--ink2);margin-top:6px;max-width:34ch}
+.steps{display:flex;flex-wrap:wrap;align-items:center;gap:8px 6px;padding-top:4px}
+.steps a{display:inline-flex;align-items:center;height:36px;padding:0 14px;border:1px solid var(--line);font-size:13.5px;background:var(--bg);transition:background .2s,border-color .2s}
+.steps a:hover{background:var(--bg2);border-color:var(--ink3)}
+.steps a:first-child{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.steps a:first-child:hover{background:#000}
+.steps .ar{color:var(--ink3);display:inline-flex}
+/* Pantallas */
+.screens{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(28px,3vw,44px) clamp(16px,2vw,28px)}
+.scr .shot{display:block;aspect-ratio:16/10;background:var(--bg2);overflow:hidden;position:relative;box-shadow:0 0 0 1px var(--line)}
+.scr .shot img{position:relative;z-index:1;width:100%;height:100%;object-fit:cover;object-position:top;transition:transform 1.2s var(--ease)}
+.scr .shot:hover img{transform:scale(1.03)}
+.scr .shot .ph{position:absolute;inset:0;display:grid;place-items:center;font:400 28px/1 var(--serif);color:var(--ink3)}
+.scr .meta{display:flex;justify-content:space-between;align-items:baseline;gap:12px;margin-top:16px}
+.scr h3{font:400 25px/1.15 var(--serif)}
+.scr h3 a:hover{opacity:.6}
+.scr .f{font-size:11.5px;color:var(--ink3);letter-spacing:.02em}
+.scr p{font-size:14px;color:var(--ink2);margin-top:6px}
+.scr .st{display:flex;flex-wrap:wrap;gap:6px 14px;margin-top:12px;font-size:13px}
+.scr .st a{border-bottom:1px solid var(--line);padding-bottom:1px}
+.scr .st a:hover{border-color:var(--ink)}
+/* Demo */
+.demo{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,4vw,64px)}
+.demo dl{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;border-top:1px solid var(--line);padding-top:20px}
+.demo dt{font-size:12px;color:var(--ink3)}
+.demo dd{font:400 26px/1.2 var(--serif);margin-top:4px}
+.demo .acts{display:flex;flex-wrap:wrap;align-items:center;gap:14px 26px;margin-top:26px}
+.demo .note{font-size:13px;color:var(--ink3);margin-top:14px}
+.demo ul{list-style:none;display:grid;gap:12px;font-size:14.5px;color:var(--ink2)}
+.demo li{display:grid;grid-template-columns:110px 1fr;gap:14px;padding-bottom:12px;border-bottom:1px solid var(--line)}
+.demo li b{font-weight:500;color:var(--ink);font-size:13px}
+.real{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,4vw,64px)}
+.real h3{font:500 11.5px/1 var(--sans);letter-spacing:.12em;text-transform:uppercase;color:var(--ink3);margin-bottom:14px}
+.real ul{list-style:none;display:grid;gap:10px;font-size:14.5px;color:var(--ink2)}
+.real li{padding-left:18px;position:relative}
+.real li::before{content:'';position:absolute;left:0;top:.7em;width:8px;height:1px;background:var(--ink3)}
+.mp-foot{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;padding:22px var(--m) 30px;font-size:12px;color:var(--ink3);border-top:1px solid var(--line)}
+@media (max-width:1100px){
+  .mp-hero{grid-template-columns:1fr;align-items:start}
+  .qr{max-width:460px}
+}
+@media (max-width:1000px){
+  .flow{grid-template-columns:40px 1fr}
+  .flow .steps{grid-column:1/-1}
+  .screens{grid-template-columns:1fr 1fr}
+  .demo,.real{grid-template-columns:1fr}
+}
+@media (max-width:640px){
+  .mp-top .cap{display:none}
+  .mp-sec>.hd{grid-template-columns:1fr}
+  .mp-sec>.hd p{justify-self:start}
+  .qr{grid-template-columns:1fr}
+  .qr #qr{display:none}
+  .flow{grid-template-columns:1fr;gap:10px}
+  .flow .n{display:none}
+  .screens{grid-template-columns:1fr}
+  .demo dl{grid-template-columns:1fr 1fr}
+  .demo li{grid-template-columns:1fr;gap:4px}
+}
+</style>
+</head>
+<body>
+
+<header class="mp-top">
+  <a href="lacetto-home-concepto.html" aria-label="Ir a la portada"><img src="https://www.lacetto.mx/cdn/shop/files/cropped-Recurso-2-2-768x682-1.png?width=200" alt="L.A. Cetto"></a>
+  <span class="cap">Concepto de rediseño · prototipo navegable</span>
+</header>
+
+<main>
+<section class="mp-hero" aria-labelledby="mpT">
+  <div>
+    <span class="cap" style="color:var(--ink3)">lacetto.mx · propuesta</span>
+    <h1 id="mpT" style="margin-top:18px">Una boutique de vinos, <i>de punta a punta</i></h1>
+    <p class="lead">Doce pantallas conectadas en un solo recorrido. El carrito, la cuenta, los pedidos y las reservas se comparten entre páginas, así que puedes comprar, reservar una cata o unirte al club y verlo reflejado en tu cuenta.</p>
+    <div class="ctas"><a class="btn btn-ink" href="lacetto-home-concepto.html">Empezar en la portada</a><a class="ul" href="#recorridos">Ver los recorridos</a></div>
+  </div>
+  <aside class="qr" aria-label="Abrir en el celular">
+    <div id="qr" aria-hidden="true"></div>
+    <div><b>Ábrelo en tu celular</b><p>Conectado a la misma red Wi‑Fi que esta computadora.</p><code id="lanUrl"></code></div>
+  </aside>
+</section>
+
+<section class="mp-sec" id="recorridos" aria-labelledby="rT">
+  <div class="hd"><h2 id="rT">Recorridos</h2><p>Cada recorrido empieza donde empezaría un cliente y termina en su cuenta. Toca cualquier paso para entrar directo ahí.</p></div>
+  <ol class="flows" id="flows"></ol>
+</section>
+
+<section class="mp-sec" id="pantallas" aria-labelledby="pT">
+  <div class="hd"><h2 id="pT">Todas las pantallas</h2><p>Con accesos directos a los estados que vale la pena mostrar: filtros, producto agotado, carrito vacío, confirmaciones.</p></div>
+  <div class="screens" id="screens"></div>
+</section>
+
+<section class="mp-sec" id="demo" aria-labelledby="dT">
+  <div class="hd"><h2 id="dT">Para presentar</h2><p>La demo guarda todo solo en este navegador. Nada se envía ni se cobra.</p></div>
+  <div class="demo">
+    <div>
+      <dl id="dState"></dl>
+      <div class="acts">
+        <a class="btn btn-ink" id="dSeed" href="lacetto-cuenta.html?demo=1">Abrir cuenta de ejemplo</a>
+        <button class="ul" type="button" id="dReset">Reiniciar demo</button>
+        <button class="ul" type="button" id="dTab"></button>
+      </div>
+      <p class="note">El botón “Pantallas” aparece en el borde izquierdo de cada página (en celular, al final del menú) para saltar entre pantallas sin volver aquí.</p>
+    </div>
+    <ul>
+      <li><b>Un cliente nuevo</b><span>Reinicia la demo, entra por la portada, arma una caja de 6 y paga. Al terminar, crea la cuenta con un toque y ve el pedido en Mi cuenta.</span></li>
+      <li><b>Un socio</b><span>Abre la cuenta de ejemplo: pedidos anteriores, una cata reservada y el Club Estaciones activo.</span></li>
+      <li><b>Un regalo</b><span>En Regalos, busca un regalo “para quien empieza en el vino, de $300 a $600”, agrégalo y escribe tu mensaje en el pago.</span></li>
+    </ul>
+  </div>
+</section>
+
+<section class="mp-sec" aria-labelledby="xT">
+  <div class="hd"><h2 id="xT">Qué es real y qué es propuesta</h2><p>Para separar el contenido del sitio actual de lo que este concepto propone.</p></div>
+  <div class="real">
+    <div><h3>Del sitio actual</h3><ul>
+      <li>Los 63 productos: nombres, precios, fotos, notas de cata y maridajes</li>
+      <li>Envío gratis desde $799, 10% en caja de 6, Mercado Pago y entregas de 4 a 9 días hábiles</li>
+      <li>Políticas de envío y devoluciones, WhatsApp y correo de contacto</li>
+      <li>Las 6 experiencias del Valle con sus precios</li>
+      <li>Boutiques, direcciones e historia de la familia</li>
+      <li>Videos y fotos, como referencia temporal; las botellas del carrusel de Inicio están recortadas de sus fotos de producto para darles sombra</li>
+      <li>Reconocimientos por vino; calificaciones reales de Judge.me en Nebbiolo Reserva Privada, Champbrulé y Blanc de Zinfandel</li>
+    </ul></div>
+    <div><h3>Propuesta de este concepto</h3><ul>
+      <li>Clasificación por momento y por estilo, y el quiz “Encuentra tu vino”</li>
+      <li>Club Cetto, Club Estaciones, tarjeta de regalo y regalos corporativos</li>
+      <li>Horarios y disponibilidad de catas (hoy se reserva en Peek)</li>
+      <li>Mi cuenta: seguimiento de pedidos, reservas y suscripción</li>
+      <li>Pago en una sola página, con recoger en boutique sin costo y envío de $149 debajo de $799</li>
+      <li>Precio de socio de 5% al entrar con tu cuenta, y verificación de edad al llegar</li>
+      <li>Calificaciones con estrellas del resto de los vinos: de ejemplo, hasta conectar Judge.me</li>
+      <li>Clips de ambiente (viñedo, uvas, mesa, copa, paisaje): video de stock como guía de lo que se filmaría en el Valle; el de la cava sí es de L.A.&nbsp;Cetto</li>
+    </ul></div>
+  </div>
+</section>
+</main>
+
+<footer class="mp-foot">
+  <span>El abuso en el consumo de este producto es nocivo para la salud. Evita el exceso.</span>
+  <span>Concepto de rediseño · imágenes y datos del sitio actual como referencia temporal</span>
+</footer>
+
+<script src="cetto-base.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<script>
+(function(){
+const H=PAGES;
+const FLOWS=[
+ ['Comprar una caja de 6','De la portada al pedido: momentos, filtros, ficha, carrito con descuento y pago.',
+  [['Portada',H.home],['Arma tu caja',H.home+'#caja'],['Tienda con filtros',H.tienda+'?momento=cena'],['Ficha',H.ficha+'?p=nebrp'],['Pago',H.pago],['Mi cuenta · pedidos',H.cuenta+'#pedidos']]],
+ ['Reservar una cata','Elegir entre las seis experiencias, fecha, horario y personas.',
+  [['Experiencias',H.exp],['Catas',H.exp+'#catas'],['Reservar',H.exp+'#reservar'],['Mi cuenta · reservas',H.cuenta+'#reservas']]],
+ ['Regalar','Encontrar el regalo por persona y presupuesto, con mensaje y envío.',
+  [['Regalos',H.regalos],['Encuentra un regalo',H.regalos+'#encuentra'],['Estuches',H.regalos+'#estuches'],['Tarjeta de regalo',H.regalos+'#tarjeta'],['Pago',H.pago]]],
+ ['Unirse al club','Precio de socio y el vino de cada estación en casa.',
+  [['Club Cetto',H.club],['Club Estaciones',H.club+'#estaciones'],['Crear cuenta',H.club+'#cuenta'],['Mi cuenta · club',H.cuenta+'#club']]],
+ ['Conocer la casa','La historia de la familia y el Valle de Guadalupe.',
+  [['Historia',H.hist],['El Valle',H.home+'#valle'],['Visítanos',H.exp+'#visita']]],
+ ['Resolver una duda','Envíos, devoluciones, rastreo de pedido y contacto.',
+  [['Ayuda',H.ayuda],['Rastrea tu pedido',H.ayuda+'#rastreo'],['Envíos',H.ayuda+'#envios'],['Contacto',H.ayuda+'#contacto']]]
+];
+const SCREENS=[
+ ['home','Portada',H.home,'Video de la bodega, momentos, premiados, caja de 6 y el Valle.',[['Verificación de edad','?edad=1'],['Momentos','#momentos'],['Arma tu caja','#caja'],['El Valle','#valle']]],
+ ['tienda','Tienda',H.tienda,'Filtros por momento, estilo, comida, precio, línea y uva, con conteos.',[['Estaciones','?linea=estaciones'],['Encuentra tu vino','#encuentra'],['Para regalar','?momento=regalo'],['Sin resultados','?tipo=espumoso&precio=150']]],
+ ['ficha','Ficha de vino',H.ficha+'?p=nebrp','Notas, maridaje, premios, reseñas y compra por botella o caja.',[['Botellín','?p=terra375'],['Gourmet','?p=ac750'],['Agotado','?p=cab375'],['Espumoso','?p=champ']]],
+ ['pago','Pago',H.pago+'?ejemplo=1','Contacto, envío o recoger en boutique y Mercado Pago, en una página.',[['Con una caja de ejemplo','?ejemplo=1'],['Carrito vacío',''],['Pedido no encontrado','?pedido=LAC-000000']]],
+ ['exp','Experiencias',H.exp,'Seis catas con precio real, reserva con calendario, eventos y boutiques.',[['Catas','#catas'],['Reservar','#reservar'],['Eventos y bodas','#eventos'],['Boutiques','#visita']]],
+ ['regalos','Regalos',H.regalos,'Buscador de regalos, estuches, tarjeta de regalo y empresas.',[['Encuentra un regalo','#encuentra'],['Estuches','#estuches'],['Tarjeta de regalo','#tarjeta'],['Empresas','#empresas']]],
+ ['club','Club Cetto',H.club,'Precio de socio y Club Estaciones con la botella de cada temporada.',[['Club Estaciones','#estaciones'],['Crear cuenta','#cuenta']]],
+ ['cuenta','Mi cuenta',H.cuenta+'?demo=1','Pedidos con seguimiento, reservas, suscripción y datos.',[['Cuenta de ejemplo','?demo=1'],['Pedidos','?demo=1#pedidos'],['Reservas','?demo=1#reservas'],['Club','?demo=1#club']]],
+ ['hist','Historia',H.hist,'Cuatro generaciones, de 1928 al Valle de Guadalupe de hoy.',[]],
+ ['ayuda','Ayuda',H.ayuda,'Envíos, devoluciones, facturación, preguntas frecuentes y contacto.',[['Rastrea tu pedido','#rastreo'],['Envíos','#envios'],['Devoluciones','#devoluciones'],['Contacto','#contacto']]]
+];
+const ar='<span class="ar" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>';
+document.getElementById('flows').innerHTML=FLOWS.map(([t,d,st],i)=>'<li class="flow"><span class="n">0'+(i+1)+'</span><div><h3>'+t+'</h3><p>'+d+'</p></div><div class="steps">'+st.map(([n,h])=>'<a href="'+h+'">'+n+'</a>').join(ar)+'</div></li>').join('');
+const base=h=>h.split(/[?#]/)[0];
+document.getElementById('screens').innerHTML=SCREENS.map(([k,t,h,d,st])=>'<article class="scr"><a class="shot" href="'+h+'" aria-label="Abrir '+t+'"><span class="ph" aria-hidden="true">'+t+'</span><img src="media/shots/'+k+'.jpg" alt="" loading="lazy" onerror="this.remove()"></a>'+
+ '<div class="meta"><h3><a href="'+h+'">'+t+'</a></h3><span class="f">'+base(h)+'</span></div><p>'+d+'</p>'+
+ (st.length?'<div class="st">'+st.map(([n,q])=>'<a href="'+base(h)+q+'">'+n+'</a>').join('')+'</div>':'')+'</article>').join('');
+
+/* Estado de la demo */
+function paint(){
+  const c=store.get('cettoCart',{}),n=Object.values(c).reduce((a,b)=>a+b,0),u=user(),o=store.get('cettoOrders',[]).length,b=store.get('cettoBookings',[]).length;
+  document.getElementById('dState').innerHTML='<div><dt>Carrito</dt><dd>'+n+'</dd></div><div><dt>Cuenta</dt><dd>'+(u?String(u.name).split(' ')[0].replace(/</g,'&lt;'):'—')+'</dd></div><div><dt>Pedidos</dt><dd>'+o+'</dd></div><div><dt>Reservas</dt><dd>'+b+'</dd></div>';
+  let hide=false;try{hide=sessionStorage.getItem('cettoProtoHide')==='1'}catch(e){}
+  const t=document.getElementById('dTab');t.textContent=hide?'Mostrar botón Pantallas':'Ocultar botón Pantallas';t.dataset.hide=hide?'1':'';
+}
+document.getElementById('dReset').onclick=()=>{DEMO_KEYS.forEach(k=>store.del(k));paint()};
+document.getElementById('dTab').onclick=e=>{try{e.target.dataset.hide?sessionStorage.removeItem('cettoProtoHide'):sessionStorage.setItem('cettoProtoHide','1')}catch(x){}paint()};
+addEventListener('storage',paint);addEventListener('pageshow',paint);paint();
+
+/* Enlace para el celular: desde localhost se usa la IP de esta computadora en la red */
+/* El servidor local responde /lan.json con la IP actual de la computadora en la red */
+/* Publicado en internet: el código lleva a esta misma dirección */
+function showLan(url){document.getElementById('lanUrl').textContent=url.replace(/^https?:\/\//,'');try{const q=document.getElementById('qr');q.innerHTML='';new QRCode(q,{text:url,width:200,height:200,colorDark:'#2B2C2D',colorLight:'#ffffff'});q.querySelectorAll('img').forEach(i=>i.alt='')}catch(e){document.getElementById('qr').remove()}}
+const here=location.href.replace(/[?#].*$/,'').replace(/[^/]*$/,'');
+const local=/^(localhost|127\.|192\.168\.|10\.|172\.(1[6-9]|2\d|3[01])\.)/.test(location.hostname);
+if(local)fetch('lan.json',{cache:'no-store'}).then(r=>r.json()).then(d=>showLan('http://'+d.ip+':'+d.port+'/')).catch(()=>showLan(here));
+else{document.querySelector('.qr p').textContent='Escanea el código con la cámara del celular.';showLan(here)}
+})();
+</script>
+</body>
+</html>

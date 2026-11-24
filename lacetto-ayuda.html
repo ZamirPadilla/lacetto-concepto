@@ -1,0 +1,648 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>L.A. Cetto · Ayuda</title>
+<meta name="description" content="Concepto de rediseño: ayuda, envíos, devoluciones, facturación y contacto. Políticas tomadas de lacetto.mx.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baskervville:ital@0;1&family=DM+Sans:opsz,wght@9..40,400..600&family=Playfair:opsz,wght@5..1200,300..500&display=swap" rel="stylesheet">
+<link rel="icon" type="image/svg+xml" href="media/favicon.svg">
+<!-- compartir -->
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="apple-touch-icon" href="media/apple-touch-icon.png">
+<meta name="theme-color" content="#F3F1EC">
+<meta name="robots" content="noindex, nofollow">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="es_MX">
+<meta property="og:site_name" content="L.A. Cetto · Concepto de rediseño">
+<meta property="og:title" content="L.A. Cetto · Ayuda">
+<meta property="og:description" content="Concepto de rediseño: ayuda, envíos, devoluciones, facturación y contacto. Políticas tomadas de lacetto.mx.">
+<meta property="og:url" content="https://zamirpadilla.github.io/lacetto-concepto/lacetto-ayuda.html">
+<meta property="og:image" content="https://zamirpadilla.github.io/lacetto-concepto/media/og-banner.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Chardonnay Reserva Privada de L.A. Cetto sobre una roca frente al mar, con el texto: Una boutique de vinos, de punta a punta">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="L.A. Cetto · Ayuda">
+<meta name="twitter:description" content="Concepto de rediseño: ayuda, envíos, devoluciones, facturación y contacto. Políticas tomadas de lacetto.mx.">
+<meta name="twitter:image" content="https://zamirpadilla.github.io/lacetto-concepto/media/og-banner.jpg">
+<!-- /compartir -->
+<link rel="stylesheet" href="cetto-base.css">
+<style>
+section[id],.fq-g[id],.fq-g details,#ctBox,#trRes{scroll-margin-top:96px}
+/* Portada */
+.ay-hero{padding:clamp(44px,6vw,96px) var(--m) 0}
+.ay-hero .row{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:clamp(28px,5vw,88px);align-items:end}
+.ay-hero .h1{font-size:clamp(50px,7.2vw,116px)}
+.ay-q>label{display:block;color:var(--ink3);margin-bottom:8px}
+.ay-q .bx{display:flex;align-items:center;gap:14px;border-bottom:1px solid var(--ink)}
+.ay-q .bx:focus-within{box-shadow:0 2px 0 var(--ink)}
+.ay-q .bx svg{flex:0 0 auto;color:var(--ink2)}
+.ay-q input{flex:1;min-width:0;background:none;border:0;border-radius:0;outline:none;font:400 clamp(22px,2.1vw,30px)/1.25 var(--serif);color:var(--ink);padding:10px 0 12px;-webkit-appearance:none;appearance:none}
+.ay-q input::-webkit-search-cancel-button{display:none}
+.ay-q input::placeholder{color:var(--ink3)}
+.ay-q .clr{font:500 11px/1 var(--sans);letter-spacing:.09em;text-transform:uppercase;color:var(--ink2);padding:8px 0}
+.clr{transition:opacity .25s}.clr:hover{opacity:.62}
+.ay-q{position:relative}
+.ay-hits{list-style:none;position:absolute;left:0;right:0;top:100%;z-index:6;background:var(--bg);box-shadow:0 22px 34px -22px rgba(30,29,28,.35)}
+.ay-hits[hidden],.ay-hits:empty{display:none}
+.ay-hits button{display:flex;justify-content:space-between;align-items:center;gap:16px;width:100%;padding:13px 0;font-size:15px;line-height:1.35}
+.ay-hits button:hover{color:var(--ink2)}
+.ay-hits small{flex:0 0 auto;font:500 10.5px/1 var(--sans);letter-spacing:.09em;text-transform:uppercase;color:var(--ink3)}
+.ay-hits .none{padding:13px 0;color:var(--ink2);font-size:14.5px}
+.ay-hits .none a{color:var(--ink);border-bottom:1px solid currentColor}
+.ay-hits .more{color:var(--ink2);font-size:13.5px}
+.ay-topics{list-style:none;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));border-top:1px solid var(--line);margin-top:clamp(44px,6vw,88px)}
+.ay-topics li{border-right:0}
+.ay-topics li:last-child{border-right:0}
+.ay-topics a{display:block;height:100%;padding:16px 18px 22px;transition:background .25s}
+.ay-topics li:first-child a{padding-left:0}
+.ay-topics a:hover{background:var(--bg2)}
+.ay-topics li:first-child a:hover{background:none;opacity:.7}
+.ay-topics b{display:block;font:400 clamp(20px,1.7vw,26px)/1.15 var(--serif);margin-top:clamp(10px,1.4vw,18px)}
+.ay-topics b svg{display:inline-block;vertical-align:middle;margin-left:8px;transition:transform .3s var(--ease)}
+.ay-topics a:hover b svg{transform:translateX(4px)}
+.ay-topics .f{display:block;font-size:13.5px;color:var(--ink2);margin-top:6px}
+
+/* Rastreo */
+.ay-track{background:var(--bg2);padding-block:clamp(56px,7vw,104px);margin-top:clamp(56px,7vw,104px)}
+.ay-track .grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.35fr);gap:clamp(28px,5vw,88px);align-items:start}
+.ay-track .cap{color:var(--ink3)}
+.ay-track h2{margin:18px 0 16px}
+.ay-track .p{max-width:38ch}
+.tr-f{display:flex;align-items:center;gap:12px;margin-top:30px;border-bottom:1px solid var(--ink)}
+.tr-f:focus-within{box-shadow:0 2px 0 var(--ink)}
+.tr-f input[aria-invalid=true]{color:var(--wine)}
+.tr-f input{flex:1;min-width:0;background:none;border:0;border-radius:0;outline:none;font:400 24px/1.2 var(--serif);letter-spacing:.02em;padding:10px 0 12px;color:var(--ink);-webkit-appearance:none;appearance:none}
+.tr-f input::placeholder{color:var(--ink3);letter-spacing:0}
+.tr-f input{text-transform:uppercase}
+#trRes:focus{outline:none}
+.tr-f button{font:500 12px/1 var(--sans);letter-spacing:.09em;text-transform:uppercase;padding:12px 0;display:inline-flex;align-items:center;gap:8px}
+.tr-last{margin-top:16px;font-size:14px;color:var(--ink2)}
+.tr-last button{color:var(--ink);border-bottom:1px solid currentColor;font-variant-numeric:tabular-nums}
+.tr-card{background:var(--bg);padding:clamp(20px,2.6vw,38px)}
+.tr-hd{display:flex;justify-content:space-between;align-items:baseline;gap:8px 20px;flex-wrap:wrap}
+.tr-hd h3{font:400 clamp(26px,2.4vw,36px)/1.1 var(--serif);letter-spacing:-.01em}
+.tr-hd .meta{font-size:13.5px;color:var(--ink2)}
+.tr-steps{list-style:none;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));margin:30px 0 24px}
+.tr-steps li{position:relative;padding:24px 12px 0 0;font-size:14px;color:var(--ink3)}
+.tr-steps li::before{content:"";position:absolute;left:0;right:0;top:5px;height:1px;background:var(--line)}
+.tr-steps li:last-child::before{right:auto;width:12px}
+.tr-steps li::after{content:"";position:absolute;left:0;top:0;width:11px;height:11px;border-radius:50%;background:var(--bg);border:1px solid var(--ink3)}
+.tr-steps li.done{color:var(--ink)}
+.tr-steps li.done:not(.now)::before{background:var(--ink)}
+.tr-steps li.done::after{background:var(--ink);border-color:var(--ink)}
+.tr-steps li.now::after{box-shadow:0 0 0 5px rgba(43,44,45,.12)}
+.tr-steps b{display:block;font-weight:500}
+.tr-steps small{display:block;font-size:12.5px;color:var(--ink3);margin-top:2px}
+.tr-eta{display:flex;justify-content:space-between;align-items:center;gap:12px 24px;flex-wrap:wrap;padding:16px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.tr-eta p{font:400 20px/1.3 var(--serif)}
+.tr-pay{background:var(--bg2);padding:14px 16px;margin-top:16px;font-size:14px;color:var(--ink2)}
+.tr-pay b{color:var(--ink);font-weight:500}
+.tr-pay .ref{font-variant-numeric:tabular-nums;letter-spacing:.04em;color:var(--ink)}
+.tr-pay .due{color:var(--wine)}
+.tr-eta span{font-size:13.5px;color:var(--ink2)}
+.tr-items{display:flex;gap:8px;flex-wrap:wrap;margin-top:20px;align-items:center}
+.tr-items .fld{width:58px;height:74px}
+.tr-items .fld img{height:84%}
+.tr-items .more{font-size:13.5px;color:var(--ink2);margin-left:6px}
+.tr-act{display:flex;flex-wrap:wrap;gap:14px 28px;margin-top:24px}
+.tr-ph .tr-steps li{color:var(--ink3)}
+.tr-ph p{color:var(--ink2);font-size:14.5px;max-width:44ch}
+.tr-no h3{font:400 clamp(24px,2.2vw,32px)/1.15 var(--serif);margin-bottom:12px}
+.tr-no p{color:var(--ink2);max-width:46ch}
+.tr-no p a{color:var(--ink);border-bottom:1px solid currentColor}
+
+/* Bloques editoriales */
+.ay-blk>.in{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,2fr);gap:clamp(28px,5vw,88px);align-items:start;border-top:1px solid var(--ink);padding-top:22px}
+.ay-side{position:sticky;top:104px}
+.ay-side .cap{color:var(--ink3)}
+.ay-side h2{margin:18px 0 16px}
+.ay-side p{color:var(--ink2);max-width:34ch}
+.ay-side .ul{margin-top:22px}
+.ay-lead2{font:400 clamp(22px,2.1vw,30px)/1.3 var(--serif);letter-spacing:-.01em;max-width:34ch;font-variant-numeric:lining-nums}
+/* Baskervville usa números de estilo antiguo: en esta página, siempre alineados */
+.ay-lead,.tr-eta p,.tr-hd h3,.tr-f input,.ay-ch a,.fq-g summary,.ay-notes b,.ay-steps b,.ay-terms b,.ay-topics b,.ay-call h3{font-variant-numeric:lining-nums}
+.ay-lead2 .price{font-size:.8em}
+.ay-tline{list-style:none;display:grid;grid-template-columns:1fr 2fr auto;margin-top:clamp(24px,3vw,40px);border-top:1px solid var(--line)}
+.ay-tline li{position:relative;padding:20px 16px 0 0;font-size:14px;color:var(--ink2)}
+.ay-tline li::before{content:"";position:absolute;left:0;top:-5px;width:9px;height:9px;border-radius:50%;background:var(--ink)}
+.ay-tline li:last-child{padding-right:0;text-align:right}
+.ay-tline li:last-child::before{left:auto;right:0;background:var(--wine);box-shadow:0 0 0 4px rgba(107,34,48,.14)}
+.ay-tline b{display:block;font-weight:500;color:var(--ink);margin-bottom:2px}
+.ay-ship{display:flex;flex-wrap:wrap;gap:8px 28px;margin-top:22px;font-size:14.5px;color:var(--ink2)}
+.ay-ship b{color:var(--ink);font-weight:500}
+.ay-notes{list-style:none;margin-top:clamp(28px,3.4vw,48px);border-top:1px solid var(--line)}
+.ay-notes li{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,2fr);gap:8px 32px;padding:18px 0;border-bottom:1px solid var(--line)}
+.ay-notes b{font:400 20px/1.3 var(--serif)}
+.ay-notes p{color:var(--ink2);max-width:58ch}
+.ay-notes a{color:var(--ink);border-bottom:1px solid currentColor}
+.ay-terms{list-style:none;border-top:1px solid var(--line)}
+.ay-terms li{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,2fr);gap:8px 32px;padding:16px 0;border-bottom:1px solid var(--line)}
+.ay-terms b{font:400 19px/1.3 var(--serif)}
+.ay-terms p{color:var(--ink2);max-width:58ch}
+.ay-terms a{color:var(--ink);border-bottom:1px solid currentColor}
+.ay-steps{list-style:none;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--g);margin-top:clamp(24px,3vw,40px)}
+.ay-steps li{background:var(--bg2);padding:clamp(18px,2vw,26px) clamp(16px,1.6vw,22px) clamp(20px,2.2vw,28px)}
+.ay-steps b{display:block;font:400 20px/1.25 var(--serif);margin:0 0 8px}
+.ay-steps p{font-size:14px;color:var(--ink2)}
+.ay-steps a{color:var(--ink);border-bottom:1px solid currentColor;word-break:break-word}
+.ay-two{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(20px,3vw,48px);margin-top:clamp(28px,3.4vw,48px)}
+.ay-two h3{color:var(--ink3);padding-bottom:12px;border-bottom:1px solid var(--ink)}
+.ay-two ul{list-style:none}
+.ay-two li{display:flex;gap:12px;align-items:baseline;padding:13px 0;border-bottom:1px solid var(--line);font-size:15px}
+.ay-two li i{flex:0 0 auto;font:400 15px/1 var(--serif);color:var(--ink3);font-style:normal;width:12px}
+.ay-call{display:flex;justify-content:space-between;align-items:center;gap:20px 40px;flex-wrap:wrap;background:var(--ink);color:var(--bg);padding:clamp(22px,2.6vw,36px);margin-top:clamp(28px,3.4vw,48px)}
+.ay-call h3{font:400 clamp(24px,2.2vw,32px)/1.15 var(--serif)}
+.ay-call p{color:rgba(243,241,236,.74);margin-top:8px;max-width:48ch;font-size:14.5px}
+.ay-call .acts{display:flex;flex-wrap:wrap;align-items:center;gap:14px 26px}
+.ay-fine{font-size:14px;color:var(--ink2);margin-top:22px;max-width:62ch}
+.ay-chips{display:flex;flex-wrap:wrap;gap:8px;margin:24px 0 30px}
+.ay-chips span{border:1px solid rgba(43,44,45,.3);padding:10px 15px;font-size:14.5px}
+.ay-lead{font:400 clamp(24px,2.3vw,34px)/1.25 var(--serif);letter-spacing:-.01em;max-width:30ch}
+.ay-lead a{border-bottom:1px solid currentColor}
+
+/* Preguntas */
+.fq-nav{list-style:none;margin-top:28px;border-top:1px solid var(--line)}
+.fq-nav a{display:flex;justify-content:space-between;gap:12px;padding:11px 0;border-bottom:1px solid var(--line);font-size:15px}
+.fq-nav a:hover{color:var(--ink2)}
+.fq-nav span{color:var(--ink3);font-variant-numeric:tabular-nums}
+.fq-nav li[hidden]{display:none}
+.fq-st{display:flex;justify-content:space-between;align-items:center;gap:16px;background:var(--bg2);padding:14px 18px;margin-bottom:28px;font-size:14.5px}
+.fq-st[hidden]{display:none}
+.fq-st button{font:500 11px/1 var(--sans);letter-spacing:.09em;text-transform:uppercase;border-bottom:1px solid currentColor;padding-bottom:4px;white-space:nowrap}
+.fq-g+.fq-g{margin-top:clamp(36px,4vw,56px)}
+.fq-g[hidden]{display:none}
+.fq-g h3{color:var(--ink3);padding-bottom:12px;border-bottom:1px solid var(--ink)}
+.fq-g details{border-bottom:1px solid var(--line)}
+.fq-g details[hidden]{display:none}
+.fq-g summary{list-style:none;display:flex;justify-content:space-between;align-items:center;gap:16px;padding:17px 0;font:400 clamp(19px,1.6vw,23px)/1.3 var(--serif);cursor:pointer}
+.fq-g summary::-webkit-details-marker{display:none}
+.fq-g summary:hover{color:var(--ink2)}
+.fq-g summary i{position:relative;width:13px;height:13px;flex:0 0 auto}
+.fq-g summary i::before,.fq-g summary i::after{content:"";position:absolute;left:0;right:0;top:6px;height:1px;background:currentColor;transition:transform .3s var(--ease)}
+.fq-g summary i::after{transform:rotate(90deg)}
+.fq-g details[open] summary i::after{transform:none}
+.fq-g details p{padding:0 0 20px;color:var(--ink2);max-width:62ch}
+.fq-g details p a{color:var(--ink);border-bottom:1px solid currentColor}
+.fq-g mark{background:rgba(183,172,162,.45);color:inherit;padding:0 1px}
+.fq-none{padding:22px 0;border-top:1px solid var(--ink);color:var(--ink2)}
+.fq-none a{color:var(--ink);border-bottom:1px solid currentColor}
+
+/* Contacto */
+.ay-ch{list-style:none;border-top:1px solid var(--line)}
+.ay-ch li{display:grid;grid-template-columns:minmax(0,1fr);gap:8px;padding:16px 0 18px;border-bottom:1px solid var(--line)}
+.ay-ch .cap{color:var(--ink3)}
+.ay-ch a{font:400 clamp(20px,1.6vw,24px)/1.25 var(--serif);border-bottom:1px solid transparent;transition:border-color .2s;overflow-wrap:anywhere}
+.ay-ch a:hover{border-color:currentColor}
+.ay-ch p{font-size:13.5px;color:var(--ink2);margin-top:4px}
+.ay-cgrid{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:clamp(24px,4vw,64px);align-items:start}
+.ay-form{background:var(--bg2);padding:clamp(22px,2.6vw,38px)}
+.ay-form h3{font:400 clamp(24px,2.2vw,32px)/1.15 var(--serif);margin-bottom:24px}
+.ay-form .fg{margin-bottom:20px}
+.ay-form label{display:block;font:500 11px/1.4 var(--sans);letter-spacing:.09em;text-transform:uppercase;color:var(--ink3);margin-bottom:4px}
+.ay-form input,.ay-form select,.ay-form textarea{width:100%;background:transparent;border:0;border-bottom:1px solid rgba(43,44,45,.6);border-radius:0;padding:8px 0 10px;font:inherit;font-size:16px;color:var(--ink);outline:none;transition:border-color .2s;-webkit-appearance:none;appearance:none}
+.ay-form select{background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%232B2C2D' stroke-width='1.6'><path d='M6 9l6 6 6-6'/></svg>");background-repeat:no-repeat;background-position:right 2px center;padding-right:22px}
+.ay-form textarea{resize:vertical;min-height:96px;line-height:1.5}
+.ay-form input:focus,.ay-form select:focus,.ay-form textarea:focus{border-color:var(--ink)}
+.ay-form input:focus-visible,.ay-form select:focus-visible,.ay-form textarea:focus-visible{box-shadow:0 2px 0 var(--ink)}
+.ay-form [aria-invalid=true]{border-color:var(--wine)}
+.ay-form .two{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:0 24px}
+.ay-form .btn{width:100%;margin-top:6px}
+.ay-form .err{display:none;font-size:13.5px;color:var(--wine);margin:-6px 0 14px}
+.ay-form .err.on{display:block}
+.ay-form .fine{font-size:12.5px;color:var(--ink3);margin-top:12px;text-align:center}
+.ay-ok h3{margin-bottom:12px}
+.ay-ok p{color:var(--ink2);margin-bottom:22px}
+.ay-bts{list-style:none;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:var(--g);margin-top:clamp(40px,5vw,72px)}
+.ay-bts li{border-top:1px solid var(--ink);padding-top:16px}
+.ay-bts .cap{color:var(--ink3)}
+.ay-bts b{display:block;font:400 clamp(22px,2vw,28px)/1.15 var(--serif);margin:14px 0 6px}
+.ay-bts address{font-style:normal;font-size:14px;color:var(--ink2);margin-bottom:14px}
+
+@media (max-width:1100px){
+  .ay-steps{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media (max-width:900px){
+  .ay-hero .row,.ay-track .grid,.ay-blk>.in,.ay-cgrid{grid-template-columns:minmax(0,1fr)}
+  .ay-side{position:static}
+  .ay-topics{grid-template-columns:minmax(0,1fr)}
+  .ay-topics li{border-right:0;border-bottom:1px solid var(--line)}
+  .ay-topics a,.ay-topics li:first-child a{display:grid;grid-template-columns:minmax(0,1fr);align-items:baseline;gap:4px 12px;padding:16px 0}
+  .ay-topics b{margin-top:0;font-size:22px}
+  .ay-topics .f{margin-top:0}
+  .ay-topics b svg{display:none}
+  .ay-topics a:hover{background:none}
+  .ay-bts{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .fq-nav{display:none}
+}
+@media (max-width:640px){
+  .ay-hero{padding-top:36px}
+  .tr-ph{display:none}
+  .ay-notes li{grid-template-columns:minmax(0,1fr)}
+  .ay-steps,.ay-two{grid-template-columns:minmax(0,1fr)}
+  .ay-tline{grid-template-columns:minmax(0,1fr);border-top:0;border-left:1px solid var(--line);margin-left:4px}
+  .ay-tline li{padding:0 0 18px 20px}
+  .ay-tline li:last-child{text-align:left;padding-bottom:0}
+  .ay-tline li::before{left:-5px;top:4px}
+  .ay-tline li:last-child::before{left:-5px;right:auto}
+  .ay-terms li{grid-template-columns:minmax(0,1fr)}
+  .tr-steps{grid-template-columns:minmax(0,1fr);margin:24px 0 20px}
+  .tr-steps li{padding:0 0 18px 26px}
+  .tr-steps li::before{left:5px;right:auto;top:6px;bottom:0;width:1px;height:auto}
+  .tr-steps li:last-child::before{display:none}
+  .tr-steps li.done:not(.now)::before{background:var(--ink)}
+  .ay-form .two{grid-template-columns:minmax(0,1fr)}
+  .ay-bts{grid-template-columns:minmax(0,1fr)}
+  .ay-call .acts .btn{width:100%}
+}
+</style>
+</head>
+<body>
+<div id="chromeTop"></div>
+
+<main>
+<!-- Portada -->
+<section class="ay-hero" aria-labelledby="aT">
+  <div class="row">
+    <h1 class="h1 lines" id="aT" data-now><span class="ln"><span>¿En qué te </span></span><span class="ln"><span>ayudamos? </span></span></h1>
+    <div class="ay-q" role="search">
+      <label class="cap" for="q">Busca en las preguntas frecuentes</label>
+      <div class="bx">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="11" cy="11" r="6.5"/><path d="M16 16l4.5 4.5"/></svg>
+        <input id="q" type="search" placeholder="Envío, devolución, factura…" autocomplete="off" aria-controls="qHits faqList" aria-describedby="qCount">
+        <button class="clr" id="qClr" type="button" hidden>Borrar</button>
+      </div>
+      <ul class="ay-hits" id="qHits" aria-live="polite"></ul>
+      <span class="sr" id="qCount" aria-live="polite"></span>
+    </div>
+  </div>
+  <ul class="ay-topics">
+    <li><a href="#rastreo" data-focus="trNo"><b>Dónde está mi pedido<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></b><span class="f">Síguelo con tu número</span></a></li>
+    <li><a href="#envios"><b>Envíos<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></b><span class="f">Gratis desde $799, de 4 a 9 días</span></a></li>
+    <li><a href="#devoluciones"><b>Producto dañado o equivocado<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></b><span class="f">Avísanos en 15 días</span></a></li>
+    <li><a href="#facturacion"><b>Facturación<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></b><span class="f">Con tu número de pedido</span></a></li>
+    <li><a href="#contacto"><b>Contacto<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></b><span class="f">WhatsApp 55 7974 0223</span></a></li>
+  </ul>
+</section>
+
+<!-- Rastreo -->
+<section class="ay-track" id="rastreo" aria-labelledby="trT">
+  <div class="wrap grid">
+    <div>
+      <span class="cap">Rastrea tu pedido</span>
+      <h2 class="h2" id="trT">¿Dónde está mi pedido?</h2>
+      <p class="p">Escribe el número que aparece en tu confirmación de compra. Empieza con LAC.</p>
+      <form class="tr-f" id="trF" novalidate>
+        <label class="sr" for="trNo">Número de pedido</label>
+        <input id="trNo" type="text" placeholder="LAC-000000" autocomplete="off" autocapitalize="characters" spellcheck="false" inputmode="text">
+        <button type="submit">Buscar<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+      </form>
+      <p class="tr-last" id="trLast" hidden></p>
+    </div>
+    <div id="trRes" aria-live="polite" tabindex="-1"></div>
+  </div>
+</section>
+
+<!-- Envíos -->
+<section class="sec wrap ay-blk" id="envios" aria-labelledby="enT">
+  <div class="in">
+    <div class="ay-side">
+      <span class="cap">Envíos y entregas</span>
+      <h2 class="h2" id="enT">Envíos a todo México</h2>
+      <p>La paquetería lleva tu pedido hasta tu puerta. Los tiempos son en días hábiles.</p>
+    </div>
+    <div>
+      <p class="ay-lead2">Tu pedido llega en 4 a 9 días hábiles: lo preparamos en 1 o 2 y la paquetería tarda de 3 a 7. En zonas extendidas, de 1 a 3 días más.</p>
+      <ol class="ay-tline" aria-label="Si pides hoy">
+        <li><b>Hoy</b>Confirmamos tu pedido</li>
+        <li><b>1 o 2 días</b>Lo preparamos y sale con la guía</li>
+        <li><b>Si pides hoy</b><span id="enEta"></span></li>
+      </ol>
+      <p class="ay-ship"><span><b>Gratis</b> desde <span class="price">$799</span></span><span><b id="enShip">$149</b> en compras menores</span><span><b>Sin costo</b> si recoges en una boutique</span></p>
+      <ul class="ay-notes">
+        <li><b>Temporadas altas</b><p>En Hot Sale, Buen Fin y Navidad los tiempos de entrega pueden extenderse.</p></li>
+        <li><b>Quién recibe</b><p>Vendemos y entregamos solo a mayores de 18 años. La paquetería puede pedir una identificación al entregar.</p></li>
+        <li><b>Si no hay nadie</b><p>La paquetería suele hacer 1 o 2 intentos. Después, el paquete puede quedar en una sucursal cercana o regresar a nuestro almacén. Si regresa, puede haber un costo adicional según la causa.</p></li>
+        <li><b>Dónde no entregamos</b><p>En direcciones donde la entrega de alcohol está restringida.</p></li>
+        <li><b>Seguimiento</b><p>Revisa el estado de tu envío con regularidad en <a href="#rastreo">Rastrea tu pedido</a> o desde <a href="lacetto-cuenta.html#pedidos">tu cuenta</a>.</p></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- Devoluciones -->
+<section class="sec wrap ay-blk" id="devoluciones" style="padding-top:0" aria-labelledby="dvT">
+  <div class="in">
+    <div class="ay-side">
+      <span class="cap">Devoluciones</span>
+      <h2 class="h2" id="dvT">Producto dañado o equivocado</h2>
+      <p>Por normas sanitarias no aceptamos devoluciones voluntarias de vino ni destilados. Si tu pedido llegó dañado, incompleto o equivocado, lo resolvemos.</p>
+      <a class="ul" href="mailto:ecommerce@gpocetto.com?subject=Pedido%20da%C3%B1ado%20o%20incorrecto">Reportar un problema</a>
+    </div>
+    <div>
+      <p class="ay-lead2">Si llegó dañado, incompleto o equivocado, avísanos en los 15 días siguientes a la entrega y lo reponemos o te devolvemos tu dinero.</p>
+      <ol class="ay-steps">
+        <li><b>Escríbenos</b><p>Por <a href="https://wa.me/525579740223" target="_blank" rel="noopener">WhatsApp</a> o <a href="mailto:ecommerce@gpocetto.com?subject=Pedido%20da%C3%B1ado%20o%20incorrecto">correo</a>, con tu número de pedido y fotos del producto y del empaque.</p></li>
+        <li><b>Te damos una solución</b><p>Reponemos el producto o te reembolsamos. Si hay que recogerlo, te enviamos una guía prepagada.</p></li>
+        <li><b>Tu reembolso</b><p>A tu método de pago original en 10 días hábiles. Tu banco puede tardar un poco más.</p></li>
+      </ol>
+      <div class="ay-two">
+        <div><h3 class="cap">Qué necesitas</h3><ul><li><i>✓</i>Tu número de pedido</li><li><i>✓</i>Fotos del producto y del empaque</li><li><i>✓</i>Avisarnos en los 15 días siguientes a la entrega</li></ul></div>
+        <div><h3 class="cap">No tienen devolución</h3><ul><li><i>×</i>Vino y destilados por cambio de opinión</li><li><i>×</i>Productos gourmet y otros perecederos</li><li><i>×</i>Tarjetas de regalo</li></ul></div>
+      </div>
+      <div class="ay-call">
+        <div><h3>¿Llegó una botella rota?</h3><p>Revisa tu pedido en cuanto llegue y escríbenos de inmediato, con una foto si puedes.</p></div>
+        <div class="acts"><a class="btn btn-light" href="https://wa.me/525579740223" target="_blank" rel="noopener">WhatsApp</a><a class="ul" href="mailto:ecommerce@gpocetto.com?subject=Pedido%20da%C3%B1ado%20o%20incorrecto">Escribir correo</a></div>
+      </div>
+      <p class="ay-fine">Si pasan más de 15 días hábiles desde que aprobamos tu reembolso y no lo ves, escríbenos.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Facturación -->
+<section class="sec wrap ay-blk" id="facturacion" style="padding-top:0" aria-labelledby="fcT">
+  <div class="in">
+    <div class="ay-side">
+      <span class="cap">Facturación</span>
+      <h2 class="h2" id="fcT">Tu factura</h2>
+    </div>
+    <div>
+      <p class="ay-lead">Escríbenos a <a href="mailto:ecommerce@gpocetto.com">ecommerce@gpocetto.com</a> con tu número de pedido y tus datos fiscales.</p>
+      <div class="ay-chips" role="group" aria-label="Datos fiscales"><span>RFC</span><span>Nombre o razón social</span><span>Código postal fiscal</span><span>Régimen fiscal</span><span>Uso de CFDI</span></div>
+      <a class="btn btn-ink" id="fcMail" href="mailto:ecommerce@gpocetto.com?subject=Solicitud%20de%20factura">Pedir mi factura</a>
+    </div>
+  </div>
+</section>
+
+<!-- Términos de venta -->
+<section class="sec wrap ay-blk" id="terminos" style="padding-top:0" aria-labelledby="tmT">
+  <div class="in">
+    <div class="ay-side">
+      <span class="cap">Términos de venta</span>
+      <h2 class="h2" id="tmT">Lo que aceptas al comprar</h2>
+      <p>En corto, lo más importante de los términos de la tienda en línea.</p>
+    </div>
+    <div>
+      <ul class="ay-terms">
+        <li><b>Mayoría de edad</b><p>Solo vendemos y entregamos a mayores de 18 años. La paquetería puede pedir una identificación.</p></li>
+        <li><b>Tu pedido</b><p>Queda confirmado cuando lo aceptamos y te enviamos la confirmación. Una vez aceptado, es posible que ya no podamos cancelarlo.</p></li>
+        <li><b>Precios</b><p>Pueden cambiar sin previo aviso. Siempre respetamos el precio vigente al momento de hacer tu pedido.</p></li>
+        <li><b>Pagos</b><p>Los procesa Mercado Pago: tarjeta de crédito o débito, cuenta de Mercado Pago, efectivo en OXXO y transferencia SPEI.</p></li>
+        <li><b>Envíos y devoluciones</b><p>Tiempos y costos en <a href="#envios">Envíos</a>. No aceptamos devoluciones voluntarias de vino ni destilados; si algo llega dañado o equivocado, mira <a href="#devoluciones">qué hacer</a>.</p></li>
+        <li><b>Tus datos</b><p>Para acceso, corrección o cancelación de tus datos personales, escribe a <a href="mailto:privacidad@gpocetto.com">privacidad@gpocetto.com</a>.</p></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- Preguntas -->
+<section class="sec wrap ay-blk" id="faq" style="padding-top:0" aria-labelledby="fqT">
+  <div class="in">
+    <div class="ay-side">
+      <span class="cap">Preguntas frecuentes</span>
+      <h2 class="h2" id="fqT">Lo que más nos preguntan</h2>
+      <ul class="fq-nav" id="fqNav"></ul>
+    </div>
+    <div>
+      <div class="fq-st" id="fqSt" hidden><span id="fqStT"></span><button type="button" id="fqClr">Quitar filtro</button></div>
+      <div id="faqList"></div>
+    </div>
+  </div>
+</section>
+
+<!-- Contacto -->
+<section class="sec wrap ay-blk" id="contacto" style="padding-top:0" aria-labelledby="ctT">
+  <div class="in">
+    <div class="ay-side">
+      <span class="cap">Contacto</span>
+      <h2 class="h2" id="ctT">Habla con nosotros</h2>
+      <p>Para pedidos, envíos y devoluciones, el camino más rápido es WhatsApp. Ten a la mano tu número de pedido.</p>
+    </div>
+    <div class="ay-cgrid">
+      <ul class="ay-ch">
+        <li><span class="cap">WhatsApp</span><div><a href="https://wa.me/525579740223" target="_blank" rel="noopener">55 7974 0223</a><p>Pedidos, envíos y dudas de la tienda</p></div></li>
+        <li><span class="cap">Tienda en línea</span><div><a href="mailto:ecommerce@gpocetto.com">ecommerce@gpocetto.com</a><p>Pedidos, devoluciones y facturación</p></div></li>
+        <li><span class="cap">Reservaciones</span><div><a href="mailto:reservaciones@gpocetto.com">reservaciones@gpocetto.com</a><p>Grupos de más de 24 personas</p></div></li>
+        <li><span class="cap">Eventos y bodas</span><div><a href="mailto:eventosvg@gpocetto.com">eventosvg@gpocetto.com</a><p>Valle de Guadalupe y Boutique CDMX</p></div></li>
+        <li><span class="cap">Datos personales</span><div><a href="mailto:privacidad@gpocetto.com">privacidad@gpocetto.com</a><p>Acceso, corrección o cancelación de tus datos</p></div></li>
+      </ul>
+      <div class="ay-form" id="ctBox">
+        <form id="ctF" novalidate>
+          <h3>Escríbenos</h3>
+          <div class="two">
+            <div class="fg"><label for="ctName">Nombre</label><input id="ctName" type="text" autocomplete="name" maxlength="60"></div>
+            <div class="fg"><label for="ctMail">Correo</label><input id="ctMail" type="email" autocomplete="email" required></div>
+          </div>
+          <div class="two">
+            <div class="fg"><label for="ctTopic">Tema</label><select id="ctTopic"><option>Mi pedido</option><option>Envíos</option><option>Devolución</option><option>Facturación</option><option>Experiencias y visitas</option><option>Otro</option></select></div>
+            <div class="fg"><label for="ctOrder">Pedido (opcional)</label><input id="ctOrder" type="text" autocomplete="off" autocapitalize="characters" spellcheck="false"></div>
+          </div>
+          <div class="fg"><label for="ctMsg">Mensaje</label><textarea id="ctMsg" rows="3" maxlength="800"></textarea></div>
+          <p class="err" id="ctErr" role="alert"></p>
+          <button class="btn btn-ink" type="submit">Enviar mensaje</button>
+          <p class="fine">También puedes escribirnos por WhatsApp al 55 7974 0223.</p>
+        </form>
+        <div class="ay-ok" id="ctOk" role="status" tabindex="-1" hidden></div>
+      </div>
+    </div>
+  </div>
+  <ul class="ay-bts" aria-label="Boutiques">
+    <li><span class="cap">Viñedo y bodega</span><b>Valle de Guadalupe</b><address>Carretera Tecate–Ensenada km 73.5, Valle de Guadalupe, B.C.</address><a class="ul" href="https://www.google.com/maps/search/?api=1&amp;query=L.A.+Cetto+Valle+de+Guadalupe" target="_blank" rel="noopener" aria-label="Cómo llegar a la bodega del Valle de Guadalupe (se abre en otra pestaña)">Cómo llegar</a></li>
+    <li><span class="cap">Boutique</span><b>Ensenada</b><address>México 1 2768, Ensenada, B.C.</address><a class="ul" href="https://www.google.com/maps/search/?api=1&amp;query=L.A.+Cetto+Boutique+Ensenada" target="_blank" rel="noopener" aria-label="Cómo llegar a la Boutique Ensenada (se abre en otra pestaña)">Cómo llegar</a></li>
+    <li><span class="cap">Boutique</span><b>Tijuana</b><address>Av. Cañón Johnson 2108, Tijuana, B.C.</address><a class="ul" href="https://www.google.com/maps/search/?api=1&amp;query=Av.+Ca%C3%B1%C3%B3n+Johnson+2108+Tijuana" target="_blank" rel="noopener" aria-label="Cómo llegar a la Boutique Tijuana (se abre en otra pestaña)">Cómo llegar</a></li>
+    <li><span class="cap">Boutique</span><b>CDMX</b><address>Monte Athos 315, Lomas de Chapultepec</address><a class="ul" href="https://www.google.com/maps/search/?api=1&amp;query=Monte+Athos+315+Lomas+de+Chapultepec" target="_blank" rel="noopener" aria-label="Cómo llegar a la Boutique CDMX (se abre en otra pestaña)">Cómo llegar</a></li>
+  </ul>
+</section>
+</main>
+
+<div id="chromeBottom"></div>
+
+<script src="cetto-base.js"></script>
+<script>
+(function(){
+renderChrome({solid:true,page:'ayuda'});
+const $=id=>document.getElementById(id);
+const esc=s=>String(s==null?'':s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const arr='<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>';
+const CU=PAGES.cuenta||'lacetto-cuenta.html';
+
+/* ---------- Preguntas: políticas de lacetto.mx (envío, reembolso, términos, contacto). Club y caja de 6: propuesta del concepto ---------- */
+const FAQ=[
+ {k:'pedidos',t:'Pedidos y pagos',q:[
+  ['¿Qué formas de pago aceptan?','Tarjeta de crédito o débito (hasta 3 meses sin intereses con tarjetas participantes), cuenta de Mercado Pago, efectivo en OXXO y transferencia SPEI. Todos los pagos los procesa Mercado Pago.'],
+  ['¿Qué pasa si pago en OXXO o por SPEI?','Apartamos tu pedido 2 días, hasta las 23:59. Lo preparamos en cuanto se acredita tu pago y desde ahí corren los tiempos de entrega. Ves la referencia y la fecha límite en tu confirmación y en <a href="'+CU+'#pedidos">tu cuenta</a>.'],
+  ['¿Cómo funciona el 10% en la caja de 6?','Al juntar 6 botellas de vino de 750 ml en tu carrito, de cualquier línea, se descuenta 10% del vino. Los botellines, los productos gourmet, los estuches y las tarjetas de regalo no cuentan para la caja.'],
+  ['¿Qué es el precio de socio?','Con tu cuenta y la sesión iniciada pagas '+Math.round(MEMBER*100)+'% menos en vinos y gourmet, además del 10% de tu caja de 6. No aplica a tarjetas de regalo. Crear tu cuenta es gratis.'],
+  ['¿Cuándo queda confirmado mi pedido?','Cuando lo aceptamos y te lo confirmamos. Desde ese momento puedes seguirlo en <a href="#rastreo">Rastrea tu pedido</a> o en <a href="'+CU+'#pedidos">tu cuenta</a>.'],
+  ['¿Puedo cancelar o cambiar mi pedido?','Escríbenos lo antes posible con tu número de pedido. Una vez que aceptamos un pedido, es posible que ya no podamos cancelarlo.'],
+  ['¿Pueden cambiar los precios?','Sí, pueden cambiar sin previo aviso. Siempre respetamos el precio vigente al momento de hacer tu pedido.'],
+  ['¿Puedo pedir factura?','Sí. Escríbenos con tu número de pedido y tus datos fiscales. Te explicamos qué necesitas en <a href="#facturacion">Facturación</a>.']]},
+ {k:'envios',t:'Envíos',q:[
+  ['¿Envían a todo México?','Sí, a todo México, excepto a direcciones donde la entrega de alcohol está restringida.'],
+  ['¿Cuánto tarda mi pedido?','De 4 a 9 días hábiles: lo preparamos en 1 o 2 y la entrega nacional toma de 3 a 7. En zonas extendidas suma de 1 a 3 días. En Hot Sale, Buen Fin y Navidad puede tardar más. Ves la fecha estimada en tu carrito antes de pagar.'],
+  ['¿Cuánto cuesta el envío?','Es gratis en compras desde '+money(FREE)+'. En compras menores cuesta '+money(SHIP)+'. Si recoges en una boutique, no tiene costo.'],
+  ['¿Puedo recoger en una boutique?','Sí, sin costo, en Ensenada, Tijuana, el Valle de Guadalupe o la Boutique CDMX. Tu pedido queda listo en 1 o 2 días hábiles y te avisamos por correo.'],
+  ['¿Puedo devolver un vino?','Por normas sanitarias no aceptamos devoluciones voluntarias de vino ni destilados. Si llegó dañado, incompleto o equivocado, avísanos en 15 días y lo resolvemos. Mira <a href="#devoluciones">cómo</a>.'],
+  ['¿Quién puede recibir mi pedido?','Solo una persona mayor de 18 años. La paquetería puede pedir una identificación al entregar.'],
+  ['¿Qué pasa si no hay nadie para recibir?','La paquetería suele hacer 1 o 2 intentos. Después, el paquete puede quedar en una sucursal cercana o regresar a nuestro almacén. Si regresa, puede haber un costo adicional según la causa.'],
+  ['¿Cómo sigo mi envío?','Con tu número de pedido en <a href="#rastreo">Rastrea tu pedido</a> o desde <a href="'+CU+'#pedidos">tu cuenta</a>.']]},
+ {k:'vinos',t:'Vinos y conservación',q:[
+  ['¿Cómo guardo mis vinos?','Acostados, en un lugar fresco, oscuro y sin vibraciones, lejos de la cocina y de cambios bruscos de temperatura. Lo ideal es entre 12 y 16 °C.'],
+  ['¿A qué temperatura los sirvo?','Espumosos de 6 a 8 °C, blancos y rosados de 8 a 12 °C y tintos de 15 a 18 °C. En días de calor, un tinto mejora si lo enfrías un rato antes de abrirlo.'],
+  ['¿Cuánto dura una botella abierta?','Bien tapada y en el refrigerador, de 3 a 5 días. Los espumosos, de 1 a 3 días con un tapón para espumoso.'],
+  ['¿Qué vino elijo para una ocasión?','Prueba <a href="'+PAGES.tienda+'#encuentra">Encuentra tu vino</a>: tres preguntas y te sugerimos tres botellas.'],
+  ['¿Tienen botellas más pequeñas?','Sí, botellines de 187 ml y 375 ml. Los encuentras en <a href="'+PAGES.tienda+'?f=botellines">la tienda</a>.']]},
+ {k:'visitas',t:'Experiencias y visitas',q:[
+  ['¿Cómo reservo una cata?','En línea, desde <a href="'+PAGES.exp+'#reservar">Experiencias</a>: eliges la experiencia, la fecha, el horario y cuántas personas van.'],
+  ['¿Cuánto cuestan las experiencias?','Por persona, desde $250 la Cata Clásica hasta $1,800 la Experiencia Cetto, de unas 3 horas.'],
+  ['¿Y para grupos grandes?','Para grupos de más de 24 personas, escríbenos a <a href="mailto:reservaciones@gpocetto.com">reservaciones@gpocetto.com</a>.'],
+  ['¿Organizan eventos y bodas?','Sí, en el Valle de Guadalupe y en la Boutique CDMX. Escríbenos a <a href="mailto:eventosvg@gpocetto.com">eventosvg@gpocetto.com</a>.'],
+  ['¿Hay edad mínima para la degustación?','Sí. La degustación es para mayores de 18 años.'],
+  ['¿Dónde está la bodega?','En Carretera Tecate–Ensenada km 73.5, Valle de Guadalupe, Baja California. Mira <a href="#contacto">cómo llegar</a> a la bodega y a las boutiques.']]},
+ {k:'cuenta',t:'Cuenta y Club',q:[
+  ['¿Cuesta algo ser socio?','No. Crear tu cuenta es gratis y el precio de socio ('+Math.round(MEMBER*100)+'% menos) aplica desde tu primera compra con sesión iniciada.'],
+  ['¿Qué trae cada caja de Club Estaciones?','El vino Estaciones de la temporada: Primavera (Cabernet Sauvignon Rosé), Verano (Ensamble Blanco), Otoño (Gamay) o Invierno (Petit Verdot), en 3 o 6 botellas, con sus notas de cata y maridaje. Conoce el <a href="'+PAGES.club+'#estaciones">Club Estaciones</a>.'],
+  ['¿Puedo pausar o cancelar mi club?','Sí, desde tu cuenta y antes de cada envío. También puedes saltarte una estación o cambiar el tamaño de tu caja.'],
+  ['¿Necesito ser mayor de edad?','Sí. Para crear una cuenta y comprar vino necesitas tener 18 años o más.'],
+  ['¿Dónde veo mis pedidos y reservas?','En <a href="'+CU+'">tu cuenta</a>, con su estado y el detalle de cada uno.'],
+  ['¿Cómo cuidan mis datos personales?','Puedes pedir acceso, corrección o cancelación de tus datos escribiendo a <a href="mailto:privacidad@gpocetto.com">privacidad@gpocetto.com</a>.']]}
+];
+const strip=h=>h.replace(/<[^>]+>/g,'');
+let n=0;const ITEMS=[];
+$('faqList').innerHTML=FAQ.map(g=>'<div class="fq-g" id="faq-'+g.k+'"><h3 class="cap">'+g.t+'</h3>'+g.q.map(([q,a])=>{const id='fq'+(n++);ITEMS.push({id,g:g.k,gt:g.t,q,a,h:nrm(q+' '+strip(a)+' '+g.t)});return '<details id="'+id+'"><summary><span class="qt">'+q+'</span><i aria-hidden="true"></i></summary><p>'+a+'</p></details>'}).join('')+'</div>').join('')+'<p class="fq-none" id="fqNone" hidden></p>';
+const TOTAL=ITEMS.length;
+function renderNav(counts){$('fqNav').innerHTML=FAQ.map(g=>{const c=counts?counts[g.k]:g.q.length;return '<li'+(c?'':' hidden')+'><a href="#faq-'+g.k+'">'+g.t+'<span>'+c+'</span></a></li>'}).join('')}
+renderNav();
+
+/* ---------- Filtro en vivo ---------- */
+const q=$('q'),hits=$('qHits');
+function hl(txt,words){const src=nrm(txt),mk=new Array(txt.length).fill(false);
+  if(src.length===txt.length)words.forEach(w=>{if(w.length<2)return;let i=src.indexOf(w);while(i>=0){for(let k=i;k<i+w.length;k++)mk[k]=true;i=src.indexOf(w,i+w.length)}});
+  let out='',on=false;for(let k=0;k<txt.length;k++){if(mk[k]!==on){out+=mk[k]?'<mark>':'</mark>';on=mk[k]}out+=esc(txt[k])}return out+(on?'</mark>':'')}
+function filter(){
+  const raw=q.value.trim(),words=nrm(raw).split(/\s+/).filter(Boolean);
+  $('qClr').hidden=!raw;
+  const counts={};let shown=0;const match=[];
+  ITEMS.forEach(it=>{const ok=!words.length||words.every(w=>it.h.includes(w));const d=$(it.id);d.hidden=!ok;d.querySelector('.qt').innerHTML=ok&&words.length?hl(it.q,words):esc(it.q);if(ok){shown++;counts[it.g]=(counts[it.g]||0)+1;match.push(it)}});
+  FAQ.forEach(g=>{$('faq-'+g.k).hidden=!counts[g.k]});
+  renderNav(words.length?counts:null);
+  const st=$('fqSt'),none=$('fqNone');
+  if(!words.length){st.hidden=true;none.hidden=true;hits.innerHTML='';$('qCount').textContent='';return}
+  st.hidden=!shown;$('fqStT').textContent=shown+' de '+TOTAL+' preguntas con “'+raw+'”';
+  none.hidden=!!shown;none.innerHTML='No encontramos nada con “'+esc(raw)+'”. <a href="#contacto">Escríbenos</a> y te ayudamos.';
+  $('qCount').textContent=shown?shown+' respuestas':'Sin respuestas';
+  hits.innerHTML=shown?match.slice(0,4).map(it=>'<li><button type="button" data-jump="'+it.id+'"><span>'+hl(it.q,words)+'</span><small>'+it.gt+'</small></button></li>').join('')+(shown>4?'<li><button type="button" data-jump="faq"><span class="more">Ver las '+shown+' respuestas</span>'+arr+'</button></li>':''):'<li class="none">Nada con “'+esc(raw)+'”. <a href="#contacto">Escríbenos</a> o prueba con otra palabra.</li>';
+}
+q.addEventListener('input',()=>{hits.hidden=false;filter()});
+const qBox=document.querySelector('.ay-q');
+qBox.addEventListener('focusin',()=>{hits.hidden=false});
+qBox.addEventListener('focusout',e=>{if(!qBox.contains(e.relatedTarget))setTimeout(()=>{if(!qBox.contains(document.activeElement))hits.hidden=true},120)});
+q.addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();const f=hits.querySelector('[data-jump]');if(f)f.click()}if(e.key==='Escape'&&q.value){e.stopPropagation();q.value='';filter()}});
+$('qClr').onclick=()=>{q.value='';filter();q.focus()};
+$('fqClr').onclick=()=>{q.value='';filter()};
+hits.addEventListener('click',e=>{const b=e.target.closest('[data-jump]');if(!b)return;const id=b.dataset.jump;hits.hidden=true;
+  if(id==='faq'){jump($('faq'))}else{const d=$(id);d.open=true;jump(d);setTimeout(()=>d.querySelector('summary').focus({preventScroll:true}),400)}});
+
+/* ---------- Saltos con el encabezado fijo ---------- */
+function jump(el,instant){if(!el)return;const de=document.documentElement;if(instant)de.style.scrollBehavior='auto';el.scrollIntoView({behavior:instant||reduceMotion?'auto':'smooth',block:'start'});if(instant)requestAnimationFrame(()=>de.style.scrollBehavior='')}
+function openFirst(){const d=document.querySelector('#faqList details:not([hidden])');if(d)d.open=true}
+function onHash(instant){const h=location.hash.slice(1);if(!h)return;const el=document.getElementById(h);if(!el)return;
+  if(h==='faq')openFirst();
+  if(h.startsWith('faq-')){const d=el.querySelector('details');if(d)d.open=true}
+  if(el.tagName==='DETAILS')el.open=true;
+  jump(el,instant)}
+addEventListener('hashchange',()=>onHash(false));
+document.addEventListener('click',e=>{const a=e.target.closest('a[href^="#"]');if(!a)return;const h=a.getAttribute('href');
+  if(h===location.hash){e.preventDefault();onHash(false)}
+  if(a.dataset.focus)setTimeout(()=>$(a.dataset.focus).focus({preventScroll:true}),450)});
+
+/* ---------- Rastrea tu pedido ---------- */
+const orders=()=>{const o=store.get('cettoOrders',[]);return (Array.isArray(o)?o:[]).filter(x=>x&&x.no).sort((a,b)=>new Date(b.date||0)-new Date(a.date||0))};
+const normNo=s=>{s=String(s||'').toUpperCase().replace(/[^A-Z0-9]/g,'');if(/^\d+$/.test(s))s='LAC'+s;return s};
+const fmtL=(d,o)=>d.toLocaleDateString('es-MX',o||{weekday:'short',day:'numeric',month:'short'}).replace('.','');
+/* Estado de pedidos: mismas reglas que Pago y Mi cuenta (fechas de cetto-base.js) */
+const ISO=v=>{if(!v)return null;const d=new Date(v);return isNaN(d)?null:d};
+const ST_IDX={confirmado:0,pagado:0,nuevo:0,pendiente:0,recibido:0,preparando:1,preparacion:1,'en-preparacion':1,enviado:2,'en-camino':2,'en camino':2,camino:2,listo:2,'listo-para-recoger':2,entregado:3,recogido:3};
+function dueOf(o){const d=ISO(o.payDue);if(d)return d;const x=new Date(o.date);x.setDate(x.getDate()+2);x.setHours(23,59,0,0);return x}
+function etaTxtOf(o){const dv=o.delivery||{},pick=dv.mode==='boutique'||dv.mode==='recoger';
+  if(o.payStatus==='pendiente')return pick?'Lista 1 o 2 días hábiles después de que se acredite tu pago':'Llega de 4 a 9 días hábiles después de que se acredite tu pago';
+  if(dv.txt)return dv.txt;
+  const a=ISO(dv.etaFrom),b=ISO(dv.eta);
+  if(a&&b)return (pick?'Lista para recoger entre el ':'Llega entre el ')+fmtD(a)+' y el '+fmtD(b);
+  if(dv.etaFrom&&dv.eta)return 'Llega entre el '+dv.etaFrom+' y el '+dv.eta;
+  if(dv.eta)return String(dv.eta);
+  return eta(pick?'boutique':'envio',o.paidAt||o.date).txt}
+function stepsHTML(i,pick,ph,pend,dueT){
+  const L=pick?[['Confirmado','Recibimos tu pedido'],['Preparando','1 a 2 días hábiles'],['Listo para recoger','Te avisamos al estar listo'],['Recogido','En la boutique']]:[['Confirmado','Recibimos tu pedido'],['Preparando','1 a 2 días hábiles'],['En camino','3 a 7 días hábiles'],['Entregado','En tu puerta']];
+  if(pend){L[0]=['Esperando pago','Antes del '+dueT];L[1]=['Preparando','Al acreditarse tu pago']}
+  return '<ol class="tr-steps">'+L.map(([b,s],j)=>'<li class="'+(ph?'':(pend?(j===0?'now':''):(j<=i?'done':'')+(j===i?' now':'')))+'"'+(!ph&&j===i?' aria-current="step"':'')+'><b>'+b+'</b><small>'+s+'</small></li>').join('')+'</ol>';
+}
+function placeholder(){$('trRes').innerHTML='<div class="tr-card tr-ph">'+stepsHTML(-1,false,true)+'<p>Aquí verás en qué va tu pedido y cuándo llega.</p></div>'}
+function showOrder(o){
+  const d=o.date?new Date(o.date):new Date(),dv=o.delivery||{},pick=dv.mode==='boutique'||dv.mode==='recoger';
+  const st=String(o.status||'confirmado').toLowerCase(),pend=o.payStatus==='pendiente';
+  if(st==='cancelado'){$('trRes').innerHTML='<div class="tr-card tr-no"><h3>Pedido '+esc(o.no)+' cancelado</h3><p>Si tienes dudas sobre tu reembolso, escríbenos con este número.</p><div class="tr-act"><a class="ul" href="#contacto" data-order="'+esc(o.no)+'">Escribirnos</a></div></div>';return}
+  Object.keys(o.items||{}).forEach(k=>{const m=/^gc(\d+)$/.exec(k);if(m)gcId(+m[1])});
+  /* mismo avance que Mi cuenta: desde el pago, 1 día preparando, 2 en camino, 4 entregado */
+  const t0=ISO(o.paidAt)||d,days=Math.floor((Date.now()-t0)/864e5),byAge=days>=4?3:days>=2?2:days>=1?1:0;
+  const i=pend?0:Math.max(ST_IDX[st]!=null?ST_IDX[st]:0,byAge);
+  const dueT=fmtD(dueOf(o))+', 23:59';
+  let eta_;
+  if(!pend&&i===3)eta_='<p>'+(pick?'Recogido':'Entregado')+'</p>';
+  else if(pick)eta_='<p>Recoge en '+esc(dv.boutique||'tu boutique')+'</p><span>'+esc(etaTxtOf(o))+'</span>';
+  else eta_='<p>'+esc(etaTxtOf(o))+'</p><span>'+(dv.city?'A '+esc([dv.city,dv.state].filter(Boolean).join(', ')):'Envío nacional')+'</span>';
+  const pay=pend?'<div class="tr-pay"><b>Pago pendiente:</b> '+money(o.tot||0)+' <span class="due">antes del '+dueT+'</span>. '+(o.pay==='oxxo'?'Referencia OXXO ':'CLABE ')+'<span class="ref">'+esc(o.payRef||(o.pay==='oxxo'?'9800 0000 0000 0000':'0000 0000 0000 0000 00'))+'</span>. Lo preparamos en cuanto se acredite.</div>':'';
+  const it=Object.entries(o.items||{}).filter(([id])=>P[id]);const cnt=it.reduce((a,[,q])=>a+q,0);
+  $('trRes').innerHTML='<div class="tr-card"><div class="tr-hd"><h3>Pedido '+esc(o.no)+'</h3><span class="meta">'+fmtL(d,{day:'numeric',month:'long',year:'numeric'})+(o.tot!=null?' · <span class="price">'+money(o.tot)+'</span>':'')+'</span></div>'+
+    stepsHTML(i,pick,false,pend,dueT)+pay+'<div class="tr-eta">'+eta_+'</div>'+
+    (it.length?'<div class="tr-items" aria-label="'+cnt+' productos">'+it.slice(0,6).map(([id,q])=>'<a class="fld" href="'+(P[id].gc?PAGES.regalos+'#tarjeta':PAGES.ficha+'?p='+id)+'" title="'+esc(P[id].line+' '+P[id].name)+(q>1?' × '+q:'')+'"><img src="'+F(P[id].img,160)+'" alt="'+esc(P[id].line+' '+P[id].name)+'"></a>').join('')+'<span class="more">'+cnt+' producto'+(cnt>1?'s':'')+(it.length>6?' · y '+(it.length-6)+' más':'')+'</span></div>':'')+
+    '<div class="tr-act"><a class="ul" href="'+CU+'#pedidos">Ver en mi cuenta</a><a class="ul" href="#contacto" data-order="'+esc(o.no)+'">¿Algo no está bien?</a></div></div>';
+}
+function track(v,focusRes){
+  const key=normNo(v);if(!key){$('trNo').focus();return}
+  const o=orders().find(x=>normNo(x.no)===key),ti=$('trNo');
+  if(o){ti.removeAttribute('aria-invalid');ti.removeAttribute('aria-describedby')}else{ti.setAttribute('aria-invalid','true');ti.setAttribute('aria-describedby','trRes')}
+  if(o)showOrder(o);
+  else $('trRes').innerHTML='<div class="tr-card tr-no"><h3>No encontramos el pedido '+esc(String(v).trim().toUpperCase())+'</h3><p>Revisa el número en tu confirmación de compra. Si compraste con tu cuenta, también lo ves en <a href="'+CU+'#pedidos">Mis pedidos</a>.</p><div class="tr-act"><a class="ul" href="https://wa.me/525579740223" target="_blank" rel="noopener">Preguntar por WhatsApp</a><a class="ul" href="#contacto">Escribirnos</a></div></div>';
+  if(focusRes){const r=$('trRes');r.focus({preventScroll:true});const t=r.getBoundingClientRect().top;if(t>innerHeight*.7||t<0)r.scrollIntoView({behavior:reduceMotion?'auto':'smooth',block:'start'})}
+}
+$('trF').addEventListener('submit',e=>{e.preventDefault();track($('trNo').value,true)});
+$('trNo').addEventListener('input',()=>{const ti=$('trNo');ti.removeAttribute('aria-invalid');ti.removeAttribute('aria-describedby')});
+function renderLast(){const o=orders()[0],el=$('trLast');if(!o){el.hidden=true;return}el.hidden=false;el.innerHTML='Tu último pedido: <button type="button" id="trLastB">'+esc(o.no)+'</button>';
+  $('trLastB').onclick=()=>{$('trNo').value=o.no;track(o.no,true)}}
+placeholder();renderLast();
+/* Envíos: fecha estimada con la misma regla del carrito */
+{const e=eta('envio');$('enEta').textContent='Llega entre el '+fmtD(e.from)+' y el '+fmtD(e.to);$('enShip').textContent=money(SHIP)}
+document.addEventListener('click',e=>{const a=e.target.closest('[data-order]');if(!a)return;$('ctTopic').value='Mi pedido';$('ctOrder').value=a.dataset.order;setTimeout(()=>$('ctMsg').focus({preventScroll:true}),450)});
+
+/* ---------- Facturación: correo con el último pedido ---------- */
+(function(){const o=orders()[0];if(o)$('fcMail').href='mailto:ecommerce@gpocetto.com?subject='+encodeURIComponent('Solicitud de factura · pedido '+o.no)})();
+
+/* ---------- Contacto (prototipo: nada se envía) ---------- */
+const u=user();
+if(u){if(u.name)$('ctName').value=u.name;if(u.email)$('ctMail').value=u.email}
+const ctBad=id=>{['ctMail','ctMsg'].forEach(k=>{const x=$(k);if(k===id){x.setAttribute('aria-invalid','true');x.setAttribute('aria-describedby','ctErr')}else{x.removeAttribute('aria-invalid');x.removeAttribute('aria-describedby')}})};
+['ctMail','ctMsg'].forEach(k=>$(k).addEventListener('input',()=>{const x=$(k);if(x.getAttribute('aria-invalid')){x.removeAttribute('aria-invalid');x.removeAttribute('aria-describedby')}}));
+$('ctF').addEventListener('submit',e=>{e.preventDefault();const err=$('ctErr');err.classList.remove('on');ctBad(null);
+  const m=$('ctMail').value.trim(),msg=$('ctMsg').value.trim();
+  if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(m)){err.textContent='Escribe un correo válido para poder responderte.';err.classList.add('on');ctBad('ctMail');$('ctMail').focus();return}
+  if(msg.length<5){err.textContent='Cuéntanos en qué te ayudamos.';err.classList.add('on');ctBad('ctMsg');$('ctMsg').focus();return}
+  const first=$('ctName').value.trim().split(/\s+/)[0],ord=$('ctOrder').value.trim();
+  $('ctF').hidden=true;const ok=$('ctOk');ok.hidden=false;
+  const TP={'Mi pedido':'tu pedido','Envíos':'envíos','Devolución':'tu devolución','Facturación':'facturación','Experiencias y visitas':'experiencias y visitas'}[$('ctTopic').value];
+  ok.innerHTML='<h3>Gracias'+(first?', '+esc(first):'')+'.</h3><p>Recibimos tu mensaje'+(TP?' sobre '+TP:'')+(ord?' (pedido '+esc(ord.toUpperCase())+')':'')+'. Te respondemos a '+esc(m)+'.</p><button class="ul" type="button" id="ctAgain">Enviar otro mensaje</button>';
+  ok.focus({preventScroll:true});$('ctBox').scrollIntoView({block:'nearest',behavior:reduceMotion?'auto':'smooth'});$('ctAgain').onclick=()=>{$('ctMsg').value='';ok.hidden=true;$('ctF').hidden=false;$('ctMsg').focus()}});
+
+/* ---------- Entrada: ?pedido=LAC-… y anclas ---------- */
+const qp=new URLSearchParams(location.search).get('pedido');
+if(qp){$('trNo').value=qp;track(qp)}
+observeReveals();
+if(location.hash){requestAnimationFrame(()=>onHash(true));addEventListener('load',()=>onHash(true),{once:true})}
+else if(qp){requestAnimationFrame(()=>jump($('rastreo'),true));addEventListener('load',()=>jump($('rastreo'),true),{once:true})}
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,859 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>L.A. Cetto · Ficha de producto</title>
+<meta name="description" content="Concepto de rediseño de la ficha de producto de L.A. Cetto. Datos e imágenes del sitio actual como referencia temporal.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baskervville:ital@0;1&family=DM+Sans:opsz,wght@9..40,400..600&family=Playfair:opsz,wght@5..1200,300..500&display=swap" rel="stylesheet">
+<link rel="icon" type="image/svg+xml" href="media/favicon.svg">
+<!-- compartir -->
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="apple-touch-icon" href="media/apple-touch-icon.png">
+<meta name="theme-color" content="#F3F1EC">
+<meta name="robots" content="noindex, nofollow">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="es_MX">
+<meta property="og:site_name" content="L.A. Cetto · Concepto de rediseño">
+<meta property="og:title" content="L.A. Cetto · Ficha de producto">
+<meta property="og:description" content="Concepto de rediseño de la ficha de producto de L.A. Cetto. Datos e imágenes del sitio actual como referencia temporal.">
+<meta property="og:url" content="https://zamirpadilla.github.io/lacetto-concepto/lacetto-ficha.html">
+<meta property="og:image" content="https://zamirpadilla.github.io/lacetto-concepto/media/og-banner.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Chardonnay Reserva Privada de L.A. Cetto sobre una roca frente al mar, con el texto: Una boutique de vinos, de punta a punta">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="L.A. Cetto · Ficha de producto">
+<meta name="twitter:description" content="Concepto de rediseño de la ficha de producto de L.A. Cetto. Datos e imágenes del sitio actual como referencia temporal.">
+<meta name="twitter:image" content="https://zamirpadilla.github.io/lacetto-concepto/media/og-banner.jpg">
+<!-- /compartir -->
+<link rel="stylesheet" href="cetto-base.css">
+<style>
+/* ---------- Compra ---------- */
+.buy{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:clamp(24px,4.5vw,80px);align-items:start;padding-top:16px;padding-bottom:var(--sec)}
+.gal{position:sticky;top:88px;min-width:0}
+.stage{position:relative;height:min(calc(100svh - 190px),820px);min-height:500px;background:var(--bg2);overflow:hidden;touch-action:pan-y}
+.view{position:absolute;inset:0;opacity:0;transition:opacity .6s var(--ease);pointer-events:none}
+.view.on{opacity:1;pointer-events:auto}
+.view>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+/* La botella: recorte real, completa y siempre del mismo tamaño (sin vista 3D) */
+.view.v-bot>img{inset:auto;left:50%;bottom:9%;width:auto;height:82%;max-width:74%;object-fit:contain;object-position:50% 100%;transform:translateX(-50%);transform-origin:50% 100%;transition:transform 1.6s var(--ease)}
+.view.v-bot>img.raw{bottom:4%;height:92%;mix-blend-mode:multiply}
+@media (hover:hover){.stage:hover .view.v-bot>img{transform:translateX(-50%) scale(1.02)}}
+.floor{position:absolute;left:50%;bottom:7.3%;width:26%;height:4%;transform:translateX(-50%);background:radial-gradient(closest-side,rgba(38,28,20,.28),rgba(38,28,20,0));pointer-events:none}
+/* Etiqueta, ficha técnica y maridaje: las imágenes del sitio actual, sobre blanco como en lacetto.mx */
+.view.v-sheet{background:#fff}
+.view.v-sheet>img{object-fit:contain;padding:clamp(8px,1.4vw,22px)}
+.stage .tag{position:absolute;z-index:3;font:500 11px/1.3 var(--sans);letter-spacing:.06em;color:var(--ink2)}
+.stage .tag.tl{top:14px;left:16px;transition:opacity .4s var(--ease)}
+.stage.alt .tag{opacity:0;pointer-events:none}
+.thumbs{display:flex;gap:var(--g);margin:calc(var(--g) - 3px) 0 0 -3px;padding:3px;overflow-x:auto;scrollbar-width:none}
+.thumbs::-webkit-scrollbar{display:none}
+.thumbs[hidden]{display:none}
+.thumbs button{flex:0 0 auto;display:flex;flex-direction:column;gap:6px;text-align:left}
+.thumbs .tb{width:78px;height:78px;background:var(--bg2);overflow:hidden;display:grid;place-items:center;outline:1px solid transparent;outline-offset:2px;transition:outline-color .2s}
+.thumbs .tb img{width:100%;height:100%;object-fit:cover}
+.thumbs .tb img.ct{width:auto;height:84%;max-width:84%;object-fit:contain}
+.thumbs .tb.w{background:#fff}
+.thumbs .tb.w img{object-fit:contain}
+.thumbs span.l{font-size:12px;color:var(--ink3)}
+.thumbs button[aria-pressed="true"] .tb{outline-color:var(--ink)}
+.thumbs button[aria-pressed="true"] span.l{color:var(--ink)}
+
+.panel{padding-top:clamp(8px,2vw,28px)}
+.pname{font:400 clamp(48px,5.6vw,92px)/.95 var(--serif);letter-spacing:-.022em;margin:16px 0 10px}
+.pname small{display:block;font:400 15px/1.4 var(--sans);letter-spacing:0;color:var(--ink2);margin-top:10px}
+.rate{display:inline-flex;align-items:center;gap:10px;font-size:13.5px;color:var(--ink2);border-bottom:1px solid transparent}
+.rate:hover{border-color:currentColor}
+/* Estrellas: la misma estrella dibujada del resto del sitio (máscara), rellena según la calificación */
+.stars{--s:13px;display:inline-block;vertical-align:-1px;width:calc(var(--s) * 5.715);height:var(--s);font-size:0;color:transparent;background:linear-gradient(90deg,var(--ink) var(--p),rgba(43,44,45,.2) var(--p));-webkit-mask-size:calc(var(--s) * 1.143) var(--s);mask-size:calc(var(--s) * 1.143) var(--s)}
+.occ{font:italic 400 clamp(20px,1.7vw,25px)/1.4 var(--serif);margin:26px 0 26px;max-width:30ch}
+.prc{display:flex;align-items:baseline;flex-wrap:wrap;gap:6px 16px}
+.prc b{font:400 32px/1 var(--sans);letter-spacing:-.015em;font-variant-numeric:lining-nums tabular-nums}
+.prc s{font-size:17px;color:var(--ink3)}
+.prc span{font-size:13.5px;color:var(--ink2)}
+.prc .mem{color:var(--wine);font-weight:500}
+.prc .oos-t{font:500 11px/1 var(--sans);letter-spacing:.09em;text-transform:uppercase;color:var(--wine);border:1px solid currentColor;padding:6px 8px;align-self:center}
+.pline{color:var(--ink2)}
+.pmeta{display:flex;flex-wrap:wrap;align-items:center;gap:6px 18px}
+.opts{border:0;margin:22px 0 0;display:grid;gap:8px}
+.opts legend{margin-bottom:10px;color:var(--ink2)}
+.opt{display:grid;grid-template-columns:18px minmax(0,1fr) auto;gap:12px;align-items:center;padding:14px 16px;border:1px solid var(--line);cursor:pointer;transition:border-color .3s var(--ease)}
+.opt:hover{border-color:rgba(43,44,45,.3)}
+/* Radio propio: un aro fino y un punto, sin el relleno blanco del radio del navegador */
+.opt input{-webkit-appearance:none;appearance:none;width:16px;height:16px;margin:0;border-radius:50%;border:1px solid rgba(43,44,45,.38);background:transparent;display:grid;place-items:center;cursor:pointer;transition:border-color .3s var(--ease)}
+.opt input::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--ink);transform:scale(0);transition:transform .3s var(--ease)}
+.opt input:checked{border-color:var(--ink)}
+.opt input:checked::before{transform:scale(1)}
+.opt input:focus{outline:none}
+.opt:has(input:focus-visible){outline:2px solid var(--ink);outline-offset:2px}
+.opt:has(input:checked){border-color:rgba(43,44,45,.72)}
+.opt:has(input:disabled){opacity:.55;cursor:default}
+.opt:has(input:disabled):hover{border-color:var(--line)}
+.o-n{font-size:15px}
+.o-n em{font-style:normal;font-size:12px;color:var(--wine);margin-left:8px;white-space:nowrap}
+.o-n small{display:block;font-size:12.5px;color:var(--ink3);margin-top:2px}
+.o-p{text-align:right;font-size:15px;white-space:nowrap}
+.o-p s{font-size:12.5px;color:var(--ink3);margin-right:6px}
+.buyrow{display:grid;grid-template-columns:auto minmax(0,1fr);gap:8px;margin-top:14px}
+.qsel{display:flex;align-items:center;border:1px solid var(--line);height:48px;padding:0 4px}
+.qsel button{flex:0 0 40px;width:40px;height:46px;display:grid;place-items:center;padding:0;font-size:17px;line-height:1;color:var(--ink)}
+.qsel span{min-width:28px;text-align:center;font-variant-numeric:tabular-nums}
+.buyrow .btn{width:100%}
+.buyrow[hidden],.oos[hidden]{display:none}
+.alt{display:inline-block;margin-top:16px}
+.qsel button:disabled{opacity:.35;cursor:default}
+.bnote{font-size:13px;color:var(--ink2);margin-top:10px}
+.bnote:empty{display:none}
+/* Agotado: aviso por correo y alternativas */
+.oos{margin-top:18px;scroll-margin-top:110px}
+.ntf-f label{display:block;margin-bottom:10px}
+.nrow{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px}
+.nrow input{height:48px;border:1px solid var(--line);background:var(--panel,#FBFAF7);padding:0 14px;font:400 15px/1 var(--sans);color:var(--ink);min-width:0}
+.nrow input:focus{border-color:var(--ink);outline:none;box-shadow:0 2px 0 var(--ink)}
+.nrow input[aria-invalid=true],.wr [aria-invalid=true]{border-color:var(--wine)}
+.nerr{font-size:13px;color:var(--wine);margin-top:8px}
+.ntf-ok{padding:16px;background:var(--bg2);font-size:14.5px;line-height:1.5}
+.ntf-ok:focus{outline:none}
+.alts-b{margin-top:22px}
+.alts-b>.cap{color:var(--ink3)}
+.alts-b ul{list-style:none;margin-top:10px;border-top:1px solid var(--line)}
+.alts-b li{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:12px;border-bottom:1px solid var(--line)}
+.alts-b a.ai{display:grid;grid-template-columns:44px minmax(0,1fr) auto;align-items:center;gap:12px;padding:10px 0}
+.alts-b .fld{width:44px;height:56px}
+.alts-b .fld::after{display:none}
+.alts-b .fld img{height:90%}
+.alts-b small{display:block;font:500 10.5px/1.3 var(--sans);letter-spacing:.09em;text-transform:uppercase;color:var(--ink3)}
+.alts-b b{font:400 17px/1.2 var(--serif)}
+.alts-b em{font-style:normal;font-size:13px;color:var(--ink2);margin-left:6px}
+.alts-b .price{font-size:14.5px}
+.alts-b a.ai:hover b{text-decoration:underline;text-underline-offset:3px}
+.facts{display:grid;grid-template-columns:1fr 1fr;margin-top:30px;border-top:1px solid var(--line)}
+.facts div{padding:14px 0;border-bottom:1px solid var(--line)}
+.facts div:nth-child(odd){padding-right:16px}
+.facts dt{font:500 10.5px/1.4 var(--sans);letter-spacing:.09em;text-transform:uppercase;color:var(--ink3)}
+.facts dd{font:400 15.5px/1.4 var(--sans);font-variant-numeric:lining-nums;margin-top:4px}
+.perks{list-style:none;margin-top:24px;display:grid;gap:10px;font-size:13.5px;color:var(--ink2)}
+.perks b{color:var(--ink);font-weight:500;margin-right:6px}
+
+html{scroll-padding-top:96px}
+
+.st{padding-block:var(--sec)}
+.big{font-size:clamp(38px,5vw,78px);max-width:18ch}
+.tri{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(20px,3vw,48px);margin-top:clamp(36px,4vw,64px)}
+.tri>div{border-top:1px solid var(--line);padding-top:16px}
+.tri b{display:block;font:400 26px/1.1 var(--serif);margin:0 0 10px}
+.tri p{color:var(--ink2);font-size:15.5px;max-width:36ch}
+.aromas{list-style:none;display:flex;flex-wrap:wrap;gap:6px clamp(22px,2.6vw,40px);margin-top:clamp(36px,4vw,60px);font:400 clamp(24px,2.6vw,40px)/1.25 var(--serif)}
+.aromas li{display:inline-flex;align-items:center;white-space:nowrap}
+.aromas li::before{content:"";flex:none;width:7px;height:7px;border-radius:50%;border:1px solid var(--ink3);margin-right:clamp(10px,1vw,14px)}
+.perfil{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--g);margin-top:clamp(36px,4vw,60px)}
+.perfil div{background:var(--bg2);padding:18px}
+.perfil dt{font:500 10.5px/1.4 var(--sans);letter-spacing:.09em;text-transform:uppercase;color:var(--ink3)}
+.perfil dd{font:400 24px/1.2 var(--serif);margin-top:8px}
+.st-desc{font:400 clamp(22px,1.9vw,30px)/1.4 var(--serif);max-width:min(100%,60ch);margin-top:28px}
+
+.mesa{background:var(--dark);color:#EEE9E1}
+.mesa-in{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:clamp(32px,6vw,104px);align-items:start}
+.mesa .p{color:rgba(238,233,225,.7);margin-top:18px}
+.plist{list-style:none;border-top:1px solid rgba(238,233,225,.2)}
+.plist li{padding:18px 0;border-bottom:1px solid rgba(238,233,225,.2);font:400 clamp(24px,2.4vw,36px)/1.15 var(--serif)}
+
+.steps4{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:var(--g);margin-top:clamp(28px,3vw,44px)}
+.steps4.n3{grid-template-columns:repeat(3,minmax(0,1fr))}
+.sc{position:relative;display:flex;flex-direction:column}
+.sc .ph{position:relative;aspect-ratio:3/4;overflow:hidden;background:var(--bg2)}
+.sc .ph img,.sc .ph video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.sc b{display:block;font:400 22px/1.15 var(--serif);margin-top:14px}
+.sc p{font-size:14.5px;color:var(--ink2);margin-top:6px;max-width:30ch}
+
+.prem{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:clamp(24px,5vw,88px);align-items:end;border-top:1px solid var(--line);padding-top:clamp(24px,3vw,40px)}
+.prem p{font:400 clamp(21px,1.9vw,28px)/1.35 var(--serif);max-width:34ch}
+.prem .ul{margin-top:22px}
+
+.rev{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,2fr);gap:clamp(24px,5vw,88px)}
+.rev .avg{font:400 clamp(64px,7vw,104px)/1 var(--sans);letter-spacing:-.04em;font-variant-numeric:lining-nums;margin-bottom:12px}
+.rev .stars{--s:17px;display:block}
+/* Escribir una reseña (simulado) */
+.wr{margin-top:22px;display:grid;gap:14px;max-width:420px}
+.wr[hidden]{display:none}
+.wr fieldset{border:0}
+.wr legend,.wr label.l{font:500 11px/1.3 var(--sans);letter-spacing:.09em;text-transform:uppercase;color:var(--ink3);margin-bottom:6px;display:block}
+.wr-stars{display:flex;gap:2px}
+.wr-stars label{cursor:pointer;font-size:26px;line-height:1;color:rgba(43,44,45,.22);padding:2px;transition:color .15s}
+.wr-stars label.f{color:var(--ink)}
+.wr-stars input{position:absolute;opacity:0;width:1px;height:1px}
+.wr-stars input:focus-visible+span{outline:2px solid var(--ink);outline-offset:2px}
+.wr input[type=text],.wr textarea{width:100%;border:1px solid var(--line);background:var(--panel,#FBFAF7);padding:12px 14px;font:400 15px/1.45 var(--sans);color:var(--ink)}
+.wr input[type=text]:focus,.wr textarea:focus{border-color:var(--ink);outline:none;box-shadow:0 2px 0 var(--ink)}
+.wr fieldset[aria-invalid=true] .wr-stars label{color:rgba(107,34,48,.35)}
+.wr .err{font-size:13px;color:var(--wine)}
+.wr .fine{font-size:12px;color:var(--ink3)}
+.wr-ok{margin-top:22px;padding:16px;background:var(--bg2);font-size:14.5px;max-width:420px}
+.wr-ok:focus{outline:none}
+.rev .meta{font-size:13.5px;color:var(--ink2);margin:10px 0 22px}
+.rlist{border-top:1px solid var(--line)}
+.ri{padding:20px 0;border-bottom:1px solid var(--line);display:grid;grid-template-columns:minmax(0,1fr) auto;gap:6px 20px}
+.ri b{font-weight:500;font-size:14.5px}
+.ri time{font-size:13px;color:var(--ink3);text-align:right}
+.ri p{grid-column:1/-1;font:400 21px/1.35 var(--serif);max-width:44ch}
+.ri small{grid-column:1/-1;font-size:12.5px;color:var(--ink3)}
+.empty-r{font:400 24px/1.3 var(--serif);color:var(--ink2)}
+
+/* Barra fija de compra */
+.sbar{position:fixed;left:0;right:0;bottom:0;z-index:45;background:var(--bg);border-top:1px solid var(--line);display:flex;align-items:center;gap:14px;padding:10px var(--m);transform:translateY(102%);transition:transform .45s var(--ease)}
+.sbar.on{transform:none}
+.sbar .fld{width:40px;height:52px;flex:0 0 auto}
+.sbar .fld::after{display:none}
+.sbar .fld img{height:92%}
+.sbar .t{flex:1;min-width:0;line-height:1.25}
+.sbar .t small{display:block;font:500 10.5px/1.3 var(--sans);letter-spacing:.09em;text-transform:uppercase;color:var(--ink3)}
+.sbar .t b{font:400 19px/1.2 var(--serif);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;display:block}
+.sbar .btn{height:44px;padding:0 18px}
+
+@media (max-width:900px){
+  .buy{grid-template-columns:minmax(0,1fr);gap:22px}
+  .gal{position:relative;top:auto}
+  .stage{height:auto;aspect-ratio:1/1.08;min-height:0}
+  .tri,.mesa-in,.rev,.prem{grid-template-columns:minmax(0,1fr)}
+  .perfil dd{font-size:20px}
+  .steps4,.steps4.n3{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scroll-padding-inline:var(--m);margin-inline:calc(var(--m) * -1);padding-inline:var(--m);scrollbar-width:none}
+  /* En celular: línea, nombre y precio en la primera pantalla */
+  .stage{aspect-ratio:1/.92}
+  .panel{display:flex;flex-direction:column;padding-top:0}
+  .panel>*{order:5}
+  .panel>.pline,.panel>.pname{order:1}
+  .panel>.prc{order:2;border-top:0;padding-top:0;margin-top:2px}
+  .panel>.pmeta{order:3;margin-top:14px}
+  .panel>.occ{order:4}
+  .panel>.alt{align-self:flex-start}
+  .pname{margin:10px 0 12px}
+  .steps4::-webkit-scrollbar{display:none}
+  .sc{flex:0 0 66vw;scroll-snap-align:start}
+}
+@media (max-width:640px){
+  .thumbs .tb{width:56px;height:56px}
+  .pname{font-size:clamp(40px,11.5vw,56px)}
+  .perfil{gap:6px}
+  .perfil div{padding:14px 12px}
+  .perfil dd{font-size:18px}
+  .opt{padding:12px}
+  .o-n em{display:block;margin:2px 0 0}
+  .sbar .t small{display:none}
+  .sbar .btn{padding:0 14px;font-size:11.5px}
+}
+@media (prefers-reduced-motion:reduce){.sbar{transition:none}}
+.prem-a{display:flex;flex-wrap:wrap;gap:6px 28px;margin-top:6px}
+
+/* "Con qué abrirlo" con la foto real del vino en la mesa: foto a media pantalla y el maridaje al lado */
+.mesa.mesa-ph{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);padding:0;align-items:stretch}
+.mesa.mesa-ph .mesa-fig{position:relative;margin:0;min-height:min(84vh,820px);overflow:hidden}
+.mesa.mesa-ph .mesa-fig img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transform:scale(1.03);transition:transform 1.8s var(--ease)}
+.mesa.mesa-ph:hover .mp img{transform:scale(1)}
+.mesa.mesa-ph .mesa-fig figcaption{position:absolute;left:18px;bottom:16px;font:italic 400 17px/1.2 var(--serif);color:#fff;text-shadow:0 1px 14px rgba(0,0,0,.45)}
+.mesa.mesa-ph>.wrap{display:flex;align-items:center;padding:var(--sec) clamp(28px,5vw,96px)}
+.mesa.mesa-ph .mesa-in{grid-template-columns:minmax(0,1fr);gap:clamp(28px,3vw,44px);width:100%}
+@media (max-width:900px){.mesa.mesa-ph{grid-template-columns:minmax(0,1fr)}.mesa.mesa-ph .mesa-fig{min-height:0;aspect-ratio:4/3}.mesa.mesa-ph>.wrap{padding:clamp(40px,8vw,64px) var(--m)}}
+
+/* ---------- Aparición suave al llegar a cada sección ---------- */
+.rv{opacity:0;transform:translateY(18px);transition:opacity 1.1s var(--ease),transform 1.3s var(--ease);transition-delay:var(--d,0s)}
+.rv.in{opacity:1;transform:none}
+.wrev .w{display:inline-block;opacity:0;transform:translateY(.34em);filter:blur(3px);transition:opacity .9s var(--ease),transform 1.1s var(--ease),filter .9s var(--ease);transition-delay:calc(.12s + var(--i) * 24ms)}
+.wrev.in .w{opacity:1;transform:none;filter:none}
+.tri-c{margin-top:clamp(40px,4.4vw,68px)}
+@media (prefers-reduced-motion:reduce){.rv,.wrev .w{opacity:1;transform:none;filter:none;transition:none}}
+
+/* ---------- Reconocimientos con las medallas oficiales ---------- */
+.rc-top{display:block;text-align:center;border-top:1px solid var(--line);padding-top:clamp(44px,5vw,80px)}
+.rc-h .cap{color:var(--ink3)}
+.rc-h{display:flex;flex-direction:column;align-items:center}
+.rc-h h2{margin-top:14px;max-width:18ch;font-size:clamp(34px,3.4vw,54px);line-height:1.04;text-wrap:balance}
+.rc-n{font-variant-numeric:lining-nums tabular-nums}
+.rc-p{color:var(--ink2);margin-top:14px;font-size:14.5px;max-width:40ch}
+.rc-c{display:flex;flex-wrap:wrap;justify-content:center;gap:12px clamp(24px,3vw,44px);margin-top:24px}
+.rc-c div{display:flex;flex-direction:column;align-items:center;gap:6px}
+.rc-c dd{font:400 24px/1 var(--serif);font-variant-numeric:lining-nums}
+.rc-c dt{font:500 10.5px/1 var(--sans);letter-spacing:.09em;text-transform:uppercase;color:var(--ink3);order:2}
+.rc-h .prem-a{display:flex;flex-wrap:wrap;justify-content:center;gap:8px 28px;margin-top:26px}
+.rc-m{display:flex;gap:clamp(18px,2.4vw,40px);overflow-x:auto;scrollbar-width:none;margin:clamp(40px,4.6vw,68px) calc(var(--m) * -1) 0;padding:6px var(--m) 10px;cursor:grab}
+.rc-m::-webkit-scrollbar{display:none}
+.rc-m.lr-static{justify-content:center}
+.rc-m .md{flex:0 0 clamp(150px,12.5vw,190px)}
+.rc-m.drag{cursor:grabbing}.rc-m.drag .md{pointer-events:none}
+.md{margin:0;display:flex;flex-direction:column;align-items:center;text-align:center;min-width:0}
+.md-i{width:100%;max-width:132px;aspect-ratio:1;display:grid;place-items:center;padding:6%;transition:transform 1s var(--ease)}
+.md-i img{width:100%;height:100%;object-fit:contain;mix-blend-mode:multiply}
+@media (hover:hover){.md:hover .md-i{transform:translateY(-4px) scale(1.03)}}
+.md figcaption{margin-top:6px;display:grid;gap:2px;max-width:20ch}
+.md figcaption b{font:500 10.5px/1.35 var(--sans);letter-spacing:.09em;text-transform:uppercase}
+.md figcaption span{font:400 13.5px/1.28 var(--serif)}
+.md figcaption small{font-size:11px;color:var(--ink3);font-variant-numeric:lining-nums}
+/* Medalla dibujada cuando el concurso no tiene imagen oficial */
+.md-d{position:relative;align-content:center;gap:4px;text-align:center}
+.md-d::before{content:"";position:absolute;inset:11%;border-radius:50%;background:radial-gradient(circle at 34% 28%,var(--m1),var(--m2) 72%);box-shadow:inset 0 0 0 5px rgba(255,255,255,.18),inset 0 0 0 6px rgba(255,255,255,.42)}
+.md-d i,.md-d small{position:relative;max-width:60%;margin:0 auto}
+.md-d i{font:500 8.5px/1.25 var(--sans);font-style:normal;letter-spacing:.1em;text-transform:uppercase}
+.md-d small{font:400 13px/1 var(--serif);font-variant-numeric:lining-nums}
+.md-au{--m1:#EADBB0;--m2:#C4A55E;color:#3A2C10}
+.md-ag{--m1:#F2F2F0;--m2:#BDBEBB;color:#34352F}
+.md-cu{--m1:#E8C7AA;--m2:#B4835F;color:#3B2416}
+.md-pt{--m1:#F6F5F1;--m2:#D3D1C9;color:#34352F}
+.md-sp{--m1:#F4F1EA;--m2:#DCD6CA;color:var(--ink)}
+.rc-all{margin-top:clamp(28px,3vw,44px);text-align:center}
+.rc-list{text-align:left}
+.rc-list{overflow:hidden;margin-top:18px}
+.rc-list[hidden]{display:none}
+.rc-sc{max-height:min(68vh,620px);overflow:auto;overscroll-behavior:contain;border-top:1px solid var(--line)}
+.rc-list table{width:100%;border-collapse:collapse;font-size:14px}
+.rc-list th{position:sticky;top:0;background:var(--bg);text-align:left;font:500 10.5px/1.3 var(--sans);letter-spacing:.09em;text-transform:uppercase;color:var(--ink3);padding:12px 16px 12px 0;border-bottom:1px solid var(--line)}
+.rc-list td{padding:12px 16px 12px 0;border-bottom:1px solid var(--line);vertical-align:top;font-variant-numeric:lining-nums}
+.rc-list td small{display:block;font-size:12px;color:var(--ink3);margin-top:2px}
+.rc-list td:first-child{white-space:nowrap;color:var(--ink2)}
+
+/* ---------- Reseñas ---------- */
+.ri .stars{--s:11px;display:block;margin-top:6px}
+.rev .fine{font-size:12px;color:var(--ink3);margin-top:16px}
+
+/* ---------- Sigue explorando: recomendaciones cruzadas de colecciones y categorías ---------- */
+.xr-g{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--g)}
+.xr-c{display:flex;flex-direction:column;min-width:0}
+.xr-ph{position:relative;aspect-ratio:4/5;overflow:hidden;background:var(--bg2)}
+.xr-ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transform:scale(1.001);transition:transform 1.6s var(--ease)}
+.xr-c .cap{margin-top:16px;color:var(--ink3)}
+.xr-c b{display:block;font:400 clamp(24px,2.1vw,32px)/1.1 var(--serif);margin-top:8px}
+.xr-c p{font-size:14.5px;color:var(--ink2);margin-top:8px;max-width:36ch}
+.xr-go{--arw:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.5'%3E%3Cpath d='M2.5 12h18M14.5 6l6 6-6 6'/%3E%3C/svg%3E");display:inline-flex;align-items:center;gap:10px;margin-top:14px;font:500 11px/1 var(--sans);letter-spacing:.09em;text-transform:uppercase}
+.xr-go::after{content:"";width:14px;height:10px;background:currentColor;mask:var(--arw) center/contain no-repeat;-webkit-mask:var(--arw) center/contain no-repeat;transition:transform .45s var(--ease)}
+@media (hover:hover){.xr-c:hover .xr-ph img{transform:scale(1.04)}.xr-c:hover .xr-go::after{transform:translateX(4px)}}
+.xr-c:focus-visible{outline:2px solid var(--ink);outline-offset:4px}
+@media (max-width:900px){
+  .rc-top{grid-template-columns:minmax(0,1fr)}
+  .rc-m{gap:18px}
+  .rc-m::-webkit-scrollbar{display:none}
+  .rc-m .md{flex:0 0 27vw}
+  .rc-m .md-i{max-width:92px}
+  .md figcaption span{font-size:12.5px}
+  .xr-g{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;margin-inline:calc(var(--m) * -1);padding-inline:var(--m);scroll-padding-inline:var(--m);scrollbar-width:none}
+  .xr-g::-webkit-scrollbar{display:none}
+  .xr-c{flex:0 0 72vw;scroll-snap-align:start}
+  .rc-list th:nth-child(4),.rc-list td:nth-child(4){display:none}
+}
+
+/* Aromas principales: una fila corta, debajo de vista, nariz y boca */
+.gat{list-style:none;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:clamp(18px,2.2vw,36px);margin-top:clamp(40px,4.4vw,68px)}
+.gat li{border-top:1px solid var(--line);padding-top:16px}
+.gat .n{display:block;font:500 10.5px/1 var(--sans);letter-spacing:.14em;color:var(--ink3);margin-bottom:16px;font-variant-numeric:lining-nums}
+.gat b{display:block;font:400 clamp(20px,1.65vw,25px)/1.15 var(--serif);margin:0 0 8px}
+.gat p{color:var(--ink2);font-size:14.5px;line-height:1.5;max-width:26ch}
+@media (max-width:900px){.gat{grid-template-columns:minmax(0,1fr) minmax(0,1fr);row-gap:26px}}
+@media (max-width:560px){.gat{grid-template-columns:minmax(0,1fr);gap:0}.gat li{display:grid;grid-template-columns:38px minmax(0,1fr);padding:16px 0 18px}.gat .n{margin:7px 0 0}.gat p{max-width:none}}
+.aro{display:flex;align-items:baseline;flex-wrap:wrap;gap:10px clamp(20px,2.4vw,40px);margin-top:clamp(34px,3.6vw,56px);padding-top:clamp(18px,1.8vw,26px);border-top:1px solid var(--line)}
+.aro .cap{color:var(--ink3);flex:none}
+.aro .aromas{margin-top:0;font-size:clamp(19px,1.65vw,26px);gap:6px clamp(18px,2vw,32px)}
+.aro .aromas li::before{width:6px;height:6px}
+
+/* ---------- Reseñas: encabezado con la calificación y tarjetas ---------- */
+.rvw-h{display:flex;justify-content:space-between;align-items:flex-end;gap:18px 28px;flex-wrap:wrap;border-top:1px solid var(--line);padding-top:clamp(28px,3.4vw,48px)}
+.rvw-s{display:flex;align-items:flex-end;flex-wrap:wrap;gap:14px clamp(28px,4vw,72px)}
+.rvw-s h2{line-height:1}
+.rvw-sc{display:flex;align-items:center;gap:14px}
+.rvw-sc b{font:400 clamp(44px,3.8vw,58px)/.85 var(--serif);font-variant-numeric:lining-nums;letter-spacing:-.01em}
+.rvw-m{display:grid;gap:7px}
+.rvw-m .stars{--s:14px}
+.rvw-m small{font-size:13px;color:var(--ink2)}
+.rvw-h .ul{margin-bottom:4px}
+.rvw-g{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--g);margin-top:clamp(24px,2.6vw,36px)}
+.rvw-c{display:flex;flex-direction:column;gap:14px;padding:clamp(18px,2vw,26px) 0 0;min-height:clamp(170px,13vw,220px)}
+.rvw-c.more{display:none}
+.rvw-g.all .rvw-c.more{display:flex}
+.rvw-c .stars{--s:12px}
+.rvw-c p{font:400 clamp(18px,1.4vw,21px)/1.42 var(--serif);flex:1;max-width:36ch}
+.rvw-c .rvw-ft{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 10px;font-size:13px;color:var(--ink3)}
+.rvw-c .rvw-ft b{color:var(--ink);font-weight:500}
+.rvw-c .rvw-ft time::before{content:"·";margin-right:10px}
+.rvw-c .rvw-ft small{flex-basis:100%;display:inline-flex;align-items:center;gap:6px;font-size:11.5px;letter-spacing:.02em}
+.rvw-c .rvw-ft small::before{content:"";width:10px;height:6px;border-left:1px solid currentColor;border-bottom:1px solid currentColor;transform:rotate(-45deg) translateY(-2px)}
+.rvw-f{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;margin-top:18px}
+.rvw-f .fine{font-size:12px;color:var(--ink3);margin:0}
+#resenas .wr{margin-top:24px;max-width:520px}
+/* Final de la ficha: menos aire entre reconocimientos, reseñas y lo que sigue */
+#s-premios,#resenas{padding-bottom:clamp(56px,6.4vw,96px)}
+#s-origen{padding-bottom:clamp(64px,7vw,108px)}
+.story+.sec{padding-top:clamp(24px,3vw,44px)}
+#resenas .empty-r{font-size:20px}
+@media (max-width:900px){
+  .rvw-g{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;margin-inline:calc(var(--m) * -1);padding-inline:var(--m);scroll-padding-inline:var(--m);scrollbar-width:none}
+  .rvw-g::-webkit-scrollbar{display:none}
+  .rvw-c,.rvw-c.more{display:flex;flex:0 0 78vw;scroll-snap-align:start}
+  #rvwMore{display:none}
+  .aro{flex-direction:column;gap:12px}
+  .tri.tri-c{grid-template-columns:minmax(0,1fr)!important;gap:22px}
+  .tri.tri-c p{max-width:none}
+}
+/* ===== La cata en palabras: tres filas, la etiqueta a la izquierda y las palabras con punto sólido ===== */
+.cw{margin-top:clamp(40px,4.4vw,68px);border-top:1px solid var(--line)}
+.cw-r{display:grid;grid-template-columns:clamp(96px,11vw,170px) minmax(0,1fr);align-items:baseline;gap:12px 24px;padding:clamp(18px,2vw,28px) 0;border-bottom:1px solid var(--line)}
+.cw-k{font:500 11px/1.4 var(--sans);letter-spacing:.16em;text-transform:uppercase;color:var(--ink3)}
+.cw-w{list-style:none;display:flex;flex-wrap:wrap;gap:8px clamp(22px,2.6vw,44px);margin:0;padding:0;font:400 clamp(22px,2.1vw,34px)/1.2 var(--serif)}
+.cw-w li{display:inline-flex;align-items:center}
+.cw-w li::before{content:"";flex:none;width:7px;height:7px;border-radius:50%;background:var(--ink3);margin-right:clamp(10px,1vw,14px)}
+@media (max-width:640px){.cw-r{grid-template-columns:minmax(0,1fr);gap:10px}.cw-w{gap:6px 20px}}
+/* ===== Pregúntale al enólogo: tipográfico, una lista de preguntas y el campo para escribir la tuya ===== */
+.eq-in{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:28px clamp(32px,6vw,110px);align-items:start;border-top:1px solid var(--line);padding-top:clamp(28px,3.4vw,48px)}
+.eq-hd .h2{margin-top:14px}
+.eq-p{margin-top:18px;max-width:42ch;color:var(--ink2);font-size:15.5px;line-height:1.6}
+.eq-ls{list-style:none;margin:0;padding:0;border-top:1px solid var(--line)}
+.eq-ls button{display:flex;align-items:center;justify-content:space-between;gap:18px;width:100%;padding:16px 0;border-bottom:1px solid var(--line);background:none;color:var(--ink);text-align:left;font:400 clamp(18px,1.5vw,22px)/1.25 var(--serif);cursor:pointer;transition:padding .45s var(--ease),opacity .25s}
+.eq-ls button:hover{padding-left:8px}
+.eq-ls i{flex:none;width:16px;height:16px;background:linear-gradient(currentColor,currentColor) center/100% 1px no-repeat;position:relative;opacity:.55}
+.eq-ls i::after{content:"";position:absolute;right:0;top:50%;width:7px;height:7px;border-top:1px solid currentColor;border-right:1px solid currentColor;transform:translateY(-50%) rotate(45deg)}
+.eq-f{display:flex;align-items:center;gap:18px;margin-top:22px}
+.org-cert{display:flex;flex-wrap:wrap;align-items:center;gap:16px clamp(28px,3vw,48px);margin-top:clamp(36px,4vw,56px);color:var(--ink2)}
+.org-cert .cap{color:var(--ink3);margin-right:8px}
+.eq-f input{flex:1;min-width:0;height:50px;padding:0;border:0;background:none;font:400 15px/1 var(--sans);color:var(--ink)}
+.eq-f input:focus{outline:none}
+.eq-f input:focus::placeholder{opacity:.45}
+.eq-f:focus-within{box-shadow:0 1px 0 var(--line)}
+.eq-f .ul{flex:none}
+@media (max-width:900px){.eq-in{grid-template-columns:minmax(0,1fr)}}
+/* ===== La cata en video: formato Club Cetto (texto centrado a un lado, la imagen a sangre del otro) ===== */
+.vd{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);min-height:min(88svh,820px);background:var(--bg)}
+.vd+.eq{padding-top:0}
+.vd+.eq .eq-in{padding-top:clamp(56px,6vw,100px)}
+.vd-tx{display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:clamp(56px,7vw,120px) clamp(28px,6vw,110px)}
+.vd-tx .h2 em{font-style:italic}
+.vd-tx .h2{margin-top:18px}
+.vd-tx>p{max-width:38ch;margin:20px 0 26px;color:var(--ink2);font-size:16px;line-height:1.6}
+.vd-ls{list-style:none;width:min(100%,420px);margin:0 0 28px;border-top:1px solid var(--line);text-align:left}
+.vd-ls button{display:flex;align-items:center;justify-content:space-between;gap:16px;width:100%;padding:13px 0;border-bottom:1px solid var(--line);color:inherit;background:none;text-align:left;cursor:pointer;transition:opacity .25s}
+.vd-ls button:hover{opacity:.62}
+.vd-t b{display:block;font:400 17px/1.25 var(--serif);margin-bottom:3px}
+.vd-t small{font:500 10.5px/1.35 var(--sans);letter-spacing:.1em;text-transform:uppercase;color:var(--ink3)}
+.vd-i{flex:none;width:28px;height:28px;border-radius:50%;border:1px solid var(--line);position:relative}
+.vd-i::before{content:"";position:absolute;left:11px;top:9px;border-style:solid;border-width:5px 0 5px 8px;border-color:transparent transparent transparent var(--ink)}
+.vd-ph{position:relative;overflow:hidden;background:#14110e;min-height:520px}
+.vd-f{position:absolute;inset:0;display:block;width:100%;height:100%;padding:0;border:0;color:#fff;cursor:pointer;background:none}
+.vd-f img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform 2s var(--ease)}
+.vd-f img.lb{transform:scale(1.34)}
+.vd-f::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(12,9,6,0) 50%,rgba(12,9,6,.6))}
+.vd-f:hover img{transform:scale(1.03)}
+.vd-f:hover img.lb{transform:scale(1.37)}
+.vd-play{position:absolute;z-index:1;left:50%;top:50%;width:84px;height:84px;margin:-42px 0 0 -42px;border-radius:50%;background:rgba(250,248,244,.94);box-shadow:0 10px 34px rgba(12,9,6,.25);transition:transform .6s var(--ease)}
+.vd-play::before{content:"";position:absolute;left:35px;top:28px;border-style:solid;border-width:14px 0 14px 22px;border-color:transparent transparent transparent var(--ink)}
+.vd-f:hover .vd-play{transform:scale(1.07)}
+.vd-f:focus-visible{outline:2px solid #fff;outline-offset:-8px}
+.vd-meta{position:absolute;z-index:1;left:clamp(18px,2.4vw,36px);right:clamp(18px,2.4vw,36px);bottom:clamp(18px,2.4vw,34px);display:grid;gap:6px;text-align:left}
+.vd-meta small{font:500 10.5px/1.3 var(--sans);letter-spacing:.12em;text-transform:uppercase;opacity:.86}
+.vd-meta b{font:400 clamp(20px,1.9vw,28px)/1.15 var(--serif)}
+.vd-dlg{width:min(1100px,92vw);max-width:none;padding:0;border:0;background:#000;overflow:visible}
+.vd-dlg::backdrop{background:rgba(10,8,6,.84)}
+.vd-dlg-in{position:relative;aspect-ratio:16/9}
+.vd-dlg-in iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.vd-x{position:absolute;right:0;top:-44px;color:#fff;font:500 11px/1 var(--sans);letter-spacing:.14em;text-transform:uppercase;padding:12px 0}
+@media (max-width:900px){.vd{grid-template-columns:minmax(0,1fr);min-height:0}.vd-ph{order:-1;min-height:0;aspect-ratio:16/10}.vd-f img.lb{transform:scale(1.34)}.vd-play{width:64px;height:64px;margin:-32px 0 0 -32px}.vd-play::before{left:26px;top:21px;border-width:11px 0 11px 17px}}
+</style>
+</head>
+<body>
+<div id="chromeTop"></div>
+
+<main id="main">
+  <nav class="crumbs wrap" aria-label="Ruta" id="crumbs"></nav>
+
+  <section class="buy wrap" aria-label="Comprar">
+    <div class="gal">
+      <div class="stage" id="stage"><span class="tag tl" id="medalTag"></span></div>
+      <div class="thumbs" role="group" aria-label="Vistas" id="thumbs"></div>
+    </div>
+
+    <aside class="panel" id="panel">
+      <span class="cap pline" id="pLine"></span>
+      <h1 class="pname" id="pName"></h1>
+      <div class="pmeta"><a class="rate" href="#resenas" id="pRate"></a><a class="rate" href="#s-premios" id="pMedal" hidden></a></div>
+      <p class="occ" id="pOcc"></p>
+      <div class="prc" id="prc"></div>
+      <fieldset class="opts" id="opts"><legend class="cap">¿Cuántas botellas?</legend></fieldset>
+      <div class="buyrow">
+        <div class="qsel" role="group" aria-label="Cantidad"><button id="qMinus" aria-label="Quitar una">−</button><span id="qVal">1</span><button id="qPlus" aria-label="Agregar una">+</button></div>
+        <button class="btn btn-ink" id="addMain">Agregar al carrito</button>
+      </div>
+      <p class="bnote" id="bNote" aria-live="polite"></p>
+      <div class="oos" id="oos" hidden></div>
+      <a class="ul alt" href="lacetto-home-concepto.html#caja" id="altLink">Prefiero combinarlo en una caja mixta</a>
+      <dl class="facts" id="facts"></dl>
+      <ul class="perks">
+        <li><b>Envío a todo México</b><span id="perkShip">Gratis desde $799. Llega en 4 a 9 días hábiles.</span></li>
+        <li><b>Recoge en boutique</b>Ensenada, Tijuana, Valle de Guadalupe y CDMX.</li>
+        <li><b>Pago seguro</b>Mercado Pago, hasta 3 meses sin intereses.</li>
+      </ul>
+    </aside>
+  </section>
+
+  <div class="story" id="story"><div id="sections"></div></div>
+
+  <section class="sec wrap" aria-labelledby="moreT">
+    <div class="sh rv"><h2 class="h2" id="moreT"></h2><a class="ul" href="lacetto-tienda.html" id="moreAll">Ver todos los vinos</a></div>
+    <div class="prods" id="more"></div>
+  </section>
+
+  <section class="sec wrap" aria-labelledby="xrT">
+    <div class="sh rv"><h2 class="h2" id="xrT">Sigue explorando</h2></div>
+    <div class="xr-g" id="xr"></div>
+  </section>
+</main>
+
+<div class="sbar" id="sbar" aria-hidden="true">
+  <span class="fld"><img id="sbImg" alt=""></span>
+  <span class="t"><small id="sbLine"></small><b id="sbName"></b></span>
+  <b class="price" id="sbPrice" style="font-weight:400"></b>
+  <button class="btn btn-ink" id="sbAdd" tabindex="-1">Agregar</button>
+</div>
+
+<div id="chromeBottom"></div>
+
+<script src="cetto-base.js"></script>
+<script src="cetto-fichas.js"></script>
+<script src="cetto-videos.js"></script>
+<script src="cetto-notas.js"></script>
+<script>
+/* Reseñas reales: solo el Nebbiolo Reserva Privada tiene reseñas en su ficha de lacetto.mx */
+const REV={nebrp:{avg:4.7,n:3,items:[
+  ['José','noviembre 2026','La relación precio-calidad.','Reseña escrita en la app Shop'],
+  ['Pablo F. M.','septiembre 2026','El corcho ya tenía pintado el vino como que entró oxígeno. Esperaba que estuviera mejor cuidado en sus bodegas.','Compra verificada'],
+  ['Anónimo','febrero 2026','Muy rico, lo volveré a comprar.','Compra verificada']]}};
+const CRUMB={'Vino tinto':'Tintos','Vino blanco':'Blancos','Vino rosado':'Rosados','Ensamble':'Ensambles','Espumoso':'Espumosos','Vino de postre':'Vinos de postre','Estuche':'Estuches'};
+
+const id=(()=>{const q=new URLSearchParams(location.search).get('p');if(P[q]&&P[q].gc){location.replace(PAGES.regalos+'#tarjeta');return 'nebrp'}return P[q]?q:'nebrp'})();
+const p=P[id],R=REV[id];
+/* Proceso y cata de la ficha técnica del vino, y su medallero oficial (cetto-fichas.js) */
+const FD=FX[id]||null,MEDA=(MEDK[id]&&MEDS[MEDK[id]])||null,medN=MEDA?MEDA.length:(p.medals||0);
+/* Fotos reales de la etiqueta en la mesa: una vista más en la galería y la foto grande en "Con qué abrirlo" */
+const MESAPH={psrp:{mesa:['media/f-rp-petite-nogada.jpg','30% 50%','Con chiles en nogada'],gal:['media/f-rp-petite-flatlay.jpg','45% 50%']},
+  nebrp:{mesa:['media/f-rp-neb-flatlay.jpg','45% 50%','Con carnes frías, quesos y frutos secos']},
+  cabrp:{mesa:['media/f-rp-cab-mesa.jpg','62% 50%','En la mesa']},
+  terra:{mesa:['media/f-dl-terra-plato.jpg','48% 55%','En la mesa']},
+  dlmer:{mesa:['media/f-dl-merlot-nogada.jpg','56% 50%','Con chiles en nogada']},
+  oto:{mesa:['media/f-otono-pizza.jpg','62% 62%','Con pizza, en casa']}};
+const MP=MESAPH[id];
+/* Gourmet: los cinco atributos de la lámina oficial de cada producto (sitio actual), sus usos (de su descripción) y su foto en la cocina */
+const GOUD={
+ 'Aceite de Oliva Extra Virgen':{fam:'gac',fx:'Ensaladas, vegetales y pastas',at:[['Aceitunas seleccionadas','Origen de un sabor auténtico.'],['Notas herbales','Frescura y equilibrio natural.'],['Ideal para ensaladas','Realza ingredientes frescos.'],['Perfecto con vegetales','Aporta suavidad y armonía.'],['Versatilidad gourmet','Desde recetas sencillas hasta creaciones especiales.']],
+  use:['Ensaladas','Vegetales','Panes y pastas','Aderezos y marinados','La cocina de todos los días'],ph:{_:'Mesa_de_trabajo_38-100.jpg',ac250:'Mesa_de_trabajo_38-100_7d1804c7-27b5-46d8-9f22-ea236ef409e3.jpg'}},
+ 'Vinagre Balsámico':{fam:'gvin',fx:'Ensaladas, quesos y carnes',at:[['Frutas frescas','Realza sabores naturales.'],['Excelente con quesos','Mayor complejidad y profundidad.'],['Ensaladas gourmet','Un toque sofisticado.'],['Acabado elegante','Ideal para finalizar platillos.'],['Inspiración italiana','Tradición culinaria atemporal.']],
+  use:['Ensaladas','Vegetales','Quesos','Carnes','Aderezos, marinados y reducciones'],ph:{_:'Mesa_de_trabajo_70-100.jpg'}},
+ 'Vinagre de Vino Tinto':{fam:'gvin',fx:'Vinagretas y marinados',at:[['Origen vinícola','Inspirado en la tradición mediterránea.'],['Ideal para ensaladas','Aporta frescura y vivacidad.'],['Perfecto para vegetales','Resalta sabores naturales.'],['Toque equilibrado','Acidez limpia y armoniosa.'],['Uso diario gourmet','Un básico indispensable en la cocina.']],
+  use:['Vinagretas','Aderezos','Marinados','Ensaladas','Vegetales'],ph:{_:'Mesa_de_trabajo_49-100.jpg'}},
+ 'Aceitunas Sevillana':{fam:'gacei',fx:'Aperitivos y tablas de quesos',at:[['Sabor mediterráneo','Un clásico para disfrutar en cualquier ocasión.'],['Ideales como aperitivo','Perfectas para compartir antes de una comida.'],['Acompañamiento versátil','Ideales para complementar tablas de quesos y embutidos.'],['Tradición gourmet','Un ingrediente clásico de la gastronomía mediterránea.'],['Perfectas para reuniones','Un aperitivo sencillo para disfrutar y compartir.']],
+  use:['Aperitivos y tapas','Botanas para compartir','Tablas de quesos','Carnes frías','Ensaladas'],ph:{_:'Mesa_de_trabajo_13-100.jpg'}},
+ 'Aceitunas Manzanilla Misión':{fam:'gacei',fx:'Botanas, ensaladas y pizzas',at:[['Frescura natural','Perfil suave y equilibrado.'],['Ideales para aperitivos','Perfectas para compartir.'],['Perfectas con quesos','Combinaciones llenas de sabor.'],['Compañeras del vino','Maridaje natural y versátil.'],['Textura firme','Experiencia agradable en cada bocado.']],
+  use:['Botana o aperitivo','Ensaladas','Pizzas','Recetas mediterráneas'],ph:{_:'Mesa_de_trabajo_8-100.jpg'}}};
+const GD=p.c==='gourmet'?GOUD[p.name]||null:null;
+const SIZE=p.ml?(p.type==='Aceitunas'?p.ml+' g':p.ml>=1000?p.ml/1000+' L':p.ml+' ml'):'';
+const nbs=s=>String(s||'').replace(/L\.A\. Cetto/g,'L.A.\u00a0Cetto');
+const fullName=p.c==='gourmet'?p.name:p.name+' '+p.line;
+/* Cómo nombrar el producto en textos: vino, producto o estuche */
+const NOUN=p.gift?'estuche':p.c==='gourmet'?'producto':p.c==='destilado'?'destilado':'vino';
+document.title='L.A. Cetto · '+fullName;
+if(!isWine(id))document.querySelector('#opts legend').textContent=p.gift?'¿Cuántos estuches?':p.c==='gourmet'?'¿Cuántas piezas?':'¿Cuántas botellas?';
+renderChrome({solid:true});
+const mem=isMember();
+/* Precio que verá el carrito: caja de 6 (solo vinos de 750 ml) y precio de socio con sesión iniciada */
+const unitTot=u=>Math.round(p.price*u*(isWine(id)&&u>=6?.9:1)*(mem?1-MEMBER:1));
+
+/* ---------- Encabezado del producto ---------- */
+const TIPO={tinto:['tinto','Tintos'],blanco:['blanco','Blancos'],rosado:['rosado','Rosados'],espumoso:['espumoso','Espumoso'],postre:['postre','Postre y destilados'],destilado:['postre','Postre y destilados'],estuche:['estuche','Estuches'],gourmet:['gourmet','Gourmet']}[p.c]||['tinto','Vinos'];
+document.getElementById('crumbs').innerHTML='<a href="lacetto-home-concepto.html">Inicio</a><span aria-hidden="true">/</span><a href="'+PAGES.tienda+'">Vinos</a><span aria-hidden="true">/</span><a href="'+PAGES.tienda+'?tipo='+TIPO[0]+'">'+TIPO[1]+'</a><span aria-hidden="true">/</span><span aria-current="page">'+nbs(fullName)+'</span>';
+document.getElementById('pLine').textContent=nbs(p.line)+(p.type&&p.type!==p.line?' · '+p.type:'');
+document.getElementById('pName').innerHTML=p.name+(p.sub?' <small>'+p.sub+'</small>':'');
+/* Reseñas de ejemplo para el concepto (el Nebbiolo Reserva Privada usa las reales de su ficha) */
+function demoRev(){
+  let h=7;for(const ch of id)h=(h*31+ch.charCodeAt(0))>>>0;
+  const rnd=()=>{h=(h*1664525+1013904223)>>>0;return h/4294967296};
+  const mar=(p.mar||'').split(/[,.]/)[0].trim().toLowerCase();
+  const K=p.gift?'est':p.c==='gourmet'?'gou':p.c==='espumoso'?'esp':/postre|destilado/.test(p.c)?'pos':p.c==='blanco'?'bla':p.c==='rosado'?'ros':'tin';
+  const TX={
+   tin:[['Lo abrimos con {m} y fue un acierto. Redondo y muy fácil de disfrutar.',5],['Muy buena relación precio-calidad. Ya es de los que siempre tenemos en casa.',5],['Lo dejé respirar unos veinte minutos y se abrió muchísimo. Lo vuelvo a pedir.',5],['Llegó bien empacado y antes de lo que esperaba. El vino, excelente.',5],['Buen cuerpo y un final largo. Para una cena tranquila es ideal.',5],['Me gustó, aunque solo lo sentí un poco intenso. Con comida, perfecto.',4],['Lo llevé a una comida familiar y todos preguntaron cuál era.',5]],
+   bla:[['Bien frío en la terraza, perfecto para la tarde.',5],['Fresco y aromático. Lo acompañamos con {m} y quedó muy bien.',5],['Un blanco mexicano que no le pide nada a los importados.',5],['Ligero y con buena acidez. Se terminó la botella sin darnos cuenta.',5],['Llegó en perfecto estado y bien empacado.',5],['Rico, aunque lo prefiero un poco más frío de lo que recomiendan.',4]],
+   ros:[['Ideal para una tarde de calor, muy fresco.',5],['Bonito color y muy fácil de tomar. Lo acompañamos con {m}.',5],['Para la comida del domingo quedó perfecto.',5],['Buen precio y llegó rápido.',5],['Me gustó mucho; un poco dulce para mi gusto, pero muy agradable.',4]],
+   esp:[['Lo usamos para el brindis de un cumpleaños y todos preguntaron por él.',5],['Burbuja fina y muy fresco. Excelente precio para celebrar.',5],['Bien frío con {m}, una maravilla.',5],['Compré varias botellas para una boda y quedaron muy bien.',5],['Muy rico; me hubiera gustado una burbuja un poco más persistente.',4]],
+   pos:[['Una copita después de cenar y listo. Muy rico.',5],['Lo serví con {m} y fue la estrella de la sobremesa.',5],['Dulce pero equilibrado, nada empalagoso.',5],['Buen regalo para alguien que disfruta los vinos de postre.',5],['Muy aromático; se disfruta en copas pequeñas.',4]],
+   gou:[['Muy buen sabor, lo uso diario en ensaladas.',5],['Se nota la calidad. Ya es parte de la despensa.',5],['Llegó bien sellado y en perfecto estado.',5],['Buen producto, aunque me gustaría una presentación más grande.',4],['Excelente para cocinar y para terminar platillos.',5]],
+   est:[['Lo regalé y quedó muy bien; la presentación es muy elegante.',5],['Buen regalo de fin de año: llegó a tiempo y bien empacado.',5],['Los vinos son muy buenos y el estuche se ve muy bonito.',5],['Lo compré para mi papá y le encantó.',5],['Me hubiera gustado una tarjeta para escribir un mensaje, pero todo muy bien.',4]]};
+  const NM=['Mariana G.','Luis Fernando R.','Ana Sofía M.','Jorge A.','Daniela P.','Ricardo T.','Gabriela C.','Héctor V.','Paola L.','Andrés S.','Claudia B.','Roberto N.','Fernanda O.','Emilio R.'];
+  const MO=['noviembre 2026','octubre 2026','septiembre 2026','agosto 2026','julio 2026','junio 2026','mayo 2026','abril 2026'];
+  const pool=TX[K].filter(t=>mar||!t[0].includes('{m}')).map(t=>[t,rnd()]).sort((a,b)=>a[1]-b[1]).map(t=>t[0]);
+  const n=Math.min(pool.length,3+Math.floor(rnd()*3));
+  /* casi siempre alguna de 4 estrellas, para que el promedio se sienta real */
+  if(!pool.slice(0,n).some(t=>t[1]<5)&&rnd()<.75){const f=pool.findIndex(t=>t[1]<5);if(f>=0)pool.splice(n-1,0,pool.splice(f,1)[0])}
+  const nm=NM.map(x=>[x,rnd()]).sort((a,b)=>a[1]-b[1]).map(x=>x[0]);
+  let m0=Math.floor(rnd()*2);
+  const items=pool.slice(0,n).map((t,i)=>{m0+=Math.floor(rnd()*2)+(i?1:0);return [nm[i],MO[Math.min(m0,MO.length-1)],t[0].replace('{m}',mar),'Compra verificada',t[1]]});
+  const avg=Math.round(items.reduce((a,x)=>a+x[4],0)/items.length*10)/10;
+  return {avg,n:items.length,items,demo:true};
+}
+const RV=R?{avg:R.avg,n:R.n,items:R.items.map(x=>x.concat([5]))}:(p.gc?null:demoRev());
+const rv=RV;
+document.getElementById('pRate').innerHTML=rv?'<span class="stars" style="--p:'+(rv.avg/5*100)+'%" aria-hidden="true">★★★★★</span><span class="sr">Calificación '+rv.avg.toFixed(1)+' de 5.</span>'+rv.avg.toFixed(1)+' · '+rv.n+' reseña'+(rv.n>1?'s':''):'Sé el primero en reseñar este '+NOUN;
+if(medN){const m=document.getElementById('pMedal');m.hidden=false;m.textContent='Ver el medallero'}
+document.getElementById('pOcc').textContent=p.q?'“'+p.q+'”':'';
+if(!p.q)document.getElementById('pOcc').style.display='none';
+/* Precio: tachado y luego precio, en línea; socio y agotado junto al precio */
+function paintPrice(){
+  const el=document.getElementById('prc');
+  if(p.out){el.innerHTML='<b class="price">'+money(p.price)+'</b><span class="oos-t">Agotado</span>';return}
+  const one=unitTot(1);
+  el.innerHTML=(mem?'<s class="price">'+money(p.price)+'</s>':'')+'<b class="price">'+money(one)+'</b>'+(mem?'<span class="mem">Precio de socio</span>':'')+'<span>o 3 meses sin intereses de '+money2(Math.round(one/3*100)/100)+'</span>';
+}
+paintPrice();
+document.getElementById('medalTag').innerHTML=medN?'<a href="#s-premios">'+medN+' reconocimiento'+(medN>1?'s':'')+'</a>':'';
+
+/* ---------- Opciones de compra ---------- */
+const OPTS=isWine(id)?[[1,'Una botella','',''],[6,'Caja de 6','10% menos','Envío gratis · '+money(unitTot(6)/6)+' por botella'],[12,'Caja de 12','10% menos','Envío gratis · '+money(unitTot(12)/12)+' por botella']]:[[1,p.gift?'Un estuche':p.c==='gourmet'?'Una pieza':'Una botella'+(p.ml&&p.ml!==750?' de '+p.ml+' ml':''),'','']];
+const optsEl=document.getElementById('opts');
+optsEl.insertAdjacentHTML('beforeend',OPTS.map(([u,n,e,sm],i)=>{const full=p.price*u,tot=unitTot(u);return '<label class="opt"><input type="radio" name="units" value="'+u+'"'+(i===0?' checked':'')+(p.out?' disabled':'')+'><span class="o-n">'+n+(e?'<em>'+e+'</em>':'')+(sm?'<small>'+sm+'</small>':'')+'</span><span class="o-p price">'+(tot<full?'<s>'+money(full)+'</s>':'')+money(tot)+'</span></label>'}).join(''));
+if(!isWine(id)||p.out)document.getElementById('altLink').style.display='none';
+let units=1,qty=1;
+const addBtn=document.getElementById('addMain'),bNote=document.getElementById('bNote');
+function noteFor(u){
+  if(p.gc)return '';
+  if(!isWine(id)){const why=p.gift?'Los estuches no cuentan':p.c==='gourmet'?'Los productos gourmet no cuentan':'No cuenta';return why+' para la caja de 6: solo botellas de vino de 750 ml.'+(mem?' Incluye tu precio de socio.':'')}
+  if(u>=6)return (units===1?'Con '+u+' botellas se aplica el 10% de la caja de 6':'Incluye el 10% de la caja de 6')+(mem?' y tu precio de socio.':'.');
+  return 'Lleva 6 botellas de 750 ml, de este u otros vinos, y ahorras 10%.'+(mem?' Incluye tu precio de socio.':'');
+}
+let syncBuy=function(){const u=units*qty,tot=unitTot(u);addBtn.textContent='Agregar al carrito · '+money(tot);document.getElementById('qVal').textContent=qty;document.getElementById('sbPrice').textContent=money(tot);bNote.textContent=noteFor(u)}
+optsEl.addEventListener('change',e=>{units=+e.target.value;syncBuy()});
+document.getElementById('qMinus').onclick=()=>{qty=Math.max(1,qty-1);syncBuy()};
+document.getElementById('qPlus').onclick=()=>{qty=Math.min(24,qty+1);syncBuy()};
+const doAdd=()=>add(id,units*qty);
+addBtn.onclick=doAdd;document.getElementById('sbAdd').onclick=doAdd;
+syncBuy();
+/* Agotado: correo para el aviso (nada se envía) y alternativas en otros tamaños o líneas */
+let buyAnchor=document.querySelector('.buyrow');
+if(p.out){
+  document.querySelector('.buyrow').hidden=true;bNote.textContent='';
+  ['qMinus','qPlus'].forEach(k=>document.getElementById(k).disabled=true);
+  const u=user(),size=p.ml&&p.ml!==750?' de '+p.ml+' ml':'';
+  const alts=Object.keys(P).filter(k=>k!==id&&!P[k].out&&!P[k].gc&&!P[k].gift&&P[k].c===p.c&&(P[k].name===p.name||(p.u&&P[k].u===p.u)))
+    .sort((a,b)=>(P[b].name===p.name)-(P[a].name===p.name)||(P[b].line===p.line)-(P[a].line===p.line)||P[a].price-P[b].price).slice(0,3);
+  const oos=document.getElementById('oos');oos.hidden=false;
+  oos.innerHTML='<form class="ntf-f" id="ntfF" novalidate><label class="cap" for="nMail">Avísame cuando vuelva</label><div class="nrow"><input id="nMail" type="email" autocomplete="email" inputmode="email" placeholder="tu@correo.com" value="'+(u&&u.email?String(u.email).replace(/"/g,''):'')+'" aria-describedby="nErr"><button class="btn btn-ink">Avísame</button></div><p class="nerr" id="nErr" role="alert" hidden></p></form>'+
+    (alts.length?'<div class="alts-b"><span class="cap">Mientras tanto</span><ul>'+alts.map(k=>{const a=P[k];return '<li><a class="ai" href="'+PAGES.ficha+'?p='+k+'"><span class="fld"><img src="'+F(a.img,120)+'" alt=""></span><span><small>'+nbs(a.line)+'</small><b>'+a.name+'</b> <em>'+(a.ml||750)+' ml</em></span><span class="price">'+money(a.price)+'</span></a><button class="ul" data-add="'+k+'" aria-label="Agregar '+a.line+' '+a.name+' '+(a.ml||750)+' ml">Agregar</button></li>'}).join('')+'</ul></div>':'');
+  document.getElementById('ntfF').addEventListener('submit',e=>{e.preventDefault();const m=document.getElementById('nMail'),er=document.getElementById('nErr');
+    if(!m.value.trim()||!m.checkValidity()){er.textContent='Escribe un correo válido para avisarte.';er.hidden=false;m.setAttribute('aria-invalid','true');m.focus();return}
+    const box=document.createElement('div');box.className='ntf-ok';box.setAttribute('role','status');box.tabIndex=-1;
+    box.innerHTML='<b>Listo.</b> Te escribimos a <b>'+m.value.trim().replace(/[<>&"]/g,'')+'</b> en cuanto vuelva el '+p.name+size+'. Concepto: no se envía nada.';
+    e.target.replaceWith(box);box.focus();document.getElementById('sbAdd').textContent='Avisado';document.getElementById('sbAdd').disabled=true});
+  document.getElementById('nMail').addEventListener('input',e=>{if(e.target.getAttribute('aria-invalid')){e.target.removeAttribute('aria-invalid');document.getElementById('nErr').hidden=true}});
+  buyAnchor=oos;
+  syncBuy=()=>{document.getElementById('qVal').textContent=qty;document.getElementById('sbPrice').textContent='Agotado'};
+  const goNotify=instant=>{oos.scrollIntoView({behavior:instant||reduceMotion?'instant':'smooth',block:'center'});const m=document.getElementById('nMail');if(m)setTimeout(()=>m.focus({preventScroll:true}),instant||reduceMotion?0:450)};
+  document.getElementById('sbAdd').onclick=()=>goNotify(false);document.getElementById('sbAdd').textContent='Avísame';syncBuy();
+  if(location.hash==='#avisame')addEventListener('load',()=>setTimeout(()=>goNotify(true),60),{once:true});
+}
+document.getElementById('perkShip').textContent='Gratis desde '+money(FREE)+'. Pide hoy y '+eta('envio').txt.replace(/^Llega/,'llega')+'.';
+
+/* ---------- Datos clave ---------- */
+const facts=GD?[['Tipo',p.type],['Presentación',p.sub&&/con hueso/i.test(p.sub)?p.sub:SIZE],['Úsalo en',GD.fx]].concat(MEDA&&MEDA.length?[['Reconocimiento',MEDA[0][2]+', '+MEDA[0][3]+' '+MEDA[0][0]]]:[['Marca','L.A. Cetto']]):[['Tipo',p.type],['Línea',p.line]].concat(FD&&FD.u?[[FD.u.includes(',')?'Uvas':'Uva',FD.u]]:p.u?[['Uva',p.u]]:[]).concat(FD&&FD.s?[['Servir',FD.s]]:[]).concat(p.ml&&p.ml!==750&&p.c!=='gourmet'?[['Tamaño',p.ml+' ml']]:[]).concat(p.mar?[['Maridaje',p.mar.split(/[,.]/)[0]]]:[]).concat([['Bodega','Valle de Guadalupe']]);
+document.getElementById('facts').innerHTML=facts.map(([k,v])=>'<div><dt>'+k+'</dt><dd>'+v+'</dd></div>').join('');
+
+/* ---------- Galería: la botella (recorte real) y, después, las imágenes del sitio actual ---------- */
+{const st=document.getElementById('stage'),th=document.getElementById('thumbs'),alt=p.line+' '+p.name;
+ const V=[{c:'v-bot',h:'<img src="media/bot/'+id+'.png" alt="'+alt+'" onerror="this.onerror=null;this.classList.add(\'raw\');this.src=\''+F(p.img,1200)+'\'"><span class="floor" aria-hidden="true"></span>',t:'<img class="ct" src="media/bot/'+id+'.png" alt="">',l:p.gift?'Estuche':p.c==='gourmet'?'Producto':'Botella'}];
+ if(MP){const g=MP.gal||MP.mesa;V.push({c:'',h:'<img data-src="'+g[0]+'" alt="'+alt+' en la mesa" style="object-position:'+g[1]+'">',t:'<img src="'+g[0]+'" alt="" style="object-position:'+g[1]+'">',l:'En la mesa'})}
+ (GAL[id]||[]).forEach(([f,l])=>{const life=GD&&/^Mesa_de_trabajo/.test(f);if(GD)l=life?'En la cocina':'Atributos';V.push({c:life?'':'v-sheet',w:life?0:1,h:'<img data-src="'+F(f,1400)+'" alt="'+alt+': '+l.toLowerCase()+'">',t:'<img src="'+F(f,200)+'" alt="" loading="lazy">',l})});
+ st.insertAdjacentHTML('beforeend',V.map((v,i)=>'<div class="view '+v.c+(i?'':' on')+'" data-v="'+i+'">'+v.h+'</div>').join(''));
+ th.innerHTML=V.map((v,i)=>'<button type="button" aria-pressed="'+(i===0)+'" data-v="'+i+'"><span class="tb'+(v.w?' w':'')+'">'+v.t+'</span><span class="l">'+v.l+'</span></button>').join('');
+ th.hidden=V.length<2;}
+const views=[...document.querySelectorAll('#stage .view')],tbs=[...document.querySelectorAll('#thumbs button')];
+let curView=0;
+function showView(v){v=(v+views.length)%views.length;curView=v;document.getElementById('stage').classList.toggle('alt',v>0);views.forEach((el,i)=>{el.classList.toggle('on',i===v);const im=el.querySelector('img[data-src]');if(i===v&&im&&!im.src)im.src=im.dataset.src});tbs.forEach((b,i)=>b.setAttribute('aria-pressed',i===v))}
+tbs.forEach(b=>b.onclick=()=>showView(+b.dataset.v));
+/* Precarga discreta de las demás vistas, para que el cambio no muestre un hueco */
+addEventListener('load',()=>setTimeout(()=>views.forEach(el=>{const im=el.querySelector('img[data-src]');if(im&&!im.src)im.src=im.dataset.src}),900),{once:true});
+/* En celular: deslizar para cambiar de imagen */
+{const stage=document.getElementById('stage');let sx=null,sy=0;
+ stage.addEventListener('touchstart',e=>{sx=e.touches[0].clientX;sy=e.touches[0].clientY},{passive:true});
+ stage.addEventListener('touchend',e=>{if(sx==null)return;const dx=e.changedTouches[0].clientX-sx,dy=e.changedTouches[0].clientY-sy;sx=null;if(Math.abs(dx)>48&&Math.abs(dy)<60&&views.length>1)showView(curView+(dx<0?1:-1))},{passive:true})}
+
+/* ---------- Secciones de la historia del vino ---------- */
+const S=[];
+// 1. La cata (sin rótulos numerados: el título abre la sección)
+if(p.desc){const ttl=p.gift?'Qué incluye':p.c==='gourmet'?'En tu cocina':'Cómo se siente en la copa',C=FD?FD.c:[],LB=['Vista','Nariz','Boca'],AR=FD?FD.a:[];
+ const words=t=>t.split(' ').map((w,i)=>'<span class="w" style="--i:'+Math.min(i,42)+'">'+w+'</span>').join(' ');
+ S.push(['s-cata',p.gift?'Qué incluye':p.c==='gourmet'?'El producto':'La cata','<section class="st wrap" id="s-cata" aria-labelledby="t-cata">'+
+ '<h2 class="h2 rv" id="t-cata">'+ttl+'</h2><p class="st-desc wrev">'+words(nbs(p.desc))+'</p>'+
+ /* la cata en palabras: Vista, Nariz y Boca en tres filas (Nariz con los aromas de la ficha) */
+ ((typeof NOTAS!=='undefined'&&NOTAS[id])||AR.length?'<div class="cw">'+[['Vista',(NOTAS[id]||{}).v||[]],['Nariz',AR],['Boca',(NOTAS[id]||{}).b||[]]].filter(r=>r[1].length).map(([k,w],i)=>'<div class="cw-r rv" style="--d:'+(.12+i*.12).toFixed(2)+'s"><span class="cw-k">'+k+'</span><ul class="cw-w">'+w.map(x=>'<li>'+x+'</li>').join('')+'</ul></div>').join('')+'</div>':
+  C.length?'<div class="tri tri-c" style="grid-template-columns:repeat('+C.length+',minmax(0,1fr))">'+C.map((c,i)=>'<div class="rv" style="--d:'+(.15+i*.14).toFixed(2)+'s"><b>'+LB[i]+'</b><p>'+c+'</p></div>').join('')+'</div>':'')+
+ (GD?'<ol class="gat">'+GD.at.map(([t,d],i)=>'<li class="rv" style="--d:'+(.12+i*.09).toFixed(2)+'s"><span class="n">'+String(i+1).padStart(2,'0')+'</span><div><b>'+t+'</b><p>'+d+'</p></div></li>').join('')+'</ol>':'')+
+ '</section>'])}
+// 1b. La cata en video: la nota de cata oficial (o la de "Catas contigo") del canal de YouTube de la bodega
+const VID=(typeof YTV!=='undefined'&&YTV[id])||null;
+const vLab=v=>(v[3]==='mar'?YTK.mar:YTK[v[3]]+(v[4]?' · con '+v[4]:''))+' · '+v[2];
+/* portada del video: la miniatura grande del canal (si no existe, la estándar) y se carga el reproductor solo al dar clic */
+const vFace=v=>'<button type="button" class="vd-f" data-v="'+v[0]+'" aria-label="Reproducir el video: '+v[1]+'"><img src="'+ytThumb(v[0],'maxresdefault')+'" alt="" loading="lazy" onload="if(this.naturalWidth<200){this.classList.add(\'lb\');this.src=\''+ytThumb(v[0])+'\'}"><span class="vd-play" aria-hidden="true"></span><span class="vd-meta"><small>'+vLab(v)+'</small><b>'+v[1]+'</b></span></button>';
+if(VID){const ord={nota:0,catas:1,cata:2,mar:3},L=[...VID].sort((a,b)=>ord[a[3]]-ord[b[3]]).slice(0,5),v0=L[0];
+ const head=v0[3]==='nota'?'Nota de cata oficial':v0[3]==='catas'?'Catas contigo':'Cata en video';
+ const mins=d=>{const [m,ss]=String(d).split(':').map(Number);const t=m+(ss||0)/60;return t<1.25?'un minuto':Math.round(t)+' minutos'};
+ const lead=v0[3]==='nota'?'La nota de cata oficial de L.A. Cetto para este vino: en '+mins(v0[2])+' lo vemos, lo olemos y lo probamos contigo.':
+   v0[3]==='catas'?'De la serie Catas contigo del canal de L.A. Cetto'+(v0[4]?', con '+v0[4]:'')+': '+mins(v0[2])+' para catarlo paso a paso.':'Una cata de este vino del canal de L.A. Cetto en YouTube.';
+ S.push(['s-video','En video','<section class="vd" id="s-video" aria-labelledby="t-video">'+
+  '<div class="vd-tx"><span class="cap rv">'+head+'</span><h2 class="h2 rv" id="t-video" style="--d:.08s">La cata, <em>en video</em></h2><p class="rv" style="--d:.16s">'+lead+'</p>'+
+  (L.length>1?'<ol class="vd-ls rv" style="--d:.24s" aria-label="Más videos de este vino">'+L.map((v,i)=>'<li><button type="button" data-v="'+v[0]+'"><span class="vd-t"><b>'+v[1]+'</b><small>'+vLab(v)+'</small></span><span class="vd-i" aria-hidden="true"></span></button></li>').join('')+'</ol>':'')+
+  '<a class="ul rv" style="--d:.3s" href="'+YT_CH.url+'" target="_blank" rel="noopener">Ver más catas en YouTube</a></div>'+
+  '<div class="vd-ph" id="vdPl">'+vFace(v0)+'</div>'+
+  '</section>'])}
+// 2. En la mesa
+const mesa=GD?GD.use:(p.mar?p.mar.replace(/\.$/,'').split(/,\s*|\sy\s/).map(s=>s.trim()).filter(Boolean).map(s=>s[0].toUpperCase()+s.slice(1)):[]);
+if(mesa.length){const mp=GD?[F(GD.ph[id]||GD.ph._,1400),'50% 50%','En la cocina']:MP&&MP.mesa;S.push(['s-mesa','En la mesa','<section class="st mesa'+(mp?' mesa-ph':'')+'" id="s-mesa" aria-labelledby="t-mesa">'+
+ (mp?'<figure class="mesa-fig"><img src="'+mp[0]+'" alt="'+p.line+' '+p.name+' en la mesa" loading="lazy" style="object-position:'+mp[1]+'"><figcaption>'+mp[2]+'</figcaption></figure>':'')+'<div class="wrap">'+
+ '<div class="mesa-in"><div class="rv"><h2 class="h2" id="t-mesa">'+(GD?'Con qué usarlo':'Con qué abrirlo')+'</h2></div>'+
+ '<ul class="plist">'+mesa.slice(0,5).map(m=>'<li>'+m+'</li>').join('')+'</ul></div></div></section>'])}
+// 2b. Pregúntale al enólogo: preguntas de este vino; el enólogo digital responde con su ficha técnica
+const ENOW=!p.gift&&!/gourmet|estuche/.test(p.c);
+if(ENOW&&p.c!=='gourmet'&&!p.gift){window.ENO_CTX={wine:id};
+ const red=p.c==='tinto',o=FD&&FD.o.find(([t,d])=>/barrica|crianza/i.test(t+' '+d)),om=o&&+(o[1].match(/(\d+)\s*mes/)||[])[1]||0;
+ const g1=String(FD&&FD.u||p.u||'').split(',')[0].trim().toLowerCase();
+ const sib=Object.keys(P).find(k=>k!==id&&!(P[k].name===p.name&&P[k].line===p.line)&&P[k].ml===750&&!P[k].out&&isWine(k)&&FX[k]&&String(FX[k].u).split(',')[0].trim().toLowerCase()===g1);
+ const Q=['¿A qué temperatura lo sirvo?',red&&(om>=12||/Reserva Privada|Don Luis|Boutique/.test(p.line))?'¿Necesita decantarse?':'¿Cuánto dura abierto?',/postre/.test(p.c)?'¿Con qué postre va?':'¿Con qué platillo va?',sib?'Compáralo con '+P[sib].name+' '+P[sib].line:'¿Cuánto tiempo puedo guardarlo?'];
+ S.push(['s-eno','Enólogo','<section class="st wrap eq" id="s-eno" aria-labelledby="t-eno"><div class="eq-in">'+
+  '<div class="eq-hd rv"><span class="cap">Enólogo digital</span><h2 class="h2" id="t-eno">¿Dudas sobre este vino?</h2><p class="eq-p">Responde con la ficha técnica del '+nbs(p.name)+': cómo servirlo, cuánto guardarlo, con qué acompañarlo o en qué se diferencia de otros vinos de la casa.</p></div>'+
+  '<div class="eq-q rv" style="--d:.1s"><ol class="eq-ls">'+Q.map(q=>'<li><button type="button" data-eq="'+q+'"><span>'+q+'</span><i aria-hidden="true"></i></button></li>').join('')+'</ol>'+
+  '<form class="eq-f" id="eqF"><label class="sr" for="eqI">Tu pregunta sobre este vino</label><input id="eqI" type="text" maxlength="300" autocomplete="off" placeholder="'+(/tinto|blanco|rosado|espumoso|postre|ensamble/.test(p.c||'')?'O escribe tu pregunta sobre el '+p.name.replace(/"/g,''):'O escribe tu pregunta sobre este producto')+'"><button type="submit" class="ul">Preguntar</button></form></div>'+
+  '</div></section>'])}
+// 3. Origen: de la vid a la botella, con el proceso de la ficha técnica de cada vino
+let ORI=null;
+if(FD){const red=/tinto|rosado/.test(p.c)||id==='grappa',org=p.line==='Uvas Orgánicas';
+ ORI=FD.o.map(([t,d],i)=>i===0?[t,d,'img',org?'media/m-organicos-vina.jpg':'DSC0259.jpg']:i===1?[t,d,'video',red?'media/v-uvas.mp4':'media/v-hoja.mp4']:i===2?[t,d,'video','media/hero-hd.mp4?v=3#t=10']:[t,d,'img','tijun.jpg'])}
+if(ORI)S.push(['s-origen','Origen','<section class="st wrap" id="s-origen" aria-labelledby="t-origen" style="padding-top:'+(mesa.length?'var(--sec)':'0')+'">'+
+ '<div class="sh" style="margin-bottom:0"><h2 class="h2 rv" id="t-origen">De la vid a la botella</h2></div>'+
+ '<div class="steps4'+(ORI.length===3?' n3':'')+'">'+ORI.map(([t,d,kind,src],i)=>'<div class="sc rv" style="--d:'+(i*.1).toFixed(2)+'s"><div class="ph">'+(kind==='video'?'<video data-amb="'+t+'" data-src="'+src+'" aria-hidden="true"></video>':'<img src="'+F(src,900)+'" alt="" loading="lazy">')+'</div><b>'+t+'</b><p>'+d+'</p></div>').join('')+'</div>'+(p.line==='Uvas Orgánicas'?'<div class="org-cert rv"><span class="cap">Certificación orgánica</span><span class="cert" role="img" aria-label="Certificado orgánico CCOF" style="--m:url(media/cert/ccof.png);--r:113/145;--h:52px"></span><span class="cert" role="img" aria-label="Agricert México" style="--m:url(media/cert/agricert.png);--r:293/112;--h:40px"></span></div>':'')+'</section>'])
+// 4. Reconocimientos: el medallero oficial del vino, con la imagen de cada medalla cuando existe
+if(MEDA&&MEDA.length){
+ const A=MEDA.map(a=>({y:+a[0]||0,v:a[1],pr:a[2],co:a[3],pa:String(a[4]||'').replace(/\.$/,''),k:a[5],img:a[6]}));
+ const cnt=[0,0,0,0,0];A.forEach(a=>cnt[a.k]++);
+ const rank=a=>/gran oro|doble oro|trofeo|best|mejor|platin|bodega/i.test(a.pr)?0:a.k;
+ const top0=[...A].sort((a,b)=>(!a.img)-(!b.img)||rank(a)-rank(b)||b.y-a.y).slice(0,14),top=[];top0.forEach((a,i)=>i%2?top.push(a):top.unshift(a));
+ const tone=a=>/platin/i.test(a.pr)?'pt':/oro|gold/i.test(a.pr)?'au':/plata|silver/i.test(a.pr)?'ag':/bronce|bronze/i.test(a.pr)?'cu':'sp';
+ const comps=new Set(A.map(a=>a.co.toLowerCase())).size,ys=A.map(a=>a.y).filter(Boolean),y0=ys.length?Math.min(...ys):0;
+ const medal=(a,i)=>'<figure class="md"><span class="md-i'+(a.img?'':' md-d md-'+tone(a))+'">'+(a.img?'<img src="media/med/'+a.img+'.webp" alt="" loading="lazy">':'<i>'+a.pr+'</i><small>'+(a.y||'')+'</small>')+'</span><figcaption><b>'+a.pr+'</b><span>'+a.co+'</span><small>'+(a.y||'')+(a.v?' · cosecha '+a.v:'')+'</small></figcaption></figure>';
+ const CL=[['Oro',cnt[1]],['Plata',cnt[2]],['Bronce',cnt[3]],['Especiales',cnt[4]]].filter(x=>x[1]);
+ const rows=[...A].sort((a,b)=>b.y-a.y||a.k-b.k).map(a=>'<tr><td>'+(a.y||'—')+'</td><td>'+a.pr+'</td><td>'+a.co+(a.pa?'<small>'+a.pa+'</small>':'')+'</td><td>'+(a.v||'—')+'</td></tr>').join('');
+ S.push(['s-premios','Premios','<section class="st wrap" id="s-premios" aria-labelledby="t-premios" style="padding-top:0">'+
+ '<div class="rc-top"><div class="rc-h rv"><span class="cap">Reconocimientos</span><h2 class="h2" id="t-premios"><span class="rc-n" data-n="'+A.length+'">'+A.length+'</span> '+(A.length>1?'reconocimientos internacionales':'reconocimiento internacional')+'</h2>'+
+ (A.length>1&&y0?'<p class="rc-p">En '+comps+' concursos distintos, desde '+y0+'.</p>':'')+
+ (A.length>1?'<dl class="rc-c">'+CL.map(([k,v])=>'<div><dt>'+k+'</dt><dd>'+v+'</dd></div>').join('')+'</dl>':'')+
+ '<div class="prem-a"><a class="ul" href="'+PAGES.coleccion+'">Conoce la Colección Premiada</a><a class="ul" href="'+PAGES.tray+'">Nuestra trayectoria</a></div></div>'+
+ '<div class="rc-m rv" id="rcM" style="--d:.12s" aria-label="Medallas destacadas" role="region">'+top.map(medal).join('')+'</div></div>'+
+ (A.length>top.length?'<div class="rc-all"><button class="ul" type="button" id="rcBtn" aria-expanded="false" aria-controls="rcList">Ver los '+A.length+' reconocimientos</button><div class="rc-list" id="rcList" hidden><div class="rc-sc"><table><thead><tr><th>Año</th><th>Reconocimiento</th><th>Concurso</th><th>Cosecha</th></tr></thead><tbody>'+rows+'</tbody></table></div></div></div>':'')+
+ '</section>'])}
+// 5. Reseñas
+S.push(['resenas','Reseñas','<section class="st wrap" id="resenas" aria-labelledby="t-rev" style="padding-top:0">'+
+ '<div class="rvw-h"><div class="rvw-s"><h2 class="h2 rv" id="t-rev">Reseñas</h2>'+
+ (rv?'<div class="rvw-sc rv" style="--d:.1s"><b aria-hidden="true">'+rv.avg.toFixed(1)+'</b><span class="rvw-m"><span class="stars" style="--p:'+(rv.avg/5*100)+'%" aria-hidden="true"></span><small><span class="sr">Calificación '+rv.avg.toFixed(1)+' de 5. </span>Promedio de '+rv.n+' reseña'+(rv.n>1?'s':'')+(rv.demo?'':', verificada'+(rv.n>1?'s':'')+' por Judge.me')+'</small></span></div>':'<p class="empty-r">Aún no hay reseñas de este '+NOUN+'.</p>')+'</div>'+
+ '<button class="ul" type="button" id="wrBtn" aria-expanded="false" aria-controls="wrForm">Escribir una reseña</button></div>'+
+ '<form class="wr" id="wrForm" novalidate hidden><fieldset><legend>Tu calificación</legend><div class="wr-stars" id="wrStars">'+[1,2,3,4,5].map(n=>'<label><input type="radio" name="wrS" value="'+n+'"><span aria-hidden="true">★</span><span class="sr">'+n+(n===1?' estrella':' estrellas')+'</span></label>').join('')+'</div></fieldset>'+
+ '<div><label class="l" for="wrName">Tu nombre</label><input type="text" id="wrName" maxlength="40" autocomplete="given-name"></div>'+
+ '<div><label class="l" for="wrText">Tu reseña</label><textarea id="wrText" rows="4" maxlength="600" placeholder="¿Cómo lo serviste? ¿Con qué lo acompañaste?"></textarea></div>'+
+ '<p class="err" id="wrErr" role="alert" hidden></p><div><button class="btn btn-ink">Publicar reseña</button></div><p class="fine">Concepto: tu reseña no se envía.</p></form>'+
+ (rv?'<div class="rvw-g" id="rvwG">'+rv.items.map(([n,d,t,src,st],i)=>'<article class="rvw-c rv'+(i>2?' more':'')+'" style="--d:'+((i%3)*.08).toFixed(2)+'s"><span class="stars" style="--p:'+(st/5*100)+'%" aria-hidden="true"></span><span class="sr">'+st+' de 5 estrellas.</span><p>'+t+'</p><div class="rvw-ft"><b>'+n+'</b><time>'+d+'</time><small>'+src+'</small></div></article>').join('')+'</div>'+
+ '<div class="rvw-f">'+(rv.items.length>3?'<button class="ul" type="button" id="rvwMore" aria-expanded="false" aria-controls="rvwG">Ver las '+rv.items.length+' reseñas</button>':'<span></span>')+(rv.demo?'<p class="fine">Reseñas de ejemplo para el concepto; en el sitio se cargan desde Judge.me.</p>':'')+'</div>':'')+
+ '</section>'])
+{const iv=S.findIndex(x=>x[0]==='s-video'),im=S.findIndex(x=>x[0]==='s-mesa');if(iv>-1&&im>iv){const [m]=S.splice(im,1);S.splice(iv,0,m)}}
+document.getElementById('sections').innerHTML=S.map(s=>s[2]).join('');
+/* medallas: arranca con la mejor al centro y es infinita al arrastrar o desplazar (no avanza sola) */
+{const rm=document.getElementById('rcM');if(rm){const A0=rm.children.length;loopRail(rm,{center:()=>rm.children[Math.floor((A0-1)/2)]&&[...rm.children].filter(c=>!c.dataset.clone)[Math.floor((A0-1)/2)]});
+ let pd=null;rm.addEventListener('pointerdown',e=>{if(e.pointerType!=='mouse'||e.button!==0)return;pd={x:e.clientX,s:rm.scrollLeft,m:false,id:e.pointerId}});
+ rm.addEventListener('loopjump',e=>{if(pd)pd.s+=e.detail});
+ addEventListener('pointermove',e=>{if(!pd||e.pointerId!==pd.id)return;const dx=e.clientX-pd.x;if(!pd.m&&Math.abs(dx)>5){pd.m=true;rm.classList.add('drag')}if(pd.m)rm.scrollLeft=pd.s-dx});
+ addEventListener('pointerup',e=>{if(!pd||e.pointerId!==pd.id)return;pd=null;rm.classList.remove('drag')})}}
+/* Pregúntale al enólogo: abre el panel con la pregunta y el vino de esta página */
+{const sec=document.getElementById('s-eno');if(sec){sec.querySelectorAll('[data-eq]').forEach(b=>b.onclick=()=>openEno(b.dataset.eq,id));
+  document.getElementById('eqF').onsubmit=e=>{e.preventDefault();const i=document.getElementById('eqI'),v=i.value.trim();if(!v)return;i.value='';openEno(v,id)}}}
+/* La cata en video: al dar play se abre grande (youtube-nocookie); la lista cambia la portada y lo reproduce */
+{const pl=document.getElementById('vdPl');if(pl){const play=ytInline(pl);
+  document.querySelectorAll('.vd-ls button').forEach(b=>b.onclick=()=>{const v=VID.find(x=>x[0]===b.dataset.v);play(v[0],v[1],vFace(v));pl.scrollIntoView({block:'nearest',behavior:'smooth'})})}}
+/* Ver todas las reseñas */
+{const b=document.getElementById('rvwMore');if(b)b.onclick=()=>{const open=b.getAttribute('aria-expanded')!=='true';document.getElementById('rvwG').classList.toggle('all',open);b.setAttribute('aria-expanded',open);b.textContent=open?'Ver menos reseñas':'Ver las '+rv.items.length+' reseñas'}}
+/* Escribir una reseña: formulario simulado (nada se envía) */
+(function(){
+  const btn=document.getElementById('wrBtn'),f=document.getElementById('wrForm'),st=document.getElementById('wrStars'),err=document.getElementById('wrErr');
+  const u=user();if(u&&u.name)document.getElementById('wrName').value=String(u.name).split(' ')[0];
+  btn.onclick=()=>{const open=f.hidden;f.hidden=!open;btn.setAttribute('aria-expanded',open);if(open)setTimeout(()=>st.querySelector('input').focus(),30)};
+  const paint=()=>{const v=+((st.querySelector('input:checked')||{}).value||0);st.querySelectorAll('label').forEach((l,i)=>l.classList.toggle('f',i<v))};
+  st.addEventListener('change',()=>{paint();const fs=f.querySelector('fieldset');if(fs.getAttribute('aria-invalid')){fs.removeAttribute('aria-invalid');fs.removeAttribute('aria-describedby');err.hidden=true}});
+  ['wrName','wrText'].forEach(k=>document.getElementById(k).addEventListener('input',e=>{if(e.target.getAttribute('aria-invalid')){e.target.removeAttribute('aria-invalid');e.target.removeAttribute('aria-describedby');err.hidden=true}}));
+  st.addEventListener('mouseover',e=>{const l=e.target.closest('label');if(!l)return;const i=[...st.children].indexOf(l);st.querySelectorAll('label').forEach((x,j)=>x.classList.toggle('f',j<=i))});
+  st.addEventListener('mouseleave',paint);
+  f.addEventListener('submit',e=>{e.preventDefault();
+    const v=+((st.querySelector('input:checked')||{}).value||0),t=document.getElementById('wrText').value.trim(),n=document.getElementById('wrName').value.trim();
+    f.querySelectorAll('[aria-invalid]').forEach(x=>{x.removeAttribute('aria-invalid');x.removeAttribute('aria-describedby')});
+    const fail=(m,el,mark)=>{err.textContent=m;err.hidden=false;mark.setAttribute('aria-invalid','true');mark.setAttribute('aria-describedby','wrErr');el.focus()};
+    if(!v)return fail('Elige de 1 a 5 estrellas.',st.querySelector('input'),f.querySelector('fieldset'));
+    if(!n){const el=document.getElementById('wrName');return fail('Escribe tu nombre.',el,el)}
+    if(t.length<10){const el=document.getElementById('wrText');return fail('Cuéntanos un poco más (al menos 10 caracteres).',el,el)}
+    const ok=document.createElement('div');ok.className='wr-ok';ok.setAttribute('role','status');ok.tabIndex=-1;
+    ok.innerHTML='<b>Gracias, '+n.replace(/[<>&"]/g,'')+'.</b> Revisamos cada reseña antes de publicarla. Concepto: no se envió nada.';
+    f.replaceWith(ok);btn.remove();ok.focus()});
+})();
+
+/* videos de las secciones: cargan al entrar en pantalla */
+const vio=new IntersectionObserver(es=>es.forEach(en=>{const v=en.target;if(en.isIntersecting){if(!v.src)v.src=v.dataset.src;if(!reduceMotion)v.play().catch(()=>{})}else v.pause()}),{threshold:.2});
+document.querySelectorAll('#sections video:not([data-amb])').forEach(v=>vio.observe(v));
+ambient(document.getElementById('sections'));
+
+/* ---------- Más de la línea ---------- */
+let more=Object.keys(P).filter(k=>k!==id&&!P[k].gc&&P[k].line===p.line&&(isWine(k)||P[k].c===p.c)&&!P[k].out);
+['nebrp','cabrp','charp','pslac','terra','chenin','champ'].forEach(k=>{if(more.length<4&&k!==id&&!more.includes(k))more.push(k)});
+document.getElementById('moreT').textContent=P[more[0]].line===p.line?'Más de '+nbs(p.line):'También te puede gustar';
+{const a=document.getElementById('moreAll');if(p.c==='gourmet'){a.textContent='Ver gourmet';a.href=PAGES.tienda+'?tipo=gourmet'}else if(p.gift){a.textContent='Ver estuches';a.href=PAGES.tienda+'?tipo=estuche'}}
+document.getElementById('more').innerHTML=more.slice(0,4).map(card).join('');
+document.getElementById('more').style.gridTemplateColumns='repeat(4,minmax(0,1fr))';
+
+/* ---------- Sigue explorando: tres recomendaciones cruzadas (colección, otra línea y otra categoría) ---------- */
+{const T_=PAGES.tienda;
+ const XR={
+  premiada:['Colección','Colección Premiada','Los vinos con más reconocimientos internacionales de la bodega.','media/rg-linea.jpg','50% 50%',PAGES.coleccion,'Ver la colección'],
+  rp:['Línea','Reserva Privada','Nebbiolo, Cabernet Sauvignon, Petite Sirah y Chardonnay con crianza en barrica.','media/l-reserva.jpg','50% 50%',T_+'?linea=reserva-privada','Ver la línea'],
+  dl:['Línea','Don Luis','Selección Reservada: Terra, Concordia, Merlot y Viognier.','media/l-donluis.jpg','50% 50%',T_+'?linea=don-luis','Ver la línea'],
+  est:['Línea','Estaciones','Un vino para cada temporada: Primavera, Verano, Otoño e Invierno.','media/l-estaciones.jpg','50% 50%',T_+'?linea=estaciones','Ver la línea'],
+  sb:['Línea','Sierra Blanca','Sauvignon Blanc, Tempranillo, Cabernet Sauvignon y Zinfandel Rosé.','media/m-tarde-2.jpg','50% 50%',T_+'?linea=sierra-blanca','Ver la línea'],
+  blanco:['Categoría','Vinos blancos','Chardonnay, Chenin Blanc, Viognier, Sauvignon Blanc y más.','media/f-brindis-blanco.jpg','50% 50%',T_+'?tipo=blanco','Ver los vinos'],
+  rosado:['Categoría','Vinos rosados','Blanc de Zinfandel, Zinfandel Rosé y Primavera.','media/f-brindis-rosado.jpg','50% 50%',T_+'?tipo=rosado','Ver los vinos'],
+  tinto:['Categoría','Vinos tintos','Del Nebbiolo Reserva Privada a los ensambles Don Luis.','media/m-cena-3.jpg','50% 50%',T_+'?tipo=tinto','Ver los vinos'],
+  champ:['Categoría','Espumosos','Champbrulé, el espumoso de la casa, de Chenin Blanc y Colombard.','media/m-brindis.jpg','50% 50%',T_+'?linea=champbrule','Ver los vinos'],
+  regalos:['Categoría','Regalos','Estuches, tarjetas de regalo y cajas armadas a tu gusto.','media/m-regalo.jpg','50% 50%',PAGES.regalos,'Ver los regalos'],
+  gac:['Gourmet','Aceite de oliva extra virgen','Aceitunas seleccionadas y notas herbales, de 250 ml a 5 L.',F('Mesa_de_trabajo_38-100.jpg',900),'50% 45%',PAGES.ficha+'?p=ac750','Ver el aceite'],
+  gvin:['Gourmet','Vinagres','Balsámico y de vino tinto, para vinagretas, aderezos y marinados.',F('Mesa_de_trabajo_70-100.jpg',900),'50% 45%',T_+'?tipo=gourmet','Ver gourmet'],
+  gacei:['Gourmet','Aceitunas','Sevillana y Manzanilla Misión, con hueso, para aperitivos y tablas.',F('Mesa_de_trabajo_13-100.jpg',900),'45% 50%',T_+'?tipo=gourmet','Ver gourmet']};
+ const SIB={'Reserva Privada':'dl','Don Luis':'rp','Estaciones':'sb','Sierra Blanca':'est','Champbrulé':'est','L.A. Cetto':'dl','Boutique':'rp','Península':'dl','Uvas Orgánicas':'rp'};
+ const CAT={tinto:'blanco',blanco:'rosado',rosado:'champ',espumoso:'blanco',postre:'tinto',destilado:'tinto',gourmet:'tinto',estuche:'tinto'};
+ const pick=GD?['gac','gvin','gacei'].filter(k=>k!==GD.fam).concat('tinto'):['premiada',SIB[p.line]||'rp',p.gift?'regalos':(CAT[p.c]||'regalos')];
+ document.getElementById('xr').innerHTML=pick.map((k,i)=>{const [cap,t,d,img,pos,href,go]=XR[k];
+  return '<a class="xr-c rv" style="--d:'+(i*.1).toFixed(2)+'s" href="'+href+'"><span class="xr-ph"><img src="'+img+'" alt="" loading="lazy" style="object-position:'+pos+'"></span><span class="cap">'+cap+'</span><b>'+t+'</b><p>'+d+'</p><span class="xr-go">'+go+'</span></a>'}).join('')}
+
+/* ---------- Apariciones al entrar en pantalla y lista completa del medallero ---------- */
+{const io=new IntersectionObserver(es=>es.forEach(en=>{if(en.isIntersecting){en.target.classList.add('in');io.unobserve(en.target)}}),{rootMargin:'0px 0px -10% 0px'});
+ document.querySelectorAll('.rv,.wrev').forEach(el=>io.observe(el));
+ /* el número de reconocimientos cuenta desde cero la primera vez que se ve */
+ const n=document.querySelector('.rc-n');
+ if(n&&!reduceMotion){const N=+n.dataset.n;n.textContent='0';const cio=new IntersectionObserver(es=>{if(!es[0].isIntersecting)return;cio.disconnect();const t0=performance.now(),D=1400;
+   (function f(t){const k=Math.min(1,(t-t0)/D),e=1-Math.pow(1-k,3);n.textContent=Math.round(N*e);if(k<1)requestAnimationFrame(f)})(t0)},{rootMargin:'0px 0px -15% 0px'});cio.observe(n)}
+ const rb=document.getElementById('rcBtn');
+ if(rb){const L=document.getElementById('rcList'),lbl=rb.textContent,ease='cubic-bezier(.22,1,.36,1)';let an=null;
+  rb.onclick=()=>{const open=L.hidden||L.dataset.closing==='1';if(an)an.cancel();
+   if(open){L.hidden=false;L.dataset.closing='';const h=L.offsetHeight;an=L.animate([{height:'0px',opacity:0},{height:h+'px',opacity:1}],{duration:reduceMotion?0:560,easing:ease});rb.textContent='Ocultar la lista'}
+   else{const h=L.offsetHeight;L.dataset.closing='1';an=L.animate([{height:h+'px',opacity:1},{height:'0px',opacity:0}],{duration:reduceMotion?0:420,easing:ease,fill:'forwards'});an.onfinish=()=>{L.hidden=true;L.dataset.closing='';an.cancel();an=null};rb.textContent=lbl}
+   rb.setAttribute('aria-expanded',open)}}}
+
+/* ---------- Barra fija de compra ---------- */
+document.getElementById('sbImg').src=F(p.img,120);document.getElementById('sbLine').textContent=nbs(p.line);document.getElementById('sbName').textContent=p.name;
+/* La barra aparece siempre que el botón principal no está a la vista (arriba o abajo) */
+const sbar=document.getElementById('sbar');
+new IntersectionObserver(es=>es.forEach(en=>{const show=!en.isIntersecting;sbar.classList.toggle('on',show);document.documentElement.style.setProperty('--sbh',show?sbar.offsetHeight+'px':'0px');sbar.setAttribute('aria-hidden',!show);document.getElementById('sbAdd').tabIndex=show?0:-1;document.body.style.paddingBottom=show?sbar.offsetHeight+'px':''})).observe(buyAnchor);
+
+observeReveals();
+</script>
+</body>
+</html>

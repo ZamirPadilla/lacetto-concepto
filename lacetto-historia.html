@@ -1,0 +1,543 @@
+<!doctype html>
+<html lang="es" class="ld-on">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>L.A. Cetto · Nuestra historia</title>
+<meta name="description" content="Concepto de rediseño de la página de historia de L.A. Cetto. Textos e imágenes del sitio actual como referencia temporal.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baskervville:ital@0;1&family=DM+Sans:opsz,wght@9..40,400..600&family=Playfair:opsz,wght@5..1200,300..500&display=swap" rel="stylesheet">
+<link rel="icon" type="image/svg+xml" href="media/favicon.svg">
+<!-- compartir -->
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="apple-touch-icon" href="media/apple-touch-icon.png">
+<meta name="theme-color" content="#F3F1EC">
+<meta name="robots" content="noindex, nofollow">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="es_MX">
+<meta property="og:site_name" content="L.A. Cetto · Concepto de rediseño">
+<meta property="og:title" content="L.A. Cetto · Nuestra historia">
+<meta property="og:description" content="Concepto de rediseño de la página de historia de L.A. Cetto. Textos e imágenes del sitio actual como referencia temporal.">
+<meta property="og:url" content="https://zamirpadilla.github.io/lacetto-concepto/lacetto-historia.html">
+<meta property="og:image" content="https://zamirpadilla.github.io/lacetto-concepto/media/og-banner.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Chardonnay Reserva Privada de L.A. Cetto sobre una roca frente al mar, con el texto: Una boutique de vinos, de punta a punta">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="L.A. Cetto · Nuestra historia">
+<meta name="twitter:description" content="Concepto de rediseño de la página de historia de L.A. Cetto. Textos e imágenes del sitio actual como referencia temporal.">
+<meta name="twitter:image" content="https://zamirpadilla.github.io/lacetto-concepto/media/og-banner.jpg">
+<!-- /compartir -->
+<link rel="stylesheet" href="cetto-base.css">
+<style>
+.bw{filter:grayscale(1) contrast(1.06)}
+.grain{position:relative;isolation:isolate}
+.grain::before{content:"";position:absolute;inset:-50%;background-image:var(--grain);opacity:.24;mix-blend-mode:overlay;z-index:2;pointer-events:none;animation:grain 1.1s steps(4) infinite}
+
+/* Portada */
+.h-hero{position:relative;height:100svh;min-height:620px;color:#EEE9E1;background:#141312;overflow:hidden;display:flex;flex-direction:column;justify-content:flex-end}
+/* fotos de archivo que se van turnando, cada una con un acercamiento lento */
+.h-sl{position:absolute;inset:0;overflow:hidden}
+.h-sl img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:grayscale(1) contrast(1.08) brightness(.6);opacity:0;transform:scale(1.02);transition:opacity 1.8s cubic-bezier(.45,0,.25,1)}
+.h-sl img.on{opacity:1;animation:hz 9s linear both}
+.h-sl img.on.out{opacity:0}
+@keyframes hz{from{transform:scale(1.02)}to{transform:scale(1.15)}}
+.h-hero .v-pp.h-pp{position:absolute;z-index:4;right:var(--m);bottom:auto;top:calc(72px + clamp(14px,1.6vw,22px))}
+.h-hero::after{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(10,9,8,.45) 0%,rgba(10,9,8,0) 25%,rgba(10,9,8,0) 45%,rgba(10,9,8,.7) 100%)}
+.h-hero .xin{position:relative;z-index:3;padding:0 var(--m) clamp(28px,4vw,56px)}
+.h-hero .h-cap{display:block;margin-bottom:clamp(18px,2vw,28px);opacity:.8}
+.h-hero .row{display:grid;grid-template-columns:minmax(0,1fr) minmax(260px,380px);gap:32px;align-items:end}
+/* Título en mayúsculas: "SIETE GENERACIONES" mide 11.5em, se ajusta para que no se parta */
+.h-hero .ttl{font-size:clamp(40px,5.2vw,84px)}
+@media (max-width:1280px){.h-hero .row{grid-template-columns:minmax(0,1fr)}.h-hero .row p{max-width:44ch}}
+@media (max-width:640px){.h-hero .ttl{font-size:clamp(25px,8.3vw,34px)!important}}
+.h-hero .row p{font:italic 400 18px/1.5 var(--serif);color:rgba(238,233,225,.88)}
+.scroll-cue{display:inline-flex;align-items:center;gap:10px;margin-top:22px;font:500 11.5px/1 var(--sans);letter-spacing:.09em;text-transform:uppercase;opacity:.8}
+.scroll-cue i{width:1px;height:26px;background:currentColor;animation:cue 1.8s var(--ease) infinite;transform-origin:top}
+@keyframes cue{0%{transform:scaleY(0)}50%{transform:scaleY(1)}100%{transform:scaleY(1);opacity:0}}
+
+/* Introducción */
+.intro{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(0,1fr);gap:clamp(32px,6vw,110px);align-items:end}
+.intro .lead2{font:400 clamp(28px,3.1vw,48px)/1.2 var(--serif);letter-spacing:-.012em}
+.intro .lead2 em{font-style:italic}
+.pola{background:#fff;padding:10px 10px 0;box-shadow:0 22px 50px rgba(43,44,45,.18);max-width:300px;transform:rotate(-2.2deg)}
+.pola img{width:100%;aspect-ratio:4/5;object-fit:cover}
+.pola figcaption{font:italic 400 14px/1.3 var(--serif);padding:10px 2px 14px;color:var(--ink2)}
+
+/* Generaciones */
+.gens{padding-block:clamp(84px,9.5vw,150px)}
+.gens .sh{margin-bottom:clamp(44px,5vw,76px)}
+.gtree{list-style:none;display:grid;grid-template-columns:repeat(3,minmax(0,1fr)) 56px repeat(4,minmax(0,1fr));position:relative}
+.gtree::before{content:"";position:absolute;left:0;right:0;top:46px;height:1px;background:var(--ink)}
+.gtree .grp{grid-row:1;font:500 11.5px/1.3 var(--sans);letter-spacing:.09em;text-transform:uppercase;color:var(--ink3);padding-bottom:22px}
+.gtree .g-it{grid-column:1/4}
+.gtree .g-mx{grid-column:5/9}
+.gtree li.p{grid-row:2;padding-right:14px}
+.gtree li.p .dot{display:block;width:11px;height:11px;border-radius:50%;background:var(--ink);margin:-6px 0 18px}
+.gtree li.p.now .dot{background:var(--bg);border:1px solid var(--ink)}
+.gtree li.p b{display:block;font:400 clamp(19px,1.6vw,24px)/1.15 var(--serif)}
+.gtree li.p span{display:block;font-size:13px;color:var(--ink2);margin-top:6px}
+.gtree li.atl{grid-row:2;position:relative}
+.gtree li.atl::before{content:"";position:absolute;left:50%;top:-30px;bottom:0;border-left:1px dashed var(--ink3)}
+.gtree li.atl span{position:absolute;left:50%;top:6px;transform:translateX(-50%);background:var(--bg);padding:4px 2px;font:italic 400 13px/1.2 var(--serif);color:var(--ink2);white-space:nowrap;writing-mode:vertical-rl;rotate:180deg}
+
+/* Línea del tiempo horizontal */
+.tl{position:relative;background:#171615;color:#EEE9E1}
+.tl-stick{position:sticky;top:0;height:100svh;overflow:hidden;display:flex;flex-direction:column;justify-content:center;gap:clamp(16px,2.6vh,34px);padding-top:76px}
+.tl-head{display:flex;justify-content:space-between;align-items:flex-end;gap:24px}
+.tl-head .cap{color:rgba(238,233,225,.55)}
+.tl-prog{width:min(320px,30vw);height:1px;background:rgba(238,233,225,.25);position:relative}
+.tl-prog i{position:absolute;left:0;top:0;height:1px;background:#EEE9E1;width:calc(var(--tp,0) * 100%)}
+.tl-track{display:flex;align-items:flex-start;gap:clamp(28px,3.5vw,64px);padding-inline:var(--m) calc(var(--m) + 6vw);will-change:transform}
+.ch{flex:0 0 auto;width:clamp(280px,26vw,420px);display:flex;flex-direction:column}
+.ch.wide{width:clamp(320px,34vw,560px)}
+.ch .ph{position:relative;overflow:hidden;height:min(40vh,420px);margin-bottom:18px;background:#2a2826}
+.ch .ph img,.ch .ph video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.ch .yr{font:400 clamp(56px,5.6vw,100px)/.85 var(--serif);letter-spacing:-.03em}
+.ch .pl{display:block;margin:14px 0 8px;color:rgba(238,233,225,.55)}
+.ch b{display:block;font:400 clamp(22px,1.9vw,28px)/1.15 var(--serif);margin-bottom:8px}
+.ch p{font-size:14.5px;line-height:1.55;color:rgba(238,233,225,.75);max-width:36ch}
+.ch.txt{align-self:flex-end;padding-bottom:4px;border-left:1px solid rgba(238,233,225,.2);padding-left:clamp(18px,2vw,28px)}
+.ch.txt .yr{font-size:clamp(80px,8.5vw,150px)}
+.ch.atl{width:clamp(180px,16vw,240px);align-self:stretch;justify-content:center;align-items:center;text-align:center;color:rgba(238,233,225,.7)}
+.ch.atl .wave{width:100%;height:1px;border-top:1px dashed rgba(238,233,225,.45);margin:16px 0}
+.ch.atl span{font:italic 400 18px/1.3 var(--serif)}
+
+/* Hoy */
+.hoy{position:relative;min-height:100svh;color:#fff;background:#1d150f;overflow:hidden;display:flex;flex-direction:column;justify-content:space-between}
+.hoy video,.hoy>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.hoy::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(14,11,8,.55),rgba(14,11,8,.25) 40%,rgba(14,11,8,.78))}
+.hoy .top,.hoy .hoy-p{position:relative;z-index:2}
+.hoy-p{margin:0 var(--m) calc(var(--m) + 12px);max-width:46ch;font:400 clamp(20px,1.9vw,28px)/1.35 var(--serif);color:rgba(255,255,255,.92);padding-top:22px;border-top:1px solid rgba(255,255,255,.3)}
+.hoy .v-pp{bottom:calc(var(--m) + 12px)}
+.hoy-p{margin-right:calc(var(--m) + 56px)!important;text-shadow:0 1px 16px rgba(14,11,8,.5)}
+.hoy .top{padding:calc(var(--m) + 20px) var(--m) 0}
+.hoy .top .h2{margin-top:18px;max-width:20ch}
+.stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-top:1px solid rgba(255,255,255,.3);margin:0 var(--m) var(--m)}
+.stats div{padding:22px 20px 18px 0;border-bottom:1px solid rgba(255,255,255,.3)}
+.stats div:not(:nth-child(3n)){border-right:1px solid rgba(255,255,255,.3);margin-right:0}
+.stats div:not(:nth-child(3n+1)){padding-left:20px}
+.stats b{display:block;font:400 clamp(40px,4.4vw,72px)/1 var(--serif);letter-spacing:-.02em}
+.stats span{display:block;font-size:14px;color:rgba(255,255,255,.82);margin-top:8px;max-width:28ch}
+
+/* Principios */
+.mision{max-width:1100px}
+.mision blockquote{font:400 clamp(28px,3.2vw,50px)/1.18 var(--serif);letter-spacing:-.012em;margin-top:22px}
+.vision{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,2fr);gap:clamp(24px,5vw,88px);margin-top:clamp(48px,6vw,96px);padding-top:28px;border-top:1px solid var(--ink)}
+.vision p{font:400 clamp(20px,1.7vw,26px)/1.4 var(--serif);max-width:44ch}
+.values{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:var(--g);margin-top:clamp(40px,5vw,72px)}
+.values div{background:var(--bg2);padding:clamp(18px,1.8vw,26px);min-height:200px;display:flex;flex-direction:column}
+.values b{font:400 clamp(24px,2vw,30px)/1.1 var(--serif);margin-bottom:auto;padding-bottom:28px}
+.values p{font-size:14px;color:var(--ink2)}
+.values div:first-child{background:var(--ink);color:var(--bg)}
+.values div:first-child p{color:rgba(243,241,236,.75)}
+
+/* Visita */
+.visit{position:relative;min-height:80svh;color:#fff;overflow:hidden;display:flex;align-items:flex-end;background:#2a241e}
+.visit>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 58%}
+.visit::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(16,12,9,.2),rgba(16,12,9,.72))}
+.visit .xin{position:relative;z-index:2;padding:clamp(28px,5vw,72px) var(--m);width:100%;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:24px;align-items:end}
+.visit p{color:rgba(255,255,255,.88);margin-top:14px}
+.visit .ctas{display:flex;flex-wrap:wrap;align-items:center;gap:14px 26px}
+
+/* ---------- Pantallas narrativas en blanco y negro, con grano ---------- */
+.bwf{position:relative;height:100svh;min-height:560px;overflow:hidden;background:#111;color:#EEE9E1;display:flex;align-items:flex-end}
+.bwf>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:grayscale(1) contrast(1.14) brightness(.74);transform:scale(1);transition:transform 12s cubic-bezier(.25,.5,.3,1)}
+.bwf.in>img{transform:scale(1.13)}
+html{scroll-snap-type:y proximity}
+.bwf{scroll-snap-align:start;scroll-snap-stop:normal}
+.bwf::after{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(8,8,7,.35) 0%,rgba(8,8,7,0) 30%,rgba(8,8,7,.1) 55%,rgba(8,8,7,.72) 100%)}
+.bwf-tx{position:relative;z-index:3;width:100%;padding:0 var(--m) clamp(40px,6vw,92px);display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:end;gap:24px}
+.bwf-q{max-width:19ch;font:italic 400 clamp(32px,4vw,68px)/1.08 var(--serif);letter-spacing:-.012em}
+.bwf-k{font:500 11px/1.6 var(--sans);letter-spacing:.2em;text-transform:uppercase;color:rgba(238,233,225,.72);text-align:right}
+.bwf-tx>*{opacity:0;transform:translateY(18px);transition:opacity 1.4s var(--ease) .5s,transform 1.6s var(--ease) .5s}
+.bwf-tx>.bwf-k{transition-delay:.8s}
+.bwf.in .bwf-tx>*{opacity:1;transform:none}
+
+/* ---------- El Valle en el mapa (vista aérea, título grande y después el mapa) ---------- */
+.rg{position:relative;height:290svh;background:#10140f;color:#F1EDE4}
+.rg-st{position:sticky;top:0;height:100svh;overflow:hidden}
+.rg-st>video,.rg-st>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transform:scale(1.02);transition:filter 1.6s var(--ease),transform 14s cubic-bezier(.25,.5,.3,1)}
+.rg.in .rg-st>img{transform:scale(1.12)}
+.rg-st::after{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(8,10,7,.4) 0%,rgba(8,10,7,.08) 32%,rgba(8,10,7,.48) 100%);transition:opacity 1.4s}
+.rg-st::before{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(90deg,rgba(8,10,7,.25) 0%,rgba(8,10,7,.66) 62%,rgba(8,10,7,.74) 100%);opacity:0;transition:opacity 1.4s var(--ease)}
+.rg.p2 .rg-st>video,.rg.p2 .rg-st>img{filter:blur(6px) brightness(.62) saturate(.85)}
+.rg.p2 .rg-st::before{opacity:1}
+.rg-t{position:absolute;inset:0;z-index:2;display:flex;flex-direction:column;justify-content:center;padding:0 var(--m);transition:opacity 1s var(--ease),transform 1.4s var(--ease)}
+.rg.p2 .rg-t{opacity:0;transform:translateY(-5vh);pointer-events:none}
+.rg-h{font:400 clamp(60px,10vw,196px)/.88 var(--serif);letter-spacing:-.04em}
+.rg-h span{display:block;opacity:0;transform:translateY(.3em);transition:opacity 1.4s var(--ease),transform 1.6s var(--ease)}
+.rg-h span:nth-child(1){padding-left:5vw}
+.rg-h span:nth-child(2){padding-left:30vw;font-style:italic;transition-delay:.18s}
+.rg.in .rg-h span{opacity:1;transform:none}
+.rg-meta{display:flex;flex-wrap:wrap;gap:12px clamp(48px,14vw,260px);margin:clamp(30px,5vh,60px) 0 0 30vw;font:400 13px/1.75 var(--sans);letter-spacing:.05em;opacity:0;transition:opacity 1.4s .6s}
+.rg-meta span:last-child{text-transform:uppercase;letter-spacing:.14em}
+.rg.in .rg-meta{opacity:.9}
+.rg-m{position:absolute;inset:0;z-index:2;display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);align-items:center;gap:clamp(24px,4vw,64px);padding:clamp(70px,9vh,100px) var(--m) clamp(28px,5vh,56px);opacity:0;visibility:hidden;transition:opacity 1.2s var(--ease),visibility 0s 1.2s}
+.rg.p2 .rg-m{opacity:1;visibility:visible;transition:opacity 1.2s var(--ease) .25s,visibility 0s}
+.rg-map{display:block;height:min(84svh,880px);width:auto;max-width:100%;justify-self:center;overflow:visible}
+.rg-map .pen{fill:none;stroke:#F1EDE4;stroke-width:1.7;stroke-linejoin:round;stroke-dasharray:1;stroke-dashoffset:1;transition:stroke-dashoffset 2.8s cubic-bezier(.6,0,.2,1) .35s}
+.rg-map .son{fill:none;stroke:rgba(241,237,228,.42);stroke-width:1.1;stroke-dasharray:1;stroke-dashoffset:1;transition:stroke-dashoffset 2.4s cubic-bezier(.6,0,.2,1) .8s}
+.rg-map .bor,.rg-map .st{fill:none;stroke:rgba(241,237,228,.45);stroke-width:1;stroke-dasharray:4 6;opacity:0;transition:opacity 1s 2s}
+.rg-map .bcf{fill:rgba(241,237,228,.12);opacity:0;transition:opacity 1.4s 2s}
+.rg.p2 .rg-map .pen,.rg.p2 .rg-map .son{stroke-dashoffset:0}
+.rg.p2 .rg-map .bor,.rg.p2 .rg-map .st,.rg.p2 .rg-map .bcf{opacity:1}
+.rg-map text{fill:#F1EDE4;font-family:var(--sans)}
+.rg-map .lab{font-size:15px;letter-spacing:.18em;fill-opacity:.62}
+.rg-map .big{font-size:34px;letter-spacing:.08em;fill-opacity:.9}
+.rg-map .ct{font-size:16px;fill-opacity:.85}
+.rg-map .vt{font:italic 400 30px var(--serif);fill:#F1EDE4}
+.rg-map .vs{font-size:13px;letter-spacing:.16em;fill-opacity:.7}
+.rg-map .ml,.rg-map .mc,.rg-map .mv{opacity:0;transition:opacity 1s var(--ease)}
+.rg.p2 .rg-map .ml{opacity:1;transition-delay:1.6s}
+.rg.p2 .rg-map .mc{opacity:1;transition-delay:var(--d)}
+.rg.p2 .rg-map .mv{opacity:1;transition-delay:2.4s}
+.rg-map .mc circle{fill:#F1EDE4}
+.rg-map .mv .d{fill:#F1EDE4}
+.rg-map .mv .r1{fill:rgba(241,237,228,.22);stroke:#F1EDE4;stroke-width:1}
+.rg-map .mv .r2{fill:none;stroke:rgba(241,237,228,.6);stroke-width:1;transform-box:fill-box;transform-origin:center;animation:rgPulse 2.6s ease-out infinite}
+.rg-map .mv .ld{fill:none;stroke:rgba(241,237,228,.7);stroke-width:1}
+@keyframes rgPulse{0%{transform:scale(.4);opacity:.9}100%{transform:scale(1.6);opacity:0}}
+.rg-tx{max-width:32ch}
+.rg-tx>*{opacity:0;transform:translateY(16px);transition:opacity 1.1s var(--ease),transform 1.3s var(--ease)}
+.rg.p2 .rg-tx>*{opacity:1;transform:none}
+.rg.p2 .rg-tx>:nth-child(1){transition-delay:1.2s}.rg.p2 .rg-tx>:nth-child(2){transition-delay:1.4s}.rg.p2 .rg-tx>:nth-child(3){transition-delay:1.6s}
+.rg-tx .k{font:500 11px/1 var(--sans);letter-spacing:.2em;text-transform:uppercase;color:rgba(241,237,228,.66)}
+.rg-tx p{margin-top:18px;font:400 clamp(21px,1.75vw,28px)/1.4 var(--serif);letter-spacing:-.006em}
+.rg-tx p+p{font:400 15px/1.65 var(--sans);letter-spacing:0;color:rgba(241,237,228,.78)}
+
+/* ---------- Una frase sola, al centro ---------- */
+.bq{min-height:88svh;display:grid;place-items:center;text-align:center;padding:var(--sec) var(--m)}
+.bq p{max-width:24ch;font:italic 400 clamp(30px,3.3vw,54px)/1.24 var(--serif);letter-spacing:-.008em;text-wrap:balance}
+.bq small{display:block;margin-top:clamp(28px,3vw,42px);font:500 11px/1 var(--sans);letter-spacing:.2em;text-transform:uppercase;color:var(--ink2)}
+
+/* ---------- Fotos más altas que la pantalla: la frase se queda y la foto corre detrás ---------- */
+.bt{padding:var(--m) var(--m) var(--g)}
+.bt-f{position:relative;height:150svh;margin:0;overflow:clip;background:#2a241e;color:#fff}
+.bt-f>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.bt-f::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(12,10,8,.12),rgba(12,10,8,.3) 50%,rgba(12,10,8,.12))}
+.bt-o{position:sticky;top:0;z-index:2;height:100svh;display:flex;align-items:center;justify-content:space-between;gap:32px;padding:0 clamp(22px,4vw,72px)}
+.bt-k{font:500 12px/1.3 var(--sans);letter-spacing:.2em;text-transform:uppercase}
+.bt-q{max-width:30ch;font:italic 400 clamp(22px,2.3vw,36px)/1.22 var(--serif);text-align:right;text-shadow:0 1px 22px rgba(0,0,0,.25)}
+.bt-o>*{opacity:0;transform:translateY(14px);transition:opacity 1.2s var(--ease),transform 1.4s var(--ease)}
+.bt-o>.bt-q{transition-delay:.2s}
+.bt.in .bt-o>*{opacity:1;transform:none}
+
+@media (max-width:900px){
+  .bwf-tx{grid-template-columns:minmax(0,1fr)}.bwf-k{text-align:left;order:-1}
+  .rg{height:260svh}
+  .rg-h{font-size:clamp(52px,15vw,110px)}
+  .rg-h span:nth-child(1){padding-left:0}.rg-h span:nth-child(2){padding-left:12vw}
+  .rg-meta{margin-left:12vw;flex-direction:column;gap:6px}
+  .rg-m{grid-template-columns:minmax(0,1fr);grid-template-rows:minmax(0,1fr) auto;align-items:stretch;padding:76px var(--m) calc(84px + env(safe-area-inset-bottom));gap:12px}
+  .rg-map{height:100%;max-height:56svh;justify-self:center}
+  .rg-tx p{font-size:17px;margin-top:10px}.rg-tx p+p{display:none}
+  .bt-f{height:120svh}
+  .bt-o{flex-direction:column;justify-content:center;align-items:flex-start;gap:18px}
+  .bt-q{text-align:left}
+}
+@media (prefers-reduced-motion:reduce){.bwf>img,.rg-st>video,.rg-st>img,.rg.in .rg-st>img{transition:none;transform:none}.rg-map .mv .r2{animation:none}.rg-map .pen,.rg-map .son{transition:none}}
+@media (max-width:900px){
+  .h-hero .row,.intro,.vision{grid-template-columns:minmax(0,1fr)}
+  .pola{width:min(80%,320px);max-width:none;justify-self:center;margin-top:12px}
+  .gtree{grid-template-columns:minmax(0,1fr);gap:0}
+  .gtree::before{left:5px;right:auto;top:40px;bottom:10px;width:1px;height:auto}
+  .gtree .grp,.gtree .g-it,.gtree .g-mx,.gtree li.p,.gtree li.atl{grid-column:auto;grid-row:auto}
+  .gtree .grp{padding:18px 0 12px 26px}
+  .gtree .g-mx{order:3}
+  .gtree li:nth-child(n+3):nth-child(-n+5){order:1}
+  .gtree li.atl{order:2}
+  .gtree li:nth-child(n+7){order:4}
+  .gtree li.p{display:grid;grid-template-columns:26px minmax(0,1fr);padding:0 0 18px}
+  .gtree li.p .dot{margin:6px 0 0;grid-column:1;grid-row:1/3}
+  .gtree li.p b,.gtree li.p span{grid-column:2}
+  .gtree li.atl{height:56px}
+  .gtree li.atl::before{left:5px;top:0}
+  .gtree li.atl span{writing-mode:horizontal-tb;rotate:none;transform:none;left:26px;top:18px}
+  .tl-stick{position:relative;height:auto;padding-block:var(--sec)}
+  .tl-head{flex-direction:column;align-items:flex-start;padding-inline:var(--m)}
+  .tl-prog{display:none}
+  .tl-track{flex-direction:column;align-items:stretch;gap:44px;transform:none!important}
+  .ch,.ch.wide,.ch.atl{width:auto}
+  .ch .ph{height:auto;aspect-ratio:4/5}
+  .ch.wide .ph{aspect-ratio:4/3}
+  .tl-stick{padding-top:var(--sec)}
+  .ch.atl{padding:8px 0}
+  .stats{grid-template-columns:1fr 1fr}
+  .stats div{border-right:0!important;padding-left:0!important}
+  .stats div:nth-child(odd){border-right:1px solid rgba(255,255,255,.3)!important;padding-right:14px}
+  .stats div:nth-child(even){padding-left:14px!important}
+  .values{grid-template-columns:1fr 1fr}
+  .visit .xin{grid-template-columns:minmax(0,1fr)}
+}
+@media (max-width:640px){
+  .h-hero{height:auto;min-height:100svh}
+  .h-hero .xin{padding-top:110px}
+  .values{grid-template-columns:minmax(0,1fr)}
+  .values div{min-height:0}
+}
+@media (prefers-reduced-motion:reduce){.h-sl img.on{animation:none;transform:none}}
+.hoy-a{display:flex;width:max-content;margin-top:18px;color:#fff;text-shadow:none}
+
+/* Pantalla de carga: una cepa de zinfandel de la familia (dibujo de una foto real) crece desde la raíz;
+   después el panel sube y descubre la portada */
+html.ld-on{overflow:hidden}
+.ld{position:fixed;inset:0;z-index:300;display:grid;place-items:center;background:var(--bg);cursor:default;
+  transition:transform 1.3s cubic-bezier(.76,0,.24,1),opacity .8s}
+.ld-in{display:flex;flex-direction:column;align-items:center;gap:clamp(16px,2.4vh,30px);transition:transform 1.3s cubic-bezier(.76,0,.24,1)}
+.ld-cv{display:block;height:min(45svh,448px);width:auto;aspect-ratio:484/1033}
+.ld.out{transform:translateY(-100%)}
+.ld.out .ld-in{transform:translateY(42vh)}
+.ld.fade{opacity:0}
+@media (max-width:640px){.ld-cv{height:min(39svh,364px)}}
+/* mientras carga, la portada espera: la foto no corre y el título entra cuando sube el panel */
+html.ld-on .h-sl img{animation-play-state:paused}
+html.ld-on .h-hero .lines .ln>span{transform:translateY(104%)!important;opacity:0!important;transition:none!important}
+.h-hero .h-cap,.h-hero .row p,.h-hero .scroll-cue{transition:opacity 1.4s .7s}
+html.ld-on .h-hero .h-cap,html.ld-on .h-hero .row p,html.ld-on .h-hero .scroll-cue{opacity:0;transition:none}
+@media (prefers-reduced-motion:reduce){.ld,.ld-in{transition:opacity .6s}.ld.out{transform:none;opacity:0}.ld.out .ld-in{transform:none}}
+/* sub-navegación con Trayectoria, sobre la portada */
+.hsub-ov{position:absolute;z-index:4;top:calc(var(--hh,72px) + clamp(14px,1.6vw,22px));left:var(--m);display:flex;gap:22px}
+.hsub-ov a{position:relative;padding:6px 0 9px;font:400 clamp(16px,1.25vw,19px)/1 var(--serif);color:rgba(238,233,225,.62);transition:color .3s}
+.hsub-ov a:hover,.hsub-ov a[aria-current=page]{color:#EEE9E1}
+.hsub-ov a[aria-current=page]::after{content:"";position:absolute;left:0;right:0;bottom:0;height:1px;background:currentColor}
+</style>
+<noscript><style>.ld{display:none}html.ld-on{overflow:auto}</style></noscript>
+</head>
+<body>
+<div class="ld" id="ld" aria-hidden="true">
+  <div class="ld-in"><canvas class="ld-cv" id="ldCv" width="484" height="1033" aria-hidden="true"></canvas></div>
+</div>
+<script>
+/* Carga de "Nuestra historia": cada punto del dibujo trae su "hora de llegada" (qué tan lejos está de la raíz siguiendo la planta),
+   así la cepa crece desde el tronco hacia arriba y al final se abren el brote y sus hojas. Luego el panel sube y aparece la página */
+(function(){
+  const ld=document.getElementById('ld'),cv=document.getElementById('ldCv'),de=document.documentElement;
+  const still=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if('scrollRestoration' in history)history.scrollRestoration='manual';
+  let done=false,grown=false,loaded=document.readyState==='complete',quick=false;
+  addEventListener('load',()=>{loaded=true;maybeExit()});
+  function exit(){if(done)return;done=true;scrollTo(0,0);ld.classList.add('k');
+    ld.classList.add(still?'fade':'out');setTimeout(()=>de.classList.remove('ld-on'),still?0:260);setTimeout(()=>ld.remove(),1500)}
+  let holdT=0;function maybeExit(){if(grown&&(loaded||quick)&&!holdT)holdT=setTimeout(exit,quick?60:520)}
+  /* clic o tecla: termina de dibujarse y entra */
+  const skip=()=>{quick=true;if(grown)maybeExit()};ld.addEventListener('click',skip);addEventListener('keydown',skip,{once:true});
+  setTimeout(()=>{loaded=true;quick=true;if(!grown){grown=true;fallback()}maybeExit()},9000);   /* por si algo no carga */
+  const W=cv.width,H=cv.height,ctx=cv.getContext('2d');
+  const ink=new Image(),map=new Image();let n=0;
+  function fallback(){const im=new Image();im.src=ink.src;im.onload=()=>{ctx.clearRect(0,0,W,H);ctx.drawImage(im,0,0,W,H)}}
+  const ready=()=>{if(++n<2)return;let A,T;
+    try{const c=document.createElement('canvas');c.width=W;c.height=H;const x=c.getContext('2d',{willReadFrequently:true});
+      x.drawImage(ink,0,0);A=x.getImageData(0,0,W,H).data;x.clearRect(0,0,W,H);x.drawImage(map,0,0);T=x.getImageData(0,0,W,H).data}
+    catch(e){grown=true;fallback();maybeExit();return}
+    /* puntos con tinta, ordenados por hora de llegada (orden por cubetas de 16 bits) */
+    const cnt=new Uint32Array(65537);let m=0;for(let i=0;i<W*H;i++)if(A[i*4+3]>2){cnt[(T[i*4]<<8|T[i*4+1])+1]++;m++}
+    for(let k=1;k<65537;k++)cnt[k]+=cnt[k-1];
+    const P=new Uint32Array(m),TT=new Float32Array(m),AA=new Uint8Array(m);
+    for(let i=0;i<W*H;i++)if(A[i*4+3]>2){const v=T[i*4]<<8|T[i*4+1],k=cnt[v]++;P[k]=i*4+3;TT[k]=v/65535;AA[k]=A[i*4+3]}
+    const img=ctx.createImageData(W,H),d=img.data;for(let i=0;i<d.length;i+=4){d[i]=43;d[i+1]=44;d[i+2]=45}
+    const SOFT=.03,GROW=still?1:3200;let lo=0,t0=0;
+    const ease=u=>.45*(u*u*(3-2*u))+.55*(1-Math.pow(1-u,2.2));
+    function frame(now){if(!t0)t0=now;let u=quick?1:Math.min(1,(now-t0)/GROW);const t=ease(u)*(1+SOFT*1.2);
+      let k=lo;for(;k<m;k++){const r=(t-TT[k])/SOFT;if(r<=0)break;d[P[k]]=r>=1?AA[k]:AA[k]*r}
+      while(lo<m&&t-TT[lo]>=SOFT)lo++;
+      ctx.putImageData(img,0,0);
+      if(u>.72)ld.classList.add('k');
+      if(u<1)requestAnimationFrame(frame);else{grown=true;maybeExit()}}
+    requestAnimationFrame(frame)};
+  ink.onload=map.onload=ready;ink.onerror=map.onerror=()=>{grown=true;quick=true;maybeExit()};
+  ink.src='media/zinfandel-tinta.png';map.src='media/zinfandel-mapa.png';
+})();
+</script>
+<div id="chromeTop"></div>
+
+<main>
+<!-- Portada -->
+<section class="h-hero grain" data-hero aria-labelledby="hT">
+  <nav class="hsub-ov" aria-label="Nuestra historia"><a href="lacetto-historia.html" aria-current="page">Nuestra historia</a><a href="lacetto-trayectoria.html">Trayectoria</a></nav>
+  <div class="h-sl" id="hSl">
+    <img class="on" src="media/ed-vinedo.jpg" alt="El Valle de Guadalupe visto desde una ladera, en blanco y negro" fetchpriority="high" style="object-position:42% 50%">
+    <img src="media/x-cetto-vina.jpg" alt="Vendimia entre las vides del Valle" style="object-position:45% 40%">
+    <img src="media/v-valle.jpg" alt="Hileras de vid en el Valle de Guadalupe" style="object-position:50% 50%">
+    <img src="media/m-organicos-vina.jpg" alt="Viñedo con la sierra al fondo" style="object-position:50% 45%">
+  </div>
+  <button class="v-pp tr h-pp" type="button" id="hPP" aria-label="Pausar las fotos de la portada"></button>
+  <div class="xin">
+    <span class="cap h-cap">Nuestra historia · 1801 a hoy</span>
+    <div class="row">
+      <h1 class="h1 lines ttl" id="hT" data-now><span class="ln"><span>Siete generaciones </span></span><span class="ln"><span>dedicadas al vino </span></span></h1>
+      <div>
+        <p>“Con raíces en Italia y fundada en México en 1928, Cetto ha construido casi un siglo de historia vitivinícola, siendo pionera e innovadora en el país.”</p>
+        <span class="scroll-cue"><i aria-hidden="true"></i>Baja para recorrerla</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Introducción -->
+<section class="sec wrap" aria-label="Introducción">
+  <div class="intro rise">
+    <p class="lead2">La historia empieza en <em>Selva di Levico</em>, en las montañas de Trento, Italia. Ahí nace Francesco Antonio Cetto en 1801. En 1924 su bisnieto Ángelo cruza a México con el oficio de la familia, y en 1928 funda la bodega que hoy conocemos como L.A.&nbsp;Cetto.</p>
+    <figure class="pola"><img src="https://www.lacetto.mx/cdn/shop/files/don_angelo.jpg" alt="Retrato de archivo de Ángelo Cetto" loading="lazy"><figcaption>Ángelo Cetto, fundador. Archivo familiar.</figcaption></figure>
+  </div>
+</section>
+
+<!-- En blanco y negro: el oficio que cruzó el océano -->
+<section class="bwf grain" aria-label="El oficio de la familia">
+  <img src="media/ed-sombrero.jpg" alt="Fotografía de archivo: un hombre con sombrero entre las vides" loading="lazy" style="object-position:30% 40%">
+  <div class="bwf-tx"><p class="bwf-q">Trajo de Trento lo que no cabe en una maleta: el oficio de hacer vino.</p><span class="bwf-k">Selva di Levico<br>Baja California · 1924</span></div>
+</section>
+
+<!-- Generaciones -->
+<section class="sec wrap gens" aria-labelledby="gT">
+  <div class="sh"><h2 class="h2 lines" id="gT"><span class="ln"><span>Tres en Italia, </span></span><span class="ln"><span>cuatro en México </span></span></h2></div>
+  <ol class="gtree">
+    <li class="grp g-it" aria-hidden="true">Italia · Selva di Levico, Trento</li>
+    <li class="grp g-mx" aria-hidden="true">México · Baja California</li>
+    <li class="p"><span class="dot"></span><b>Francesco Antonio Cetto</b><span>Nace en 1801</span></li>
+    <li class="p"><span class="dot"></span><b>Francesco Alloisio Cetto</b><span>Nace en 1822</span></li>
+    <li class="p"><span class="dot"></span><b>Luigi Cetto</b><span>Nace en 1857</span></li>
+    <li class="atl" aria-label="1924, Ángelo cruza a México"><span>1924 · cruza el Atlántico</span></li>
+    <li class="p"><span class="dot"></span><b>Ángelo Cetto</b><span>Nace en 1900 · funda L.A.&nbsp;Cetto en 1928</span></li>
+    <li class="p"><span class="dot"></span><b>Luis Agustín Cetto</b><span>Nace en 1934</span></li>
+    <li class="p"><span class="dot"></span><b>Luis Alberto Cetto</b><span>Nace en 1965</span></li>
+    <li class="p now"><span class="dot"></span><b>La séptima generación</b><span>Se incorpora en 2019</span></li>
+  </ol>
+</section>
+
+<!-- Línea del tiempo -->
+<section class="tl" id="tl" aria-labelledby="tlT">
+  <div class="tl-stick">
+    <div class="tl-head wrap">
+      <div><span class="cap">Línea del tiempo</span><h2 class="h2" id="tlT" style="margin-top:12px">De Trento al Valle</h2></div>
+      <div class="tl-prog" aria-hidden="true"><i></i></div>
+    </div>
+    <div class="tl-track" id="tlTrack">
+      <article class="ch txt"><span class="yr">1801</span><span class="cap pl">Selva di Levico, Trento</span><b>Nace Francesco Antonio</b><p>Trento combina influencias italianas y austriacas, rodeada de montañas. Ahí nace el hombre que daría inicio a una historia vitivinícola.</p></article>
+      <article class="ch txt"><span class="yr">1840</span><span class="cap pl">Trento, Italia</span><b>El oficio pasa al hijo</b><p>Alloisio Cetto aprende a trabajar el campo y a cultivar la vid. Como marca la tradición, hace vino de forma artesanal, con variedades como Pinot Grigio y Marzemino.</p></article>
+      <article class="ch"><div class="ph grain"><video class="bw" data-amb="1875, Levico" data-src="media/v-colinas.mp4" aria-hidden="true"></video></div><span class="yr">1875</span><span class="cap pl">Levico, Italia</span><b>Luigi, experto en la vid</b><p>Con la herencia de su padre y su abuelo, Luigi Cetto cultiva cepas autóctonas como Teroldego y Marzemino en el terruño de Levico.</p></article>
+      <article class="ch atl" aria-label="1924, travesía a México"><span class="cap">1924</span><span class="wave" aria-hidden="true"></span><span>Ángelo, con 24 años, cruza a México con un grupo de 290 personas</span><span class="wave" aria-hidden="true"></span></article>
+      <article class="ch"><div class="ph grain"><img class="bw" src="https://www.lacetto.mx/cdn/shop/files/don_angelo.jpg" alt="Retrato de archivo de Ángelo Cetto" loading="lazy"></div><span class="yr">1928</span><span class="cap pl">Baja California, México</span><b>Nace L.A.&nbsp;Cetto</b><p>Ángelo trae el conocimiento y la experiencia de la vitivinicultura de Trento. Sobre esa base funda la bodega.</p></article>
+      <article class="ch wide"><div class="ph grain"><img class="bw" src="https://www.lacetto.mx/cdn/shop/files/T9.jpg?width=1400" alt="Viñedo de la familia Cetto, fotografía de archivo" loading="lazy"></div><span class="yr">1951</span><span class="cap pl">Valle de Guadalupe</span><b>Don Luis Agustín amplía el Valle</b><p>Fiel a la tradición de su padre, expande los viñedos en el Valle de Guadalupe y experimenta con variedades, suelos, climas y formas de plantación.</p></article>
+      <article class="ch"><div class="ph grain"><img class="bw" src="https://www.lacetto.mx/cdn/shop/files/DSC9652.jpg?width=1000" alt="Botellas en la cava" loading="lazy"></div><span class="yr">1983</span><span class="cap pl">Al mundo</span><b>Luis Alberto abre mercados</b><p>Refuerza el crecimiento de la empresa y la lleva a mercados internacionales: la marca llega a 17 países.</p></article>
+      <article class="ch wide"><div class="ph"><video data-amb="2019, la séptima generación" poster="media/hero-hd.jpg" data-src="media/hero-hd.mp4?v=3#t=2" aria-hidden="true"></video></div><span class="yr">2019</span><span class="cap pl">La séptima generación</span><b>Tradición e innovación</b><p>Con la generación más reciente de la familia se revitaliza la tradición: innovación en la producción y en la comercialización de sus vinos.</p></article>
+      <article class="ch"><div class="ph"><img src="https://www.lacetto.mx/cdn/shop/files/DSC07921.jpg?width=1000" alt="Racimo al atardecer en el Valle de Guadalupe" loading="lazy"></div><span class="yr">Hoy</span><span class="cap pl">Valle de Guadalupe</span><b>Casi un siglo en México</b><p>Una empresa pionera del vino mexicano, con la séptima generación lista para continuar el legado.</p></article>
+    </div>
+  </div>
+</section>
+
+<!-- En blanco y negro: el Valle -->
+<section class="bwf grain" aria-label="El Valle de Guadalupe en 1951">
+  <img src="media/hist-vinedo.jpg" alt="Fotografía de archivo del viñedo en el Valle de Guadalupe, con la sierra al fondo" loading="lazy" style="object-position:50% 55%">
+  <div class="bwf-tx"><p class="bwf-q">En el Valle, Don Luis Agustín probó suelos, climas y formas de plantar.</p><span class="bwf-k">Valle de Guadalupe<br>1951</span></div>
+</section>
+
+<!-- El Valle en el mapa: vista aérea con el título grande y, al bajar, el mapa de la península -->
+<section class="rg" id="valle" aria-labelledby="rgT">
+  <div class="rg-st">
+    <img src="media/ed-uvas.jpg" alt="" aria-hidden="true" style="object-position:55% 45%">
+    <div class="rg-t">
+      <h2 class="rg-h" id="rgT"><span>Valle de Guadalupe:</span><span>tierra de vino</span></h2>
+      <div class="rg-meta"><span>32° 05′ N · 116° 35′ O<br>Municipio de Ensenada</span><span>Baja California · México</span></div>
+    </div>
+    <div class="rg-m">
+      <svg class="rg-map" viewBox="0 0 861 1070" role="img" aria-label="Mapa de la península de Baja California con el Valle de Guadalupe al norte, cerca de Ensenada, Tecate y Tijuana"><defs><clipPath id="bcClip"><rect x="0" y="0" width="861" height="530"/></clipPath></defs><path class="son" d="M281.2 85.0C284.1 94.0 287.5 118.8 297.0 135.0C306.5 151.2 316.9 163.5 334.0 175.0C351.0 186.5 374.6 190.0 392.0 199.0C409.4 208.0 419.7 214.9 430.6 225.0C441.5 235.1 441.5 241.5 452.6 255.0C463.7 268.5 481.9 282.9 492.1 300.0C502.4 317.1 502.4 323.4 509.7 350.0C517.0 376.6 519.9 421.0 532.6 448.0C545.2 475.0 563.6 483.8 580.0 500.0C596.5 516.2 610.5 525.4 624.0 538.0C637.4 550.6 642.1 555.2 654.7 570.0C667.4 584.8 680.0 604.7 694.3 620.0C708.5 635.3 720.4 638.8 733.8 655.0C747.3 671.2 759.5 689.3 769.0 710.0C778.5 730.7 776.3 753.8 786.5 770.0C796.8 786.2 819.0 794.6 826.1 800.0" pathLength="1"/><path class="bor" d="M281.2 83.0 L609.0 197.0 L860.4 197.0"/><path class="bcf" d="M77.3 77.0C78.1 79.3 80.6 86.4 81.7 90.0C82.8 93.6 81.7 94.1 83.5 97.0C85.2 99.9 88.7 102.0 91.4 106.0C94.1 110.0 95.9 114.7 98.4 119.0C101.0 123.3 102.9 126.2 105.5 130.0C108.0 133.8 109.6 137.5 112.5 140.0C115.3 142.5 119.4 141.7 121.3 144.0C123.2 146.3 124.3 150.7 123.0 153.0C121.8 155.3 116.9 155.7 114.2 157.0C111.6 158.3 107.8 158.9 108.1 160.0C108.4 161.1 114.9 160.3 116.0 163.0C117.1 165.7 113.9 171.0 114.2 175.0C114.6 179.0 113.8 180.5 117.8 185.0C121.7 189.5 131.0 192.4 136.2 200.0C141.4 207.6 142.8 219.8 146.8 227.0C150.7 234.2 153.9 235.9 158.2 240.0C162.5 244.1 167.2 243.7 170.5 250.0C173.8 256.3 176.2 267.8 176.6 275.0C177.1 282.2 171.1 284.6 173.1 290.0C175.2 295.4 184.4 297.8 188.1 305.0C191.7 312.2 188.4 320.6 193.3 330.0C198.2 339.4 206.6 348.0 215.3 357.0C224.0 366.0 232.2 371.4 241.7 380.0C251.2 388.6 258.1 394.2 268.0 405.0C278.0 415.8 287.5 428.7 297.0 440.0C306.5 451.3 313.6 457.2 320.8 468.0C327.9 478.8 332.3 489.7 336.6 500.0C340.9 510.3 345.8 518.3 344.5 525.0C343.2 531.7 339.4 532.5 329.6 537.0C319.7 541.5 303.1 548.6 290.0 550.0C276.9 551.4 260.6 543.2 256.6 545.0C252.7 546.8 262.8 554.6 268.0 560.0C273.3 565.4 275.3 565.1 285.6 575.0C295.9 584.9 310.9 602.4 325.2 615.0C339.4 627.6 353.6 637.3 364.7 645.0C375.8 652.7 375.6 652.6 386.7 658.0C397.8 663.4 410.4 667.4 426.2 675.0C442.0 682.6 461.9 690.1 474.6 700.0C487.2 709.9 489.4 719.2 496.5 730.0C503.7 740.8 510.2 746.5 514.1 760.0C518.1 773.5 519.3 788.8 518.5 805.0C517.7 821.2 505.0 836.5 509.7 850.0C514.5 863.5 530.6 871.0 544.9 880.0C559.1 889.0 573.0 890.1 588.8 900.0C604.6 909.9 616.9 921.5 632.7 935.0C648.6 948.5 665.6 962.4 676.7 975.0C687.8 987.6 688.3 992.9 694.3 1005.0C700.3 1017.1 703.6 1038.4 710.1 1042.0C716.6 1045.6 722.5 1030.8 730.3 1025.0C738.0 1019.2 749.3 1019.0 753.1 1010.0C756.9 1001.0 755.7 984.9 751.4 975.0C747.1 965.1 737.3 963.1 729.4 955.0C721.5 946.9 715.4 936.3 707.4 930.0C699.5 923.7 692.6 924.5 685.5 920.0C678.4 915.5 674.2 908.6 667.9 905.0C661.6 901.4 655.1 904.5 650.3 900.0C645.6 895.5 642.8 890.8 641.5 880.0C640.3 869.2 648.0 854.4 643.3 840.0C638.5 825.6 624.2 814.4 615.2 800.0C606.2 785.6 598.6 772.8 593.2 760.0C587.8 747.2 590.8 739.8 585.3 729.0C579.8 718.2 570.5 709.7 562.4 700.0C554.4 690.3 546.5 685.6 540.5 675.0C534.5 664.4 535.7 655.2 529.0 641.0C522.4 626.8 512.6 610.6 503.6 596.0C494.5 581.4 487.3 573.7 479.0 560.0C470.6 546.3 463.3 533.5 457.0 520.0C450.7 506.5 452.5 497.6 443.8 485.0C435.1 472.4 418.1 459.0 408.6 450.0C399.2 441.0 398.2 444.0 391.1 435.0C384.0 426.0 377.8 413.5 369.1 400.0C360.4 386.5 352.2 374.4 342.7 360.0C333.2 345.6 324.6 332.6 316.4 320.0C308.1 307.4 301.6 300.8 297.0 290.0C292.5 279.2 294.4 271.2 290.9 260.0C287.4 248.8 279.8 240.6 277.7 228.0C275.6 215.4 279.6 203.1 279.5 190.0C279.3 176.9 277.8 165.4 276.8 155.0C275.9 144.6 274.0 140.5 274.2 132.0C274.3 123.5 276.4 116.5 277.7 108.0C279.0 99.5 279.3 94.0 281.2 85.0C283.1 76.0 325.0 59.4 288.3 58.0C251.6 56.6 115.3 73.6 77.3 77.0Z" clip-path="url(#bcClip)"/><path class="pen" d="M77.3 77.0C78.1 79.3 80.6 86.4 81.7 90.0C82.8 93.6 81.7 94.1 83.5 97.0C85.2 99.9 88.7 102.0 91.4 106.0C94.1 110.0 95.9 114.7 98.4 119.0C101.0 123.3 102.9 126.2 105.5 130.0C108.0 133.8 109.6 137.5 112.5 140.0C115.3 142.5 119.4 141.7 121.3 144.0C123.2 146.3 124.3 150.7 123.0 153.0C121.8 155.3 116.9 155.7 114.2 157.0C111.6 158.3 107.8 158.9 108.1 160.0C108.4 161.1 114.9 160.3 116.0 163.0C117.1 165.7 113.9 171.0 114.2 175.0C114.6 179.0 113.8 180.5 117.8 185.0C121.7 189.5 131.0 192.4 136.2 200.0C141.4 207.6 142.8 219.8 146.8 227.0C150.7 234.2 153.9 235.9 158.2 240.0C162.5 244.1 167.2 243.7 170.5 250.0C173.8 256.3 176.2 267.8 176.6 275.0C177.1 282.2 171.1 284.6 173.1 290.0C175.2 295.4 184.4 297.8 188.1 305.0C191.7 312.2 188.4 320.6 193.3 330.0C198.2 339.4 206.6 348.0 215.3 357.0C224.0 366.0 232.2 371.4 241.7 380.0C251.2 388.6 258.1 394.2 268.0 405.0C278.0 415.8 287.5 428.7 297.0 440.0C306.5 451.3 313.6 457.2 320.8 468.0C327.9 478.8 332.3 489.7 336.6 500.0C340.9 510.3 345.8 518.3 344.5 525.0C343.2 531.7 339.4 532.5 329.6 537.0C319.7 541.5 303.1 548.6 290.0 550.0C276.9 551.4 260.6 543.2 256.6 545.0C252.7 546.8 262.8 554.6 268.0 560.0C273.3 565.4 275.3 565.1 285.6 575.0C295.9 584.9 310.9 602.4 325.2 615.0C339.4 627.6 353.6 637.3 364.7 645.0C375.8 652.7 375.6 652.6 386.7 658.0C397.8 663.4 410.4 667.4 426.2 675.0C442.0 682.6 461.9 690.1 474.6 700.0C487.2 709.9 489.4 719.2 496.5 730.0C503.7 740.8 510.2 746.5 514.1 760.0C518.1 773.5 519.3 788.8 518.5 805.0C517.7 821.2 505.0 836.5 509.7 850.0C514.5 863.5 530.6 871.0 544.9 880.0C559.1 889.0 573.0 890.1 588.8 900.0C604.6 909.9 616.9 921.5 632.7 935.0C648.6 948.5 665.6 962.4 676.7 975.0C687.8 987.6 688.3 992.9 694.3 1005.0C700.3 1017.1 703.6 1038.4 710.1 1042.0C716.6 1045.6 722.5 1030.8 730.3 1025.0C738.0 1019.2 749.3 1019.0 753.1 1010.0C756.9 1001.0 755.7 984.9 751.4 975.0C747.1 965.1 737.3 963.1 729.4 955.0C721.5 946.9 715.4 936.3 707.4 930.0C699.5 923.7 692.6 924.5 685.5 920.0C678.4 915.5 674.2 908.6 667.9 905.0C661.6 901.4 655.1 904.5 650.3 900.0C645.6 895.5 642.8 890.8 641.5 880.0C640.3 869.2 648.0 854.4 643.3 840.0C638.5 825.6 624.2 814.4 615.2 800.0C606.2 785.6 598.6 772.8 593.2 760.0C587.8 747.2 590.8 739.8 585.3 729.0C579.8 718.2 570.5 709.7 562.4 700.0C554.4 690.3 546.5 685.6 540.5 675.0C534.5 664.4 535.7 655.2 529.0 641.0C522.4 626.8 512.6 610.6 503.6 596.0C494.5 581.4 487.3 573.7 479.0 560.0C470.6 546.3 463.3 533.5 457.0 520.0C450.7 506.5 452.5 497.6 443.8 485.0C435.1 472.4 418.1 459.0 408.6 450.0C399.2 441.0 398.2 444.0 391.1 435.0C384.0 426.0 377.8 413.5 369.1 400.0C360.4 386.5 352.2 374.4 342.7 360.0C333.2 345.6 324.6 332.6 316.4 320.0C308.1 307.4 301.6 300.8 297.0 290.0C292.5 279.2 294.4 271.2 290.9 260.0C287.4 248.8 279.8 240.6 277.7 228.0C275.6 215.4 279.6 203.1 279.5 190.0C279.3 176.9 277.8 165.4 276.8 155.0C275.9 144.6 274.0 140.5 274.2 132.0C274.3 123.5 276.4 116.5 277.7 108.0C279.0 99.5 279.3 94.0 281.2 85.0C283.1 76.0 325.0 59.4 288.3 58.0C251.6 56.6 115.3 73.6 77.3 77.0Z" pathLength="1"/><path class="st" d="M340.1 530.0 L451.7 530.0"/><g class="ml"><text class="lab" x="211" y="25" text-anchor="middle">ESTADOS UNIDOS</text><text class="lab" x="62" y="490" text-anchor="middle" transform="rotate(-62 62 490)">OCÉANO PACÍFICO</text><text class="lab" x="567" y="575" text-anchor="middle" transform="rotate(-58 567 575)">GOLFO DE CALIFORNIA</text><text class="lab" x="677" y="340" text-anchor="middle">SONORA</text><text class="big" x="260" y="307" text-anchor="middle" transform="rotate(-48 260 307)">BAJA CALIFORNIA</text><text class="lab" x="537" y="755" text-anchor="middle" transform="rotate(-52 537 755)">BAJA CALIFORNIA SUR</text></g><g class="mcs"><g class="mc" style="--d:1.70s"><circle cx="86.1" cy="78.0" r="3.6"/><text class="ct" x="74" y="83" text-anchor="end">Tijuana</text></g><g class="mc" style="--d:1.82s"><circle cx="120.4" cy="73.0" r="3.6"/><text class="ct" x="132" y="78" text-anchor="start">Tecate</text></g><g class="mc" style="--d:1.94s"><circle cx="224.1" cy="67.0" r="3.6"/><text class="ct" x="236" y="72" text-anchor="start">Mexicali</text></g><g class="mc" style="--d:2.06s"><circle cx="123.0" cy="143.0" r="3.6"/><text class="ct" x="111" y="148" text-anchor="end">Ensenada</text></g><g class="mc" style="--d:2.30s"><circle cx="675.8" cy="916.0" r="3.6"/><text class="ct" x="688" y="921" text-anchor="start">La Paz</text></g></g><g class="mv"><circle class="r2" cx="124.8" cy="121.0" r="22"/><circle class="r1" cx="124.8" cy="121.0" r="9"/><circle class="d" cx="124.8" cy="121.0" r="5"/><path class="ld" d="M132.8 127.0 L194.8 185.0 L314.8 185.0"/><text class="vt" x="203" y="177" text-anchor="start">Valle de Guadalupe</text><text class="vs" x="203" y="205" text-anchor="start">L.A. CETTO · KM 73.5</text></g></svg>
+      <div class="rg-tx">
+        <span class="k">Dónde nace el vino</span>
+        <p>El Valle de Guadalupe está en el norte de Baja California, entre la sierra y el océano Pacífico. Veranos secos y noches frescas por la brisa del mar: un clima mediterráneo, el que pide la vid.</p>
+        <p>Aquí, en la carretera Tecate–Ensenada km 73.5, está la casa de la familia y la mayor parte de sus 1,200 hectáreas de viñedo.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Una frase -->
+<section class="bq" aria-label="Siete generaciones">
+  <div class="fade"><p>“De una montaña de Trento al Valle de Guadalupe: siete generaciones y un mismo oficio.”</p><small>Cien años en México en 2028</small></div>
+</section>
+
+<!-- Foto alta: el Valle -->
+<section class="bt" aria-label="El Valle">
+  <figure class="bt-f"><img src="media/x-valle-sierra.jpg" alt="Viñedos del Valle de Guadalupe con la sierra al fondo" loading="lazy" style="object-position:50% 58%">
+    <figcaption class="bt-o"><span class="bt-k">El Valle</span><span class="bt-q">Sol, sierra y brisa del Pacífico: el Valle hace su parte.</span></figcaption></figure>
+</section>
+
+<!-- Hoy -->
+<section class="hoy" aria-labelledby="hoyT">
+  <video id="hoyVid" data-amb="Hoy" data-src="media/v-hoja.mp4" aria-hidden="true"></video>
+  <div class="top">
+    <h2 class="h2 lines" id="hoyT"><span class="ln"><span>Lo que empezó </span></span><span class="ln"><span>en una montaña </span></span><span class="ln"><span>de Trento </span></span></h2>
+  </div>
+  <p class="hoy-p">Hoy son 1,200 hectáreas en el Valle, 90 de ellas orgánicas certificadas, y 26 varietales que llegan a más de 20 países. Diez veces, L.A.&nbsp;Cetto ha sido Bodega Mexicana del Año en el New York International Competition. <a class="ul hoy-a" href="lacetto-trayectoria.html">Conoce nuestra trayectoria</a><a class="ul hoy-a" href="lacetto-coleccion.html">Conoce la Colección Premiada</a></p>
+</section>
+
+<!-- Foto alta: la mesa -->
+<section class="bt" aria-label="Al aire libre">
+  <figure class="bt-f"><img src="media/x-mesa-picnic.jpg" alt="Picnic con copas de vino tinto, pan, fruta y flores sobre un mantel" loading="lazy" style="object-position:50% 45%">
+    <figcaption class="bt-o"><span class="bt-k">Al aire libre</span><span class="bt-q">Un vino se termina de hacer cuando se comparte.</span></figcaption></figure>
+</section>
+
+<!-- Vinos de la familia -->
+<section class="sec wrap" aria-labelledby="vT">
+  <div class="sh rise"><h2 class="h2" id="vT">La historia, en la copa</h2><a class="ul" href="lacetto-tienda.html">Ver todos los vinos</a></div>
+  <div class="prods" id="famProds" style="grid-template-columns:repeat(4,minmax(0,1fr))"></div>
+</section>
+
+<!-- Visita -->
+<section class="visit" aria-labelledby="visT">
+  <img src="https://www.lacetto.mx/cdn/shop/files/DSC0259.jpg?width=2400" alt="Viñedo con flores en el Valle de Guadalupe" loading="lazy">
+  <div class="xin">
+    <div>
+      <h2 class="h2 lines" id="visT"><span class="ln"><span>Visítanos en el Valle </span></span></h2>
+      <p>Carretera Tecate–Ensenada km 73.5, Valle de Guadalupe, Baja California.</p>
+    </div>
+    <div class="ctas"><a class="btn btn-light" href="lacetto-experiencias.html#reservar">Reservar una cata</a><a class="ul" href="lacetto-tienda.html">Comprar vinos</a></div>
+  </div>
+</section>
+</main>
+
+<div id="chromeBottom"></div>
+
+<script src="cetto-base.js"></script>
+<script>
+renderChrome({page:'hist'});
+document.getElementById('famProds').innerHTML=['nebrp','terra','conc','viog'].map(card).join('');
+
+/* Línea del tiempo: el scroll vertical la recorre en horizontal (solo en pantallas anchas) */
+const tl=document.getElementById('tl'),track=document.getElementById('tlTrack'),wide=matchMedia('(min-width:901px)');
+function sizeTl(){if(!wide.matches||reduceMotion){tl.style.height='';track.style.transform='';return}
+  const dist=Math.max(0,track.scrollWidth-innerWidth);tl.style.height=(innerHeight+dist)+'px';tlTick()}
+function tlTick(){if(!wide.matches||reduceMotion)return;const r=tl.getBoundingClientRect(),total=r.height-innerHeight,pr=Math.min(1,Math.max(0,-r.top/total));
+  const dist=Math.max(0,track.scrollWidth-innerWidth);track.style.transform='translate3d('+(-pr*dist).toFixed(1)+'px,0,0)';tl.style.setProperty('--tp',pr.toFixed(3))}
+addEventListener('scroll',()=>requestAnimationFrame(tlTick),{passive:true});
+addEventListener('resize',sizeTl);wide.addEventListener('change',sizeTl);
+addEventListener('load',sizeTl);sizeTl();
+
+/* Videos: cargan y se reproducen solo en pantalla */
+const vio=new IntersectionObserver(es=>es.forEach(en=>{const v=en.target;if(en.isIntersecting){if(!v.getAttribute('src'))v.src=v.dataset.src;if(!reduceMotion)v.play().catch(()=>{})}else v.pause()}),{threshold:.15});
+document.querySelectorAll('video[data-src]:not([data-amb])').forEach(v=>vio.observe(v));
+
+/* Pantallas en blanco y negro, fotos altas y el mapa: entran al verse */
+{const io=new IntersectionObserver(es=>es.forEach(en=>{if(en.isIntersecting){en.target.classList.add('in');io.unobserve(en.target)}}),{threshold:.25});
+ document.querySelectorAll('.bwf,.bt,.rg').forEach(el=>io.observe(el))}
+/* El Valle: primero el título sobre la vista aérea; a la mitad del recorrido aparece el mapa */
+const rg=document.getElementById('valle');
+function rgTick(){const r=rg.getBoundingClientRect(),run=r.height-innerHeight;if(run<=0)return;const pr=-r.top/run;
+  if(pr>.36&&!rg.classList.contains('p2'))rg.classList.add('p2');else if(pr<.3&&rg.classList.contains('p2'))rg.classList.remove('p2')}
+addEventListener('scroll',()=>requestAnimationFrame(rgTick),{passive:true});rgTick();
+
+/* Portada: las fotos de archivo se turnan cada 6 s con fundido y acercamiento; arranca al salir la pantalla de carga */
+{const sl=[...document.querySelectorAll('#hSl img')],pp=document.getElementById('hPP');let i=0,tm=0,paused=false;
+ const paint=()=>{pp.innerHTML=paused?PP_PLAY:PP_PAUSE;pp.setAttribute('aria-label',(paused?'Reproducir':'Pausar')+' las fotos de la portada');sl.forEach(im=>im.style.animationPlayState=paused?'paused':'')};
+ const next=()=>{const a=sl[i];i=(i+1)%sl.length;const b=sl[i];b.classList.remove('on','out');void b.offsetWidth;b.classList.add('on');a.classList.add('out');setTimeout(()=>{if(a!==sl[i])a.classList.remove('on','out')},1900)};
+ const run=()=>{clearInterval(tm);if(!paused&&!reduceMotion)tm=setInterval(()=>{if(!document.hidden)next()},6000)};
+ pp.onclick=()=>{paused=!paused;paint();run()};paint();
+ if(reduceMotion){paused=true;paint()}
+ const go=()=>{if(document.documentElement.classList.contains('ld-on'))return false;run();return true};
+ if(!go()){const mo=new MutationObserver(()=>{if(go())mo.disconnect()});mo.observe(document.documentElement,{attributes:true,attributeFilter:['class']})}}
+
+observeReveals();
+</script>
+</body>
+</html>

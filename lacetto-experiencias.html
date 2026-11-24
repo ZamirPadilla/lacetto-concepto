@@ -1,0 +1,959 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>L.A. Cetto · Experiencias</title>
+<meta name="description" content="Concepto de rediseño de la página de experiencias de L.A. Cetto: degustaciones, experiencias privadas, reserva, eventos y boutiques. Datos e imágenes del sitio actual como referencia temporal.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baskervville:ital@0;1&family=DM+Sans:opsz,wght@9..40,400..600&family=Playfair:opsz,wght@5..1200,300..500&display=swap" rel="stylesheet">
+<link rel="icon" type="image/svg+xml" href="media/favicon.svg">
+<!-- compartir -->
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="apple-touch-icon" href="media/apple-touch-icon.png">
+<meta name="theme-color" content="#F3F1EC">
+<meta name="robots" content="noindex, nofollow">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="es_MX">
+<meta property="og:site_name" content="L.A. Cetto · Concepto de rediseño">
+<meta property="og:title" content="L.A. Cetto · Experiencias">
+<meta property="og:description" content="Concepto de rediseño de la página de experiencias de L.A. Cetto: degustaciones, experiencias privadas, reserva, eventos y boutiques. Datos e imágenes del sitio actual como referencia temporal.">
+<meta property="og:url" content="https://zamirpadilla.github.io/lacetto-concepto/lacetto-experiencias.html">
+<meta property="og:image" content="https://zamirpadilla.github.io/lacetto-concepto/media/og-banner.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Chardonnay Reserva Privada de L.A. Cetto sobre una roca frente al mar, con el texto: Una boutique de vinos, de punta a punta">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="L.A. Cetto · Experiencias">
+<meta name="twitter:description" content="Concepto de rediseño de la página de experiencias de L.A. Cetto: degustaciones, experiencias privadas, reserva, eventos y boutiques. Datos e imágenes del sitio actual como referencia temporal.">
+<meta name="twitter:image" content="https://zamirpadilla.github.io/lacetto-concepto/media/og-banner.jpg">
+<!-- /compartir -->
+<link rel="stylesheet" href="cetto-base.css">
+<style>
+/* Portada */
+.x-hero{position:relative;height:100svh;min-height:640px;color:#F3EEE6;background:#120d0a;overflow:hidden;display:flex;flex-direction:column;justify-content:flex-end}
+.x-hero video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.x-hero::after{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(10,7,5,.5) 0%,rgba(10,7,5,0) 26%,rgba(10,7,5,0) 44%,rgba(10,7,5,.74) 100%)}
+.x-hero .hin{position:relative;z-index:2;padding:0 var(--m) clamp(22px,3vw,40px)}
+.x-hero .vctl{top:calc(72px + 16px);bottom:auto}
+.x-hero .duo-line{margin-bottom:clamp(18px,2vw,28px);gap:12px}
+.x-hero .duo-line .rule{display:none}
+.x-hero .duo-line .it::before{content:"·";margin-right:12px;font-style:normal;opacity:.6}
+.x-hero .row{display:grid;grid-template-columns:minmax(0,1fr) minmax(260px,400px);gap:32px;align-items:end}
+.x-hero .row p{font:italic 400 19px/1.45 var(--serif);color:rgba(243,238,230,.9)}
+.x-hero .ctas{display:flex;flex-wrap:wrap;align-items:center;gap:14px 26px;margin-top:24px}
+
+/* Pausar video de fondo */
+.vctl{position:absolute;right:var(--m);bottom:clamp(22px,3vw,40px);z-index:3;display:inline-flex;align-items:center;gap:8px;height:36px;padding:0 14px;border:1px solid rgba(243,238,230,.55);color:#F3EEE6;background:rgba(16,12,9,.28);font:500 11px/1 var(--sans);letter-spacing:.09em;text-transform:uppercase;backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px)}
+.vctl:hover{background:rgba(16,12,9,.5)}
+.vctl:focus-visible{outline:2px solid #F3EEE6;outline-offset:3px}
+.vctl .pl{display:none}
+.vctl[aria-pressed="true"] .pa{display:none}
+.vctl[aria-pressed="true"] .pl{display:inline}
+
+/* Introducción: centrada y limpia */
+.xi{max-width:1000px;margin:0 auto;text-align:center}
+.xi .lead2{font:400 clamp(28px,3vw,46px)/1.22 var(--serif);letter-spacing:-.012em;text-wrap:balance}
+.xi .lead2 em{font-style:italic}
+.xi .sub{color:var(--ink2);max-width:52ch;margin:24px auto 0}
+
+/* Paneles a pantalla completa en damero (como Club Cetto): degustaciones, Don Luis y Angelo.
+   Mitad foto, mitad texto; las fotos alternan de lado y se tocan en las esquinas. Textos chicos y centrados. */
+.sp{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);min-height:100svh;background:var(--bg)}
+.sp-ph{position:relative;margin:0;overflow:hidden;background:#1b1410;min-height:560px}
+.sp-ph>img,.sp-ph>video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform 2.2s var(--ease),opacity .3s}
+.sp:hover .sp-ph>img{transform:scale(1.03)}
+.sp.r .sp-ph{order:2}
+.sp-tx{display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:clamp(56px,6vw,104px) clamp(28px,5vw,96px)}
+.sp-k{font:500 10.5px/1.4 var(--sans);letter-spacing:.16em;text-transform:uppercase;color:var(--ink3)}
+.sp-t{margin-top:18px;font:400 clamp(32px,2.9vw,48px)/1.04 var(--serif);letter-spacing:-.015em}
+.sp-t em{font-style:italic}
+.sp-p{margin-top:16px;max-width:40ch;font-size:15px;line-height:1.65;color:var(--ink2)}
+.sp .fine{font-size:12px;color:var(--ink3);margin-top:12px}
+.cap-ov{position:absolute;left:16px;bottom:14px;z-index:2;color:#fff;font:italic 400 17px/1.2 var(--serif);text-shadow:0 1px 14px rgba(0,0,0,.4)}
+.cap-ov.r{left:auto;right:16px;font:500 10.5px/1 var(--sans);letter-spacing:.12em;text-transform:uppercase;font-style:normal}
+/* entrada escalonada de los textos */
+.sq>*{opacity:0;transform:translateY(16px);transition:opacity 1s var(--ease),transform 1.2s var(--ease);transition-delay:calc(var(--i,0) * 90ms)}
+.sq.in>*{opacity:1;transform:none}
+/* la carta de degustaciones: divisores grises y finos */
+.carta-list{list-style:none;width:100%;max-width:440px;margin:30px 0 0;padding:0}
+.cr{display:grid;justify-items:center;gap:8px;padding:18px 0;border-top:1px solid var(--line);cursor:pointer}
+.cr:last-child{border-bottom:1px solid var(--line)}
+.cr h3{font:400 clamp(22px,1.8vw,28px)/1.1 var(--serif);letter-spacing:-.01em;transition:color .3s}
+.cr.on h3{font-style:italic}
+.cr-m{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:6px 12px;font-size:13.5px;color:var(--ink2)}
+.cr-m .price{color:var(--ink);font-variant-numeric:lining-nums tabular-nums}
+.cr-b{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:8px 22px;margin-top:2px}
+.cr-b .ul.lo{color:var(--ink3)}
+.copas{display:flex;gap:4px;align-items:flex-end;color:var(--ink)}
+.copas svg{width:12px;height:21px;display:block}
+/* Don Luis y Angelo */
+.xp-list{list-style:none;display:grid;gap:14px;width:100%;max-width:400px;margin:26px 0 0;padding:0}
+.xp-list li{display:grid;gap:4px}
+.xp-list b{font:500 10.5px/1.4 var(--sans);letter-spacing:.14em;text-transform:uppercase;color:var(--ink3)}
+.xp-list span{font:400 17px/1.4 var(--serif)}
+.xp-buy{display:flex;flex-direction:column;align-items:center;gap:18px;margin-top:30px}
+.xp-buy .pr,.xc-buy .pr{font:400 26px/1 var(--serif);font-variant-numeric:lining-nums tabular-nums}
+.xp-buy .pr small{display:block;margin-top:6px;font:400 12px/1 var(--sans);color:var(--ink3)}
+.xp-buy .r{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:14px 24px}
+
+/* Experiencia Cetto */
+.xc{position:relative;min-height:100svh;color:#F3EEE6;background:#16110d;overflow:hidden;display:flex;align-items:flex-end}
+.xc>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transform:scale(var(--z,1.1));will-change:transform}
+.xc::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(14,10,7,.5) 0%,rgba(14,10,7,.28) 22%,rgba(14,10,7,.64) 50%,rgba(14,10,7,.9) 100%)}
+.xc-in{position:relative;z-index:2;width:100%;padding:clamp(96px,10vw,150px) var(--m) clamp(28px,4vw,56px);display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:clamp(28px,5vw,90px);align-items:end}
+.xc h3{font:400 clamp(50px,7.4vw,118px)/.94 var(--serif);letter-spacing:-.022em}
+.xc-l p{font:italic 400 clamp(18px,1.5vw,22px)/1.45 var(--serif);color:rgba(243,238,230,.88);max-width:40ch;margin-top:22px}
+.xc-list{list-style:none;display:grid;gap:10px;margin:0;padding:0}
+.xc-list li{font:400 clamp(18px,1.5vw,22px)/1.3 var(--serif)}
+.xc-buy{display:flex;align-items:center;flex-wrap:wrap;gap:16px 36px;margin-top:30px}
+.xc-buy small{display:block;font-size:13px;color:rgba(243,238,230,.7);margin-top:6px}
+
+/* Así es la visita: título arriba, foto a pantalla completa a la izquierda y el paso que cambia a la derecha */
+.seq{padding-top:var(--sec)}
+.seq-hd{display:flex;align-items:flex-end;justify-content:space-between;gap:20px 32px;padding:0 var(--m);margin-bottom:clamp(26px,3vw,44px)}
+.seq-hd p{max-width:30ch;font-size:14.5px;color:var(--ink2)}
+.seq-run{position:relative;height:calc(var(--n,5) * 78svh + 22svh)}
+.seq-stage{position:sticky;top:0;height:100svh;display:grid;grid-template-columns:minmax(0,1.08fr) minmax(0,1fr);overflow:hidden}
+.seq-media{position:relative;overflow:hidden;background:#1b1410}
+.seq-media>img,.seq-media>video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transform:scale(1.04);transition:opacity 1s var(--ease),transform 2.4s var(--ease)}
+.seq-media>.on{opacity:1;transform:none}
+.seq-media .v-pp{transition:opacity .4s}
+.seq-media:not(.has-v) .v-pp{opacity:0;visibility:hidden;pointer-events:none}
+.seq-side{position:relative}
+.seq-steps{list-style:none;margin:0;padding:0;position:absolute;inset:0}
+.seq-steps li{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:clamp(56px,6vw,104px) clamp(28px,5vw,96px);opacity:0;transform:translateY(18px);transition:opacity .7s var(--ease),transform 1s var(--ease);pointer-events:none}
+.seq-steps li.on{opacity:1;transform:none;pointer-events:auto;transition-delay:.15s}
+.seq-steps .n{font:500 10.5px/1 var(--sans);letter-spacing:.16em;text-transform:uppercase;color:var(--ink3)}
+.seq-steps h3{font:400 clamp(32px,2.9vw,48px)/1.04 var(--serif);letter-spacing:-.015em;margin:18px 0 14px}
+.seq-steps p{color:var(--ink2);max-width:36ch;font-size:15px;line-height:1.65}
+.seq-steps .vm{display:none}
+.seq-dots{position:absolute;left:50%;bottom:clamp(28px,5vh,56px);transform:translateX(-50%);display:flex;gap:8px}
+.seq-dots i{width:24px;height:1px;background:var(--ink);opacity:.18;transition:opacity .4s}
+.seq-dots i.on{opacity:.85}
+
+/* Reservar */
+.book{background:var(--bg2);padding-block:var(--sec);scroll-margin-top:40px}
+.bk-hd{display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:16px 40px;margin-bottom:clamp(28px,3vw,44px)}
+.bk-hd .cap{color:var(--ink3)}
+.bk-hd .h2{margin-top:14px}
+.bk-hd p{max-width:40ch;color:var(--ink2)}
+.bk-pick{border:0;margin:0;padding:0;min-width:0}
+/* las opciones: foto, nombre, para quién y precio */
+.bk-exp{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:clamp(12px,1.4vw,20px)}
+.bk-c{position:relative;display:flex;flex-direction:column;cursor:pointer}
+.bk-c input{position:absolute;width:1px;height:1px;opacity:0;margin:0;pointer-events:none}
+.bk-c .ph{position:relative;display:block;aspect-ratio:4/5;overflow:hidden;background:var(--bg)}
+.bk-c .ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform 1.4s var(--ease),opacity .45s var(--ease),filter .45s var(--ease)}
+.bk-c:hover .ph img{transform:scale(1.04)}
+.bk-exp:has(input:checked) .bk-c:not(:has(input:checked)) .ph img{opacity:.5;filter:saturate(.6)}
+.bk-c .ck{position:absolute;right:10px;top:10px;width:30px;height:30px;border-radius:50%;background:var(--bg);color:var(--ink);display:grid;place-items:center;opacity:0;transform:scale(.7);transition:opacity .3s,transform .4s var(--ease)}
+.bk-c:has(input:checked) .ck{opacity:1;transform:none}
+.bk-c:has(input:focus-visible) .ph{outline:2px solid var(--ink);outline-offset:3px}
+.bk-c b{margin-top:14px;font:400 20px/1.15 var(--serif)}
+.bk-c:has(input:checked) b{font-style:italic}
+.bk-c .w{margin-top:6px;font-size:13px;line-height:1.45;color:var(--ink2)}
+.bk-c .op{margin-top:8px;font-size:13px;color:var(--ink3)}
+.bk-c .op .price{color:var(--ink);font-size:14px}
+.bk-c:has(input:disabled){cursor:default}
+.bk-c:has(input:disabled:not(:checked)){opacity:.45}
+/* fecha, horario y personas: aparecen al elegir */
+.bk-flow{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(300px,1fr);gap:clamp(28px,5vw,90px);align-items:start;margin-top:clamp(44px,5vw,80px);scroll-margin-top:90px}
+.bk-flow[hidden]{display:none}
+.bk-flow.in{animation:bkIn .9s var(--ease) both}
+@keyframes bkIn{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}
+.bk-f{border:0;padding:0 0 clamp(30px,3vw,42px);min-width:0}
+/* fecha a la izquierda; horario y personas a su lado */
+.bk-form{display:grid;grid-template-columns:minmax(0,430px) minmax(0,1fr);gap:0 clamp(32px,4vw,64px);align-items:start}
+.bk-form>.bk-f:nth-child(1){grid-row:span 2}
+.bk-form>.bk-pay{grid-column:1/-1}
+.bk-f legend{float:left;width:100%;margin-bottom:16px;color:var(--ink2)}
+.bk-f legend+*{clear:both}
+.bk-o{display:grid;grid-template-columns:16px minmax(0,1fr) auto;gap:12px;align-items:center;padding:13px 15px;border:1px solid rgba(43,44,45,.2);cursor:pointer;transition:border-color .2s,background .2s}
+.bk-o:hover{border-color:rgba(43,44,45,.5)}
+.bk-o:has(input:checked){border-color:var(--ink);background:var(--panel)}
+.bk-o:has(input:disabled){cursor:default}
+.bk-o:has(input:disabled:not(:checked)){opacity:.45}
+.bk-o:focus-within{outline:2px solid var(--ink);outline-offset:2px}
+.bk-o input{width:16px;height:16px;accent-color:var(--ink);margin:0}
+.bk-o b{display:block;font:400 18px/1.15 var(--serif)}
+.bk-o small{display:block;font-size:12.5px;color:var(--ink3);margin-top:2px}
+.bk-o .op{font-size:15px;white-space:nowrap;text-align:right}
+.bk-o .op small{margin-top:0}
+.cal{max-width:430px}
+.cal-h{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
+.cal-h b{font:400 22px/1 var(--serif)}
+.cal-h button{width:40px;height:40px;border:1px solid rgba(43,44,45,.25);display:grid;place-items:center}
+.cal-h button:disabled{opacity:.3;cursor:default}
+.cal-h button:first-child svg{transform:rotate(180deg)}
+.cal-g{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:3px}
+.cal-g .dw{font:500 10.5px/1 var(--sans);letter-spacing:.09em;color:var(--ink3);text-align:center;padding:8px 0}
+.cal-g button{aspect-ratio:1/1;display:grid;place-items:center;font-size:14.5px;font-variant-numeric:tabular-nums;border:1px solid transparent;position:relative;text-align:center}
+.cal-g button:hover:not(:disabled){border-color:var(--ink)}
+.cal-g button:disabled{color:var(--ink3);opacity:.4;cursor:default}
+.cal-g button[aria-pressed="true"]{background:var(--ink);color:var(--bg)}
+.cal-g button.today::after{content:"";position:absolute;left:50%;bottom:5px;width:4px;height:4px;border-radius:50%;background:currentColor;transform:translateX(-50%)}
+.tslots{display:flex;flex-wrap:wrap;gap:8px}
+.tslots button{height:44px;padding:0 18px;border:1px solid rgba(43,44,45,.25);font-variant-numeric:tabular-nums;font-size:14.5px}
+.tslots button:hover:not(:disabled){border-color:var(--ink)}
+.tslots button[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.tslots button:disabled{color:var(--ink3);text-decoration:line-through;cursor:default;opacity:.7}
+.tslots .empty{font-size:14px;color:var(--ink3)}
+.qsel{display:inline-flex;align-items:center;border:1px solid rgba(43,44,45,.25);height:48px;background:var(--bg)}
+.qsel button{width:44px;height:46px;font-size:18px}
+.qsel button:disabled{opacity:.3;cursor:default}
+.qsel span{min-width:108px;padding:0 6px;text-align:center;font-variant-numeric:tabular-nums}
+.bk-note{font-size:13.5px;color:var(--ink2);margin-top:12px}
+.bk-note.hi{color:var(--wine)}
+.bk-note a{border-bottom:1px solid currentColor}
+.bk-sum{position:sticky;top:96px;background:var(--panel);padding:clamp(20px,2vw,30px)}
+.bk-sum .cap{color:var(--ink3)}
+.bk-sum h3{font:400 32px/1.05 var(--serif);margin:12px 0 4px}
+.bk-sum .k{font-size:13px;color:var(--ink3)}
+.bk-sum dl{margin-top:20px;border-top:1px solid var(--line)}
+.bk-sum dl div{display:flex;justify-content:space-between;gap:12px;padding:11px 0;border-bottom:1px solid var(--line);font-size:14.5px}
+.bk-sum dt{color:var(--ink2)}
+.bk-sum dd{text-align:right}
+.bk-sum dd:first-letter{text-transform:uppercase}
+.bk-sum .ln{display:flex;justify-content:space-between;font-size:14px;color:var(--ink2);margin-top:16px}
+.bk-sum .tot{display:flex;justify-content:space-between;align-items:baseline;margin:6px 0 18px}
+.bk-sum .tot b{font:500 30px/1 var(--sans);font-variant-numeric:lining-nums tabular-nums}
+.bk-err{font-size:13px;color:var(--wine);margin:-6px 0 12px}
+.bk-sum .btn{width:100%}
+.bk-sum .btn:disabled{opacity:.42;cursor:not-allowed}
+.bk-sum .fine{font-size:12.5px;color:var(--ink3);margin-top:12px;line-height:1.5}
+.bk-ok{display:none}
+.book.done .bk-form,.book.done .bk-pick,.book.done .bk-hd p{display:none}
+.book.done .bk-flow{margin-top:0}
+.book.done .bk-ok{display:block}
+.bk-ok .big{font:400 clamp(30px,3.2vw,48px)/1.15 var(--serif);letter-spacing:-.01em;margin:14px 0 18px;max-width:22ch}
+.bk-ok .big:first-letter{text-transform:uppercase}
+.bk-ok p{color:var(--ink2);max-width:46ch}
+.bk-ok .ctas{display:flex;flex-wrap:wrap;align-items:center;gap:14px 26px;margin-top:26px}
+.bk-ok .code{font-variant-numeric:tabular-nums;color:var(--ink)}
+.bk-ok .fine{font-size:12.5px;color:var(--ink3)}
+/* Paso 5: tus datos y pago */
+.bk-g{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px 22px}
+.bk-in.bk-w{grid-column:1/-1}
+.bk-in label{display:block;font:500 10.5px/1.4 var(--sans);letter-spacing:.09em;text-transform:uppercase;color:var(--ink3);margin-bottom:4px}
+.bk-in input,.bk-in textarea{width:100%;height:44px;border:0;border-bottom:1px solid rgba(43,44,45,.6);background:transparent;border-radius:0;font:inherit;font-size:16px;color:var(--ink);padding:0;-webkit-appearance:none;appearance:none}
+.bk-in textarea{height:auto;min-height:76px;padding-top:8px;resize:vertical}
+.bk-in input:focus,.bk-in textarea:focus{outline:none;border-bottom-color:var(--ink)}
+.bk-in input:focus-visible,.bk-in textarea:focus-visible{box-shadow:0 2px 0 var(--ink)}
+.bk-in [aria-invalid="true"]{border-bottom-color:var(--wine);box-shadow:0 2px 0 var(--wine)}
+.bk-pay legend:focus{outline:none}
+.bk-pay legend:focus-visible{outline:2px solid var(--ink);outline-offset:4px}
+.bk-in input::placeholder,.bk-in textarea::placeholder{color:var(--ink3);opacity:.75}
+.bk-e{display:block;font-style:normal;font-size:12.5px;color:var(--wine);margin-top:6px}
+.bk-e:empty{display:none}
+.bk-chk{display:grid;grid-template-columns:18px minmax(0,1fr);gap:10px;align-items:start;font-size:14.5px;margin-top:22px;cursor:pointer}
+.bk-chk input{width:18px;height:18px;accent-color:var(--ink);margin:2px 0 0}
+.bk-chk+.bk-e{margin-left:28px}
+.bk-giftf{margin-top:16px;padding:clamp(16px,2vw,24px);background:var(--panel)}
+.bk-cnt{display:block;text-align:right;font-size:12px;color:var(--ink3);margin-top:6px}
+.bk-pm{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin-top:26px}
+.bk-card{margin-top:20px}
+.bk-proto{font-size:12.5px;color:var(--ink3);margin-top:14px}
+.ul-in{color:var(--ink);border-bottom:1px solid currentColor;font-size:inherit;padding:0;margin-left:4px}
+.bk-lead a{border-bottom:1px solid currentColor;color:var(--ink)}
+.bk-lead b{font-weight:500;color:var(--ink)}
+.bk-lock{font-size:13px;color:var(--ink2);margin-top:18px}
+
+/* Eventos */
+.ev-band{position:relative;aspect-ratio:1920/560;overflow:hidden;background:var(--bg2);margin-bottom:clamp(32px,4vw,64px)}
+.ev-band img{width:100%;height:100%;object-fit:cover}
+.ev-band figcaption{position:absolute;left:16px;bottom:14px;color:#fff;font:italic 400 18px/1.2 var(--serif);text-shadow:0 1px 14px rgba(0,0,0,.4)}
+.ev-in{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:clamp(28px,5vw,90px);align-items:start}
+.ev-tx .h2{margin:0 0 18px}
+.ev-tx .p{max-width:46ch}
+.ev-mail{font-size:14px;color:var(--ink2);margin-top:22px;display:flex;flex-wrap:wrap;gap:10px 16px;align-items:center}
+.ev-form{display:grid;gap:22px;background:var(--panel);padding:clamp(20px,2.4vw,36px)}
+.ev-form fieldset{border:0;min-width:0}
+.ev-form legend,.fl{display:block;font:500 10.5px/1.4 var(--sans);letter-spacing:.09em;text-transform:uppercase;color:var(--ink3);margin-bottom:8px}
+.ev-form .h3{font:400 28px/1.1 var(--serif)}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chips label{position:relative;display:inline-flex}
+.chips input{position:absolute;inset:0;opacity:0;margin:0;cursor:pointer}
+.chips span{display:inline-flex;align-items:center;height:40px;padding:0 16px;border:1px solid rgba(43,44,45,.25);font-size:14px;transition:background .2s,color .2s,border-color .2s}
+.chips input:checked+span{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.chips input:focus-visible+span{outline:2px solid var(--ink);outline-offset:2px}
+.ev-form input:not([type=radio]),.ev-form select,.ev-form textarea{width:100%;height:44px;border:0;border-bottom:1px solid rgba(43,44,45,.6);background:transparent;border-radius:0;font:inherit;font-size:16px;color:var(--ink);padding:0;appearance:none;-webkit-appearance:none}
+.ev-form select{background:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%232B2C2D' stroke-width='2'><path d='M6 9l6 6 6-6'/></svg>") no-repeat right 2px center}
+.ev-form textarea{height:92px;padding-top:10px;resize:vertical}
+.ev-form input:focus,.ev-form select:focus,.ev-form textarea:focus{outline:none;border-bottom-color:var(--ink)}
+.ev-form input:focus-visible,.ev-form select:focus-visible,.ev-form textarea:focus-visible{box-shadow:0 2px 0 var(--ink)}
+.ev-form [aria-invalid="true"]{border-bottom-color:var(--wine);box-shadow:0 2px 0 var(--wine)}
+.ev-e{display:block;font-style:normal;font-size:12.5px;color:var(--wine);margin-top:6px}
+.ev-e:empty{display:none}
+.f2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px}
+.ev-form .btn{justify-self:start}
+.ev-form .fine{font-size:12.5px;color:var(--ink3)}
+.ev-ok{background:var(--panel);padding:clamp(24px,3vw,44px)}
+.ev-ok b{display:block;font:400 clamp(26px,2.4vw,36px)/1.15 var(--serif);margin:12px 0 12px}
+.ev-ok p{color:var(--ink2)}
+
+/* Boutique CDMX */
+.cdmx{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);background:var(--dark);color:#EEE9E1}
+.cdmx-ph{position:relative;min-height:clamp(420px,44vw,680px);overflow:hidden}
+.cdmx-ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.cdmx-tx{padding:clamp(40px,6vw,100px) var(--m);display:flex;flex-direction:column;justify-content:center}
+.cdmx-tx .h2{margin-top:0}
+.cdmx-tx p{color:rgba(238,233,225,.78);max-width:46ch;margin-top:18px}
+.svc{list-style:none;display:flex;flex-wrap:wrap;margin:26px 0 22px}
+.svc li{font:italic 400 20px/1.4 var(--serif)}
+.svc li:not(:last-child)::after{content:"·";margin:0 12px;opacity:.5;font-style:normal}
+.cdmx address{font-style:normal;font-size:14px;color:rgba(238,233,225,.7);margin-bottom:26px}
+.cdmx .ctas{display:flex;flex-wrap:wrap;align-items:center;gap:14px 26px}
+
+/* Planea tu visita */
+.plan{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.25fr);gap:clamp(28px,5vw,90px);align-items:start}
+.plan-ad{font:400 clamp(22px,2vw,28px)/1.35 var(--serif);font-style:normal;margin:22px 0 26px}
+.plan-ctas{display:flex;flex-wrap:wrap;align-items:center;gap:14px 26px}
+.plan-list{list-style:none;display:grid;gap:22px;margin:0;padding:0}
+.plan-list li{display:grid;grid-template-columns:minmax(150px,.55fr) minmax(0,1.45fr);gap:6px 18px;font-size:14.5px}
+.plan-list b{font-weight:500}
+.plan-list span{color:var(--ink2)}
+.plan-list a{color:var(--ink);border-bottom:1px solid currentColor;word-break:break-word}
+
+/* Regalar */
+.gband{position:relative;height:clamp(340px,30vw,460px);overflow:hidden;color:#fff;display:flex;align-items:flex-end;background:#3b352d}
+.gband img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 45%}
+.gband::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(16,12,9,.66),rgba(16,12,9,.12) 65%)}
+.gband .gin{position:relative;z-index:2;width:100%;padding:var(--m) var(--m) clamp(24px,3vw,44px);display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap}
+.gband .h2{margin-top:14px;max-width:16ch}
+.gband p{color:rgba(255,255,255,.88);margin-top:12px;max-width:40ch}
+
+/* Barra fija móvil */
+.xbar{position:fixed;left:0;right:0;bottom:0;z-index:45;background:var(--bg);border-top:1px solid var(--line);display:none;align-items:center;gap:14px;padding:10px var(--m);transform:translateY(102%);transition:transform .45s var(--ease)}
+.xbar.on{transform:none}
+.xbar .t{flex:1;min-width:0;line-height:1.25}
+.xbar .t small{display:block;font:500 10.5px/1.3 var(--sans);letter-spacing:.09em;text-transform:uppercase;color:var(--ink3)}
+.xbar .t b{font:500 16px/1.2 var(--sans);font-variant-numeric:lining-nums tabular-nums}
+.xbar .btn{height:44px;padding:0 18px}
+
+@media (max-width:1100px){
+  .bk-form{grid-template-columns:minmax(0,1fr)}.bk-form>.bk-f:nth-child(1){grid-row:auto}
+  .bk-exp{grid-template-columns:repeat(3,minmax(0,1fr));gap:28px 16px}
+}
+@media (max-width:900px){
+  .x-hero .row,.xc-in,.bk-flow,.ev-in,.cdmx,.plan{grid-template-columns:minmax(0,1fr)}
+  .sp{grid-template-columns:minmax(0,1fr);min-height:0}
+  .sp .sp-ph,.sp.r .sp-ph{order:0;min-height:0;aspect-ratio:4/5}
+  #catas .sp-ph{aspect-ratio:4/3}
+  .sp-tx{padding:clamp(44px,9vw,72px) var(--m) clamp(56px,11vw,88px)}
+  .xc{min-height:0}
+  .seq-hd{display:block}.seq-hd p{margin-top:14px}
+  .seq-run{height:auto}
+  .seq-stage{position:static;height:auto;display:block}
+  .seq-media,.seq-dots{display:none}
+  .seq-steps,.seq-steps li{position:static}
+  .seq-steps{padding:0 var(--m)}
+  .seq-steps li{opacity:1;transform:none;pointer-events:auto;display:block;text-align:left;padding:0 0 44px}
+  .seq-steps .vm{display:block;position:relative;aspect-ratio:4/3;overflow:hidden;margin-bottom:18px;background:var(--bg2)}
+  .seq-steps .vm img,.seq-steps .vm video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+  .seq-steps h3{margin-top:8px}
+  .bk-sum{position:static}
+  .ev-band{aspect-ratio:16/9}
+  .cdmx-ph{min-height:0;aspect-ratio:4/3}
+  .xbar{display:flex}
+}
+@media (max-width:640px){
+  .x-hero{height:auto;min-height:100svh}
+  .x-hero .hin{padding-top:110px}
+  .x-hero .ctas .btn{flex:1 1 auto}
+  .cr .acts{margin-left:0;width:100%;justify-content:space-between}
+  .cr-m .dot{display:none}.cr-m>span:last-child{flex-basis:100%;text-align:center}
+  .bk-exp{grid-template-columns:repeat(2,minmax(0,1fr));gap:24px 12px}
+  .bk-c .ph{aspect-ratio:1/1}
+  .bk-c b{font-size:18px}
+  .f2,.bk-g,.bk-pm{grid-template-columns:minmax(0,1fr)}
+  .plan-list li{grid-template-columns:minmax(0,1fr);gap:2px}
+  .ev-band{aspect-ratio:4/3}
+  .gband::after{background:linear-gradient(180deg,rgba(16,12,9,.1),rgba(16,12,9,.7))}
+}
+@media (prefers-reduced-motion:reduce){.xc>img{transform:none}.sq>*{opacity:1;transform:none;transition:none}.seq-media>img,.seq-media>video,.seq-steps li{transition:none}.bk-flow.in{animation:none}}
+</style>
+</head>
+<body>
+<div id="chromeTop"></div>
+
+<main>
+<!-- Portada -->
+<section class="x-hero" data-hero aria-labelledby="xT">
+  <video id="heroV" muted playsinline autoplay loop preload="auto" poster="media/hero-hd.jpg" aria-hidden="true"><source src="media/hero-hd.mp4?v=3#t=11.5" type="video/mp4"></video>
+  <button class="vctl" type="button" id="heroCtl" aria-pressed="false" aria-label="Pausar video"><svg class="pa" width="10" height="10" viewBox="0 0 10 10" aria-hidden="true"><path d="M2 1h2v8H2zM6 1h2v8H6z" fill="currentColor"/></svg><svg class="pl" width="10" height="10" viewBox="0 0 10 10" aria-hidden="true"><path d="M2 1l7 4-7 4z" fill="currentColor"/></svg><span>Pausar</span></button>
+  <div class="hin">
+    <div class="duo-line"><span class="cap">Experiencias</span><span class="rule"></span><span class="it">Valle de Guadalupe</span></div>
+    <div class="row">
+      <h1 class="h1 lines ttl" id="xT" data-now><span class="ln"><span>Pruébalo </span></span><span class="ln"><span>donde nace </span></span></h1>
+      <div class="fade" data-now>
+        <p>Catas desde $250 por persona y experiencias privadas entre el viñedo, la cava y una terraza frente a los viñedos.</p>
+        <div class="ctas"><a class="btn btn-light" href="#reservar">Reservar</a><a class="ul" href="#catas">Ver experiencias</a></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Introducción -->
+<section class="sec wrap" aria-label="Introducción">
+  <div class="xi">
+    <p class="lead2 fade">Recorre el viñedo, baja a la cava y prueba los vinos de la casa ahí donde se hacen: <em>una historia que empezó en 1928</em>, contada copa por copa.</p>
+    <p class="sub fade" style="transition-delay:.15s">Ven con amigos o en familia. El cielo, la sierra, el sol y la tierra del Valle hacen el resto, y las vides cuentan la historia por sí solas.</p>
+  </div>
+</section>
+
+<!-- Degustaciones: textos a la izquierda, video a la derecha -->
+<section class="sp r" id="catas" aria-labelledby="catT">
+  <div class="sp-ph" id="cartaMedia">
+    <video id="cataV" muted playsinline preload="none" poster="media/v-copa.jpg" data-src="media/v-copa.mp4" aria-hidden="true"></video>
+    <span class="cap-ov" id="cataCap" aria-hidden="true">Cata Clásica</span>
+    <span class="cap-ov r" id="cataWhere" aria-hidden="true">En la copa</span>
+  </div>
+  <div class="sp-tx">
+    <span class="sp-k">Degustaciones</span>
+    <h2 class="sp-t lines" id="catT"><span class="ln"><span>Cuatro copas, </span></span><span class="ln"><span><em>tres maneras</em> </span></span></h2>
+    <p class="sp-p">Las tres son de 4 vinos e incluyen llavero y copa. Lo que cambia es la selección y la proporción entre blancos y tintos.</p>
+    <ol class="carta-list" id="carta"></ol>
+  </div>
+</section>
+
+<!-- Experiencias privadas: en damero con las degustaciones (las fotos se tocan en las esquinas) -->
+<section aria-labelledby="xpT">
+  <h2 class="sr" id="xpT">Para conocer la casa a fondo</h2>
+  <article class="sp" id="x-donluis" aria-labelledby="dlT">
+    <figure class="sp-ph"><img src="https://www.lacetto.mx/cdn/shop/files/DSC0259.jpg?width=1600" alt="Viñedo con flores y la sierra al fondo" loading="lazy"><figcaption class="cap-ov">El viñedo</figcaption></figure>
+    <div class="sp-tx">
+      <span class="sp-k">Viñedo y degustación personalizada</span>
+      <h3 class="sp-t" id="dlT">Experiencia <em>Don Luis</em></h3>
+      <p class="sp-p">Recorre nuestros viñedos y descubre la esencia de la casa con una degustación personalizada de 4 vinos a tu elección, en un entorno que celebra la tradición y el legado familiar.</p>
+      <ul class="xp-list">
+        <li><b>Recorrido</b><span>Por nuestros viñedos</span></li>
+        <li><b>Degustación</b><span>4 vinos a tu elección</span></li>
+      </ul>
+      <div class="xp-buy"><span class="pr price">$850<small>por persona</small></span><div class="r"><button class="btn btn-ink" data-book="donluis" aria-label="Reservar Experiencia Don Luis">Reservar</button><a class="ul" href="lacetto-tienda.html?linea=don-luis">La línea Don Luis</a></div></div>
+    </div>
+  </article>
+  <article class="sp r" id="x-angelo" aria-labelledby="agT">
+    <figure class="sp-ph"><img src="https://www.lacetto.mx/cdn/shop/files/tijun.jpg?width=1600" alt="Barricas de roble bajo las bóvedas de la cava" loading="lazy"><figcaption class="cap-ov">La cava</figcaption></figure>
+    <div class="sp-tx">
+      <span class="sp-k">Recorrido privado y sala VIP</span>
+      <h3 class="sp-t" id="agT">Experiencia <em>Angelo</em></h3>
+      <p class="sp-p">Un recorrido completamente íntimo para tu grupo y una degustación en nuestra sala exclusiva.</p>
+      <ul class="xp-list">
+        <li><b>Recorrido privado</b><span>Solo para tu grupo</span></li>
+        <li><b>Souvenir y canapés</b><span>Llavero conmemorativo, pan, aceitunas, aceite y vinagre de la casa</span></li>
+        <li><b>Degustación VIP</b><span>2 vinos a elegir de cualquiera de nuestras marcas*, 4 tintos de la línea Boutique y 2 blancos: Boutique y Champbrulé</span></li>
+      </ul>
+      <p class="fine">*Sujeto a disponibilidad.</p>
+      <div class="xp-buy"><span class="pr price">$1,100<small>por persona</small></span><div class="r"><button class="btn btn-ink" data-book="angelo" aria-label="Reservar Experiencia Angelo">Reservar</button><a class="ul" href="lacetto-tienda.html?linea=boutique">La línea Boutique</a></div></div>
+    </div>
+  </article>
+</section>
+
+<!-- Experiencia Cetto -->
+<section class="xc" id="x-cetto" aria-labelledby="xcT">
+  <img src="https://www.lacetto.mx/cdn/shop/files/DSC07921.jpg?width=2400" alt="Racimos de uva al atardecer en el Valle de Guadalupe" loading="lazy" id="xcImg">
+  <div class="xc-in">
+    <div class="xc-l">
+      <h3 id="xcT" class="lines"><span class="ln"><span>Experiencia </span></span><span class="ln"><span>Cetto </span></span></h3>
+      <p>Una degustación privada: tu grupo elige 7 vinos de cualquiera de nuestras líneas, recorre la bodega y termina en una terraza privada con vista panorámica a los viñedos.</p>
+    </div>
+    <div>
+      <ol class="xc-list">
+        <li>Selección de 7 vinos</li>
+        <li>Recorrido privado</li>
+        <li>Terraza privada con vista a los viñedos</li>
+        <li>Tablas de charcutería</li>
+        <li>Aceitunas, aceite de oliva y vinagres</li>
+        <li>Llavero de barrica</li>
+        <li>Copa grabada conmemorativa</li>
+      </ol>
+      <div class="xc-buy"><div><span class="pr price">$1,800</span><small>por persona · duración estimada de 3 horas</small></div><button class="btn btn-light" data-book="cetto" aria-label="Reservar Experiencia Cetto">Reservar</button></div>
+    </div>
+  </div>
+</section>
+
+<!-- Así es la visita: el título arriba (como el carrusel del home), la foto a pantalla completa y los pasos cambian a la derecha -->
+<section class="seq" aria-labelledby="seqT">
+  <div class="seq-hd">
+    <h2 class="h2 lines" id="seqT"><span class="ln"><span>Así es </span></span><span class="ln"><span>la visita </span></span></h2>
+  </div>
+  <div class="seq-run" id="seqRun" style="--n:5">
+    <div class="seq-stage">
+      <div class="seq-media" id="seqMedia">
+      <img class="on" src="media/x-porton-hq.webp" alt="" loading="lazy" style="object-position:60% 62%">
+      <video aria-hidden="true" muted playsinline preload="none" poster="media/v-uvas.jpg" data-src="media/v-uvas.mp4" data-seg="0,11.8,1"></video>
+      <video aria-hidden="true" muted playsinline preload="none" poster="media/hero-hd.jpg" data-src="media/hero-hd.mp4?v=3#t=8" data-seg="8,11.3,.8"></video>
+      <video aria-hidden="true" muted playsinline preload="none" poster="media/v-mesa.jpg" data-src="media/v-mesa.mp4" data-seg="0,13.8,1"></video>
+      <img src="media/club-copas.jpg" alt="" loading="lazy" style="object-position:30% 50%">
+    </div>
+      <div class="seq-side">
+        <ol class="seq-steps" id="seqSteps">
+      <li class="on"><div class="vm"><img src="media/x-porton-hq.webp" alt="Portón de piedra con buganvilias a la entrada" loading="lazy" style="object-position:60% 62%"></div><span class="n">Paso 1</span><h3>La llegada</h3><p>Carretera Tecate–Ensenada km 73.5. Entre buganvilias y con la sierra enfrente, empieza la visita.</p></li>
+      <li><div class="vm"><video muted playsinline preload="none" poster="media/v-uvas.jpg" data-src="media/v-uvas.mp4" data-seg="0,11.8,1"></video></div><span class="n">Paso 2</span><h3>El viñedo</h3><p>Caminas entre las vides, con el cielo, la sierra y la tierra del Valle alrededor. Aquí empieza cada botella.</p></li>
+      <li><div class="vm"><video muted playsinline preload="none" poster="media/hero-hd.jpg" data-src="media/hero-hd.mp4?v=3#t=8" data-seg="8,11.3,.8"></video></div><span class="n">Paso 3</span><h3>La bodega</h3><p>En las experiencias privadas recorres la bodega: barricas de roble y botellas en guarda.</p></li>
+      <li><div class="vm"><video muted playsinline preload="none" poster="media/v-mesa.jpg" data-src="media/v-mesa.mp4" data-seg="0,13.8,1"></video></div><span class="n">Paso 4</span><h3>La cata</h3><p>Cuatro copas en las degustaciones. En las experiencias privadas, tú eliges los vinos.</p></li>
+      <li><div class="vm"><img src="media/club-copas.jpg" alt="Copa grabada con el logo de Cetto en la mesa" loading="lazy" style="object-position:30% 50%"></div><span class="n">Paso 5</span><h3>Para llevar</h3><p>Te vas con un llavero y tu copa. Y si encontraste tu vino, lo pides en línea y te llega a casa.</p></li>
+    </ol>
+        <div class="seq-dots" id="seqDots" aria-hidden="true"><i class="on"></i><i></i><i></i><i></i><i></i></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Reservar: primero eliges la experiencia (visual) y después aparecen la fecha, el horario y las personas -->
+<section class="book" id="reservar" aria-labelledby="bkT">
+  <div class="wrap">
+    <div class="bk-hd rise">
+      <div><span class="cap">Reserva en línea</span><h2 class="h2" id="bkT">Elige tu visita</h2></div>
+      <p class="bk-lead" id="bkLead">Elige la experiencia y te mostramos las fechas disponibles. Grupos de hasta 24 personas.</p>
+    </div>
+    <fieldset class="bk-pick"><legend class="sr">Experiencia</legend>
+      <div class="bk-exp" id="bkExp"></div>
+      <p class="bk-lock" id="bkLock" hidden>Para cambiar la experiencia o el número de personas, escríbenos a <a class="ul-in" href="mailto:reservaciones@gpocetto.com">reservaciones@gpocetto.com</a>.</p>
+    </fieldset>
+    <div class="bk-flow" id="bkFlow" hidden>
+      <div class="book-l">
+        <form class="bk-form" id="bkForm" onsubmit="return false">
+          <fieldset class="bk-f"><legend class="cap">2 · Fecha</legend><div class="cal" id="cal"></div></fieldset>
+          <fieldset class="bk-f"><legend class="cap">3 · Horario</legend><div class="tslots" id="tslots"></div></fieldset>
+          <fieldset class="bk-f"><legend class="cap">4 · Personas</legend>
+            <div class="qsel"><button type="button" id="gMinus" aria-label="Una persona menos">−</button><span id="gNum" aria-live="polite">2</span><button type="button" id="gPlus" aria-label="Una persona más">+</button></div>
+            <p class="bk-note" id="gNote">¿Son más de 24? Escríbenos a <a href="mailto:reservaciones@gpocetto.com">reservaciones@gpocetto.com</a></p>
+          </fieldset>
+          <fieldset class="bk-f bk-pay" id="bkPay" hidden><legend class="cap" id="bkPayT" tabindex="-1">5 · Tus datos y pago</legend>
+          <div class="bk-g">
+            <div class="bk-in bk-w"><label for="bkName">Nombre completo</label><input id="bkName" autocomplete="name" maxlength="60"><em class="bk-e" id="ebkName"></em></div>
+            <div class="bk-in"><label for="bkMail">Correo</label><input id="bkMail" type="email" autocomplete="email" inputmode="email"><em class="bk-e" id="ebkMail"></em></div>
+            <div class="bk-in"><label for="bkTel">Teléfono</label><input id="bkTel" type="tel" autocomplete="tel" inputmode="tel" placeholder="10 dígitos"><em class="bk-e" id="ebkTel"></em></div>
+          </div>
+          <label class="bk-chk"><input type="checkbox" id="bkAge"><span>Confirmo que quienes van a degustar tienen 18 años o más.</span></label><em class="bk-e" id="ebkAge"></em>
+          <label class="bk-chk"><input type="checkbox" id="bkGift" aria-controls="bkGiftF"><span>Es para regalo: le enviamos la reservación con tu mensaje.</span></label>
+          <div class="bk-giftf" id="bkGiftF" hidden>
+            <div class="bk-g">
+              <div class="bk-in"><label for="gTo">Nombre de quien la recibe</label><input id="gTo" maxlength="40" autocomplete="off"><em class="bk-e" id="egTo"></em></div>
+              <div class="bk-in"><label for="gMail">Su correo</label><input id="gMail" type="email" inputmode="email" autocomplete="off"><em class="bk-e" id="egMail"></em></div>
+              <div class="bk-in bk-w"><label for="gMsg">Tu mensaje (opcional)</label><textarea id="gMsg" rows="3" placeholder="Para que conozcas de dónde viene nuestro vino favorito." aria-describedby="gCnt"></textarea><span class="bk-cnt" id="gCnt">0 / 180</span></div>
+            </div>
+          </div>
+          <div class="bk-pm" role="radiogroup" aria-label="Forma de pago">
+            <label class="bk-o"><input type="radio" name="bkpm" value="tarjeta" checked><span><b>Tarjeta</b><small>Crédito o débito, con Mercado Pago</small></span><span class="op"></span></label>
+            <label class="bk-o"><input type="radio" name="bkpm" value="mercadopago"><span><b>Cuenta Mercado Pago</b><small>Tu saldo o tus tarjetas guardadas</small></span><span class="op"></span></label>
+          </div>
+          <div class="bk-card" id="bkCard">
+            <div class="bk-g">
+              <div class="bk-in bk-w"><label for="kNum">Número de tarjeta</label><input id="kNum" inputmode="numeric" autocomplete="cc-number" maxlength="19" placeholder="0000 0000 0000 0000"><em class="bk-e" id="ekNum"></em></div>
+              <div class="bk-in bk-w"><label for="kName">Nombre en la tarjeta</label><input id="kName" autocomplete="cc-name" maxlength="60"><em class="bk-e" id="ekName"></em></div>
+              <div class="bk-in"><label for="kExp">Vencimiento</label><input id="kExp" inputmode="numeric" autocomplete="cc-exp" maxlength="5" placeholder="MM/AA"><em class="bk-e" id="ekExp"></em></div>
+              <div class="bk-in"><label for="kCvv">Código de seguridad</label><input id="kCvv" inputmode="numeric" autocomplete="cc-csc" maxlength="4" placeholder="123"><em class="bk-e" id="ekCvv"></em></div>
+            </div>
+          </div>
+          <p class="bk-proto" id="bkMp" hidden>Al pagar te llevamos a Mercado Pago y regresas aquí con tu reserva confirmada.</p>
+          <p class="bk-proto">Prototipo: no se envía ni se cobra nada.<button type="button" class="ul-in" id="kDemo">Usar datos de prueba</button></p>
+        </fieldset>
+        </form>
+        <div class="bk-ok" id="bkOk" tabindex="-1"></div>
+      </div>
+      <aside class="bk-sum" id="bkSum" aria-label="Resumen de tu reserva"></aside>
+    </div>
+    <p class="sr" id="bkLive" aria-live="polite"></p>
+  </div>
+</section>
+
+<!-- Eventos y bodas -->
+<section class="sec wrap" id="eventos" aria-labelledby="evT">
+  <figure class="ev-band"><img src="media/x-amigas-brindis.jpg" alt="Amigas brindando con vino blanco en el viñedo" loading="lazy" style="object-position:50% 40%"><figcaption>En el viñedo</figcaption></figure>
+  <div class="ev-in">
+    <div class="ev-tx">
+      <h2 class="h2 lines" id="evT"><span class="ln"><span>Celebra </span></span><span class="ln"><span>entre viñedos </span></span></h2>
+      <p class="p">Tenemos un lugar especial en el Valle de Guadalupe para celebrar en familia y entre amigos esas fechas únicas: cumpleaños, aniversarios, bodas o reuniones corporativas, rodeados de viñedos y paisajes.</p>
+      <p class="ev-mail">¿Prefieres escribir? <a class="ul" href="mailto:eventosvg@gpocetto.com">eventosvg@gpocetto.com</a></p>
+    </div>
+    <div id="evBox">
+      <form class="ev-form" id="evForm" novalidate>
+        <span class="h3">Cuéntanos de tu evento</span>
+        <fieldset><legend>Tipo de evento</legend>
+          <div class="chips">
+            <label><input type="radio" name="evt" value="Boda" checked><span>Boda</span></label>
+            <label><input type="radio" name="evt" value="Cumpleaños"><span>Cumpleaños</span></label>
+            <label><input type="radio" name="evt" value="Aniversario"><span>Aniversario</span></label>
+            <label><input type="radio" name="evt" value="Corporativo"><span>Corporativo</span></label>
+            <label><input type="radio" name="evt" value="Otro"><span>Otro</span></label>
+          </div>
+        </fieldset>
+        <fieldset><legend>Dónde</legend>
+          <div class="chips">
+            <label><input type="radio" name="evl" value="Valle de Guadalupe" checked><span>Valle de Guadalupe</span></label>
+            <label><input type="radio" name="evl" value="Boutique CDMX"><span>Boutique CDMX</span></label>
+          </div>
+        </fieldset>
+        <div class="f2">
+          <label><span class="fl">Fecha tentativa</span><input type="date" id="evDate"></label>
+          <label><span class="fl">Invitados</span><select id="evGuests"><option>Hasta 20</option><option>21 a 50</option><option selected>51 a 100</option><option>101 a 200</option><option>Más de 200</option></select></label>
+        </div>
+        <label><span class="fl">Nombre</span><input type="text" id="evName" autocomplete="name" required><em class="ev-e" id="eevName"></em></label>
+        <div class="f2">
+          <label><span class="fl">Correo</span><input type="email" id="evMail" autocomplete="email" required><em class="ev-e" id="eevMail"></em></label>
+          <label><span class="fl">Teléfono (opcional)</span><input type="tel" id="evTel" autocomplete="tel"></label>
+        </div>
+        <label><span class="fl">¿Algo más que debamos saber?</span><textarea id="evMsg"></textarea></label>
+        <button class="btn btn-ink" type="submit">Enviar solicitud</button>
+        <p class="fine">Solo usamos tus datos para responder a esta solicitud.</p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- Boutique CDMX -->
+<section class="cdmx" id="cdmx" aria-labelledby="cdT">
+  <figure class="cdmx-ph"><img src="https://www.lacetto.mx/cdn/shop/files/DSC9652.jpg?width=1600" alt="Muro de botellas guardadas en estantes de madera" loading="lazy"><figcaption class="cap-ov">Boutique CDMX · Lomas de Chapultepec</figcaption></figure>
+  <div class="cdmx-tx">
+    <h2 class="h2 lines" id="cdT"><span class="ln"><span>El Valle, </span></span><span class="ln"><span>en la ciudad </span></span></h2>
+    <p>En la Boutique L.A.&nbsp;Cetto de las Lomas de Chapultepec hay salones de catas y cursos guiados por sommeliers, desde los introductorios hasta degustaciones temáticas.</p>
+    <ul class="svc" aria-label="Servicios"><li>Tienda de vinos</li><li>Eventos</li><li>Catas</li><li>Degustaciones</li></ul>
+    <address>Monte Athos 315, Lomas de Chapultepec, Ciudad de México</address>
+    <div class="ctas"><a class="btn btn-light" href="mailto:eventosvg@gpocetto.com?subject=Boutique%20CDMX">Preguntar por catas y cursos</a><a class="ul" href="https://www.google.com/maps/search/?api=1&amp;query=Monte+Athos+315+Lomas+de+Chapultepec" target="_blank" rel="noopener" aria-label="Cómo llegar a la Boutique CDMX (abre Google Maps)">Cómo llegar</a></div>
+  </div>
+</section>
+
+<!-- Planea tu visita -->
+<section class="sec wrap" id="visita" aria-labelledby="viT">
+  <div class="plan">
+    <div>
+      <h2 class="h2 rise" id="viT">Planea tu visita</h2>
+      <address class="plan-ad">Carretera Tecate–Ensenada km 73.5<br>Valle de Guadalupe, Baja California</address>
+      <div class="plan-ctas"><a class="btn btn-ink" href="#reservar" aria-label="Reservar una visita al Valle">Reservar</a><a class="ul" href="https://www.google.com/maps/search/?api=1&amp;query=L.A.+Cetto+Valle+de+Guadalupe" target="_blank" rel="noopener" aria-label="Cómo llegar a la bodega en el Valle de Guadalupe (abre Google Maps)">Cómo llegar</a></div>
+    </div>
+    <ul class="plan-list">
+      <li><b>Reserva antes</b><span>En línea, para grupos de hasta 24 personas. Si son más, escribe a <a href="mailto:reservaciones@gpocetto.com">reservaciones@gpocetto.com</a>.</span></li>
+      <li><b>Mayores de 18 años</b><span>Las degustaciones son solo para mayores de edad.</span></li>
+      <li><b>Eventos y bodas</b><span>Cuéntanos tu fecha en el formulario de arriba o en <a href="mailto:eventosvg@gpocetto.com">eventosvg@gpocetto.com</a>.</span></li>
+      <li><b>En la ciudad</b><span>También tenemos boutiques en Ensenada, Tijuana y CDMX. <a id="bouLink" href="lacetto-ayuda.html#contacto">Ver direcciones</a></span></li>
+    </ul>
+  </div>
+</section>
+
+<!-- Regalar una experiencia -->
+<section class="gband" aria-labelledby="gbT">
+  <img src="https://www.lacetto.mx/cdn/shop/files/Diseno_sin_titulo_48.jpg?width=1900" alt="Pareja recorriendo el viñedo" loading="lazy">
+  <div class="gin rise">
+    <div>
+      <span class="cap">Regala una experiencia</span>
+      <h2 class="h2" id="gbT">Una cata también se regala</h2>
+      <p>Para quien ya tiene su vino favorito y todavía no conoce el Valle. Eliges la cata, la pagas y le enviamos la reservación con tu mensaje.</p>
+    </div>
+    <div class="ctas" style="display:flex;flex-wrap:wrap;align-items:center;gap:14px 26px"><a class="btn btn-light" id="giftBook" href="?regalo=1#reservar">Regalar una cata</a><a class="ul" id="giftLink" href="lacetto-regalos.html#experiencia">Más regalos</a></div>
+  </div>
+</section>
+
+<!-- Vinos -->
+<section class="sec wrap" aria-labelledby="vT">
+  <div class="sh rise"><h2 class="h2" id="vT">Para seguir la cata en casa</h2><a class="ul" id="allWines" href="lacetto-tienda.html">Ver todos los vinos</a></div>
+  <div class="prods" id="xProds" style="grid-template-columns:repeat(4,minmax(0,1fr))"></div>
+</section>
+</main>
+
+<div class="xbar" id="xbar" aria-hidden="true"><div class="t"><small>Catas en el Valle</small><b>Desde $250 por persona</b></div><a class="btn btn-ink" href="#reservar" tabindex="-1">Reservar</a></div>
+
+<div id="chromeBottom"></div>
+
+<script src="cetto-base.js"></script>
+<script>
+renderChrome({page:'exp'});
+document.getElementById('giftLink').href=PAGES.regalos+'#experiencia';
+document.getElementById('giftBook').href=PAGES.exp+'?regalo=1#reservar';
+document.getElementById('bouLink').href=PAGES.ayuda+'#contacto';
+document.getElementById('allWines').href=PAGES.tienda;
+document.querySelectorAll('.xp-buy a.ul').forEach(a=>a.href=PAGES.tienda+a.getAttribute('href').slice(a.getAttribute('href').indexOf('?')));
+document.getElementById('xProds').innerHTML=['nebrp','charp','sang','champ'].map(card).join('');
+
+/* Datos reales de lacetto.mx/pages/conoce-los-vinedos-cetto. Horarios: propuesta. */
+const EXP=[
+ {id:'clasica',n:'Cata Clásica',k:'Degustación de 4 vinos',p:250,f:'Para tu primera visita',im:'media/v-copa.jpg',w:[2,2],meta:'2 copas de blanco y 2 de tinto',src:'media/v-copa.mp4',seg:[0,17.9,1],pos:'50% 50%',where:'En la copa'},
+ {id:'rp',n:'Cata Reserva Privada',k:'Degustación de 4 vinos',p:400,f:'Para conocer la Reserva Privada',im:'media/rg-cava.jpg',w:[2,2],meta:'2 copas de blanco y 2 de tinto',src:'media/hero-hd.mp4?v=3',seg:[5.1,6.8,.6],pos:'34% 50%',where:'En la cava',line:['reserva-privada','Vinos Reserva Privada']},
+ {id:'boutique',n:'Cata Boutique',k:'Degustación de 4 vinos',p:550,f:'Para quien prefiere los tintos',im:'media/v-mesa.jpg',w:[1,3],meta:'1 copa de blanco y 3 de tinto',src:'media/hero-hd.mp4?v=3',seg:[12.6,14.8,1],pos:'58% 50%',where:'En la cava',line:['boutique','Vinos Boutique']},
+ {id:'donluis',n:'Experiencia Don Luis',k:'Viñedo y 4 vinos a tu elección',p:850,f:'Para elegir tus propios vinos',im:'https://www.lacetto.mx/cdn/shop/files/DSC0259.jpg?width=700'},
+ {id:'angelo',n:'Experiencia Angelo',k:'Recorrido privado y sala VIP',p:1100,f:'Para tu grupo, en privado',im:'https://www.lacetto.mx/cdn/shop/files/tijun.jpg?width=700'},
+ {id:'cetto',n:'Experiencia Cetto',k:'Privada · 7 vinos · 3 horas',p:1800,f:'Para celebrar algo especial',im:'https://www.lacetto.mx/cdn/shop/files/DSC07921.jpg?width=700'}
+];
+const copa=t=>'<svg viewBox="0 0 16 28" aria-hidden="true"><path d="M3.4 6.4h9.2c-.3 3.6-1.8 6-4.6 6.3-2.8-.3-4.3-2.7-4.6-6.3z" fill="'+(t?'#6B2230':'#E3D39A')+'"/><path d="M2.5 1h11c0 6.6-1.7 11.4-5.5 11.8C4.2 12.4 2.5 7.6 2.5 1zM8 12.8V26M4.5 26.5h7" fill="none" stroke="currentColor" stroke-width="1"/></svg>';
+
+/* ---------- Videos por segmentos ---------- */
+function prepSeg(v){if(v._prep)return;v._prep=1;v.addEventListener('timeupdate',()=>{const s=v._seg;if(s&&(v.currentTime>=s[1]||v.currentTime<s[0]-.6))v.currentTime=s[0]})}
+function setSeg(v,a,b,r){prepSeg(v);v._seg=[a,b];const go=()=>{try{v.currentTime=a}catch(e){}v.playbackRate=r||1;v.defaultPlaybackRate=r||1};if(v.readyState>=1)go();else v.addEventListener('loadedmetadata',go,{once:true})}
+function loadV(v){if(!v.getAttribute('src')&&v.dataset.src){v.src=v.dataset.src;if(v.dataset.seg){const s=v.dataset.seg.split(',').map(Number);setSeg(v,s[0],s[1],s[2])}}}
+/* Pausa por video (WCAG 2.2.2). Con "reducir movimiento" arrancan en pausa y la persona decide. */
+const stopped=v=>v._user===undefined?reduceMotion:v._user;
+function ppBtn(box,label,get,set){const b=document.createElement('button');b.type='button';b.className='v-pp tr';
+  const paint=()=>{const off=get();b.setAttribute('aria-label',(off?'Reproducir ':'Pausar ')+label);b.innerHTML=off?PP_PLAY:PP_PAUSE};
+  b.addEventListener('click',e=>{e.stopPropagation();set(!get());paint()});box.appendChild(b);paint();return b}
+const vio=new IntersectionObserver(es=>es.forEach(en=>{const v=en.target;if(en.isIntersecting){loadV(v);if(!v.dataset.manual&&!stopped(v))v.play().catch(()=>{})}else v.pause()}),{threshold:.12});
+
+/* Portada: empieza en la barrica y luego da la vuelta completa */
+const heroV=document.getElementById('heroV'),heroCtl=document.getElementById('heroCtl');
+let heroStop=reduceMotion;
+function paintHeroCtl(){heroCtl.setAttribute('aria-pressed',heroStop);heroCtl.querySelector('span').textContent=heroStop?'Reproducir':'Pausar'}
+if(reduceMotion){heroV.removeAttribute('autoplay');heroV.pause()}
+paintHeroCtl();
+heroCtl.onclick=()=>{heroStop=!heroStop;paintHeroCtl();if(heroStop)heroV.pause();else heroV.play().catch(()=>{})};
+new IntersectionObserver(([en])=>{if(en.isIntersecting){if(!heroStop)heroV.play().catch(()=>{})}else heroV.pause()},{threshold:.05}).observe(heroV);
+
+/* ---------- Degustaciones ---------- */
+const carta=document.getElementById('carta'),cataV=document.getElementById('cataV'),cataCap=document.getElementById('cataCap');
+carta.innerHTML=EXP.slice(0,3).map((e,i)=>'<li class="cr'+(i?'':' on')+'" id="x-'+e.id+'" data-i="'+i+'"><h3>'+e.n+'</h3><div class="cr-m"><span class="copas" role="img" aria-label="'+e.meta+'">'+Array.from({length:4},(_,j)=>copa(j>=e.w[0])).join('')+'</span><span aria-hidden="true">'+e.meta+'</span><span class="dot" aria-hidden="true">·</span><span><span class="price">'+money(e.p)+'</span> por persona</span></div><div class="cr-b"><button class="ul" type="button" data-book="'+e.id+'" aria-label="Reservar '+e.n+'">Reservar</button>'+(e.line?'<a class="ul lo" href="'+PAGES.tienda+'?linea='+e.line[0]+'">'+e.line[1]+'</a>':'')+'</div></li>').join('');
+let cataI=0;
+/* Cambia el clip del video de la cata (la copa o la cava) sin perder el tramo ni la pausa */
+function cataClip(e){const want=heroSrc(e.src);if(cataV.dataset.src!==want){cataV.dataset.src=want;cataV.poster=vPoster(e.src);if(cataV.getAttribute('src'))cataV.src=want}
+  setSeg(cataV,e.seg[0],e.seg[1],e.seg[2]);cataV.style.objectPosition=e.pos;document.getElementById('cataWhere').textContent=e.where}
+cataClip(EXP[0]);
+ppBtn(document.getElementById('cartaMedia'),'el video de la cata',()=>stopped(cataV),off=>{cataV._user=off;if(off)cataV.pause();else{loadV(cataV);cataV.play().catch(()=>{})}});
+function setCata(i){if(i===cataI)return;cataI=i;carta.querySelectorAll('.cr').forEach((r,j)=>r.classList.toggle('on',j===i));const e=EXP[i];cataCap.textContent=e.n;
+  cataV.style.opacity=0;setTimeout(()=>{cataClip(e);if(!stopped(cataV))cataV.play().catch(()=>{});cataV.style.opacity=1},280)}
+carta.addEventListener('mouseover',e=>{const r=e.target.closest('.cr');if(r)setCata(+r.dataset.i)});
+carta.addEventListener('focusin',e=>{const r=e.target.closest('.cr');if(r)setCata(+r.dataset.i)});
+carta.addEventListener('click',e=>{const r=e.target.closest('.cr');if(r&&!e.target.closest('a,button'))setCata(+r.dataset.i)});
+vio.observe(cataV);
+
+/* ---------- Paneles: los textos entran escalonados ---------- */
+{const qio=new IntersectionObserver(es=>es.forEach(en=>{if(en.isIntersecting){en.target.classList.add('in');qio.unobserve(en.target)}}),{rootMargin:'0px 0px -14% 0px'});
+ document.querySelectorAll('.sp-tx').forEach(t=>{t.classList.add('sq');[...t.children].forEach((c,k)=>c.style.setProperty('--i',k));qio.observe(t)})}
+
+/* ---------- Experiencia Cetto: acercamiento con el scroll ---------- */
+const xc=document.getElementById('x-cetto');
+function xcTick(){if(reduceMotion)return;const r=xc.getBoundingClientRect();const p=Math.min(1,Math.max(0,1-(r.bottom)/(innerHeight+r.height)));xc.style.setProperty('--z',(1.12-p*.12).toFixed(4))}
+addEventListener('scroll',()=>requestAnimationFrame(xcTick),{passive:true});xcTick();
+
+/* ---------- Así es la visita ---------- */
+const seqMedia=[...document.querySelectorAll('#seqMedia>img,#seqMedia>video')],seqSteps=[...document.querySelectorAll('#seqSteps>li')];
+const wide=matchMedia('(min-width:901px)');
+let seqI=0,seqStop=reduceMotion;
+const seqRun=document.getElementById('seqRun'),seqDots=[...document.querySelectorAll('#seqDots i')];
+function setSeq(i){seqI=i;seqSteps.forEach((s,j)=>s.classList.toggle('on',j===i));seqDots.forEach((d,j)=>d.classList.toggle('on',j===i));
+  /* el botón de pausa solo aparece cuando el paso tiene video */
+  {const box=document.getElementById('seqMedia');box.classList.toggle('has-v',!!seqMedia[i]&&seqMedia[i].tagName==='VIDEO')}
+  seqMedia.forEach((m,j)=>{m.classList.toggle('on',j===i);if(m.tagName==='VIDEO'){if(j===i&&wide.matches){loadV(m);if(!seqStop)m.play().catch(()=>{})}else m.pause()}})}
+function seqTick(){if(!wide.matches)return;const r=seqRun.getBoundingClientRect(),run=r.height-innerHeight;if(run<=0)return;
+  const pr=Math.min(.999,Math.max(0,-r.top/run)),i=Math.floor(pr*seqSteps.length);if(i!==seqI)setSeq(i)}
+addEventListener('scroll',()=>requestAnimationFrame(seqTick),{passive:true});addEventListener('resize',seqTick);seqTick();
+document.querySelectorAll('#seqSteps video').forEach(v=>{vio.observe(v);const li=v.closest('li');
+  ppBtn(v.parentElement,'el video: '+li.querySelector('h3').textContent,()=>stopped(v),off=>{v._user=off;if(off)v.pause();else{loadV(v);v.play().catch(()=>{})}})});
+ppBtn(document.getElementById('seqMedia'),'los videos de la visita',()=>seqStop,off=>{seqStop=off;if(off)seqMedia.forEach(m=>m.tagName==='VIDEO'&&m.pause());else setSeq(seqI)});
+new IntersectionObserver(([en])=>{if(!en.isIntersecting)seqMedia.forEach(m=>m.tagName==='VIDEO'&&m.pause());else setSeq(seqI)},{threshold:0}).observe(document.getElementById('seqMedia'));
+
+/* ---------- Reserva ---------- */
+const ST={e:0,pk:false,d:null,t:null,g:2,code:null,pay:false,busy:false};
+const QS=new URLSearchParams(location.search),$=id=>document.getElementById(id);
+const esc=s=>String(s==null?'':s).replace(/[<>&"]/g,'');
+const qx=QS.get('exp');if(EXP.some(e=>e.id===qx)){ST.e=EXP.findIndex(e=>e.id===qx);ST.pk=true}
+/* Cambiar una reserva desde Mi cuenta: ?cambiar=CT-XXXX (ya pagada: solo cambia fecha y horario) */
+const chgCode=QS.get('cambiar');
+const CHG=chgCode?store.get('cettoBookings',[]).find(b=>b.code===chgCode)||null:null;
+const short=n=>String(n||'').replace(/^(Cata|Experiencia) /,'');
+function expOf(b){let i=EXP.findIndex(e=>e.id===b.xid);if(i<0)i=EXP.findIndex(e=>e.n===b.exp||short(e.n)===short(b.exp));return i}
+if(CHG){const i=expOf(CHG);if(i>=0)ST.e=i;ST.g=CHG.guests||2;ST.pk=true}
+const today=new Date();today.setHours(0,0,0,0);
+let calY=today.getFullYear(),calM=today.getMonth();const MAXM=3;
+const key=d=>d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
+const fromKey=k=>{const [y,m,d]=k.split('-').map(Number);return new Date(y,m-1,d)};
+const fmt=d=>d.toLocaleDateString('es-MX',{weekday:'long',day:'numeric',month:'long'}).replace(',','');
+const slotsFor=e=>e.id==='cetto'?['11:00','14:00']:(e.w?['11:00','12:00','13:00','14:00','15:00','16:00','17:00']:['11:00','13:00','15:00','17:00']);
+const full=(d,id,t)=>{let h=7;for(const c of d+id+t)h=(h*31+c.charCodeAt(0))>>>0;return h%6===0};
+const bkExp=$('bkExp'),cal=$('cal'),tslots=$('tslots'),bkSum=$('bkSum'),book=$('reservar'),bkOk=$('bkOk'),bkPay=$('bkPay'),bkFlow=$('bkFlow');
+const gNum=$('gNum'),gMinus=$('gMinus'),gPlus=$('gPlus'),gNote=$('gNote');
+
+const CK='<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>';
+bkExp.innerHTML=EXP.map((e,i)=>'<label class="bk-c"><input type="radio" name="bkx" value="'+i+'" aria-label="'+e.n+', '+e.f.toLowerCase()+', '+money(e.p)+' por persona"'+(ST.pk&&i===ST.e?' checked':'')+(CHG?' disabled':'')+'><span class="ph"><img src="'+e.im+'" alt="" loading="lazy"><span class="ck">'+CK+'</span></span><b>'+e.n+'</b><span class="w">'+e.f+'</span><span class="op"><span class="price">'+money(e.p)+'</span> por persona</span></label>').join('');
+/* al elegir aparece el resto; la primera vez bajamos al calendario */
+function showFlow(go){const first=bkFlow.hidden;if(first){bkFlow.hidden=false;bkFlow.classList.add('in')}
+  if(go)setTimeout(()=>bkFlow.scrollIntoView({behavior:reduceMotion?'auto':'smooth',block:'start'}),first?140:0)}
+bkExp.addEventListener('change',ev=>{if(ev.target.name!=='bkx')return;const first=!ST.pk;ST.e=+ev.target.value;ST.t=null;ST.pk=true;renderSlots();renderSum();showFlow(first);say(EXP[ST.e].n+', '+money(EXP[ST.e].p)+' por persona. Ahora elige la fecha.')});
+if(ST.pk)showFlow(false);
+
+if(CHG){
+  $('bkT').textContent='Cambia la fecha de tu visita';
+  $('bkLead').innerHTML=esc(CHG.exp)+' para '+CHG.guests+(CHG.guests===1?' persona':' personas')+' · reserva <b>'+esc(CHG.code)+'</b>. Hoy está para el '+fmt(fromKey(CHG.date))+' a las '+esc(CHG.time)+'. Elige la nueva fecha y horario; tu pago se conserva. <a href="'+PAGES.cuenta+'#reservas">Volver a mi cuenta</a>';
+  $('bkLock').hidden=false;
+}else if(chgCode){$('bkLead').textContent='No encontramos la reserva '+chgCode+' en este navegador. Puedes hacer una nueva aquí, o escribir a reservaciones@gpocetto.com.'}
+
+function renderCal(){
+  const first=new Date(calY,calM,1),off=(first.getDay()+6)%7,days=new Date(calY,calM+1,0).getDate();
+  const minM=today.getFullYear()*12+today.getMonth(),curM=calY*12+calM;
+  let h='<div class="cal-h"><button type="button" data-cm="-1" aria-label="Mes anterior"'+(curM<=minM?' disabled':'')+'>'+arrow+'</button><b>'+(m=>m[0].toUpperCase()+m.slice(1))(first.toLocaleDateString('es-MX',{month:'long'}))+' '+calY+'</b><button type="button" data-cm="1" aria-label="Mes siguiente"'+(curM>=minM+MAXM?' disabled':'')+'>'+arrow+'</button></div><div class="cal-g">';
+  h+=['L','M','M','J','V','S','D'].map(d=>'<span class="dw" aria-hidden="true">'+d+'</span>').join('');
+  for(let i=0;i<off;i++)h+='<span></span>';
+  for(let d=1;d<=days;d++){const dt=new Date(calY,calM,d),k=key(dt);h+='<button type="button" data-d="'+k+'"'+(dt<today?' disabled':'')+' aria-pressed="'+(ST.d===k)+'" aria-label="'+fmt(dt)+(CHG&&CHG.date===k?', tu fecha actual':'')+'"'+(+dt===+today?' class="today"':'')+'>'+d+'</button>'}
+  cal.innerHTML=h+'</div>';
+}
+const say=t=>{const l=$('bkLive');l.textContent='';setTimeout(()=>l.textContent=t,60)};
+cal.addEventListener('click',e=>{const m=e.target.closest('[data-cm]');if(m&&!m.disabled){const dir=m.dataset.cm;calM+=+dir;if(calM<0){calM=11;calY--}if(calM>11){calM=0;calY++}renderCal();
+    const same=cal.querySelector('[data-cm="'+dir+'"]');(same&&!same.disabled?same:cal.querySelector('[data-cm]:not([disabled])')).focus();say(cal.querySelector('.cal-h b').textContent);return}
+  const b=e.target.closest('[data-d]');if(!b||b.disabled)return;ST.d=b.dataset.d;ST.t=null;renderCal();renderSlots();renderSum();cal.querySelector('[data-d="'+ST.d+'"]').focus();
+  const n=tslots.querySelectorAll('[data-t]:not([disabled])').length;say(fmt(fromKey(ST.d))+'. '+(n?n+(n===1?' horario disponible':' horarios disponibles')+'. Ahora elige un horario.':'No hay horarios disponibles ese día.'))});
+
+function renderSlots(){
+  const e=EXP[ST.e];
+  if(!ST.d){tslots.innerHTML='<p class="empty">Elige una fecha para ver los horarios.</p>';return}
+  const now=new Date(),isToday=ST.d===key(today);
+  tslots.innerHTML=slotsFor(e).map(t=>{const [hh,mm]=t.split(':').map(Number);const past=isToday&&(hh*60+mm)<=(now.getHours()*60+now.getMinutes()+60);const cur=CHG&&CHG.date===ST.d&&CHG.time===t;const f=past||cur||full(ST.d,e.id,t);
+    return '<button type="button" data-t="'+t+'"'+(f?' disabled aria-label="'+t+', '+(past?'no disponible':cur?'tu horario actual':'lleno')+'"':'')+' aria-pressed="'+(ST.t===t)+'">'+t+(cur?' · Actual':f&&!past?' · Lleno':'')+'</button>'}).join('');
+}
+tslots.addEventListener('click',e=>{const b=e.target.closest('[data-t]');if(!b||b.disabled)return;ST.t=b.dataset.t;renderSlots();renderSum();const f=tslots.querySelector('[data-t="'+ST.t+'"]');if(f)f.focus();say('Horario: '+ST.t+'. '+(CHG?'Confirma la nueva fecha en el resumen.':'Continúa a tus datos y pago en el resumen.'))});
+
+function renderG(){gNum.textContent=ST.g+(ST.g===1?' persona':' personas');gMinus.disabled=!!CHG||ST.g<=1;gPlus.disabled=!!CHG||ST.g>=24;gNote.classList.toggle('hi',ST.g>=24)}
+gMinus.onclick=()=>{ST.g=Math.max(1,ST.g-1);renderG();renderSum()};
+gPlus.onclick=()=>{ST.g=Math.min(24,ST.g+1);renderG();renderSum()};
+
+/* ---------- Paso 5: tus datos y pago (simulado: no se envía ni se cobra nada) ---------- */
+const pm=()=>document.querySelector('[name=bkpm]:checked').value;
+const u0=user();if(u0){$('bkName').value=u0.name||'';$('bkMail').value=u0.email||'';$('bkTel').value=u0.tel||''}
+$('gMsg').maxLength=GIFT_MAX;$('gCnt').textContent='0 / '+GIFT_MAX;
+$('gMsg').addEventListener('input',e=>$('gCnt').textContent=e.target.value.length+' / '+GIFT_MAX);
+function setGift(on){$('bkGift').checked=on;$('bkGiftF').hidden=!on}
+$('bkGift').addEventListener('change',e=>setGift(e.target.checked));
+if(QS.get('regalo')==='1'&&!CHG){setGift(true);$('bkLead').textContent='Elige la cata, la fecha y cuántas personas van. Al final escribes a quién se la regalas y le enviamos la reservación con tu mensaje.'}
+document.querySelectorAll('[name=bkpm]').forEach(r=>r.addEventListener('change',()=>{const c=pm()==='tarjeta';$('bkCard').hidden=!c;$('bkMp').hidden=c;renderSum()}));
+$('kNum').addEventListener('input',e=>{const d=e.target.value.replace(/\D/g,'').slice(0,16);e.target.value=d.replace(/(.{4})(?=.)/g,'$1 ')});
+$('kExp').addEventListener('input',e=>{let d=e.target.value.replace(/\D/g,'').slice(0,4);if(d.length>2)d=d.slice(0,2)+'/'+d.slice(2);e.target.value=d});
+function err(id,msg){const i=$(id),e=$('e'+id);if(e)e.textContent=msg||'';
+  if(i){if(msg){i.setAttribute('aria-invalid','true');i.setAttribute('aria-describedby',[e&&e.id,id==='gMsg'?'gCnt':''].filter(Boolean).join(' '))}else{i.removeAttribute('aria-invalid');i.removeAttribute('aria-describedby')}}
+  return !msg}
+['bkName','bkMail','bkTel','bkAge','gTo','gMail','kNum','kName','kExp','kCvv'].forEach(id=>$(id).addEventListener(id==='bkAge'?'change':'input',()=>err(id,'')));
+$('kDemo').onclick=()=>{$('kNum').value='4000 0000 0000 0000';$('kName').value='Ana Prueba';$('kExp').value='12/30';$('kCvv').value='123';['kNum','kName','kExp','kCvv'].forEach(id=>err(id,''));
+  if(pm()!=='tarjeta'){document.querySelector('[name=bkpm][value=tarjeta]').checked=true;$('bkCard').hidden=false;$('bkMp').hidden=true;renderSum()}};
+const mailOk=v=>/^[^@\s]+@[^@\s]+\.[^@\s]{2,}$/.test(v.trim());
+function validate(){
+  const bad=[],ck=(id,ok,msg)=>{if(!err(id,ok?'':msg))bad.push(id)};
+  ck('bkName',$('bkName').value.trim().length>=3,'Escribe tu nombre completo.');
+  ck('bkMail',mailOk($('bkMail').value),'Revisa tu correo: ahí te enviamos la reserva.');
+  ck('bkTel',$('bkTel').value.replace(/\D/g,'').length===10,'Escribe un teléfono de 10 dígitos.');
+  ck('bkAge',$('bkAge').checked,'Las degustaciones son solo para mayores de 18 años.');
+  if($('bkGift').checked){ck('gTo',$('gTo').value.trim().length>=2,'Escribe a quién se la regalas.');ck('gMail',mailOk($('gMail').value),'Revisa el correo de quien la recibe.')}
+  if(pm()==='tarjeta'){
+    ck('kNum',$('kNum').value.replace(/\D/g,'').length>=15,'Revisa el número de tarjeta.');
+    ck('kName',$('kName').value.trim().length>=3,'Escribe el nombre como aparece en la tarjeta.');
+    const m=/^(\d{2})\/(\d{2})$/.exec($('kExp').value),n=new Date();
+    ck('kExp',!!m&&+m[1]>=1&&+m[1]<=12&&(2000+ +m[2])*12+ +m[1]>=n.getFullYear()*12+n.getMonth()+1,'Revisa la fecha de vencimiento (MM/AA).');
+    ck('kCvv',/^\d{3,4}$/.test($('kCvv').value),'El código de seguridad tiene 3 o 4 dígitos.');
+  }
+  if(bad.length){$(bad[0]).focus();return false}
+  return true;
+}
+function openPay(){ST.pay=true;bkPay.hidden=false;renderSum();$('bkPayT').focus({preventScroll:true});say('Paso 5 de 5: tus datos y pago.');
+  bkPay.scrollIntoView({behavior:reduceMotion?'auto':'smooth',block:'start'})}
+/* Acción principal del resumen y de la barra móvil: el texto siempre dice lo que va a pasar */
+function next(){
+  if(book.classList.contains('done')||ST.busy)return;
+  if(!ST.pk){bkExp.scrollIntoView({behavior:reduceMotion?'auto':'smooth',block:'center'});return}
+  if(!(ST.d&&ST.t)){(ST.d?tslots:cal).scrollIntoView({behavior:reduceMotion?'auto':'smooth',block:'center'});return}
+  if(CHG){confirmBook();return}
+  if(!ST.pay){openPay();return}
+  if(!validate()){renderSum(true);return}
+  ST.busy=true;renderSum();setTimeout(()=>{ST.busy=false;confirmBook()},reduceMotion?150:1100);
+}
+function actionLabel(short){const e=EXP[ST.e],tot=e.p*ST.g;
+  if(book.classList.contains('done'))return CHG?'Reserva actualizada':'Reserva confirmada';
+  if(!ST.d)return short?'Elige fecha':'Elige una fecha';
+  if(!ST.t)return short?'Elige horario':'Elige un horario';
+  if(CHG)return short?'Confirmar cambio':'Confirmar nueva fecha';
+  if(!ST.pay)return short?'Continuar':'Continuar a tus datos y pago';
+  if(ST.busy)return 'Procesando pago…';
+  return 'Pagar '+money(tot)+(short?'':(pm()==='mercadopago'?' con Mercado Pago':' y reservar'));
+}
+
+function renderSum(showErr){
+  const e=EXP[ST.e],tot=e.p*ST.g,ready=ST.d&&ST.t,done=book.classList.contains('done');
+  bkSum.innerHTML='<span class="cap">'+(CHG?'Cambiar reserva '+esc(CHG.code):'Tu reserva')+'</span><h3>'+e.n+'</h3><span class="k">'+e.k+'</span>'+
+    '<dl>'+(CHG?'<div><dt>Fecha actual</dt><dd>'+fmt(fromKey(CHG.date))+', '+esc(CHG.time)+'</dd></div>':'')+'<div><dt>'+(CHG?'Nueva fecha':'Fecha')+'</dt><dd>'+(ST.d?fmt(fromKey(ST.d)):'—')+'</dd></div><div><dt>Horario</dt><dd>'+(ST.t||'—')+'</dd></div><div><dt>Personas</dt><dd>'+ST.g+'</dd></div><div><dt>Dónde</dt><dd>Valle de Guadalupe</dd></div></dl>'+
+    '<div class="ln"><span>'+money(e.p)+' por persona × '+ST.g+'</span><span class="price">'+money(tot)+'</span></div>'+
+    '<div class="tot"><span>'+(CHG?'Pagado':'Total')+'</span><b class="price">'+money(tot)+'</b></div>'+
+    (showErr?'<p class="bk-err" role="alert">Revisa los datos marcados para continuar.</p>':'')+
+    '<button class="btn btn-ink" type="button" id="bkGo"'+(ready&&!done&&!ST.busy?'':' disabled')+'>'+actionLabel()+'</button>'+
+    '<p class="fine">'+(CHG?'Tu pago se conserva. Te enviamos la nueva confirmación por correo.':ST.pay?'Pagas en línea con Mercado Pago y recibes tu reserva por correo.':'En el siguiente paso dejas tus datos y pagas en línea con Mercado Pago.')+' Degustación para mayores de 18 años.</p>';
+  $('bkGo').onclick=next;
+  if(xbReady)renderXbar();
+}
+
+function ics(){const e=EXP[ST.e],[y,m,d]=ST.d.split('-'),[hh,mi]=ST.t.split(':');
+  const stamp=new Date().toISOString().replace(/[-:]/g,'').split('.')[0]+'Z';
+  const s=['BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//LA Cetto concepto//ES','BEGIN:VEVENT','UID:'+ST.code+'@lacetto-concepto','DTSTAMP:'+stamp,'DTSTART;TZID=America/Tijuana:'+y+m+d+'T'+hh+mi+'00','DURATION:'+(e.id==='cetto'?'PT3H':'PT1H30M'),'SUMMARY:'+e.n+' · L.A. Cetto','LOCATION:Carretera Tecate–Ensenada km 73.5\\, Valle de Guadalupe\\, B.C.','END:VEVENT','END:VCALENDAR'].join('\r\n');
+  return URL.createObjectURL(new Blob([s],{type:'text/calendar'}))}
+
+function confirmBook(){
+  if(!(ST.d&&ST.t))return;
+  const e=EXP[ST.e],list=store.get('cettoBookings',[]);let rec;
+  if(CHG){
+    ST.code=CHG.code;rec=list.find(b=>b.code===CHG.code);
+    if(!rec){rec=CHG;list.unshift(rec)}
+    rec.prev={date:rec.date,time:rec.time};rec.date=ST.d;rec.time=ST.t;rec.changed=new Date().toISOString();
+  }else{
+    ST.code='CT-'+Math.random().toString(36).slice(2,7).toUpperCase();
+    const gift=$('bkGift').checked?{to:$('gTo').value.trim(),email:$('gMail').value.trim(),msg:$('gMsg').value.trim().slice(0,GIFT_MAX)}:null;
+    rec={code:ST.code,xid:e.id,exp:e.n,kind:e.k,price:e.p,date:ST.d,time:ST.t,guests:ST.g,total:e.p*ST.g,place:'Valle de Guadalupe',
+      name:$('bkName').value.trim(),email:$('bkMail').value.trim(),tel:$('bkTel').value.trim(),pay:pm(),card:pm()==='tarjeta'?$('kNum').value.replace(/\D/g,'').slice(-4):null,gift,paid:true,created:new Date().toISOString()};
+    list.unshift(rec);
+  }
+  store.set('cettoBookings',list);
+  book.classList.add('done');
+  const who=CHG&&rec.gift?'Le avisamos a '+esc(rec.gift.to)+' de la nueva fecha y a ti te enviamos una copia'+(rec.email?' en '+esc(rec.email):'')+'.':rec.gift?'Le enviamos la reservación a '+esc(rec.gift.to)+' ('+esc(rec.gift.email)+')'+(rec.gift.msg?' con tu mensaje':'')+', y a ti una copia en '+esc(rec.email)+'.':
+    CHG?'Te enviamos la nueva confirmación'+(rec.email?' a '+esc(rec.email):' por correo')+'.':
+    'Pagaste '+money(rec.total)+(rec.card?' con la tarjeta que termina en '+rec.card:' con Mercado Pago')+'. Te enviamos la confirmación a '+esc(rec.email)+'.';
+  const acct=user()?'<a class="ul" href="'+PAGES.cuenta+'#reservas">Ver en mi cuenta</a>':(CHG?'':'<button class="ul" type="button" id="bkAcc">Guardarla en una cuenta</button>');
+  bkOk.innerHTML='<span class="cap" style="color:var(--ink3)">'+(CHG?'Reserva actualizada':'Reserva confirmada')+' · <span class="code">'+ST.code+'</span></span>'+
+    '<p class="big">'+fmt(fromKey(ST.d))+', a las '+ST.t+'. '+(rec.gift?'Su tarde en el Valle ya está lista.':'Te esperamos en el Valle.')+'</p>'+
+    '<p>'+e.n+' para '+ST.g+(ST.g===1?' persona':' personas')+'. '+who+'</p>'+
+    '<div class="ctas"><a class="btn btn-ink" href="'+ics()+'" download="reserva-lacetto.ics">Agregar al calendario</a><a class="ul" href="https://www.google.com/maps/search/?api=1&query=L.A.+Cetto+Valle+de+Guadalupe" target="_blank" rel="noopener" aria-label="Cómo llegar a la bodega en el Valle de Guadalupe (abre Google Maps)">Cómo llegar</a>'+acct+(CHG?'':'<button class="ul" type="button" id="bkReset">Hacer otra reserva</button>')+'</div>'+
+    '<p class="fine" style="margin-top:18px">Prototipo: no se envió ni se cobró nada.</p>';
+  if($('bkReset'))$('bkReset').onclick=resetBook;
+  if($('bkAcc'))$('bkAcc').onclick=()=>{store.set('cettoUser',{name:rec.name,email:rec.email,tel:rec.tel,since:key(new Date()),club:null});paintUser();
+    const a=document.createElement('a');a.className='ul';a.href=PAGES.cuenta+'#reservas';a.textContent='Ver en mi cuenta';$('bkAcc').replaceWith(a);a.focus()};
+  if(CHG)history.replaceState(null,'',location.pathname+'#reservar');
+  renderSum();bkOk.focus({preventScroll:true});
+  book.scrollIntoView({behavior:reduceMotion?'auto':'smooth',block:'start'});
+}
+function resetBook(){book.classList.remove('done');ST.t=null;ST.pay=false;ST.busy=false;bkPay.hidden=true;
+  ['kNum','kName','kExp','kCvv','gTo','gMail','gMsg'].forEach(id=>{$(id).value='';err(id,'')});$('gCnt').textContent='0 / '+GIFT_MAX;setGift(false);$('bkAge').checked=false;renderSlots();renderSum()}
+
+document.addEventListener('click',ev=>{const b=ev.target.closest('[data-book]');if(!b)return;ev.preventDefault();const i=EXP.findIndex(e=>e.id===b.dataset.book);if(i<0)return;
+  if(CHG){location.href=PAGES.exp+'?exp='+EXP[i].id+'#reservar';return}
+  if(book.classList.contains('done'))resetBook();
+  ST.e=i;ST.t=null;ST.pk=true;bkExp.querySelector('input[value="'+i+'"]').checked=true;renderSlots();renderSum();showFlow(true)});
+
+renderCal();renderSlots();renderG();renderSum();
+
+/* ---------- Eventos: solicitud (demostración, no se envía) ---------- */
+const evForm=document.getElementById('evForm');
+const evMin=new Date(today);evMin.setDate(evMin.getDate()+14);document.getElementById('evDate').min=key(evMin);
+const evErr=(el,msg)=>{const e=$('e'+el.id);e.textContent=msg||'';if(msg){el.setAttribute('aria-invalid','true');el.setAttribute('aria-describedby',e.id)}else{el.removeAttribute('aria-invalid');el.removeAttribute('aria-describedby')}};
+['evName','evMail'].forEach(id=>$(id).addEventListener('input',()=>evErr($(id),'')));
+evForm.noValidate=true;
+evForm.addEventListener('submit',e=>{e.preventDefault();
+  const name=document.getElementById('evName'),mail=document.getElementById('evMail');
+  evErr(name,name.value.trim()?'':'Escribe tu nombre.');
+  evErr(mail,mail.value.trim()&&mail.checkValidity()?'':'Revisa tu correo: ahí te respondemos.');
+  const bad=[name,mail].find(i=>i.getAttribute('aria-invalid')==='true');if(bad){bad.focus();return}
+  const t=evForm.querySelector('[name=evt]:checked').value,l=evForm.querySelector('[name=evl]:checked').value;
+  const box=document.getElementById('evBox');box.innerHTML='<div class="ev-ok" tabindex="-1"><span class="cap" style="color:var(--ink3)">Solicitud recibida</span><b></b><p></p></div>';
+  box.querySelector('b').textContent='Gracias, '+name.value.trim().split(' ')[0]+'.';
+  box.querySelector('p').textContent='Recibimos tu solicitud de '+({Boda:'boda',Cumpleaños:'cumpleaños',Aniversario:'aniversario',Corporativo:'evento corporativo',Otro:'evento'}[t]||'evento')+' en '+l+'. El equipo de eventos te escribirá a '+mail.value.trim()+'.';
+  box.firstChild.focus();
+});
+
+/* ---------- Barra fija en móvil: promoción fuera de la reserva, total y continuar dentro de ella ---------- */
+const xbar=document.getElementById('xbar'),xhero=document.querySelector('.x-hero'),foot=document.querySelector('footer');
+const xbT=xbar.querySelector('small'),xbB=xbar.querySelector('b'),xbBtn=xbar.querySelector('.btn');
+var xbReady=true;
+function renderXbar(){if(xbar.dataset.mode==='book'){const e=EXP[ST.e];xbT.textContent=e.n+' · '+ST.g+(ST.g===1?' persona':' personas');xbB.textContent=money(e.p*ST.g);xbBtn.textContent=actionLabel(true)}
+  else{xbT.textContent='Catas en el Valle';xbB.textContent='Desde $250 por persona';xbBtn.textContent='Reservar'}}
+xbBtn.addEventListener('click',e=>{if(xbar.dataset.mode!=='book')return;e.preventDefault();next()});
+function xbTick(){const br=book.getBoundingClientRect(),vis=br.top<innerHeight&&br.bottom>0,sr=bkSum.getBoundingClientRect(),sumVis=sr.top<innerHeight-40&&sr.bottom>0;
+  const bm=vis&&ST.pk&&!wide.matches&&!book.classList.contains('done')&&!sumVis;
+  const show=bm||(xhero.getBoundingClientRect().bottom<0&&!vis&&foot.getBoundingClientRect().top>innerHeight);
+  const mode=bm?'book':'promo';if(xbar.dataset.mode!==mode){xbar.dataset.mode=mode;renderXbar()}
+  xbar.classList.toggle('on',show);xbar.setAttribute('aria-hidden',!show);document.documentElement.style.setProperty('--sbh',show?xbar.offsetHeight+'px':'0px')}
+addEventListener('scroll',()=>requestAnimationFrame(xbTick),{passive:true});xbTick();
+
+observeReveals();
+</script>
+</body>
+</html>

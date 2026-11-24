@@ -1,0 +1,547 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>L.A. Cetto · Club Cetto</title>
+<meta name="description" content="Concepto de rediseño: Club Cetto, Club Estaciones y acceso a tu cuenta. Propuesta; imágenes y vinos del sitio actual como referencia temporal.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baskervville:ital@0;1&family=DM+Sans:opsz,wght@9..40,400..600&family=Playfair:opsz,wght@5..1200,300..500&display=swap" rel="stylesheet">
+<link rel="icon" type="image/svg+xml" href="media/favicon.svg">
+<!-- compartir -->
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="apple-touch-icon" href="media/apple-touch-icon.png">
+<meta name="theme-color" content="#F3F1EC">
+<meta name="robots" content="noindex, nofollow">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="es_MX">
+<meta property="og:site_name" content="L.A. Cetto · Concepto de rediseño">
+<meta property="og:title" content="L.A. Cetto · Club Cetto">
+<meta property="og:description" content="Concepto de rediseño: Club Cetto, Club Estaciones y acceso a tu cuenta. Propuesta; imágenes y vinos del sitio actual como referencia temporal.">
+<meta property="og:url" content="https://zamirpadilla.github.io/lacetto-concepto/lacetto-club.html">
+<meta property="og:image" content="https://zamirpadilla.github.io/lacetto-concepto/media/og-banner.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Chardonnay Reserva Privada de L.A. Cetto sobre una roca frente al mar, con el texto: Una boutique de vinos, de punta a punta">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="L.A. Cetto · Club Cetto">
+<meta name="twitter:description" content="Concepto de rediseño: Club Cetto, Club Estaciones y acceso a tu cuenta. Propuesta; imágenes y vinos del sitio actual como referencia temporal.">
+<meta name="twitter:image" content="https://zamirpadilla.github.io/lacetto-concepto/media/og-banner.jpg">
+<!-- /compartir -->
+<link rel="stylesheet" href="cetto-base.css">
+<style>
+section[id]{scroll-margin-top:72px}
+/* Portada */
+.cl-hero{position:relative;height:100svh;min-height:620px;color:#EEE9E1;background:#121110;overflow:hidden;display:flex;flex-direction:column;justify-content:flex-end}
+.cl-hero>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 50%;filter:brightness(.62) saturate(.9);transform:scale(1.06);animation:clkb 18s linear both}
+@keyframes clkb{to{transform:scale(1)}}
+.cl-hero::after{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(10,9,8,.5) 0%,rgba(10,9,8,0) 26%,rgba(10,9,8,0) 44%,rgba(10,9,8,.74) 100%)}
+.cl-hero .xin{position:relative;z-index:2;padding:0 var(--m) clamp(28px,4vw,56px)}
+.cl-hero .cl-cap{display:block;margin-bottom:clamp(18px,2vw,28px);opacity:.85}
+.cl-hero .row{display:grid;grid-template-columns:minmax(0,1fr) minmax(260px,380px);gap:32px;align-items:end}
+.cl-hero .row p{color:rgba(238,233,225,.9);margin-bottom:22px}
+.cl-hero .ctas{display:flex;flex-wrap:wrap;align-items:center;gap:14px 26px}
+
+/* Introducción y niveles */
+.cl-lead{font:400 clamp(28px,3.1vw,48px)/1.2 var(--serif);letter-spacing:-.012em;max-width:30ch}
+.cl-lead em{font-style:italic}
+.cl-two{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(24px,4vw,72px);margin-top:clamp(32px,4vw,56px);padding-top:clamp(24px,3vw,40px);border-top:1px solid var(--line)}
+.cl-two h3{font:400 clamp(28px,2.6vw,38px)/1.1 var(--serif);letter-spacing:-.01em}
+.cl-two p{color:var(--ink2);font-size:16px;max-width:46ch;margin:12px 0 18px}
+.cl-tiers{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:var(--g);margin-top:clamp(40px,5vw,72px)}
+.cl-tier{background:var(--bg2);padding:clamp(22px,2.6vw,40px);display:flex;flex-direction:column}
+.cl-tier.dk{background:var(--ink);color:var(--bg)}
+.cl-tier .hd{display:flex;justify-content:space-between;align-items:baseline;gap:16px}
+.cl-tier .hd .cap{color:var(--ink3)}
+.cl-tier.dk .hd .cap{color:rgba(243,241,236,.6)}
+.cl-tier h3{font:400 clamp(34px,3.4vw,52px)/1 var(--serif);letter-spacing:-.015em;margin:22px 0 6px}
+.cl-tier .sub{font:italic 400 18px/1.4 var(--serif);color:var(--ink2)}
+.cl-tier.dk .sub{color:rgba(243,241,236,.72)}
+.cl-tier ul{list-style:none;margin:26px 0 30px;border-top:1px solid var(--line)}
+.cl-tier.dk ul{border-color:rgba(243,241,236,.18)}
+.cl-tier li{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.25fr);gap:16px;padding:13px 0;border-bottom:1px solid var(--line);align-items:baseline}
+.cl-tier.dk li{border-color:rgba(243,241,236,.18)}
+.cl-tier li b{font:400 19px/1.2 var(--serif)}
+.cl-tier li span{font-size:14px;color:var(--ink2)}
+.cl-tier.dk li span{color:rgba(243,241,236,.72)}
+.cl-tier .act{margin-top:auto;display:flex;flex-wrap:wrap;align-items:center;gap:14px 26px}
+.cl-tier.dk .btn-ink{background:var(--bg);border-color:var(--bg);color:var(--ink)}
+.cl-tier.dk .btn-ink:hover{background:#fff}
+
+/* Club Estaciones */
+.cl-est{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:clamp(28px,5vw,88px);align-items:stretch}
+.cl-stage{position:relative;background:var(--sc,#C8CCD2);transition:background-color .9s var(--ease);min-height:clamp(520px,52vw,760px);overflow:hidden;isolation:isolate;display:flex;flex-direction:column;padding:clamp(18px,2vw,28px)}
+.cl-stage .top{display:flex;justify-content:space-between;align-items:baseline;gap:16px;position:relative;z-index:2}
+.cl-stage .nm{font:400 clamp(40px,4.4vw,72px)/1 var(--serif);letter-spacing:-.018em}
+.cl-stage .vr{opacity:.72}
+.cl-bt{flex:1;display:grid;place-items:center;position:relative}
+.cl-bw{position:relative;height:min(100%,clamp(340px,40vw,600px));aspect-ratio:1/1;max-width:100%}
+.cl-bw img{position:relative;z-index:1;width:100%;height:100%;object-fit:contain;mix-blend-mode:multiply;transform:perspective(1400px) rotateY(0deg)}
+.cl-bw::after{content:"";position:absolute;left:50%;bottom:.6%;width:30%;height:5.5%;transform:translateX(-50%);background:radial-gradient(closest-side,rgba(38,28,20,.3),rgba(38,28,20,0))}
+.cl-stage .q{position:relative;z-index:2;font:italic 400 clamp(18px,1.5vw,22px)/1.4 var(--serif);max-width:34ch}
+.cl-side{display:flex;flex-direction:column}
+.cl-side .p{margin-top:16px}
+.cl-year{list-style:none;margin:30px 0 0;border-top:1px solid var(--ink)}
+.cl-year button{display:grid;grid-template-columns:14px minmax(0,1fr) auto;gap:4px 14px;align-items:baseline;width:100%;padding:13px 0 12px;border-bottom:1px solid var(--line);color:var(--ink3);transition:color .25s}
+.cl-year button .sw{width:10px;height:10px;border-radius:50%;background:var(--c);align-self:center;box-shadow:inset 0 0 0 1px rgba(43,44,45,.15)}
+.cl-year button b{font:400 clamp(22px,1.9vw,28px)/1.1 var(--serif)}
+.cl-year button small{font-size:13px;grid-column:2}
+.cl-year button em{font-style:normal;font:500 10.5px/1.4 var(--sans);letter-spacing:.09em;text-transform:uppercase;grid-row:1;grid-column:3;color:var(--ink3)}
+.cl-year button .nx{color:var(--wine)}
+.cl-year button:hover,.cl-year button[aria-selected="true"]{color:var(--ink)}
+.cl-cfg{margin-top:28px;padding-top:22px;border-top:1px solid var(--line)}
+.cl-size{display:flex;gap:26px;margin:10px 0 18px}
+.cl-size button{font:400 24px/1.2 var(--serif);color:var(--ink3);padding-bottom:4px;border-bottom:1px solid transparent}
+.cl-size button[aria-pressed="true"]{color:var(--ink);border-color:var(--ink)}
+.cl-sum{display:grid;grid-template-columns:1fr auto;gap:6px 16px;font-size:14.5px}
+.cl-sum .tot{font:400 24px/1.3 var(--serif)}
+.cl-sum s{color:var(--ink3);font-size:13px;margin-right:6px}
+.cl-cfg .btn{width:100%;margin-top:20px}
+.cl-cfg .alt{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-top:16px;font-size:13.5px;color:var(--ink2)}
+.cl-cfg .alt .ul{font-size:11px}
+
+/* Cómo funciona */
+.cl-how{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(32px,6vw,104px);align-items:center}
+.cl-how-ph{position:relative;aspect-ratio:4/5;overflow:hidden;background:var(--bg2)}
+.cl-how-ph video,.cl-how-ph img{width:100%;height:100%;object-fit:cover;object-position:50% 35%}
+.cl-how-ph figcaption{position:absolute;left:18px;bottom:16px;color:#fff;z-index:2;font:italic 400 17px/1.2 var(--serif)}
+.cl-how-ph::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,0) 60%,rgba(0,0,0,.45))}
+.cl-steps{list-style:none;margin-top:30px;border-top:1px solid var(--ink)}
+.cl-steps li{display:grid;grid-template-columns:clamp(56px,6vw,84px) minmax(0,1fr);gap:4px 16px;padding:20px 0 18px;border-bottom:1px solid var(--line)}
+.cl-steps li span{font:400 clamp(36px,3.6vw,56px)/.9 var(--serif);color:var(--ink3);grid-row:1/3;letter-spacing:-.02em}
+.cl-steps li b{font:400 clamp(21px,1.8vw,26px)/1.2 var(--serif)}
+.cl-steps li p{font-size:14.5px;color:var(--ink2);max-width:46ch}
+
+/* Catas para socios */
+.cl-band{position:relative;min-height:min(80svh,740px);display:flex;align-items:flex-end;color:#fff;overflow:hidden;background:#2a241e}
+.cl-band>video,.cl-band>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 58%}
+.cl-band::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(16,12,9,.3),rgba(16,12,9,0) 30%,rgba(16,12,9,.72))}
+.cl-band .top{position:absolute;top:clamp(20px,2.6vw,36px);left:var(--m);right:var(--m);z-index:2}
+.cl-band .xin{position:relative;z-index:2;width:100%;padding:0 var(--m) clamp(28px,4vw,56px);display:grid;grid-template-columns:minmax(0,1fr) minmax(260px,380px);gap:32px;align-items:end}
+.cl-band p{color:rgba(255,255,255,.9);margin-bottom:22px}
+
+/* Cuenta */
+.cl-acc{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(32px,6vw,104px);align-items:start}
+.cl-card-bg{background:var(--bg2);padding:clamp(28px,5vw,84px) clamp(20px,4vw,64px);display:grid;place-items:center;overflow:hidden;margin-top:30px}
+.cl-mcard{position:relative;width:100%;max-width:470px;aspect-ratio:1.586;background:#1E1D1C;color:#EEE9E1;padding:clamp(18px,2.4vw,30px);display:flex;flex-direction:column;justify-content:space-between;overflow:hidden;isolation:isolate;box-shadow:0 34px 60px rgba(30,29,28,.3);transform:rotate(-1.4deg)}
+.cl-mcard::before{content:"";position:absolute;inset:-50%;background-image:var(--grain);opacity:.18;mix-blend-mode:overlay;z-index:-1}
+.cl-mcard::after{content:"";position:absolute;right:-22%;bottom:-48%;width:75%;aspect-ratio:1;border:1px solid rgba(238,233,225,.14);border-radius:50%;z-index:-1}
+.cl-mcard .hd{display:flex;justify-content:space-between;align-items:flex-start}
+.cl-mcard .hd img{height:clamp(30px,3vw,40px);filter:brightness(0) invert(.92)}
+.cl-mcard small{font:500 10.5px/1.4 var(--sans);letter-spacing:.09em;text-transform:uppercase;color:rgba(238,233,225,.6)}
+.cl-mcard .nm{font:400 clamp(26px,2.8vw,40px)/1.05 var(--serif);letter-spacing:-.01em;overflow-wrap:anywhere}
+.cl-mcard .ft{display:flex;justify-content:space-between;align-items:flex-end;gap:12px}
+.cl-mcard .pl{font:italic 400 clamp(14px,1.2vw,17px)/1.2 var(--serif)}
+.cl-panel{background:var(--bg2);padding:clamp(22px,3vw,44px)}
+.cl-tabs{display:flex;gap:26px;border-bottom:1px solid var(--line);margin-bottom:26px}
+.cl-tabs button{font:400 clamp(22px,1.9vw,28px)/1.2 var(--serif);color:var(--ink3);padding-bottom:12px;margin-bottom:-1px;border-bottom:1px solid transparent}
+.cl-tabs button[aria-selected="true"]{color:var(--ink);border-color:var(--ink)}
+.cl-f .fg{margin-bottom:20px}
+.cl-f label{display:block;font:500 11px/1.4 var(--sans);letter-spacing:.09em;text-transform:uppercase;color:var(--ink3);margin-bottom:4px}
+.cl-f input[type=text],.cl-f input[type=email],.cl-f input[type=password],.cl-f input[type=date]{width:100%;background:transparent;border:0;border-bottom:1px solid rgba(43,44,45,.32);border-radius:0;padding:8px 0 10px;font:inherit;font-size:16px;color:var(--ink);outline:none;transition:border-color .2s}
+.cl-f input:focus{border-color:var(--ink)}
+.cl-f .two{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:0 24px}
+.cl-f .chk{display:flex;gap:10px;align-items:flex-start;font:400 14px/1.5 var(--sans);letter-spacing:0;text-transform:none;color:var(--ink2);margin:4px 0 22px;cursor:pointer}
+.cl-f .chk input{width:17px;height:17px;margin-top:2px;accent-color:var(--ink);flex:0 0 auto}
+.cl-f .btn{width:100%}
+.cl-f .row{display:flex;justify-content:space-between;align-items:center;gap:12px;margin:-6px 0 22px;font-size:13.5px}
+.cl-f .row a{color:var(--ink2);border-bottom:1px solid currentColor}
+.cl-err{display:none;font-size:13.5px;color:var(--wine);margin:-6px 0 16px}
+.cl-err.on{display:block}
+.cl-intent{display:none;background:var(--bg);padding:14px 16px;font-size:14px;margin-bottom:22px;border-left:2px solid var(--ink)}
+.cl-intent.on{display:block}
+.cl-intent b{font-weight:500}
+.cl-note{font-size:12px;color:var(--ink3);margin-top:14px;text-align:center}
+.cl-ok{display:none}
+.cl-ok.on{display:block}
+.cl-ok h3{font:400 clamp(30px,2.8vw,42px)/1.05 var(--serif);margin-bottom:12px}
+.cl-ok p{color:var(--ink2);max-width:44ch}
+.cl-ok ul{list-style:none;margin:22px 0 26px;border-top:1px solid var(--line)}
+.cl-ok li{display:flex;justify-content:space-between;gap:16px;padding:12px 0;border-bottom:1px solid var(--line);font-size:14.5px}
+.cl-ok li span:last-child{color:var(--ink2);text-align:right}
+.cl-ok .acts{display:flex;flex-wrap:wrap;align-items:center;gap:14px 26px}
+
+/* Preguntas */
+.cl-faq{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.6fr);gap:clamp(24px,5vw,88px);align-items:start}
+.cl-faq details{border-bottom:1px solid var(--line)}
+.cl-faq details:first-child{border-top:1px solid var(--ink)}
+.cl-faq summary{list-style:none;display:flex;justify-content:space-between;align-items:center;gap:16px;padding:18px 0;font:400 clamp(20px,1.7vw,24px)/1.25 var(--serif);cursor:pointer}
+.cl-faq summary::-webkit-details-marker{display:none}
+.cl-faq summary i{position:relative;width:13px;height:13px;flex:0 0 auto}
+.cl-faq summary i::before,.cl-faq summary i::after{content:"";position:absolute;left:0;right:0;top:6px;height:1px;background:currentColor;transition:transform .3s var(--ease)}
+.cl-faq summary i::after{transform:rotate(90deg)}
+.cl-faq details[open] summary i::after{transform:none}
+.cl-faq details p{padding:0 0 20px;color:var(--ink2);max-width:60ch}
+
+@media (max-width:900px){
+  .cl-hero .row,.cl-tiers,.cl-two,.cl-est,.cl-how,.cl-band .xin,.cl-acc,.cl-faq{grid-template-columns:minmax(0,1fr)}
+  .cl-stage{min-height:0;aspect-ratio:4/5}
+  .cl-bw{height:auto;width:min(100%,420px)}
+  .cl-how-ph{aspect-ratio:4/3}
+  .cl-tier li{grid-template-columns:minmax(0,1fr);gap:2px}
+  .cl-card-bg{margin-top:24px}
+  /* En móvil: título, luego la botella y enseguida las estaciones */
+  .cl-est{gap:0}
+  .cl-side{display:contents}
+  .cl-side .duo-line{order:0}
+  .cl-side .h2{order:1;margin-bottom:0}
+  .cl-side .p{order:2;margin-bottom:24px}
+  .cl-stage{order:3}
+  .cl-year{order:4;margin-top:0}
+  .cl-cfg{order:5}
+}
+@media (max-width:640px){
+  .cl-hero{height:auto;min-height:100svh}
+  .cl-hero .xin{padding-top:110px}
+  .cl-hero .ctas .btn{flex:1 1 auto}
+  .cl-f .two{grid-template-columns:minmax(0,1fr)}
+  .cl-stage{aspect-ratio:auto;min-height:520px}
+  .cl-tabs{gap:20px}
+}
+@media (prefers-reduced-motion:reduce){.cl-hero>img{animation:none;transform:none}}
+/* Confirmación de suscripción */
+.cl-dlg{margin:auto;border:0;padding:0;background:var(--bg);color:var(--ink);width:min(560px,calc(100vw - 32px));max-height:calc(100dvh - 32px);overflow:auto}
+.cl-dlg::backdrop{background:rgba(18,14,10,.5)}
+.cl-dlg form{padding:clamp(22px,3vw,34px);display:grid;gap:18px}
+.cl-dlg .dh{display:flex;justify-content:space-between;align-items:flex-start;gap:16px}
+.cl-dlg h2{font:400 clamp(26px,2.4vw,32px)/1.1 var(--serif);letter-spacing:-.01em}
+.cl-dlg .close{width:40px;height:40px;display:grid;place-items:center;margin:-8px -8px 0 0}
+.cl-dlg .cl-sum{margin:0}
+.cl-dlg fieldset{border:0;padding:0;margin:0;display:grid;gap:10px}
+.cl-dlg legend{font:500 11px/1 var(--sans);letter-spacing:.1em;text-transform:uppercase;color:var(--ink3);margin-bottom:10px}
+.d-addr{grid-column:1/-1;display:flex;justify-content:space-between;align-items:baseline;gap:14px;font-size:15px}
+.d-pay{display:flex;flex-wrap:wrap;gap:10px 22px;font-size:15px}
+.d-pay label{display:flex;align-items:center;gap:8px;min-height:32px}
+.d-card,#dAddr{display:grid;grid-template-columns:1fr 1fr;gap:12px 14px}
+.d-card[hidden]{display:none}
+.d-f{display:grid;gap:6px;font-size:12px;color:var(--ink3)}
+.d-f.full{grid-column:1/-1}
+.d-f input{height:44px;border:0;border-bottom:1px solid var(--line);background:transparent;font:400 16px var(--sans);color:var(--ink)}
+.d-f input:focus{outline:none;border-color:var(--ink)}
+.d-demo{grid-column:1/-1;justify-self:start;font-size:12.5px;color:var(--ink2);text-decoration:underline;text-underline-offset:3px}
+.d-demo{transition:color .25s}.d-demo:hover{color:var(--ink)}
+.d-fine{font-size:12.5px;color:var(--ink3)}
+.d-acts{display:flex;flex-wrap:wrap;align-items:center;gap:14px 24px}
+</style>
+</head>
+<body>
+<div id="chromeTop"></div>
+
+<main>
+<!-- Portada -->
+<section class="cl-hero" data-hero aria-labelledby="cT">
+  <img src="https://www.lacetto.mx/cdn/shop/files/DSC9652.jpg?width=2400" alt="Botellas guardadas en los estantes de la cava" fetchpriority="high">
+  <div class="xin">
+    <span class="cap cl-cap">Club Cetto · sin cuotas para empezar</span>
+    <div class="row">
+      <h1 class="h1 lines ttl" id="cT" data-now><span class="ln"><span>Un lugar en </span></span><span class="ln"><span>nuestra mesa </span></span></h1>
+      <div>
+        <p>Crea tu cuenta gratis y forma parte de la familia: 5% en todo el catálogo, las nuevas añadas antes que nadie y catas para socios en el Valle y en la Boutique CDMX.</p>
+        <div class="ctas"><a class="btn btn-light" href="#cuenta" data-tab="crear">Unirme gratis</a><a class="ul" href="#cuenta" data-tab="entrar">Ya tengo cuenta</a></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Introducción y niveles -->
+<section class="sec wrap" aria-labelledby="tT">
+  <p class="cl-lead">Somos una familia que hace vino desde 1928. El club es para quienes quieren estar más cerca: <em>probar primero, visitar la casa y recibir cada estación en su puerta.</em></p>
+  <h2 class="sr" id="tT">Dos formas de ser parte</h2>
+  <div class="cl-two">
+    <div>
+      <h3>Socio Cetto</h3>
+      <p>Tu cuenta es gratis. Con ella pagas 5% menos en todo el catálogo con tu sesión iniciada, conoces las nuevas añadas antes que nadie y te invitamos a catas para socios en el Valle y en la Boutique CDMX.</p>
+      <a class="ul" href="#cuenta" data-tab="crear">Crear mi cuenta</a>
+    </div>
+    <div>
+      <h3>Club Estaciones</h3>
+      <p>Todo lo de socio, más una caja de nuestra línea Estaciones en cada temporada: 3 botellas con 10% de descuento o 6 con 15%. Te avisamos antes de cada envío y la pausas cuando quieras.</p>
+      <a class="ul" href="#estaciones">Arma tu suscripción</a>
+    </div>
+  </div>
+</section>
+
+<!-- Club Estaciones -->
+<section class="sec wrap" id="estaciones" style="padding-top:0" aria-labelledby="eT">
+  <div class="cl-est">
+    <div class="cl-stage" id="stage">
+      <div class="top"><span class="nm" id="sNm">Invierno</span><span class="cap vr" id="sVr">Petit Verdot</span></div>
+      <div class="cl-bt"><span class="cl-bw"><img id="sImg" src="" alt=""></span></div>
+      <p class="q" id="sQ" aria-live="polite"></p>
+    </div>
+    <div class="cl-side">
+      <h2 class="h2" id="eT">Cada estación, en su temporada</h2>
+      <p class="p">Cuatro vinos de nuestra línea Estaciones, uno para cada época del año. Te llega cada uno cuando empieza su temporada.</p>
+      <ul class="cl-year" role="tablist" aria-label="Estaciones" id="year"></ul>
+      <div class="cl-cfg">
+        <span class="cap" style="color:var(--ink3)" id="szL">Botellas por estación</span>
+        <div class="cl-size" role="group" aria-labelledby="szL" id="size">
+          <button aria-pressed="false" data-n="3">3 botellas</button>
+          <button aria-pressed="true" data-n="6">6 botellas</button>
+        </div>
+        <div class="cl-sum" id="sum"></div>
+        <button class="btn btn-ink" id="subBtn">Suscribirme</button>
+        <div class="alt"><span id="altTxt">¿Solo esta estación?</span><button class="ul" id="altAdd" data-add="inv">Agregar una botella</button></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Cómo funciona -->
+<section class="sec wrap" style="padding-top:0" aria-labelledby="hT">
+  <div class="cl-how">
+    <figure class="cl-how-ph"><video data-amb="Vendimia en el Valle" data-src="media/v-racimo.mp4" aria-hidden="true"></video><figcaption>Vendimia en el Valle</figcaption></figure>
+    <div>
+      <h2 class="h2" id="hT">Así funciona</h2>
+      <ol class="cl-steps">
+        <li><span>01</span><b>Crea tu cuenta</b><p>Gratis y en un minuto. Desde ese momento ves tu precio de socio en toda la tienda.</p></li>
+        <li><span>02</span><b>Elige tu caja</b><p>3 o 6 botellas por estación. Puedes cambiar de tamaño entre un envío y otro.</p></li>
+        <li><span>03</span><b>Te avisamos antes de cada envío</b><p>Confirmas la dirección, te saltas una estación o pausas el club.</p></li>
+        <li><span>04</span><b>La recibes en casa</b><p>Enviamos a todo México, con notas de cata y maridaje de la estación.</p></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<!-- Catas para socios -->
+<section class="cl-band" aria-labelledby="kT">
+  <video data-amb="Catas en la casa" data-pp-pos="tr" data-src="media/v-copa.mp4" aria-hidden="true"></video>
+  <div class="xin">
+    <h2 class="h1 lines ttl" id="kT"><span class="ln"><span>Catas en </span></span><span class="ln"><span>la casa </span></span></h2>
+    <div>
+      <p>Catas para socios en nuestra bodega del Valle de Guadalupe y en la Boutique CDMX. Las anunciamos primero por correo a quienes forman parte del club.</p>
+      <div style="display:flex;flex-wrap:wrap;align-items:center;gap:14px 26px"><a class="btn btn-light" href="lacetto-experiencias.html">Ver experiencias</a><a class="ul" href="#cuenta" data-tab="crear">Unirme gratis</a></div>
+    </div>
+  </div>
+</section>
+
+<!-- Cuenta -->
+<section class="sec wrap" id="cuenta" aria-labelledby="aT">
+  <div class="cl-acc">
+    <div>
+      <h2 class="h2" id="aT">Entra o crea tu cuenta</h2>
+      <div class="cl-card-bg" aria-hidden="true">
+        <div class="cl-mcard">
+          <div class="hd"><img src="https://www.lacetto.mx/cdn/shop/files/cropped-Recurso-2-2-768x682-1.png?width=160" alt=""><small id="mcTier">Socio Cetto</small></div>
+          <span class="nm" id="mcName">Tu nombre</span>
+          <div class="ft"><span class="pl" id="mcPlan">Precio de socio activo</span><small id="mcSince"></small></div>
+        </div>
+      </div>
+    </div>
+    <div class="cl-panel">
+      <div id="accForms">
+        <div class="cl-tabs" role="tablist" aria-label="Acceso">
+          <button role="tab" id="tabCrear" aria-selected="true" aria-controls="fCrear">Crear cuenta</button>
+          <button role="tab" id="tabEntrar" aria-selected="false" aria-controls="fEntrar">Iniciar sesión</button>
+        </div>
+        <form class="cl-f" id="fCrear" role="tabpanel" aria-labelledby="tabCrear" novalidate>
+          <div class="cl-intent" id="intent"></div>
+          <div class="fg"><label for="cName">Nombre completo</label><input type="text" id="cName" required autocomplete="name" maxlength="50"></div>
+          <div class="two">
+            <div class="fg"><label for="cMail">Correo</label><input type="email" id="cMail" required autocomplete="email"></div>
+            <div class="fg"><label for="cBirth">Fecha de nacimiento</label><input type="date" id="cBirth" required autocomplete="bday"></div>
+          </div>
+          <div class="fg"><label for="cPass">Contraseña (mínimo 8 caracteres)</label><input type="password" id="cPass" required minlength="8" autocomplete="new-password"></div>
+          <label class="chk"><input type="checkbox" id="cNews"> Quiero recibir preventas y catas para socios por correo.</label>
+          <p class="cl-err" id="cErr" role="alert"></p>
+          <button class="btn btn-ink">Crear cuenta gratis</button>
+          <p class="cl-note">Solo para mayores de 18 años. Prototipo: no se envía ningún dato.</p>
+        </form>
+        <form class="cl-f" id="fEntrar" role="tabpanel" aria-labelledby="tabEntrar" novalidate hidden>
+          <div class="fg"><label for="lMail">Correo</label><input type="email" id="lMail" required autocomplete="username"></div>
+          <div class="fg"><label for="lPass">Contraseña</label><input type="password" id="lPass" required autocomplete="current-password"></div>
+          <div class="row"><label class="chk" style="margin:0"><input type="checkbox"> Mantener sesión</label><a href="#cuenta" id="forgot">¿Olvidaste tu contraseña?</a></div>
+          <p class="cl-err" id="lErr" role="alert"></p>
+          <button class="btn btn-ink">Entrar</button>
+          <p class="cl-note">Prototipo: no se envía ningún dato.</p>
+        </form>
+      </div>
+      <div class="cl-ok" id="accOk" role="status" tabindex="-1"></div>
+    </div>
+  </div>
+</section>
+
+<!-- Preguntas -->
+<section class="sec wrap" style="padding-top:0" aria-labelledby="qT">
+  <div class="cl-faq">
+    <h2 class="h2" id="qT">Preguntas frecuentes</h2>
+    <div>
+      <details><summary>¿Cuesta algo ser socio?<i aria-hidden="true"></i></summary><p>No. Crear tu cuenta es gratis y el precio de socio aplica desde tu primera compra con sesión iniciada.</p></details>
+      <details><summary>¿Qué trae cada caja de Club Estaciones?<i aria-hidden="true"></i></summary><p>El vino Estaciones de la temporada: Primavera (Cabernet Sauvignon Rosé), Verano (Ensamble Blanco), Otoño (Gamay) o Invierno (Petit Verdot), en 3 o 6 botellas, con sus notas de cata y maridaje.</p></details>
+      <details><summary>¿Puedo pausar o cancelar?<i aria-hidden="true"></i></summary><p>Sí, desde tu cuenta y antes de cada envío. También puedes saltarte una estación o cambiar el tamaño de tu caja.</p></details>
+      <details><summary>¿A dónde envían?<i aria-hidden="true"></i></summary><p>A todo México. Las compras desde $799 tienen envío gratis.</p></details>
+      <details><summary>¿Necesito ser mayor de edad?<i aria-hidden="true"></i></summary><p>Sí. Para crear una cuenta y comprar vino necesitas tener 18 años o más.</p></details>
+    </div>
+  </div>
+</section>
+<dialog class="cl-dlg" id="subDlg" aria-labelledby="dT">
+  <form id="subF" novalidate>
+    <div class="dh"><h2 id="dT">Confirma tu Club Estaciones</h2><button type="button" class="close" data-dclose aria-label="Cerrar"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+    <div class="cl-sum" id="dSum"></div>
+    <fieldset><legend>Envío a</legend><div id="dAddr"></div></fieldset>
+    <fieldset><legend>Pago de cada caja</legend>
+      <div class="d-pay"><label><input type="radio" name="dPay" value="tarjeta" checked> Tarjeta</label><label><input type="radio" name="dPay" value="mercadopago"> Cuenta Mercado Pago</label></div>
+      <div class="d-card" id="dCard">
+        <label class="d-f full"><span>Número de tarjeta</span><input id="dNum" inputmode="numeric" autocomplete="cc-number" maxlength="19" placeholder="0000 0000 0000 0000"></label>
+        <label class="d-f"><span>Vence</span><input id="dExp" inputmode="numeric" autocomplete="cc-exp" maxlength="5" placeholder="MM/AA"></label>
+        <label class="d-f"><span>CVV</span><input id="dCvv" inputmode="numeric" autocomplete="cc-csc" maxlength="4" placeholder="123"></label>
+        <button type="button" class="d-demo" id="dDemo">Usar datos de prueba</button>
+      </div>
+    </fieldset>
+    <label class="chk"><input type="checkbox" id="dAge"> Confirmo que tengo 18 años o más.</label>
+    <p class="d-fine" id="dFine"></p>
+    <p class="cl-err" id="dErr" role="alert"></p>
+    <div class="d-acts"><button class="btn btn-ink" id="dOk">Confirmar suscripción</button><button type="button" class="ul" data-dclose>Cancelar</button></div>
+  </form>
+</dialog>
+</main>
+
+<div id="chromeBottom"></div>
+
+<script src="cetto-base.js"></script>
+<script>
+(()=>{ /* ámbito propio de la página: evita choques con globales de cetto-base.js */
+renderChrome({page:'club'});
+
+/* ---------- Club Estaciones ---------- */
+/* Vinos y descripciones reales de la línea Estaciones; meses de envío y descuentos son propuesta */
+const SEAS=[
+  {id:'prim',n:'Primavera',mes:'marzo',m:2,c:'#EBD4CC',q:'Alegre y ligero: fresa, frambuesa y jamaica que evocan días soleados.'},
+  {id:'ver',n:'Verano',mes:'junio',m:5,c:'#EAE0B9',q:'Tropical y refrescante: flores, maracuyá y cítricos para los días de calor.'},
+  {id:'oto',n:'Otoño',mes:'septiembre',m:8,c:'#DBA683',q:'Fresco y frutal: jamaica y grosella con acidez vibrante.'},
+  {id:'inv',n:'Invierno',mes:'diciembre',m:11,c:'#C8CCD2',q:'Intenso y cálido: cereza negra, moras y especias para acompañar el frío.'}
+];
+const now=new Date();
+const nextIdx=(()=>{const mo=now.getMonth();const i=SEAS.findIndex(s=>s.m>=mo);return i<0?0:i})();
+let cur=nextIdx,n=6,intentOn=false,turnT;
+const DISC={3:.10,6:.15};
+const yearEl=document.getElementById('year'),img=document.getElementById('sImg'),stage=document.getElementById('stage');
+yearEl.innerHTML=SEAS.map((s,i)=>'<li role="presentation"><button role="tab" style="--c:'+s.c+'" aria-selected="'+(i===cur)+'" data-i="'+i+'"><span class="sw" aria-hidden="true"></span><b>'+s.n+'</b><small>'+P[s.id].sub+' · envío en '+s.mes+'</small><em class="'+(i===nextIdx?'nx':'')+'">'+(i===nextIdx?'Próxima caja':money(P[s.id].price))+'</em></button></li>').join('');
+
+function paint(first){
+  const s=SEAS[cur],p=P[s.id];
+  stage.style.setProperty('--sc',s.c);
+  document.getElementById('sNm').textContent=s.n;
+  document.getElementById('sVr').textContent=p.sub;
+  document.getElementById('sQ').textContent=s.q;
+  yearEl.querySelectorAll('button').forEach((b,i)=>b.setAttribute('aria-selected',i===cur));
+  const src=F(p.img,900),alt='Estaciones '+s.n+', '+p.sub;
+  if(first||reduceMotion){img.src=src;img.alt=alt}
+  else{ /* gira la botella y cambia la etiqueta a medio giro (la transformación va en la imagen para conservar el multiply) */
+    clearTimeout(turnT);
+    img.style.transition='transform .36s cubic-bezier(.5,0,.75,0)';img.style.transform='perspective(1400px) rotateY(90deg)';
+    turnT=setTimeout(()=>{img.src=src;img.alt=alt;img.style.transition='none';img.style.transform='perspective(1400px) rotateY(-90deg)';void img.offsetWidth;
+      img.style.transition='transform .6s var(--ease)';img.style.transform='perspective(1400px) rotateY(0deg)'},360);
+  }
+  const full=p.price*n,box=full*(1-DISC[n]);
+  document.getElementById('sum').innerHTML='<span>'+n+' × '+p.name+' ('+p.sub+')</span><span class="price">'+money(full)+'</span>'+
+    '<span>Precio Club Estaciones ('+Math.round(DISC[n]*100)+'%)</span><span class="price">−'+money(full-box)+'</span>'+
+    '<span>Envío</span><span class="price">'+(box>=FREE?'Gratis':money(SHIP))+'</span>'+
+    '<span class="tot">Por caja, con envío</span><span class="tot price">'+money(box+(box>=FREE?0:SHIP))+'</span>';
+  document.getElementById('altTxt').textContent='¿Solo '+s.n+'? '+money(p.price)+' la botella';
+  document.getElementById('altAdd').dataset.add=s.id;
+}
+yearEl.addEventListener('click',e=>{const b=e.target.closest('button');if(!b||+b.dataset.i===cur)return;cur=+b.dataset.i;paint()});
+yearEl.addEventListener('keydown',e=>{if(!['ArrowDown','ArrowUp','ArrowLeft','ArrowRight'].includes(e.key))return;e.preventDefault();cur=(cur+(e.key==='ArrowDown'||e.key==='ArrowRight'?1:3))%4;paint();yearEl.querySelectorAll('button')[cur].focus()});
+document.getElementById('size').addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;n=+b.dataset.n;document.querySelectorAll('#size button').forEach(x=>x.setAttribute('aria-pressed',x===b));paint(true);if(intentOn)setIntent()});
+SEAS.forEach(s=>{const im=new Image();im.src=F(P[s.id].img,900)}); /* precarga las cuatro etiquetas */
+paint(true);
+
+/* ---------- Cuenta (simulada: no se envía nada; queda solo en este navegador como cettoUser) ---------- */
+const tabs={crear:[document.getElementById('tabCrear'),document.getElementById('fCrear')],entrar:[document.getElementById('tabEntrar'),document.getElementById('fEntrar')]};
+function showTab(k){Object.entries(tabs).forEach(([key,[t,f]])=>{t.setAttribute('aria-selected',key===k);t.tabIndex=key===k?0:-1;f.hidden=key!==k})}
+document.getElementById('tabCrear').parentElement.addEventListener('keydown',e=>{if(!['ArrowLeft','ArrowRight','Home','End'].includes(e.key))return;e.preventDefault();const k=document.getElementById('tabCrear').getAttribute('aria-selected')==='true'?'entrar':'crear';const t=e.key==='Home'?'crear':e.key==='End'?'entrar':k;showTab(t);tabs[t][0].focus()});
+showTab('crear');
+Object.entries(tabs).forEach(([k,[t]])=>t.addEventListener('click',()=>showTab(k)));
+document.querySelectorAll('[data-tab]').forEach(a=>a.addEventListener('click',()=>showTab(a.dataset.tab)));
+document.getElementById('mcSince').textContent='Desde '+now.getFullYear();
+const mcName=document.getElementById('mcName'),cName=document.getElementById('cName');
+cName.addEventListener('input',()=>mcName.textContent=cName.value.trim()||'Tu nombre');
+
+function setIntent(){
+  const s=SEAS[nextIdx];intentOn=true;
+  const box=document.getElementById('intent');
+  box.innerHTML='Crea tu cuenta y después confirmas tu <b>Club Estaciones</b>: caja de '+n+' botellas por estación. Primera caja: '+s.n+', en '+s.mes+'.';
+  box.classList.add('on');
+  document.getElementById('mcTier').textContent='Club Estaciones';
+  document.getElementById('mcPlan').textContent=n+' botellas por estación';
+}
+document.getElementById('subBtn').addEventListener('click',openSub);
+/* Confirmación explícita de la suscripción (nada se cobra ni se envía en el concepto) */
+const dlg=document.getElementById('subDlg'),$d=id=>document.getElementById(id);
+function lastAddr(u){if(u&&u.addr){const a=u.addr;const t=[a.addr||a.calle,a.col||a.colonia,a.cp,a.city||a.ciudad,a.state||a.estado].filter(Boolean).join(', ');if(t)return t}
+  const o=store.get('cettoOrders',[]).find(o=>o.delivery&&o.delivery.mode==='envio'&&o.delivery.addr);return o?[o.delivery.addr,o.delivery.col,o.delivery.cp,o.delivery.city].filter(Boolean).join(', '):''}
+function addrForm(){$d('dAddr').innerHTML='<label class="d-f full"><span>Calle, número y colonia</span><input id="dCalle" autocomplete="street-address"></label><label class="d-f"><span>Código postal</span><input id="dCp" inputmode="numeric" maxlength="5" autocomplete="postal-code"></label><label class="d-f"><span>Ciudad</span><input id="dCiudad" autocomplete="address-level2"></label>'}
+function openSub(){
+  setIntent();
+  const u=user();
+  if(!u){showTab('crear');document.getElementById('cuenta').scrollIntoView({behavior:reduceMotion?'auto':'smooth'});setTimeout(()=>cName.focus({preventScroll:true}),reduceMotion?0:700);return}
+  const s=SEAS[nextIdx],p=P[s.id],full=p.price*n,box=Math.round(full*(1-DISC[n])),ship=box>=FREE?0:SHIP;
+  $d('dSum').innerHTML='<span>Primera caja: '+n+' × '+p.name+' ('+p.sub+')</span><span class="price">'+money(full)+'</span><span>Precio Club Estaciones ('+Math.round(DISC[n]*100)+'%)</span><span class="price">−'+money(full-box)+'</span><span>Envío</span><span class="price">'+(ship?money(ship):'Gratis')+'</span><span class="tot">Por caja</span><span class="tot price">'+money(box+ship)+'</span>';
+  const a=lastAddr(u);
+  if(a){$d('dAddr').innerHTML='<p class="d-addr"><span id="dAddrT">'+a.replace(/</g,'&lt;')+'</span><button type="button" class="ul" id="dAddrC">Cambiar</button></p>';$d('dAddrC').onclick=addrForm}else addrForm();
+  $d('dFine').textContent='Primer cargo al enviar tu caja de '+s.n+', en '+s.mes+'. Te escribimos una semana antes de cada envío y desde tu cuenta la cambias, la saltas o la pausas. Prototipo: no se cobra ni se envía nada.';
+  $d('dErr').classList.remove('on');dlg.showModal();
+}
+document.querySelectorAll('[data-dclose]').forEach(b=>b.onclick=()=>dlg.close());
+dlg.addEventListener('click',e=>{if(e.target===dlg)dlg.close()});
+document.querySelectorAll('input[name="dPay"]').forEach(r=>r.onchange=()=>{$d('dCard').hidden=document.querySelector('input[name="dPay"]:checked').value!=='tarjeta'});
+$d('dDemo').onclick=()=>{$d('dNum').value='4000 0000 0000 0000';$d('dExp').value='12/30';$d('dCvv').value='123'};
+$d('dNum').addEventListener('input',e=>{const v=e.target.value.replace(/\D/g,'').slice(0,16);e.target.value=v.replace(/(.{4})/g,'$1 ').trim()});
+$d('dExp').addEventListener('input',e=>{const v=e.target.value.replace(/\D/g,'').slice(0,4);e.target.value=v.length>2?v.slice(0,2)+'/'+v.slice(2):v});
+$d('subF').addEventListener('submit',e=>{e.preventDefault();$d('dErr').classList.remove('on');
+  const pay=document.querySelector('input[name="dPay"]:checked').value;
+  if($d('dCalle')&&!(($d('dCalle').value.trim())&&/^\d{5}$/.test($d('dCp').value)&&$d('dCiudad').value.trim()))return fail('dErr','Escribe la dirección completa, con un código postal de 5 dígitos.');
+  if(pay==='tarjeta'){const num=$d('dNum').value.replace(/\s/g,''),ex=$d('dExp').value.match(/^(\d{2})\/(\d{2})$/),now2=new Date();
+    if(!/^\d{16}$/.test(num))return fail('dErr','Revisa el número de tarjeta: son 16 dígitos.');
+    if(!ex||+ex[1]<1||+ex[1]>12||new Date(2000+ +ex[2],+ex[1])<=now2)return fail('dErr','Revisa la fecha de vencimiento.');
+    if(!/^\d{3,4}$/.test($d('dCvv').value))return fail('dErr','Revisa el código de seguridad.')}
+  if(!$d('dAge').checked)return fail('dErr','Confirma que tienes 18 años o más.');
+  const u=user();welcome(u.name,'club',u.email);
+  const u2=user();u2.club={...u2.club,pay,card:pay==='tarjeta'?$d('dNum').value.replace(/\s/g,'').slice(-4):null};
+  if($d('dCalle'))u2.addr={...(u2.addr||{}),addr:$d('dCalle').value.trim(),cp:$d('dCp').value,city:$d('dCiudad').value.trim()};
+  store.set('cettoUser',u2);dlg.close();document.getElementById('cuenta').scrollIntoView({behavior:reduceMotion?'auto':'smooth'});
+});
+
+const esc=s=>s.replace(/[<>&"]/g,'');
+function age(d){const b=new Date(d+'T12:00:00');let a=now.getFullYear()-b.getFullYear();const mm=now.getMonth()-b.getMonth();if(mm<0||(mm===0&&now.getDate()<b.getDate()))a--;return a}
+function welcome(name,isNew,email,quiet){
+  const first=esc(name.split(' ')[0]),s=SEAS[nextIdx];mcName.textContent=name;
+  if(!quiet){const today=new Date().toISOString().slice(0,10),prev=user()||{};
+    store.set('cettoUser',{...prev,name,email:email||prev.email||'',since:prev.since||today,club:isNew==='club'?{n,since:today,next:s.n,mes:s.mes}:(prev.club||null)});paintUser()}
+  const u=user()||{},orders=store.get('cettoOrders',[]);
+  const ok=document.getElementById('accOk');
+  ok.innerHTML='<h3>Hola, '+first+'.</h3><p>'+(isNew==='club'?'Activaste Club Estaciones. Tu primera caja sale en '+(u.club?u.club.mes:s.mes)+' y puedes cambiarla o pausarla desde tu cuenta.':isNew?'Tu cuenta está lista y tu precio de socio ya aplica en toda la tienda.':'Entraste a tu cuenta. Tu precio de socio ya aplica en toda la tienda.')+'</p>'+
+    '<ul><li><span>Plan</span><span>'+(u.club?'Club Estaciones · '+u.club.n+' botellas':'Socio Cetto')+'</span></li>'+
+    (u.club?'<li><span>Próxima caja</span><span>'+(u.club.next||s.n)+', '+(u.club.mes||s.mes)+'</span></li>':'')+
+    '<li><span>Pedidos</span><span>'+(orders.length?orders.length+(orders.length>1?' pedidos':' pedido'):'Aún no tienes pedidos')+'</span></li><li><span>Catas para socios</span><span>Te avisamos por correo</span></li></ul>'+
+    '<div class="acts"><a class="btn btn-ink" href="'+PAGES.cuenta+'">Ir a mi cuenta</a><a class="ul" href="'+PAGES.tienda+'">Ir a la tienda</a><button class="ul" id="logout">Cerrar sesión</button></div>'+
+    '<p class="cl-note" style="text-align:left">Prototipo: no se envía ningún dato; tu cuenta queda solo en este navegador.</p>';
+  document.getElementById('accForms').hidden=true;ok.classList.add('on');if(!quiet)ok.focus({preventScroll:true});
+  document.getElementById('logout').onclick=()=>{store.del('cettoUser');paintUser();intentOn=false;ok.classList.remove('on');document.getElementById('accForms').hidden=false;document.querySelectorAll('#accForms form').forEach(f=>f.reset());mcName.textContent='Tu nombre'};
+}
+function fail(id,msg){const e=document.getElementById(id);e.textContent=msg;e.classList.add('on')}
+document.getElementById('fCrear').addEventListener('submit',e=>{e.preventDefault();document.getElementById('cErr').classList.remove('on');
+  const f=e.target,bd=document.getElementById('cBirth').value;
+  if(!cName.value.trim())return fail('cErr','Escribe tu nombre.');
+  if(!document.getElementById('cMail').checkValidity())return fail('cErr','Revisa tu correo.');
+  if(!bd)return fail('cErr','Escribe tu fecha de nacimiento.');
+  if(age(bd)<18)return fail('cErr','Necesitas tener 18 años o más para crear una cuenta.');
+  if(document.getElementById('cPass').value.length<8)return fail('cErr','La contraseña necesita al menos 8 caracteres.');
+  welcome(cName.value.trim(),true,document.getElementById('cMail').value.trim());if(intentOn)setTimeout(openSub,350)});
+document.getElementById('fEntrar').addEventListener('submit',e=>{e.preventDefault();document.getElementById('lErr').classList.remove('on');
+  const m=document.getElementById('lMail');
+  if(!m.value||!m.checkValidity())return fail('lErr','Revisa tu correo.');
+  if(!document.getElementById('lPass').value)return fail('lErr','Escribe tu contraseña.');
+  const prev=user();welcome(prev&&prev.email===m.value.trim()?prev.name:m.value.split('@')[0].replace(/[._-]+/g,' ').replace(/\b\w/g,c=>c.toUpperCase()),false,m.value.trim());if(intentOn)setTimeout(openSub,350)});
+document.getElementById('forgot').addEventListener('click',e=>{e.preventDefault();const m=document.getElementById('lMail');
+  const el=document.getElementById('lErr');el.style.color='var(--ink2)';el.textContent=m.value&&m.checkValidity()?'Te enviaríamos un enlace a '+esc(m.value)+' para crear una nueva contraseña.':'Escribe tu correo y te enviamos un enlace para crear una nueva contraseña.';el.classList.add('on')});
+document.getElementById('lMail').addEventListener('input',()=>{document.getElementById('lErr').style.color=''});
+{const u=user();if(u&&u.name){if(u.club){n=u.club.n;document.querySelectorAll('#size button').forEach(x=>x.setAttribute('aria-pressed',+x.dataset.n===n));paint(true);document.getElementById('mcTier').textContent='Club Estaciones';document.getElementById('mcPlan').textContent=n+' botellas por estación'}welcome(u.name,false,u.email,true)}}
+
+observeReveals();
+})();
+</script>
+</body>
+</html>

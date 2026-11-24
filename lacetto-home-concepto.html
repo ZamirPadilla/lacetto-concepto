@@ -1,0 +1,1001 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>L.A. Cetto · Inicio</title>
+<meta name="description" content="Concepto de rediseño de la home de L.A. Cetto. Imágenes y datos del sitio actual usados como referencia temporal.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baskervville:ital@0;1&family=DM+Sans:opsz,wght@9..40,400..600&family=Playfair:opsz,wght@5..1200,300..500&family=La+Belle+Aurore&display=swap" rel="stylesheet">
+<link rel="icon" type="image/svg+xml" href="media/favicon.svg">
+<!-- compartir -->
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="apple-touch-icon" href="media/apple-touch-icon.png">
+<meta name="theme-color" content="#F3F1EC">
+<meta name="robots" content="noindex, nofollow">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="es_MX">
+<meta property="og:site_name" content="L.A. Cetto · Concepto de rediseño">
+<meta property="og:title" content="L.A. Cetto · Inicio">
+<meta property="og:description" content="Concepto de rediseño de la home de L.A. Cetto. Imágenes y datos del sitio actual usados como referencia temporal.">
+<meta property="og:url" content="https://zamirpadilla.github.io/lacetto-concepto/lacetto-home-concepto.html">
+<meta property="og:image" content="https://zamirpadilla.github.io/lacetto-concepto/media/og-banner.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Chardonnay Reserva Privada de L.A. Cetto sobre una roca frente al mar, con el texto: Una boutique de vinos, de punta a punta">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="L.A. Cetto · Inicio">
+<meta name="twitter:description" content="Concepto de rediseño de la home de L.A. Cetto. Imágenes y datos del sitio actual usados como referencia temporal.">
+<meta name="twitter:image" content="https://zamirpadilla.github.io/lacetto-concepto/media/og-banner.jpg">
+<!-- /compartir -->
+<link rel="stylesheet" href="cetto-base.css">
+</head>
+<body>
+
+<div id="chromeTop"></div>
+
+<main>
+<!-- 1. Portada: primero el video de la casa (pantalla completa) y, al terminar, la portada se acorta y pasa a los banners
+     de promociones y lanzamientos. Cada banner trae su propio copy; las imágenes son las fotos limpias de sus banners actuales. -->
+<section class="hero" id="hero" aria-roledescription="carrusel" aria-label="Destacados" data-hero>
+  <h1 class="sr">L.A. Cetto, vinos de familia del Valle de Guadalupe</h1>
+  <div class="hero-media" id="heroMedia">
+    <video class="hm on" id="heroVid" muted playsinline autoplay preload="auto" poster="media/hero-hd.jpg" aria-hidden="true"><source src="media/hero-hd.mp4?v=3" type="video/mp4"></video>
+  </div>
+  <div class="hero-in" id="heroCopy" aria-live="off"></div>
+  <!-- El video cierra con el 100: unos segundos antes del final se va el texto y se dibuja el logo de los 100 años -->
+  <div class="hero-100" id="hero100" aria-hidden="true"></div>
+  <!-- Cambiar de banner: anterior y siguiente (el siguiente lleva el aro que marca el tiempo) -->
+  <button class="hero-next hero-prev" id="heroPrev" type="button" aria-label="Ver el banner anterior" title="Anterior">
+    <svg class="ar" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg>
+  </button>
+  <button class="hero-next" id="heroNext" type="button" aria-label="Ver el siguiente banner" title="Siguiente">
+    <svg class="ring" viewBox="0 0 52 52" aria-hidden="true"><circle cx="26" cy="26" r="25" /><circle class="p" id="heroRing" cx="26" cy="26" r="25" /></svg>
+    <svg class="ar" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+  </button>
+  <span class="hero-ev">Evita el exceso</span>
+  <!-- Pausa de la portada: oculta a la vista, aparece al llegar con el teclado (WCAG 2.2.2) -->
+  <button class="hero-pp kb-only" id="heroPP" type="button" aria-pressed="false" aria-label="Pausar la portada"><svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 5h3v14H7zM14 5h3v14h-3z"/></svg></button>
+</section>
+
+<!-- 2. Vinos: pestañas por categoría y carrusel lateral de cards grandes (se arrastra; sin botones) -->
+<section class="vt" id="tienda" aria-labelledby="tiendaT">
+  <h2 class="sr" id="tiendaT">Nuestros vinos</h2>
+  <div class="vt-head">
+    <div class="vt-tabs" id="vtTabs" role="tablist" aria-label="Categorías de vinos"></div>
+    <p class="vt-note" id="vtNote">Más de mil reconocimientos internacionales para la familia. <a class="ul" href="lacetto-coleccion.html">Ver la Colección Premiada</a></p>
+  </div>
+  <div class="vt-rail" id="vtRail" role="tabpanel">
+    <ul class="vt-track" id="vtTrack"></ul>
+  </div>
+  <div class="vt-foot">
+    <div class="vt-bar" aria-hidden="true"><i id="vtBar"></i></div>
+    <a class="ul vt-all" href="lacetto-tienda.html">Ver todos los vinos</a>
+  </div>
+</section>
+
+<!-- 3. Momentos: foto con el momento a la izquierda, la botella a la derecha; el scroll recorre los momentos de lado -->
+<section class="mo" id="momentos" aria-labelledby="moH">
+  <div class="mo-hd wrap">
+    <h2 class="mo-title lines" id="moH"><span class="ln"><span>Un vino para </span></span><span class="ln"><span><em>cada momento.</em></span></span></h2>
+  </div>
+  <div class="mo-box">
+    <div class="mo-nav"><button class="mo-na" type="button" id="moPrev" aria-label="Momento anterior"></button><button class="mo-na" type="button" id="moNext" aria-label="Siguiente momento"></button></div>
+    <div class="mo-vp" id="moVp" tabindex="0" role="region" aria-label="Momentos: desliza de lado o usa las flechas del teclado para ver más"><ol class="mo-track" id="moTrack"></ol></div>
+  </div>
+</section>
+
+<!-- 4. Líneas: paneles altos con la foto de cada línea, su nombre en vertical y el botón a la línea -->
+<section class="sec ln" id="lineas" aria-labelledby="lnT">
+  <h2 class="sr" id="lnT">Nuestras líneas</h2>
+  <div class="ln-rail" id="lnRail"></div>
+</section>
+
+<!-- 5. Valle: el video de la marca se abre a pantalla completa -->
+<section class="valle" id="valle" aria-labelledby="valT">
+  <div class="stick" id="valleStick" data-amb-box>
+    <div class="frame">
+      <img src="media/v-valle.jpg?v=3" alt="" aria-hidden="true">
+      <video id="valleVid" data-amb="Valle de Guadalupe" poster="media/v-valle.jpg?v=3" data-src="media/v-valle.mp4?v=4" muted playsinline loop aria-hidden="true"></video>
+    </div>
+    <div class="pre"><span class="it">Aquí nace cada botella.</span></div>
+    <div class="txt">
+      <h2 class="h1 ttl ctr" id="valT">Valle de Guadalupe</h2>
+      <p>Aquí cultiva sus viñedos la familia Cetto desde 1928: 1,200 hectáreas, 90 de ellas orgánicas certificadas.</p>
+      <div class="ctas"><a class="btn btn-light" href="lacetto-experiencias.html#reservar">Reservar una cata</a><button class="ul" data-video style="color:#fff">Ver el video completo</button></div>
+    </div>
+  </div>
+</section>
+
+<!-- 6. Arma tu caja: un paso a la vez. Eliges los vinos (con filtros), escribes la tarjeta a mano en un pop-up,
+     la caja se cierra con las botellas y hasta el final aparece el carrito -->
+<section class="sec box" id="caja" aria-labelledby="cajaT">
+  <div class="wrap box-in">
+    <div class="bx-build" id="bxBuild">
+      <header class="box-hd">
+        <h2 class="h2 rise" id="cajaT">Arma tu caja</h2>
+        <p class="p">Elige el tamaño, escoge tus vinos y te descontamos el 10%. Tu caja ya lleva envío gratis.</p>
+        <ol class="steps" id="steps">
+          <li class="on"><button class="st-b" type="button" id="stSize" disabled><span class="d"></span><span><b>Tamaño</b><span class="s" id="stepSize">6 o 12 botellas</span></span></button></li>
+          <li><button class="st-b" type="button" id="stWines" disabled><span class="d"></span><span><b>Tus vinos</b><span class="s" id="stepTxt">Elige tus botellas</span></span></button></li>
+          <li><span class="d"></span><span><b>Tarjeta</b><span class="s">Con tu mensaje, opcional</span></span></li>
+          <li><span class="d"></span><span><b>Tu caja</b><span class="s">Envío gratis, hasta 3 MSI</span></span></li>
+        </ol>
+      </header>
+      <!-- Inicio: el primer clic ya es una decisión (6 o 12) y abre la selección -->
+      <div class="bx-start" id="bxStart">
+        <div class="bx-opts" role="group" aria-label="Elige el tamaño de tu caja">
+          <button class="bx-opt" type="button" data-start="6"><span class="bx-o-n">6</span><span class="bx-o-t"><b>botellas</b><span>Para regalar o descubrir la familia Cetto.</span></span><span class="bx-o-ic" style="--c:6" aria-hidden="true"></span><span class="bx-o-go"><span>Elegir <span class="bx-o-x">mis vinos</span></span><i aria-hidden="true">→</i></span></button>
+          <button class="bx-opt" type="button" data-start="12"><span class="bx-o-n">12</span><span class="bx-o-t"><b>botellas</b><span>Para tu cava o una comida larga.</span></span><span class="bx-o-ic" style="--c:12" aria-hidden="true"></span><span class="bx-o-go"><span>Elegir <span class="bx-o-x">mis vinos</span></span><i aria-hidden="true">→</i></span></button>
+        </div>
+        <p class="bx-start-f">10% de descuento y envío gratis en las dos. <button class="ul" id="bxQuick" type="button">¿Sin tiempo? Que el enólogo la arme</button></p>
+      </div>
+      <div class="crate" id="crate" hidden>
+        <div class="crate-top">
+          <div class="crate-st" aria-live="polite"><b id="boxCount">0 de 6</b><span id="boxHint">Te faltan 6 para el 10%</span><span class="crate-sub" id="boxSub"></span></div>
+          <button class="bx-clear" id="bxClear" type="button" disabled><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2.6 8a5.4 5.4 0 1 0 1.6-3.8M2.4 2v3.4h3.4" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>Limpiar<span class="bx-clear-x"> caja</span></button>
+        </div>
+        <div class="bar"><i id="boxBar"></i></div>
+        <div class="slots" id="slots"></div>
+        <div class="pk-fil" id="pkFil" role="group" aria-label="Filtrar vinos"></div>
+        <div class="picks" id="picks"></div>
+        <p class="pk-auto"><span>¿No sabes cuál elegir?</span><button class="ul" id="autoFill" type="button">Que la arme el enólogo</button></p>
+        <div class="crate-fw" id="crateFw" inert><div class="crate-fin">
+          <div class="bx-next">
+            <p class="bx-next-t"><b>Tu caja está completa.</b> <span>¿Es para regalar? Escribe una tarjeta y la ponemos dentro.</span></p>
+            <div class="bx-next-b"><button class="ul" id="bxSkip" type="button">Continuar sin tarjeta</button><button class="btn btn-ink" id="bxCardBtn" type="button">Escribir tarjeta</button></div>
+          </div>
+        </div></div>
+      </div>
+    </div>
+
+    <!-- Final: la caja cerrada con las botellas, la tarjeta y el carrito -->
+    <div class="bx-final" id="bxFinal" hidden>
+      <div class="bx-head">
+        <p class="bx-f-k cap" id="bxFinalK">Tu caja de 6</p>
+        <h3 class="bx-f-t" id="bxFinalT">Lista para salir del Valle.</h3>
+      </div>
+      <!-- caja de cartón kraft vista de frente: fibra con relieve iluminado, sombras suaves, cantos con la onda del corrugado
+           y la impresión con tinta gastada. Capas: fondo y solapas → fila de atrás → separador → fila de enfrente → pared frontal -->
+      <div class="bx-scene" id="bxScene" aria-hidden="true">
+        <svg class="kb-svg kb-back" viewBox="0 0 600 520" preserveAspectRatio="xMidYMax meet">
+          <defs>
+            <filter id="kbKraft" x="0" y="0" width="100%" height="100%" color-interpolation-filters="sRGB">
+              <feTurbulence type="fractalNoise" baseFrequency=".008 .05" numOctaves="3" seed="11" result="mt"/>
+              <feColorMatrix in="mt" values=".2 0 0 0 .89  .2 0 0 0 .89  .2 0 0 0 .89  0 0 0 0 1" result="mm"/>
+              <feComposite in="SourceGraphic" in2="mm" operator="arithmetic" k1="1" result="a"/>
+              <feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="1" seed="3" result="fn"/>
+              <feDiffuseLighting in="fn" surfaceScale=".4" diffuseConstant="1.12" lighting-color="#fff" result="rl"><feDistantLight azimuth="235" elevation="62"/></feDiffuseLighting>
+              <feComposite in="a" in2="rl" operator="arithmetic" k1="1" result="b"/>
+              <feTurbulence type="fractalNoise" baseFrequency=".3 1.3" numOctaves="1" seed="21" result="sp"/>
+              <feColorMatrix in="sp" values="0 0 0 0 .26  0 0 0 0 .16  0 0 0 0 .07  7 0 0 0 -5.1" result="spk"/>
+              <feComposite in="spk" in2="SourceAlpha" operator="in" result="spk2"/>
+              <feTurbulence type="fractalNoise" baseFrequency=".3 1.3" numOctaves="1" seed="44" result="lf"/>
+              <feColorMatrix in="lf" values="0 0 0 0 .93  0 0 0 0 .84  0 0 0 0 .68  6 0 0 0 -4.5" result="lfk"/>
+              <feComposite in="lfk" in2="SourceAlpha" operator="in" result="lfk2"/>
+              <feMerge><feMergeNode in="b"/><feMergeNode in="spk2"/><feMergeNode in="lfk2"/></feMerge>
+            </filter>
+            <!-- la onda del corrugado se nota apenas a través del papel: franjas verticales muy suaves -->
+            <linearGradient id="kbRibG" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#2a170a" stop-opacity="0"/><stop offset=".5" stop-color="#2a170a" stop-opacity=".05"/><stop offset="1" stop-color="#2a170a" stop-opacity="0"/></linearGradient>
+            <pattern id="kbRib" width="5.2" height="20" patternUnits="userSpaceOnUse"><rect width="5.2" height="20" fill="url(#kbRibG)"/></pattern>
+            <filter id="kbB2" x="-10%" y="-300%" width="120%" height="700%"><feGaussianBlur stdDeviation="2"/></filter>
+            <filter id="kbB5" x="-10%" y="-150%" width="120%" height="400%"><feGaussianBlur stdDeviation="5"/></filter>
+            <filter id="kbB14" x="-20%" y="-200%" width="140%" height="500%"><feGaussianBlur stdDeviation="14"/></filter>
+            <pattern id="kbFlutes" width="4.4" height="4" patternUnits="userSpaceOnUse"><rect width="4.4" height="4" fill="#dcbd94"/><path d="M0 3.7 Q2.2 -.5 4.4 3.7" fill="none" stroke="#94704b" stroke-width=".7"/></pattern>
+            <linearGradient id="kbBackFlap" x1="0" y1="1" x2="0" y2="0"><stop offset="0" stop-color="#b78d61"/><stop offset=".55" stop-color="#c69d70"/><stop offset="1" stop-color="#cfa87b"/></linearGradient>
+            <linearGradient id="kbSideL" x1="1" y1="0" x2="0" y2="0"><stop offset="0" stop-color="#b68c5f"/><stop offset="1" stop-color="#cba376"/></linearGradient>
+            <linearGradient id="kbSideR" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#a47b50"/><stop offset="1" stop-color="#b98f63"/></linearGradient>
+            <linearGradient id="kbIn" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#6e4d2e"/><stop offset=".45" stop-color="#4a321d"/><stop offset="1" stop-color="#30200f"/></linearGradient>
+            <linearGradient id="kbFoldSh" x1="0" y1="1" x2="0" y2="0"><stop offset="0" stop-color="#2a170a" stop-opacity=".2"/><stop offset="1" stop-color="#2a170a" stop-opacity="0"/></linearGradient>
+          </defs>
+          <ellipse cx="300" cy="497" rx="322" ry="20" fill="#3a2513" opacity=".16" filter="url(#kbB14)"/>
+          <ellipse cx="300" cy="493" rx="262" ry="7" fill="#2a190a" opacity=".3" filter="url(#kbB5)"/>
+          <ellipse cx="300" cy="492" rx="244" ry="2.6" fill="#22140a" opacity=".45" filter="url(#kbB2)"/>
+          <g filter="url(#kbKraft)">
+            <path d="M78 286 L87 200 Q300 194 513 200 L522 286 Z" fill="url(#kbBackFlap)"/>
+            <path d="M60 322 L78 286 L29 250 Q16 273 9 300 Z" fill="url(#kbSideL)"/>
+            <path d="M540 322 L522 286 L571 250 Q584 273 591 300 Z" fill="url(#kbSideR)"/>
+            <rect x="78" y="286" width="444" height="40" fill="url(#kbIn)"/>
+            <path d="M60 322 L78 286 V326 H60 Z" fill="#46301b"/>
+            <path d="M540 322 L522 286 V326 H540 Z" fill="#62452a"/>
+          </g>
+          <path d="M78 286 L87 200 Q300 194 513 200 L522 286 Z" fill="url(#kbRib)"/>
+          <path d="M78 286 L84 236 H516 L522 286 Z" fill="url(#kbFoldSh)"/>
+          <path d="M87 200 Q300 194 513 200 L512.6 196.3 Q300 190.3 87.4 196.3 Z" fill="url(#kbFlutes)"/>
+          <path d="M29 250 Q16 273 9 300" fill="none" stroke="#dcbd94" stroke-width="2.6"/>
+          <path d="M571 250 Q584 273 591 300" fill="none" stroke="#c4a176" stroke-width="2.6"/>
+          <path d="M78 286.4 H522" stroke="#dfbd90" stroke-width="1.4"/>
+          <path d="M60 322 L78 286" stroke="#dab88b" stroke-width="1.2"/>
+          <path d="M540 322 L522 286" stroke="#c19d72" stroke-width="1.2"/>
+        </svg>
+        <div class="kb-bots" id="bxBottles"></div>
+        <svg class="kb-svg kb-mid" viewBox="0 0 600 520" preserveAspectRatio="xMidYMax meet">
+          <defs>
+            <linearGradient id="kbSink" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1e1208" stop-opacity="0"/><stop offset="1" stop-color="#1e1208" stop-opacity=".55"/></linearGradient>
+            <linearGradient id="kbDiv" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#8e6741"/><stop offset="1" stop-color="#4c3420"/></linearGradient>
+          </defs>
+          <path d="M60 322 L78 286 H522 L540 322 Z" fill="url(#kbSink)"/>
+          <g filter="url(#kbKraft)"><rect x="70" y="304" width="460" height="22" fill="url(#kbDiv)"/></g>
+          <path d="M70 304.6 H530" stroke="#d3b084" stroke-width="1.4"/>
+        </svg>
+        <svg class="kb-svg kb-front" viewBox="0 0 600 520" preserveAspectRatio="xMidYMax meet">
+          <defs>
+            <linearGradient id="kbSinkF" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1e1208" stop-opacity="0"/><stop offset="1" stop-color="#1e1208" stop-opacity=".42"/></linearGradient>
+            <linearGradient id="kbPanel" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#c49b6d"/><stop offset="1" stop-color="#b78d60"/></linearGradient>
+            <linearGradient id="kbPanelX" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#fff3e0" stop-opacity=".1"/><stop offset=".45" stop-color="#fff3e0" stop-opacity="0"/><stop offset=".7" stop-color="#2a170a" stop-opacity="0"/><stop offset="1" stop-color="#2a170a" stop-opacity=".1"/></linearGradient>
+            <linearGradient id="kbPanelB" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2a170a" stop-opacity="0"/><stop offset="1" stop-color="#2a170a" stop-opacity=".16"/></linearGradient>
+            <linearGradient id="kbFlapF" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#d7b184"/><stop offset="1" stop-color="#c79f71"/></linearGradient>
+            <filter id="kbInk" x="-2%" y="-10%" width="104%" height="120%" color-interpolation-filters="sRGB">
+              <feTurbulence type="fractalNoise" baseFrequency=".75" numOctaves="2" seed="5" result="n"/>
+              <feColorMatrix in="n" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 -3 2.75" result="m"/>
+              <feComposite in="SourceGraphic" in2="m" operator="in"/>
+            </filter>
+          </defs>
+          <path d="M60 322 L78 286 H522 L540 322 Z" fill="url(#kbSinkF)"/>
+          <g filter="url(#kbKraft)">
+            <rect x="60" y="322" width="480" height="170" fill="url(#kbPanel)"/>
+            <path d="M60 322 H540 L554 357 Q300 362.5 46 357 Z" fill="url(#kbFlapF)"/>
+          </g>
+          <path d="M60 322 H540 L554 357 Q300 362.5 46 357 Z M60 360 H540 V492 H60 Z" fill="url(#kbRib)"/>
+          <rect x="60" y="322" width="480" height="170" fill="url(#kbPanelX)"/>
+          <rect x="60" y="452" width="480" height="40" fill="url(#kbPanelB)"/>
+          <path d="M52 359 Q300 365 548 359 L540 384 Q300 388 60 384 Z" fill="#2c1a0b" opacity=".22" filter="url(#kbB5)"/>
+          <path d="M46 357 Q300 362.5 554 357 L553.6 360.6 Q300 366.1 46.4 360.6 Z" fill="url(#kbFlutes)"/>
+          <path d="M60 322.6 H540" stroke="#e6c597" stroke-width="1.6"/>
+          <path d="M60 325 H540" stroke="#4e3218" stroke-opacity=".14" stroke-width="1.5"/>
+          <rect x="60" y="361" width="4" height="131" fill="#fff4e2" opacity=".1"/>
+          <rect x="536" y="361" width="4" height="131" fill="#24140a" opacity=".14"/>
+          <path d="M60 491.4 H540" stroke="#24140a" stroke-opacity=".4" stroke-width="1.2"/>
+          <g class="kb-print" filter="url(#kbInk)" fill="#2b1c10" text-anchor="middle">
+            <text x="300" y="428" class="kb-brand">L.A. CETTO</text>
+            <path d="M264 442 H336" stroke="#2b1c10" stroke-width=".9"/>
+            <text x="300" y="461" class="kb-sub">VALLE DE GUADALUPE · DESDE 1928</text>
+            <text x="80" y="478" text-anchor="start" class="kb-n" id="bxBoxN">6 BOTELLAS · 750 ML</text>
+            <g fill="none" stroke="#2b1c10" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round" transform="translate(488 464)">
+              <path d="M2 14 V3 M-1 6 L2 2.5 L5 6 M9 14 V3 M6 6 L9 2.5 L12 6 M-1.5 15.6 H12.5"/>
+              <path d="M21 2.5 H29 Q29.5 9 25 10 Q20.5 9 21 2.5 Z M25 10 V14.6 M22 15 H28"/>
+            </g>
+          </g>
+        </svg>
+      </div>
+      <div class="bx-side">
+        <div class="bx-mini gc-paper" id="bxMini" hidden></div>
+        <ul class="bx-list" id="bxList"></ul>
+        <div class="sum">
+          <span>Subtotal</span><span class="price" id="bSub">$0</span>
+          <span>Descuento de caja (10%)</span><span class="price" id="bDisc">−$0</span>
+          <span class="tot">Total</span><span class="tot price" id="bTot">$0</span>
+        </div>
+        <div class="bx-acts"><button class="ul" id="bxEdit" type="button">Editar mi caja</button><button class="btn btn-ink" id="boxAdd" type="button">Agregar caja al carrito</button></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Tarjeta de regalo: se escribe directo sobre el papel, con letra a mano -->
+<dialog class="gc-dlg" id="gcDlg" aria-labelledby="gcT">
+  <div class="gc-wrap">
+    <p class="gc-k" id="gcT">Tu tarjeta de regalo</p>
+    <div class="gc-card gc-paper">
+      <div class="gc-hd">
+        <label class="gc-f gc-to"><span class="gc-l">Para</span><span class="gc-w"><span class="gc-m" aria-hidden="true"></span><input id="gcTo" maxlength="28" autocomplete="off" data-ph="su nombre" aria-label="Para"></span></label>
+        <img class="gc-logo" src="media/logo-cetto.svg" alt="">
+      </div>
+      <span class="gc-f gc-msg"><span class="gc-w"><span class="gc-m" aria-hidden="true"></span><textarea id="gcMsg" maxlength="180" rows="4" data-ph="Escribe aquí tu mensaje…" aria-label="Tu mensaje"></textarea></span></span>
+      <div class="gc-ft">
+        <span class="gc-l gc-sig">Con cariño</span>
+        <label class="gc-f gc-from"><span class="gc-w"><span class="gc-m" aria-hidden="true"></span><input id="gcFrom" maxlength="28" autocomplete="off" data-ph="tu nombre" aria-label="De"></span></label>
+      </div>
+    </div>
+    <p class="gc-help">Escribe directo en la tarjeta: así va impresa, dentro de tu caja. <span id="gcCount">0/180</span></p>
+    <div class="gc-acts"><button class="ul" id="gcBack" type="button">Volver</button><button class="btn btn-ink" id="gcOk" type="button">Listo, cerrar la caja</button></div>
+  </div>
+</dialog>
+
+<!-- 7. Experiencias: título grande, la cata (con su video al pasar el mouse) y dos experiencias reales cuyas fotos van cambiando;
+     abajo, más formas de visitarnos -->
+<section class="sec wrap ex" id="experiencias" aria-labelledby="expH">
+  <div class="ex-hd">
+    <h2 class="mo-title lines" id="expH"><span class="ln"><span>Vívelo </span></span><span class="ln"><span><em>donde nace.</em></span></span></h2>
+    <div class="ex-hd-r">
+      <a class="btn btn-ink" href="lacetto-experiencias.html" aria-describedby="exHdP">Ver todas las experiencias</a>
+      <p id="exHdP">Catas, recorridos por el viñedo y la bodega en el Valle de Guadalupe. Reservas en línea.</p>
+    </div>
+  </div>
+  <div class="collage">
+    <a class="c-big" href="lacetto-experiencias.html#catas" id="exCata">
+      <img src="https://www.lacetto.mx/cdn/shop/files/DSC0259.jpg?width=2000" alt="Viñedo con flores y la sierra al fondo" loading="lazy">
+      <video class="c-vid" muted loop playsinline preload="none" data-src="media/v-catas.mp4" aria-hidden="true"></video>
+      <div class="bot">
+        <div>
+          <span class="c-k">Degustaciones guiadas · 4 vinos</span>
+          <h3 class="h2 lines c-t"><span class="ln"><span>Catas en el Valle </span></span><span class="ln"><span>desde $250 </span></span></h3>
+          <p>Cata Clásica, Reserva Privada o Boutique: cuatro vinos guiados y te llevas tu copa.</p>
+        </div>
+        <span class="btn btn-light">Reservar</span>
+      </div>
+    </a>
+    <a class="c-sm xs" id="xsA" href="lacetto-experiencias.html#x-angelo"><span class="xs-go" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
+    <a class="c-sm xs" id="xsB" href="lacetto-experiencias.html#x-cetto"><span class="xs-go" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
+  </div>
+</section>
+
+<!-- 8. Historia: editorial, minimalista y en blanco y negro (al estilo de mattmorriswines.com).
+     La sección queda fija mientras bajas y el scroll vertical va cambiando de pantalla, despacio (casi una pantalla de scroll por cada una):
+     un retrato impreso, un díptico de archivo, el campo con la cifra de hoy y, al final, las uvas a pantalla completa.
+     Mientras está fija, la barra de arriba se queda escondida para que se vea a pantalla completa -->
+<section class="ed" id="historia" aria-labelledby="edT" style="--n:4">
+  <h2 class="sr" id="edT">Nuestra historia</h2>
+  <div class="ed-track" id="edTrack">
+    <article class="ed-p ed-print">
+      <figure class="ed-fr ed-v"><img src="media/ed-angelo.jpg" alt="Retrato de archivo de Ángelo Cetto" style="object-position:48% 30%" loading="lazy" draggable="false"></figure>
+      <div class="ed-tx"><span class="ed-y">1924</span><p>Con 24 años, Ángelo Cetto dejó Selva di Levico, en el norte de Italia, y cruzó a México con el oficio de su familia. Cuatro años después fundó en Baja California la bodega que hoy lleva su nombre.</p></div>
+    </article>
+    <article class="ed-p ed-duo">
+      <div class="ed-pair">
+        <figure class="ed-fr ed-a"><img src="media/ed-bodega.jpg" alt="Fotografía de archivo: un niño en una ladera; atrás, la bodega y los viñedos" style="object-position:28% 50%" loading="lazy" draggable="false"></figure>
+        <figure class="ed-fr ed-b"><img src="media/ed-sombrero.jpg" alt="Fotografía de archivo: un hombre con sombrero entre las vides" style="object-position:18% 45%" loading="lazy" draggable="false"></figure>
+      </div>
+      <div class="ed-tx"><span class="ed-y">1951</span><p>Su hijo Luis Agustín amplió los viñedos en el Valle de Guadalupe. Probó variedades, suelos, climas y formas de plantar. Desde entonces, el Valle es la casa de la familia.</p></div>
+    </article>
+    <article class="ed-p ed-split">
+      <div class="ed-sp-ph"><img src="media/ed-vinedo.jpg" alt="El Valle de Guadalupe visto desde una ladera, en blanco y negro" style="object-position:42% 50%" loading="lazy" draggable="false"></div>
+      <div class="ed-sp-tx"><span class="ed-y">Hoy</span><b class="ed-num" data-n="1200">1,200</b><p>hectáreas de viñedo, 90 de ellas orgánicas certificadas.</p></div>
+    </article>
+    <article class="ed-p ed-full ed-ov ed-end">
+      <img src="media/ed-uvas.jpg" alt="Racimo de uvas en la vid, en blanco y negro" style="object-position:55% 45%" loading="lazy" draggable="false">
+      <div class="ed-q"><small>Valle de Guadalupe · 1928 — Hoy</small><p>Casi un siglo después, la séptima generación sigue en la tierra que eligió Ángelo.</p><a class="ul" href="lacetto-historia.html">Conoce nuestra historia</a></div>
+    </article>
+  </div>
+</section>
+
+<!-- Regalos: guardado para otra parte del sitio (el inicio ya tiene "Para regalar" en Momentos y la tarjeta en Arma tu caja).
+     Para usarlo, saca la sección de este <template>; su script ya revisa si existe. -->
+<template id="tplRegalos">
+<section class="sec wrap" id="regalos" aria-labelledby="regT">
+  <div class="gifts">
+    <div class="gvid"><video id="giftVid" muted loop playsinline preload="none" poster="https://www.lacetto.mx/cdn/shop/files/RESERVA-PRIVADA-03.png?width=900"><source src="https://cdn.shopify.com/videos/c/o/v/671c728b2d0346788cec8ea0f9b6f7c4.mp4" type="video/mp4"></video></div>
+    <div>
+      <h2 class="h2" id="regT">Regalos</h2>
+      <p class="p" style="margin-top:16px">Estuches listos para regalar, tarjeta con tu mensaje y envío a todo México. Para empresas cotizamos volumen.</p>
+      <div class="glist" id="glist"></div>
+    </div>
+  </div>
+</section>
+</template>
+
+<!-- 10. Club: grande, la foto a la orilla y el texto limpio, centrado del lado derecho -->
+<section class="clb" id="club" aria-labelledby="clubT">
+  <div class="clb-ph"><img src="media/club-copas.jpg" alt="Copas grabadas con el logo de Cetto en una mesa al atardecer" loading="lazy"></div>
+  <div class="clb-tx">
+    <span class="clb-k">Club Cetto · gratis</span>
+    <h2 class="clb-t rise" id="clubT">Forma parte<br>de <em>la familia.</em></h2>
+    <p class="clb-p">Crear tu cuenta es gratis y el precio de socio aplica desde tu primera compra.</p>
+    <ul class="clb-bens"><li><b>5%</b><span>en todo el catálogo</span></li><li><b>Preventas</b><span>de nuevas añadas</span></li><li><b>Catas</b><span>solo para socios</span></li></ul>
+    <div class="clb-acts"><a class="btn btn-ink" href="lacetto-club.html">Unirme gratis<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a><a class="ul" href="lacetto-club.html#estaciones">O conoce Club Estaciones</a></div>
+  </div>
+</section>
+
+<!-- 11. Una frase y la cintilla de nuestras colecciones (como en el sitio actual) -->
+<section class="hq" aria-label="Nuestras colecciones">
+  <blockquote class="hq-q"><p>“Lo que empezó en una montaña de Trento hoy se sirve en más de veinte países. Siete generaciones después, seguimos siendo una familia que hace vino.”</p></blockquote>
+  <p class="hq-by">Familia Cetto · Valle de Guadalupe, desde 1928</p>
+  <div class="hq-mq"><div class="hq-tr" id="hqTr"></div></div>
+</section>
+
+</main>
+
+<div id="chromeBottom"></div>
+
+<dialog class="lightbox" id="lightbox" aria-label="Video L.A. Cetto">
+  <button class="close" data-lb-close><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 6l12 12M18 6L6 18"/></svg>Cerrar</button>
+  <video id="lbVid" controls playsinline preload="none" src="https://www.lacetto.mx/cdn/shop/videos/c/vp/71815b39b58043e9bfa1173042e04f07/71815b39b58043e9bfa1173042e04f07.HD-1080p-7.2Mbps-50104103.mp4"></video>
+</dialog>
+
+<script src="cetto-base.js"></script>
+<script>
+renderChrome({page:'home'});
+
+/* Las frases de ocasión vienen de las fichas actuales de Cetto */
+const M=[
+ {k:'regalo',t:'Para regalar',sub:'Con tarjeta para tu mensaje y envío a todo México.',img:'media/m-regalo.jpg',pos:'52% 42%',dim:true,ids:['bmal','estrp','estbou'],imgs:{bmal:'bmal-caja'},q:'Una botella con historia dice más que cualquier tarjeta. Elige el estuche y nosotros lo llevamos.',cite:'Regalos L.A. Cetto'},
+ {k:'tarde',t:'Una tarde sin prisa',sub:'Vinos ligeros para una tarde al aire libre.',img:'media/m-tarde-2.jpg',pos:'55% 50%',ids:['oto','chenin','prim','bdz'],q:P.oto.q,cite:'Estaciones Otoño'},
+ {k:'brindis',t:'Algo que celebrar',sub:'Burbujas y blancos para levantar la copa.',img:'media/m-brindis.jpg',pos:'58% 50%',ids:['champ','ver','charp','viog'],q:P.champ.q,cite:'Champbrulé Brut'},
+ {k:'cena',t:'Una cena importante',sub:'Tintos con estructura para una mesa sin prisa.',img:'media/m-cena-3.jpg',pos:'54% 50%',ids:['terra','cabrp','psrp','conc'],q:P.terra.q,cite:'Don Luis Terra'},
+ {k:'pareja',t:'Una noche para dos',sub:'Dos copas, una buena botella y la noche por delante.',vid:'media/v-copa.mp4',play:true,ids:['bmal','bpin','dlmer','passito'],q:P.bmal.q,cite:'Boutique Malbec'},
+ {k:'mesa',t:'La mesa mexicana',sub:'Del mole a la parrilla: vinos que acompañan nuestra cocina.',img:'media/m-mesa.jpg',pos:'57% 50%',ids:['cabrp','pslac','chenin','oto'],q:'La estructura del Cabernet acompaña la profundidad del mole: grosella negra, especias y vainilla.',cite:'Cabernet Sauvignon Reserva Privada con mole poblano'}
+];
+
+/* ---------- Tipos ---------- */
+/* ---------- 2. Vinos: pestañas + carrusel ---------- */
+/* Botellas recortadas del fondo blanco (media/bot) para poder darles sombra real */
+const BOT=new Set('nebrp pslac cabrp charp chenin viog psrp terra conc prim ver oto inv champ sbsb cablac bdz sang nebor dlmer bsyr bmal bpin bbla plyra pesp sbtemp sbcab sbzin lazin latemp lamer lafume lachar labdb ormal orens ormez passito estrp estbou mospal grappa terra375 cabrp375 fume375 cab375 bdb187 bdz187 ps187 cab187 ac750 ac250 ac4l ac5l bal750 bal250 bal5l vin750 vin250 vin5l acsev acman ac15'.split(' '));
+const rankW=(a,b)=>(P[b].medals||0)-(P[a].medals||0)||P[b].price-P[a].price;
+const W750=id=>BOT.has(id)&&!P[id].nb&&!P[id].gift;
+const pickW=(...cs)=>Object.keys(P).filter(id=>W750(id)&&cs.includes(P[id].c)).sort(rankW).slice(0,12);
+const byType=(...ts)=>Object.keys(P).filter(id=>BOT.has(id)&&ts.includes(P[id].type));
+/* Las categorías principales y Gourmet (el aceite de oliva primero); el resto (orgánicos, botellines, estuches…) vive en "Ver todos los vinos" */
+const GOUR=['ac750','ac15','ac250','ac5l','ac4l','bal750','vin750','acsev','acman','bal250','vin250'];
+const VT=[
+ ['premiados','Premiados',()=>Object.keys(P).filter(id=>BOT.has(id)&&P[id].medals).sort(rankW)],
+ ['tintos','Tintos',()=>pickW('tinto')],
+ ['blancos','Blancos',()=>pickW('blanco')],
+ ['rosados','Rosados y espumosos',()=>pickW('rosado','espumoso')],
+ ['gourmet','Gourmet',()=>GOUR.filter(id=>P[id]&&BOT.has(id)&&!P[id].out)]
+];
+/* frase junto a las pestañas: Premiados lleva a la colección; Gourmet, la medalla real del aceite (medallero oficial) */
+const VNOTE={gourmet:'Nuestro aceite de oliva extra virgen ganó Plata en los International Awards Virtus 2026.'};
+/* Medallas: disco dorado con laurel; los más premiados llevan además el trofeo */
+/* laurel: dos ramas que suben desde abajo por los lados (ángulos en grados, 90 = abajo), con una estrella al centro */
+const laurel=(()=>{let l='';const R=13.2;
+  for(const side of [-1,1])for(let k=0;k<7;k++){const ang=side<0?112+k*20:68-k*20,rad=ang*Math.PI/180,cx=24+R*Math.cos(rad),cy=24+R*Math.sin(rad),rot=ang+(side<0?-62:62);
+    l+='<ellipse cx="'+cx.toFixed(2)+'" cy="'+cy.toFixed(2)+'" rx="3.1" ry="1.3" transform="rotate('+rot.toFixed(0)+' '+cx.toFixed(2)+' '+cy.toFixed(2)+')"/>'}
+  const st=[...Array(10)].map((_,i)=>{const a=(-90+i*36)*Math.PI/180,r=i%2?2.4:5.6;return (24+r*Math.cos(a)).toFixed(2)+','+(24.6+r*Math.sin(a)).toFixed(2)}).join(' ');
+  return '<svg viewBox="0 0 48 48" aria-hidden="true"><g fill="currentColor">'+l+'<polygon points="'+st+'"/></g><path d="M18.5 36.6c2 1.4 3.7 2 5.5 2s3.5-.6 5.5-2" fill="none" stroke="currentColor" stroke-width=".9" stroke-linecap="round"/></svg>'})();
+const trophy='<svg viewBox="0 0 48 48" aria-hidden="true"><path fill="currentColor" d="M17 14h14v3.2c0 4.6-2.9 8.1-7 8.6-4.1-.5-7-4-7-8.6zM23 26.2h2v5h-2zM19 31.6h10v2.6H19z"/><path fill="none" stroke="currentColor" stroke-width="1.4" d="M17 16h-3.2c0 3.4 1.6 5.4 4.2 5.8M31 16h3.2c0 3.4-1.6 5.4-4.2 5.8"/></svg>';
+const RATE=window.RAT||{};
+/* Calificación de EJEMPLO para vinos sin dato real todavía (la tienda bloqueó la descarga de Judge.me). Estable por producto. */
+const rateOf=id=>{if(RATE[id])return RATE[id];let h=0;for(const ch of id)h=(h*31+ch.charCodeAt(0))>>>0;return [Math.round((4.3+(h%7)/10)*10)/10,0]};
+/* el aceite de oliva lleva su medalla real (Plata, International Awards Virtus 2026) en todas sus presentaciones */
+function vcard(id,i){const p=P[id],m=p.medals||(p.type==='Aceite de oliva'?1:0);
+  const aw=m?'<span class="vc-aw" role="img" aria-label="'+m+(m===1?' reconocimiento':' reconocimientos')+'" title="'+(p.medals?m+(m===1?' reconocimiento':' reconocimientos'):'Plata · International Awards Virtus 2026')+'">'+(m>=80?'<i class="md">'+trophy+'</i>':'')+'<i class="md">'+laurel+'</i></span>':'';
+  const rr=rateOf(id),rate='<span class="vc-rate"'+(rr[1]?'':' data-ejemplo')+'><span class="stars" style="--r:'+rr[0]+'" aria-hidden="true"></span><span>('+rr[0].toFixed(1)+')</span><span class="sr">'+rr[0].toFixed(1)+' de 5 estrellas'+(rr[1]?', '+rr[1]+(rr[1]===1?' reseña':' reseñas'):'')+'</span></span>';
+  return '<li class="vc" style="--i:'+i+'"><a class="vc-a" href="'+PAGES.ficha+'?p='+id+'" draggable="false">'+
+    '<span class="vc-img">'+aw+'<i class="vc-glow" aria-hidden="true"></i><i class="vc-sh" aria-hidden="true"></i><img src="media/bot/'+id+'.png" alt="" loading="lazy" decoding="async" draggable="false"></span>'+
+    '<span class="vc-info"><span class="vc-line">'+p.line+'</span><span class="vc-name">'+p.name+(p.ml&&(p.ml!==750||p.c==='gourmet')?' <small'+(p.c==='gourmet'?' class="sz"':'')+'>'+(p.type==='Aceitunas'?p.ml+' g':p.ml>=1000?p.ml/1000+' L':p.ml+' ml')+'</small>':'')+'</span>'+
+    '<span class="vc-price">Socios: '+money(memberPrice(p.price))+' <i aria-hidden="true">|</i> '+money(p.price)+'</span>'+(vtCur==='premiados'&&m?'<span class="vc-rec">'+m+' reconocimientos</span>':rate)+'</span></a>'+
+    '<button class="vc-add" type="button" data-add="'+id+'" aria-label="Agregar '+p.line+' '+p.name+' al carrito"><span>Agregar al carrito</span></button></li>'}
+const vtTabs=document.getElementById('vtTabs'),vtTrack=document.getElementById('vtTrack'),vtRail=document.getElementById('vtRail'),vtBar=document.getElementById('vtBar');
+vtTabs.innerHTML=VT.map(([k,n],i)=>'<button type="button" role="tab" id="vtt-'+k+'" aria-controls="vtRail" aria-selected="'+(i===0)+'" tabindex="'+(i?-1:0)+'" data-k="'+k+'">'+n+'</button>').join('');
+/* indica que hay más pestañas a la derecha */
+const vtFade=()=>vtTabs.classList.toggle('more',vtTabs.scrollLeft+vtTabs.clientWidth<vtTabs.scrollWidth-4);vtTabs.addEventListener('scroll',vtFade,{passive:true});addEventListener('resize',vtFade);requestAnimationFrame(vtFade);
+let vtCur='',vtSwap;
+function vtShow(k,first){if(k===vtCur)return;vtCur=k;const t=VT.find(x=>x[0]===k);
+  {const nt=document.getElementById('vtNote'),tx=VNOTE[k];if(!VNOTE.premiados)VNOTE.premiados=nt.innerHTML;clearTimeout(nt._t);
+   if(first){nt.innerHTML=tx||VNOTE.premiados;nt.classList.toggle('off',!tx)}else{nt.classList.add('off');if(tx)nt._t=setTimeout(()=>{nt.innerHTML=tx;nt.classList.remove('off')},320)}
+   const all=document.querySelector('.vt-all'),g=k==='gourmet';all.textContent=g?'Ver todo gourmet':'Ver todos los vinos';all.href=g?PAGES.tienda+'?tipo=gourmet':PAGES.tienda}
+  vtTabs.querySelectorAll('[role=tab]').forEach(b=>{const on=b.dataset.k===k;b.setAttribute('aria-selected',on);b.tabIndex=on?0:-1;if(on&&!first){const bs=vtTabs.querySelectorAll('[role=tab]');if(b===bs[bs.length-1])vtTabs.scrollTo({left:vtTabs.scrollWidth,behavior:'smooth'});else if(b===bs[0])vtTabs.scrollTo({left:0,behavior:'smooth'});else b.scrollIntoView({block:'nearest',inline:'nearest',behavior:'smooth'})}});
+  vtRail.setAttribute('aria-labelledby','vtt-'+k);
+  const draw=()=>{vtTrack.innerHTML=t[2]().map(vcard).join('');vtRail.scrollLeft=0;vtTrack.classList.remove('out');vtTrack.classList.remove('in');void vtTrack.offsetWidth;vtTrack.classList.add('in');vtProg()};
+  clearTimeout(vtSwap);if(first)draw();else{vtTrack.classList.add('out');vtSwap=setTimeout(draw,280)}}
+vtTabs.addEventListener('click',e=>{const b=e.target.closest('[role=tab]');if(b)vtShow(b.dataset.k)});
+vtTabs.addEventListener('keydown',e=>{const bs=[...vtTabs.querySelectorAll('[role=tab]')],i=bs.indexOf(document.activeElement);if(i<0)return;let j=null;
+  if(e.key==='ArrowRight')j=(i+1)%bs.length;else if(e.key==='ArrowLeft')j=(i-1+bs.length)%bs.length;else if(e.key==='Home')j=0;else if(e.key==='End')j=bs.length-1;
+  if(j!==null){e.preventDefault();bs[j].focus();vtShow(bs[j].dataset.k)}});
+/* Barra de progreso del carrusel */
+function vtProg(){const max=vtRail.scrollWidth-vtRail.clientWidth,vis=vtRail.clientWidth/vtRail.scrollWidth;vtBar.parentElement.style.visibility=max>4?'visible':'hidden';
+  vtBar.style.width=(vis*100)+'%';vtBar.style.transform='translateX('+(max>0?vtRail.scrollLeft/max*(1/vis-1)*100:0)+'%)'}
+vtRail.addEventListener('scroll',()=>requestAnimationFrame(vtProg),{passive:true});addEventListener('resize',vtProg);
+/* Arrastrar con el mouse (en celular ya se desliza con el dedo); al soltar se acomoda en la card más cercana */
+let dg=null;
+vtRail.addEventListener('pointerdown',e=>{if(e.pointerType!=='mouse'||e.button!==0||e.target.closest('.vc-add'))return;dg={x:e.clientX,s:vtRail.scrollLeft,moved:false,id:e.pointerId}});
+addEventListener('pointermove',e=>{if(!dg||e.pointerId!==dg.id)return;const dx=e.clientX-dg.x;if(!dg.moved&&Math.abs(dx)>5){dg.moved=true;vtRail.classList.add('drag');try{vtRail.setPointerCapture(dg.id)}catch(err){}}if(dg.moved)vtRail.scrollLeft=dg.s-dx});
+addEventListener('pointerup',e=>{if(!dg||e.pointerId!==dg.id)return;const was=dg.moved;dg=null;vtRail.classList.remove('drag');
+  if(was){const cards=[...vtTrack.children],x=vtRail.scrollLeft,near=cards.reduce((b,c)=>Math.abs(c.offsetLeft-x)<Math.abs(b.offsetLeft-x)?c:b,cards[0]);vtRail.scrollTo({left:near.offsetLeft,behavior:'smooth'});
+    const block=ev=>{ev.preventDefault();ev.stopPropagation()};vtRail.addEventListener('click',block,{capture:true,once:true});setTimeout(()=>vtRail.removeEventListener('click',block,{capture:true}),80)}});
+vtShow('premiados',true);
+
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeLb()});
+
+/* ---------- Video ---------- */
+const lb=document.getElementById('lightbox'),lbv=document.getElementById('lbVid');
+let lbFrom=null;
+document.querySelectorAll('[data-video]').forEach(b=>b.onclick=()=>{lbFrom=b;lb.showModal();lb.classList.add('on');lbv.currentTime=0;lbv.play().catch(()=>{});lb.querySelector('[data-lb-close]').focus()});
+function closeLb(){if(!lb.open)return;lbv.pause();lb.classList.remove('on');lb.close();if(lbFrom)lbFrom.focus()}
+lb.addEventListener('cancel',e=>{e.preventDefault();closeLb()});
+lb.querySelector('[data-lb-close]').onclick=closeLb;
+lb.addEventListener('click',e=>{if(e.target===lb)closeLb()});
+
+/* ---------- Encabezado ---------- */
+/* ---------- Portada: video de la casa y después banners de promociones y lanzamientos ---------- */
+const reduceM=matchMedia('(prefers-reduced-motion: reduce)').matches;
+const lineStat=n=>{const ids=Object.keys(P).filter(id=>P[id].line===n&&!P[id].gift&&!P[id].nb),pr=ids.map(id=>P[id].price),lo=Math.min(...pr),same=lo===Math.max(...pr);return [ids.length+' vinos',money(lo),same?'cada uno':'desde']};
+/* Oscurece un color del borde de la foto para el fondo del texto (con texto blanco) */
+const dk=(h,a=.52)=>{const n=parseInt(h.slice(1),16),c=[n>>16,n>>8&255,n&255],b=[18,13,9];return 'rgb('+c.map((v,i)=>Math.round(v*(1-a)+b[i]*a)).join(',')+')'};
+const pan=(cs,dark)=>'linear-gradient(180deg,'+cs.map((c,i)=>(dark?dk(c):c)+' '+Math.round(i/(cs.length-1)*100)+'%').join(',')+')';
+const DARK='#13100d';
+/* stat: dato destacado de cada banner [etiqueta, valor, nota] */
+const SL0=[
+ {k:'casa',vid:1,tone:'dark',side:'c',
+  yr:1,t:['Cien años','haciendo vino','en familia'],
+  p:'Rumbo a nuestro centenario, seguimos en el Valle de Guadalupe: un legado que trasciende fronteras. Envío a todo México y 10% de descuento en tu caja de 6.',
+  c:[['Comprar vinos','#tienda'],['Nuestros 100 años','lacetto-trayectoria.html']]},
+ /* Chardonnay Reserva Privada sobre la roca frente al mar: la foto se amplió con mar a los lados y arriba para que la botella
+    quepa completa bajo el encabezado; el texto va a la izquierda, sobre el agua */
+ {k:'chardmar',img:'b-chardmar',ts:true,tone:'dark',side:'l',cw:'34%',cmax:'500px',vt:'rgba(14,10,7,.34)',vw:'56%',pos:'50% 62%',mpos:'50% 50%',
+  eb:'Reserva Privada · Chardonnay',t:['Luz dorada','en la copa'],
+  p:'Siete meses en barrica francesa. Manzanilla, almendra y pan tostado, con acidez firme.',stat:['Botella 750 ml',money(P.charp.price),'Socios '+money(memberPrice(P.charp.price))],
+  c:[['Comprar','lacetto-ficha.html?p=charp'],['Ver Reserva Privada','lacetto-tienda.html?linea=reserva-privada']]},
+ {k:'winedays',until:'2026-11-17',img:'b-winedays',xt:'b-winedays-x',xs:.36,tone:'light',side:'l',cw:'29%',vt:'rgba(255,255,255,.06)',vw:'58%',pos:'62% 50%',mpos:'50% 50%',edge:['#f9cbcc','#f8cbcb','#f7c8c9','#f4c3c4','#efc3c1','#cbb4a6'],
+  eb:'Wine Days · del 9 al 17 de noviembre',t:['Wine','Days'],lead:'Una buena ocasión para brindar.',
+  p:'Además, hasta 3 meses sin intereses y envío gratis en toda la tienda.',stat:['Descuento','10%','en tu caja de 6'],
+  c:[['Ver vinos participantes','lacetto-tienda.html?linea=reserva-privada,don-luis,uvas-organicas,estaciones,sierra-blanca']],
+  legal:'10% en la compra de 6 botellas o más, combinables entre las líneas Reservas, Don Luis, Orgánicos, Estaciones y Sierra Blanca. 3 meses sin intereses en compras desde $1,799.'},
+ {k:'sierrablanca',img:'b-sierrablanca',xt:'b-sierrablanca-x',xs:.29,tone:'light',side:'l',cw:'28%',vt:'rgba(255,255,255,.08)',vw:'60%',pos:'30% 50%',mpos:'57% 50%',edge:['#acc2be','#d5cec0','#e4d2c1','#e5d3bf','#e0c9b4','#dcc8b4'],
+  eb:'Sierra Blanca · Sauvignon Blanc',t:['El héroe','del verano'],
+  p:'Lima, flores blancas y un fondo herbal. Brillante y ligero, para tardes de sol.',stat:['Botella 750 ml',money(P.sbsb.price),'Socios '+money(memberPrice(P.sbsb.price))],
+  c:[['Comprar','lacetto-ficha.html?p=sbsb'],['Ver la línea','lacetto-tienda.html?linea=sierra-blanca']]},
+ {k:'gourmet',img:'b-gourmet',tone:'dark',side:'r',cw:'33%',cmax:'500px',vt:'rgba(14,10,7,.46)',vw:'52%',pos:'50% 42%',mpos:'30% 50%',
+  eb:'Gourmet L.A. Cetto',t:['Más allá','de la copa'],
+  p:'Aceite de oliva extra virgen, vinagres de vino y aceitunas: la mesa del vino, también en tu cocina.',stat:['Aceite de oliva 750 ml',money(P.ac750.price),'Plata · Virtus 2026'],
+  c:[['Comprar gourmet','lacetto-tienda.html?tipo=gourmet'],['Ver el aceite','lacetto-ficha.html?p=ac750']]},
+ {k:'organicos',img:'b-organicos',noveil:true,ts:true,cur:true,tone:'dark',side:'l',cw:'31%',vt:'rgba(12,10,8,.1)',vw:'60%',pos:'50% 56%',mpos:'52% 50%',
+  eb:'Nueva línea · Uvas Orgánicas',t:['Orgánicos','de raíz'],
+  p:'Ensamble Italiano, Mezcla Bordelesa, Malbec y Nebbiolo, elaborados con uvas orgánicas de Viña Alegre.',stat:lineStat('Uvas Orgánicas'),
+  c:[['Comprar la línea','lacetto-tienda.html?linea=uvas-organicas']]},
+ {k:'champbrule',img:'b-champbrule',tone:'dark',side:'r',cmax:'540px',vt:'rgba(12,10,8,.06)',vw:'58%',pos:'50% 50%',mpos:'30% 50%',
+  eb:'Champbrulé Brut',t:['Cualquier día','es una','celebración'],
+  p:'Burbujas finas, manzana verde y un toque de pan recién horneado.',stat:['Espumoso 750 ml',money(P.champ.price),'Socios '+money(memberPrice(P.champ.price))],
+  c:[['Comprar','lacetto-ficha.html?p=champ']]},
+ {k:'experiencias',img:'b-experiencias',noveil:true,ts:true,cur:true,top:.4,toph:'170px',ar:'2000/1024',tone:'dark',side:'r',cw:'35%',cmax:'570px',hfs:'clamp(40px,4.3vw,70px)',vt:'rgba(12,10,8,.14)',vw:'52%',pos:'100% 40%',mpos:'44% 50%',
+  eb:'Valle de Guadalupe',t:['Experiencias y','degustaciones'],
+  p:'En nuestra bodega del Valle. Eliges experiencia, fecha y personas, y reservas en línea.',stat:['Catas desde','$250','por persona'],
+  c:[['Reservar una cata','lacetto-experiencias.html#reservar'],['Ver experiencias','lacetto-experiencias.html']]}
+];
+/* las promociones con fecha de fin desaparecen solas al terminar */
+const SL=SL0.filter(s=>!s.until||new Date()<=new Date(s.until+'T23:59:59'));
+const hero=document.getElementById('hero'),heroVid=document.getElementById('heroVid'),heroMedia=document.getElementById('heroMedia'),heroCopy=document.getElementById('heroCopy');
+/* Imágenes de los banners: la foto ocupa un lado y se funde con un fondo tomado de sus propios bordes */
+/* Imágenes de los banners: la foto a sangre con el texto encima; entre ambos solo una capa de blur que se desvanece (15%).
+   En Wine Days y Sierra Blanca la foto se recorre a la derecha y el hueco se rellena estirando su propio borde, para que
+   las botellas no queden debajo del texto. */
+SL.forEach(s=>{if(!s.img)return;const d=document.createElement('div');d.className='hm hs hs-'+(s.ext?'ext':'full')+' hs-'+(s.anchor||'r')+(s.tone==='light'?' hs-light':'');d.setAttribute('aria-hidden','true');
+  const set=(k,v)=>{if(v)d.style.setProperty(k,v)};set('--pos',s.pos);set('--mpos',s.mpos);set('--ar',s.ar);set('--bw',s.bw);set('--fw',s.fw);set('--vt',s.vt);set('--vw',s.vw);
+  const wide=s.xt&&!matchMedia('(max-width:900px)').matches;
+  d.innerHTML='<div class="hs-box"><img alt="" data-src="media/'+(wide?s.xt:s.img)+'.jpg"'+(wide?'':' data-srcset="media/'+s.img+'-1000.jpg 1000w, media/'+s.img+'.jpg 2000w" sizes="(max-width:900px) 100vw, 90vw"')+'></div>'+(s.noveil?'':'<i class="hs-veil hs-veil-'+s.side+'"></i>')+(s.cur?'<i class="hs-cur hs-cur-'+s.side+'"></i>':'');
+  heroMedia.appendChild(d);s.el=d});
+SL[0].el=heroVid;
+/* Copy de cada banner */
+heroCopy.innerHTML=SL.map((s,i)=>'<div class="hcopy hcopy-'+s.side+(s.ts?' hcopy-ts':'')+'"'+(st=>st?' style="'+st+'"':'')([s.cw&&'--cw:'+s.cw,s.cmax&&'--cmax:'+s.cmax,s.hfs&&'--hfsd:'+s.hfs].filter(Boolean).join(';'))+' role="group" aria-roledescription="diapositiva" aria-label="'+(i+1)+' de '+SL.length+'"'+(i?' hidden':'')+'>'+
+  (s.eb?'<span class="hero-eb fade">'+s.eb+'</span>':'')+
+  (s.yr?'<p class="hero-yr lines" aria-label="De 1928 a 2028"><span class="ln"><span aria-hidden="true">1928<i></i>2028</span></span></p>':'')+
+  '<h2 class="h1 lines ttl hero-t">'+s.t.map(l=>'<span class="ln"><span>'+l+' </span></span>').join('')+'</h2>'+
+  '<div class="hero-side fade">'+(s.lead?'<p class="hero-lead">'+s.lead+'</p>':'')+
+  (s.stat?'<div class="hero-body"><p>'+s.p+'</p><p class="hero-stat"><small>'+s.stat[0]+'</small><b>'+s.stat[1]+'</b><small>'+s.stat[2]+'</small></p></div>':'<p>'+s.p+'</p>')+
+  '<div class="ctas">'+s.c.map((c,j)=>'<a class="'+(j?'ul':'btn '+(s.tone==='light'?'btn-ink':'btn-light'))+'" href="'+c[1]+'">'+c[0]+'</a>').join('')+'</div>'+
+  (s.legal?'<p class="hero-legal">'+s.legal+'</p>':'')+'</div></div>').join('');
+const CP=[...heroCopy.children];
+const loadSlides=()=>{heroMedia.querySelectorAll('img[data-src]').forEach(m=>{if(m.dataset.srcset)m.srcset=m.dataset.srcset;m.src=m.dataset.src;m.removeAttribute('data-src')});heroMedia.querySelectorAll('.hs-bg[data-bg]').forEach(b=>{b.style.backgroundImage='url('+b.dataset.bg+')';b.removeAttribute('data-bg')})};
+const SLIDE=7000;
+let hCur=0,hT0=performance.now(),hLeft=SLIDE,hTimer,hVisible=true,hHold=false,hUser=false,swapT,introDone=false;
+const NP=SL.length-1; /* banners de producto (sin el video) */
+/* foto extendida: en pantallas medianas se recorre a la izquierda lo justo para que el texto siempre caiga sobre la pared o el piso, nunca sobre botellas */
+const offL=e=>{let x=0;while(e){x+=e.offsetLeft;e=e.offsetParent}return x};
+const fitX=()=>{const s=SL[hCur];if(!s||!s.xt||!s.el)return;const img=s.el.querySelector('img'),box=s.el.querySelector('.hs-box'),c=heroCopy.children[hCur];if(!img||!box||!c)return;if(matchMedia('(max-width:900px)').matches){img.style.removeProperty('object-position');return}const W=box.clientWidth,H=box.clientHeight;if(!W||!H||!c.offsetWidth)return;const ar=img.naturalWidth?img.naturalWidth/img.naturalHeight:2760/1116,Wd=Math.max(W,ar*H),O=Wd-W,T=offL(c)+c.offsetWidth-offL(box)+52;let L=Math.min(parseFloat(s.pos)/100*O,s.xs*Wd-T);L=Math.max(0,Math.min(L,O));img.style.objectPosition=(-Math.round(L))+'px 50%'};
+addEventListener('resize',fitX);
+const tone=()=>{fitX();const light=SL[hCur].tone==='light';hero.classList.toggle('tone-light',light);hero.classList.toggle('on-vid',!!SL[hCur].vid);document.getElementById('hdr').classList.toggle('on-light',light);hero.style.setProperty('--topa',SL[hCur].top||.22);hero.style.setProperty('--toph',SL[hCur].toph||'120px')};
+function showCopy(i,first){
+  const prev=CP.find(c=>!c.hidden),next=CP[i];clearTimeout(swapT);
+  const enter=()=>{CP.forEach(c=>{if(c!==next){c.hidden=true;c.classList.remove('out')}});next.hidden=false;fitX();next.classList.toggle('swap',!first);
+    const an=[...next.querySelectorAll('.lines,.fade')];an.forEach(e=>e.classList.remove('in'));CP.forEach(c=>{clearTimeout(c._op);c.classList.remove('open')});void next.offsetWidth;next._op=setTimeout(()=>next.classList.add('open'),(first?450:40)+2500);
+    setTimeout(()=>an.forEach(e=>e.classList.add('in')),first?450:40)};
+  if(prev&&prev!==next&&!reduceM){prev.classList.add('out');swapT=setTimeout(enter,420)}else enter();
+}
+function schedule(ms){clearTimeout(hTimer);hLeft=ms;hT0=performance.now();if(SL[hCur].vid||hUser||hHold||!hVisible||reduceM)return;hTimer=setTimeout(()=>heroGo(hCur+1),ms)}
+/* El video es solo la entrada: en cuanto se ven los banners (terminó, se pasó al siguiente o se bajó con scroll)
+   sale de la rotación y quedan solo los banners de producto */
+/* Al terminar la entrada, la portada siempre se acorta. No mueve la página: durante el video la portada ocupa en el flujo
+   lo mismo que ya acortada (un margen negativo le quita el sobrante y se encima a la sección de abajo), así que al acortarse
+   solo descubre lo que tenía debajo */
+function endIntro(){if(introDone)return;introDone=true;heroVid.pause();hero.classList.add('short');
+  CP.forEach((c,j)=>{if(j)c.setAttribute('aria-label',j+' de '+NP)});}
+/* el video de la casa cierra con el 100 (al terminar se queda un momento y luego pasa a los banners) */
+const h100=document.getElementById('hero100');h100.innerHTML=c100('full',{cls:'draw'});
+let h100on=false,h100T;
+function show100(on){if(h100on===on)return;h100on=on;hero.classList.toggle('end100',on);if(on)c100go(h100)}
+heroVid.addEventListener('timeupdate',()=>{if(!introDone&&SL[hCur].vid&&heroVid.duration&&heroVid.duration-heroVid.currentTime<3.6)show100(true)});
+function heroGo(i,{manual=false,first=false}={}){
+  clearTimeout(h100T);
+  if(!first&&hCur===0&&!introDone)i=i<0?NP:(i===0?0:1);           /* saliendo del video: siguiente → 1, anterior → el último */
+  else if(introDone)i=(((i-1)%NP)+NP)%NP+1;                          /* después: solo banners de producto */
+  else i=(i+SL.length)%SL.length;
+  if(!first){SL[hCur].el.classList.remove('on')}
+  if(!first&&i!==0)endIntro();
+  if(i!==0)show100(false);
+  hCur=i;const s=SL[i];if(!first)loadSlides();
+  s.el.classList.add('on');if(s.img){const im=s.el.querySelector('img');im.style.animation='none';void im.offsetWidth;im.style.animation=''}
+  heroCopy.setAttribute('aria-live',manual?'polite':'off');
+  showCopy(i,first);tone();
+  const nx=introDone?(i%NP)+1:1;document.getElementById('heroNext').setAttribute('aria-label','Ver el siguiente banner ('+nx+' de '+NP+')');
+  if(s.vid){heroVid.currentTime=0;if(!reduceM&&!hUser&&hVisible)heroVid.play().catch(()=>schedule(SLIDE))}
+  else{heroVid.pause();schedule(SLIDE)}
+}
+heroVid.addEventListener('ended',()=>{if(h100on)h100T=setTimeout(()=>{if(SL[hCur].vid)heroGo(hCur+1)},1900);else heroGo(hCur+1)});
+heroVid.addEventListener('playing',()=>setTimeout(loadSlides,2500),{once:true});
+/* Botones de anterior y siguiente, teclado (← →) y deslizar en celular */
+document.getElementById('heroNext').onclick=()=>heroGo(hCur+1,{manual:true});
+document.getElementById('heroPrev').onclick=()=>heroGo(hCur-1,{manual:true});
+hero.addEventListener('keydown',e=>{if(e.target.closest('a,input'))return;if(e.key==='ArrowRight'){e.preventDefault();heroGo(hCur+1,{manual:true})}else if(e.key==='ArrowLeft'){e.preventDefault();heroGo(hCur-1,{manual:true})}});
+let tx=null,ty=0;
+heroMedia.parentElement.addEventListener('touchstart',e=>{tx=e.touches[0].clientX;ty=e.touches[0].clientY},{passive:true});
+heroMedia.parentElement.addEventListener('touchend',e=>{if(tx==null)return;const dx=e.changedTouches[0].clientX-tx,dy=e.changedTouches[0].clientY-ty;tx=null;if(Math.abs(dx)>50&&Math.abs(dy)<60)heroGo(hCur+(dx<0?1:-1),{manual:true})},{passive:true});
+/* Deslizar de lado con dos dedos en el trackpad (o Shift + rueda): un banner por gesto.
+   El scroll vertical pasa normal; la inercia del mismo gesto no salta más banners, pero un gesto nuevo sí cuenta */
+let wAcc=0,wLock=false,wAt=0,wLast=0,wT;
+/* sobre la portada, deslizar hacia la derecha regresa de banner, no a la página anterior del navegador */
+const hx=on=>document.documentElement.classList.toggle('hx',on);
+hero.addEventListener('pointerenter',e=>{if(e.pointerType==='mouse')hx(true)});
+hero.addEventListener('pointerleave',e=>{if(e.pointerType==='mouse')hx(false)});
+if(hero.matches(':hover'))hx(true);
+hero.addEventListener('wheel',e=>{
+  let dx=e.deltaX,dy=e.deltaY;if(e.deltaMode===1){dx*=16;dy*=16}
+  if(e.ctrlKey||!dx||Math.abs(dx)<Math.abs(dy))return;
+  hx(true);e.preventDefault();                          /* evita el "regresar de página" del navegador */
+  const a=Math.abs(dx),now=performance.now();
+  if(wLock&&now-wAt>320&&a>8&&a>wLast*2.2)wLock=false;  /* arrancó otro gesto mientras la inercia seguía */
+  wLast=a;clearTimeout(wT);wT=setTimeout(()=>{wAcc=0;wLock=false;wLast=0},180);
+  if(wLock)return;
+  if(wAcc&&Math.sign(dx)!==Math.sign(wAcc))wAcc=0;
+  wAcc+=dx;
+  if(Math.abs(wAcc)>=36){wLock=true;wAt=now;heroGo(hCur+(wAcc>0?1:-1),{manual:true});wAcc=0}
+},{passive:false});
+/* Se detiene mientras el mouse o el foco están sobre la portada */
+/* (el video sigue corriendo; solo se detiene la espera entre banners) */
+const hold=on=>{if(hHold===on)return;hHold=on;if(SL[hCur].vid)return;
+  if(on){clearTimeout(hTimer);hLeft=Math.max(600,hLeft-(performance.now()-hT0))}
+  else if(!hUser&&hVisible)schedule(hLeft)};
+hero.addEventListener('pointerenter',e=>{if(e.pointerType==='mouse')hold(true)});hero.addEventListener('pointerleave',e=>{if(e.pointerType==='mouse')hold(false)});
+hero.addEventListener('focusin',()=>hold(true));hero.addEventListener('focusout',e=>{if(!hero.contains(e.relatedTarget))hold(false)});
+/* Aro de progreso del botón */
+const ring=document.getElementById('heroRing'),RC=2*Math.PI*25;ring.style.strokeDasharray=RC;
+(function rTick(){const s=SL[hCur];let p=0;
+  if(s.vid)p=heroVid.duration?heroVid.currentTime/heroVid.duration:0;
+  else p=(hHold||hUser||!hVisible||reduceM)?1-hLeft/SLIDE:Math.min(1,1-(hLeft-(performance.now()-hT0))/SLIDE);
+  ring.style.strokeDashoffset=RC*(1-Math.max(0,p));requestAnimationFrame(rTick)})();
+/* Pausar y reanudar la portada (WCAG 2.2.2) */
+const PP=document.getElementById('heroPP'),PLAY='<svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 4l13 8-13 8z"/></svg>',PAUSEI=PP.innerHTML;
+function setPP(){PP.setAttribute('aria-pressed',hUser);PP.setAttribute('aria-label',hUser?'Reproducir la portada':'Pausar la portada');PP.innerHTML=hUser?PLAY:PAUSEI}
+PP.onclick=()=>{hUser=!hUser;const s=SL[hCur];
+  if(hUser){if(s.vid)heroVid.pause();else{clearTimeout(hTimer);hLeft=Math.max(600,hLeft-(performance.now()-hT0))}}
+  else{if(s.vid){if(!reduceM)heroVid.play().catch(()=>{})}else schedule(hLeft)}
+  setPP()};
+if(reduceM){hUser=true;setPP()}
+new IntersectionObserver(es=>es.forEach(en=>{
+  if(en.isIntersecting===hVisible)return;hVisible=en.isIntersecting;const s=SL[hCur];
+  if(!hVisible){
+    /* si baja con scroll mientras corre el video, al volver ya encuentra los banners (la portada no cambia de altura) */
+    if(s.vid&&!introDone&&hero.getBoundingClientRect().top<0){heroGo(1);clearTimeout(hTimer);hLeft=SLIDE;return}
+    if(s.vid)heroVid.pause();else{clearTimeout(hTimer);hLeft=Math.max(600,hLeft-(performance.now()-hT0))}return}
+  if(hUser||hHold)return;if(s.vid){if(!reduceM)heroVid.play().catch(()=>{})}else schedule(hLeft);
+}),{threshold:.15}).observe(hero);
+heroGo(0,{first:true});
+/* En cuanto bajas (scroll, trackpad, dedo) durante el video, entran los banners y la portada se acorta */
+{const leave=()=>{if(introDone){removeEventListener('scroll',leave);return}if(scrollY>6&&hCur===0){heroGo(1)}};addEventListener('scroll',leave,{passive:true})}
+if(reduceM){heroVid.removeAttribute('autoplay');heroVid.pause();loadSlides()}
+
+/* ---------- Momentos ----------
+   Escritorio: la sección se queda fija y el scroll vertical la recorre de lado, un momento por pantalla.
+   Celular o "reducir movimiento": carrusel horizontal nativo (deslizar) con las mismas flechas. */
+{const moSec=document.getElementById('momentos'),moTrack=document.getElementById('moTrack'),moVp=document.getElementById('moVp');
+ const MN=M.length;moSec.style.setProperty('--n',MN);
+ const ico=d=>'<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.1" aria-hidden="true"><path d="'+(d>0?'M3.5 12h17M14.5 6l6 6-6 6':'M20.5 12h-17M9.5 6l-6 6 6 6')+'"/></svg>';
+ const wine=(id,alt)=>{const p=P[id],md=p.medals||0,rr=rateOf(id);
+   return {aw:md?'<span class="mo-aw" role="img" aria-label="'+md+' reconocimientos" title="'+md+' reconocimientos">'+(md>=80?'<i class="md">'+trophy+'</i>':'')+'<i class="md">'+laurel+'</i></span>':'',
+     bot:'<a class="mo-bot'+(alt&&/-caja$/.test(alt)?' boxed':'')+'" href="'+PAGES.ficha+'?p='+id+'" tabindex="-1" aria-hidden="true" draggable="false"><i class="mo-sh"></i><img src="media/bot/'+(alt||id)+'.png" alt="" decoding="async" draggable="false"'+(p.gift&&!alt?' class="wide"':'')+'></a>',
+     info:'<span class="mo-line">'+p.line+'</span><a class="mo-name" href="'+PAGES.ficha+'?p='+id+'">'+p.name+'</a>'+
+       '<span class="mo-price">Socios: '+money(memberPrice(p.price))+' <i aria-hidden="true">|</i> '+money(p.price)+'</span>'+
+       '<span class="mo-rate"'+(rr[1]?'':' data-ejemplo')+'><span class="stars" style="--r:'+rr[0]+'" aria-hidden="true"></span><span aria-hidden="true">('+rr[0].toFixed(1)+')</span><span class="sr">'+rr[0].toFixed(1)+' de 5 estrellas</span></span>'}};
+ moTrack.innerHTML=M.map((m,i)=>{const w=wine(m.ids[0],m.imgs&&m.imgs[m.ids[0]]),ph=m.vid?vPoster(m.vid):F(m.img,1600);
+   return '<li class="mo-p" data-i="'+i+'" role="group" aria-roledescription="momento" aria-label="'+(i+1)+' de '+MN+': '+m.t+'">'+
+     '<div class="mo-ph'+(m.dim?' dim':'')+'"'+(typeof m.dim==='number'?' style="--dim:'+m.dim+'"':'')+'><img src="'+ph+'" alt="" draggable="false" loading="'+(i?'lazy':'eager')+'" decoding="async"'+(m.pos?' style="object-position:'+m.pos+'"':'')+'>'+
+       (m.vid&&m.play?'<video data-amb="'+m.t+'" data-noctl data-src="'+m.vid+'" muted playsinline loop aria-hidden="true"></video>':'')+
+       '<div class="mo-tt"><div class="mo-tt-a"><h3 class="ttl">'+m.t+'</h3><p>'+m.sub+'</p></div>'+
+         '<blockquote class="mo-tt-b"><p>“'+m.q+'”</p></blockquote></div></div>'+
+     '<div class="mo-w" data-j="0"><div class="mo-cur">'+w.aw+'</div>'+
+       '<div class="mo-stage"><button class="mo-wa" type="button" data-d="-1" aria-label="Vino anterior para '+m.t.toLowerCase()+'">'+ico(-1)+'</button>'+
+         '<div class="mo-swap mo-bw">'+w.bot+'</div>'+
+         '<button class="mo-wa" type="button" data-d="1" aria-label="Siguiente vino para '+m.t.toLowerCase()+'">'+ico(1)+'</button></div>'+
+       '<div class="mo-swap mo-info" aria-live="polite">'+w.info+'</div>'+
+       '<span class="mo-dots" aria-hidden="true">'+m.ids.map((_,j)=>'<i'+(j?'':' class="on"')+'></i>').join('')+'</span></div></li>'}).join('');
+ /* el video de la copa (Una noche para dos) se reproduce solo cuando ese momento está a la vista; con "reducir movimiento" queda la foto fija */
+ ambient(moTrack);
+ moTrack.querySelectorAll('video').forEach(v=>v.addEventListener('play',()=>{if(!v.closest('.mo-p').classList.contains('on'))v.pause()}));
+ /* cambiar de vino dentro del momento (flechas junto a la botella) */
+ moTrack.addEventListener('click',e=>{const b=e.target.closest('.mo-wa');if(!b)return;const w=b.closest('.mo-w'),m=M[+b.closest('.mo-p').dataset.i],n=m.ids.length;
+   const j=((+w.dataset.j+(+b.dataset.d))%n+n)%n,x=wine(m.ids[j],m.imgs&&m.imgs[m.ids[j]]);w.dataset.j=j;w.style.setProperty('--dir',b.dataset.d);w.classList.add('sw');
+   clearTimeout(w._t);w._t=setTimeout(()=>{w.querySelector('.mo-cur').innerHTML=x.aw;w.querySelector('.mo-bw').innerHTML=x.bot;w.querySelector('.mo-info').innerHTML=x.info;
+     w.querySelectorAll('.mo-dots i').forEach((d,k)=>d.classList.toggle('on',k===j));
+     const im=w.querySelector('.mo-bw img'),done=()=>w.classList.remove('sw');if(im.complete)requestAnimationFrame(done);else{im.onload=im.onerror=done}},260)});
+ /* el nombre del momento se ve unos segundos y luego cede su lugar a la frase en cursiva (al volver a ese momento, empieza de nuevo) */
+ let cur=-1,qT=0,vis=false;
+ const arm=()=>{clearTimeout(qT);const p=moTrack.children[cur];if(!p||!vis||p.classList.contains('q'))return;qT=setTimeout(()=>p.classList.add('q'),3800)};
+ new IntersectionObserver(es=>{const en=es[es.length-1];vis=en.isIntersecting&&(en.intersectionRatio>=.5||en.intersectionRect.height>=innerHeight*.5);if(vis)arm();else clearTimeout(qT)},{threshold:[0,.1,.2,.3,.4,.5,.6,.7]}).observe(moVp);
+ function setI(i){i=Math.max(0,Math.min(MN-1,i));if(i===cur)return;cur=i;
+   moTrack.querySelectorAll('.mo-p').forEach((p,k)=>{p.inert=k!==i;p.classList.toggle('on',k===i)});
+   moTrack.children[i].classList.remove('q');arm();
+   moTrack.querySelectorAll('video').forEach(v=>{if(v.closest('.mo-p')===moTrack.children[i]){if(v._vis)ambPlay(v)}else v.pause()});
+   document.getElementById('moPrev').disabled=i===0;document.getElementById('moNext').disabled=i===MN-1;alignNav()}
+ /* las flechas de momento (sobre la foto) quedan a la misma altura que las del vino (junto a la botella) */
+ function alignNav(){const p=moTrack.children[cur];if(!p)return;const st=p.querySelector('.mo-stage'),bx=moSec.querySelector('.mo-box');
+   const r=st.getBoundingClientRect(),b=bx.getBoundingClientRect();if(r.height)moSec.querySelector('.mo-nav').style.setProperty('--ay',Math.round(r.top+r.height/2-b.top)+'px')}
+ addEventListener('resize',()=>requestAnimationFrame(alignNav));
+ /* carrusel libre: se desliza de lado (trackpad, dedo, teclado o arrastrando con el mouse); el scroll de la página no se detiene */
+ const onScroll=()=>setI(Math.round(moVp.scrollLeft/Math.max(1,moVp.clientWidth)));
+ function go(i){i=Math.max(0,Math.min(MN-1,i));moVp.scrollTo({left:i*moVp.clientWidth,behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'})}
+ document.getElementById('moPrev').innerHTML=ico(-1);document.getElementById('moNext').innerHTML=ico(1);
+ document.getElementById('moPrev').addEventListener('click',()=>go(cur-1));document.getElementById('moNext').addEventListener('click',()=>go(cur+1));
+ moVp.addEventListener('scroll',onScroll,{passive:true});addEventListener('resize',()=>{moVp.scrollLeft=cur*moVp.clientWidth});
+ let dg=null,dragged=false;
+ moVp.addEventListener('pointerdown',e=>{if(e.pointerType!=='mouse'||e.button!==0||e.target.closest('button,a,video'))return;dg={x:e.clientX,sl:moVp.scrollLeft,id:e.pointerId,moved:false}});
+ addEventListener('pointermove',e=>{if(!dg||e.pointerId!==dg.id)return;const dx=e.clientX-dg.x;
+   if(!dg.moved&&Math.abs(dx)>6){dg.moved=true;moVp.classList.add('drag');try{moVp.setPointerCapture(dg.id)}catch(_){}}
+   if(dg.moved)moVp.scrollLeft=dg.sl-dx});
+ const end=()=>{if(!dg)return;const d=dg;dg=null;if(!d.moved)return;dragged=true;setTimeout(()=>dragged=false,60);
+   const w=moVp.clientWidth,moved=moVp.scrollLeft-d.sl,base=Math.round(d.sl/w);go(Math.abs(moved)>w*.12?base+Math.sign(moved):base);setTimeout(()=>moVp.classList.remove('drag'),520)};
+ addEventListener('pointerup',end);addEventListener('pointercancel',end);
+ moVp.addEventListener('click',e=>{if(dragged){e.preventDefault();e.stopPropagation()}},true);
+ onScroll();
+ window.moGo=go}
+
+/* La frase de la familia aparece palabra por palabra al llegar (de borrosa y un poco abajo a nítida), luego la firma y los logos */
+{const q=document.querySelector('.hq-q p'),hq=document.querySelector('.hq');
+ if(q&&hq){const txt=q.textContent;q.setAttribute('aria-label',txt);
+  q.innerHTML=txt.split(/(\s+)/).map((w,i)=>/^\s+$/.test(w)?w:'<span class="hw" aria-hidden="true">'+w+'</span>').join('');
+  q.querySelectorAll('.hw').forEach((w,i)=>w.style.setProperty('--i',i));hq.style.setProperty('--nw',q.querySelectorAll('.hw').length);
+  if(reduceM)hq.classList.add('in');
+  else new IntersectionObserver((es,o)=>{if(es[0].isIntersecting){hq.classList.add('in');o.disconnect()}},{rootMargin:'0px 0px -28% 0px'}).observe(q)}}
+
+/* Club → frase (escritorio): el Club se queda fijo y la sección de la frase sube encima como una cortina del mismo color;
+   mientras sube, la foto se aclara y se va hacia arriba y el texto se apaga. Así no queda espacio vacío antes de la frase */
+{const clb=document.getElementById('club'),hq=document.querySelector('.hq');
+ if(clb&&hq&&!reduceM){let raf=0,near=false;
+  const upd=()=>{if(innerWidth<901){clb.style.setProperty('--out',0);return}
+    const r=hq.getBoundingClientRect(),vh=innerHeight,e=Math.min(1,Math.max(0,(vh-r.top)/(vh*.8)));
+    clb.style.setProperty('--out',e.toFixed(3))};
+  new IntersectionObserver(es=>{near=es.some(x=>x.isIntersecting);if(near)upd()},{rootMargin:'200px 0px'}).observe(hq);
+  addEventListener('scroll',()=>{if(near&&!raf)raf=requestAnimationFrame(()=>{raf=0;upd()})},{passive:true});addEventListener('resize',upd);upd()}}
+
+/* Tope suave (escritorio): si dejas de hacer scroll cerca del encuadre, la página se asienta sola.
+   Momentos, la historia y el Club quedan a pantalla completa (la barra se esconde; vuelve al subir).
+   Solo actúa cuando el scroll ya terminó (no corta la inercia del trackpad) */
+{const docks=[{el:document.querySelector('#momentos .mo-box'),off:0,bar:false},{el:document.getElementById('historia'),off:0,bar:false},{el:document.getElementById('club'),off:0,bar:false}].filter(d=>d.el);
+ let snT=0,busy=false,press=false;
+ addEventListener('pointerdown',()=>press=true,true);addEventListener('pointerup',()=>press=false,true);addEventListener('pointercancel',()=>press=false,true);
+ const settle=()=>{if(busy||press||innerWidth<901||document.documentElement.classList.contains('menu-on'))return;
+   const lim=Math.min(170,innerHeight*.2);
+   for(const d of docks){const dist=d.el.getBoundingClientRect().top-d.off;
+     if(Math.abs(dist)>2&&Math.abs(dist)<lim){busy=true;if(d.bar)window.hdrShow&&hdrShow(1200);else window.hdrHide&&hdrHide(1200);
+       scrollBy({top:dist,behavior:reduceM?'auto':'smooth'});setTimeout(()=>busy=false,1000);return}}};
+ if('onscrollend' in window)addEventListener('scrollend',settle);else addEventListener('scroll',()=>{clearTimeout(snT);snT=setTimeout(settle,180)},{passive:true})}
+
+/* ---------- Líneas ---------- */
+/* "Desde" toma el precio más bajo de la línea en botella de 750 ml */
+{const from=l=>Math.min(...Object.keys(P).filter(id=>P[id].line===l&&P[id].price&&!/375|187|250|^est/.test(id)).map(id=>P[id].price));
+ const LN=[
+  {k:'reserva-privada',t:'Reserva Privada',img:'media/l-reserva.jpg',pos:'50% 50%'},
+  {k:'don-luis',t:'Don Luis',img:'media/l-donluis.jpg',pos:'66% 50%'},
+  {k:'estaciones',t:'Estaciones',img:'media/l-estaciones.jpg',pos:'50% 50%'}];
+ document.getElementById('lnRail').innerHTML=LN.map(x=>'<a class="ln-p" href="'+PAGES.tienda+'?linea='+x.k+'">'+
+  '<img class="ln-ph" src="'+x.img+'" alt="" loading="lazy" style="object-position:'+x.pos+'">'+
+  '<h3 class="ln-t">'+x.t+'</h3><span class="ln-cta"><small>Desde '+money(from(x.t))+'</small>Ver la línea</span></a>').join('')}
+
+/* ---------- Regalos ---------- */
+const glistEl=document.getElementById('glist');if(glistEl)glistEl.innerHTML=
+ '<div class="gi"><span class="fld"><img src="'+F(P.estrp.img,240)+'" alt=""></span><span><b>Estuche Reserva Privada</b><span>Nebbiolo y Petite Sirah, con dos copas</span></span><span class="r"><s class="price">'+money(975)+'</s><span class="price" style="color:var(--ink)">'+money(780)+'</span><br><button class="ul" data-add="estrp">Agregar</button></span></div>'+
+ '<div class="gi"><span class="fld"><img src="'+F(P.estbou.img,240)+'" alt=""></span><span><b>Colección Boutique</b><span>Cinco vinos de la línea Boutique</span></span><span class="r"><span class="price" style="color:var(--ink)">'+money(3521)+'</span><br><button class="ul" data-add="estbou">Agregar</button></span></div>'+
+ '<div class="gi"><span class="nb"><b>Tarjeta de regalo</b><span>Para vinos o para una cata en el Valle. Desde $500.</span></span><span class="r"><a class="ul" href="lacetto-regalos.html#tarjeta">Elegir</a></span></div>'+
+ '<div class="gi"><span class="nb"><b>Regalos corporativos</b><span>Volumen, tarjeta con tu logo y entrega coordinada.</span></span><span class="r"><a class="ul" href="lacetto-regalos.html#empresas">Cotizar</a></span></div>';
+
+/* ---------- Caja: elegir vinos → tarjeta (opcional) → la caja cerrada → carrito ---------- */
+let size=6,gift=null;const box=[];
+const PICKS=['terra','nebrp','cabrp','charp','oto','prim','champ','chenin','viog','sbsb','pslac','conc'];
+const ALLW=[...PICKS,...Object.keys(P).filter(id=>W750(id)&&!PICKS.includes(id)).sort(rankW)];
+const FIL=[['todos','Todos',()=>ALLW],['tinto','Tintos',()=>ALLW.filter(id=>P[id].c==='tinto')],['blanco','Blancos',()=>ALLW.filter(id=>P[id].c==='blanco')],
+  ['rosado','Rosados y espumosos',()=>ALLW.filter(id=>P[id].c==='rosado'||P[id].c==='espumoso')],['postre','De postre',()=>ALLW.filter(id=>P[id].c==='postre')]];
+const slotsEl=document.getElementById('slots'),picksEl=document.getElementById('picks'),pkFil=document.getElementById('pkFil');
+const bxBuild=document.getElementById('bxBuild'),bxFinal=document.getElementById('bxFinal'),cajaSec=document.getElementById('caja');
+const cut=id=>BOT.has(id)?'media/bot/'+id+'.png':F(P[id].img,240); /* botella recortada, la misma de la vitrina */
+const esc=t=>String(t).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const calc=()=>{const n=box.length,sub=box.reduce((a,id)=>a+P[id].price,0),disc=n>=6?sub*.1:0;return {n,sub,disc,tot:sub-disc}};
+/* filtros (centrados, con color y cuántos hay) y carrusel de vinos */
+let fil='todos',pkFirst=null;
+pkFil.innerHTML=FIL.map(([k,t,f])=>'<button type="button" data-f="'+k+'" aria-pressed="'+(k==='todos')+'"><i class="pf-d pf-'+k+'" aria-hidden="true"></i>'+t+'<small>'+f().length+'</small></button>').join('');
+/* el mejor vino queda al centro y los demás se alternan a los lados: el carrusel arranca lleno, sin hueco a la izquierda */
+const mid=a=>{const o=[];a.forEach((id,i)=>i%2?o.push(id):o.unshift(id));return o};
+function centerPicks(){const el=pkFirst&&picksEl.querySelector('[data-pick="'+pkFirst+'"]:not([data-clone])');if(!el||!picksEl.clientWidth)return;
+  const pr=picksEl.getBoundingClientRect(),er=el.getBoundingClientRect();picksEl.scrollLeft+=er.left+er.width/2-(pr.left+pr.width/2)}
+function drawPicks(){const list=FIL.find(f=>f[0]===fil)[2]();pkFirst=list[0];
+  picksEl.innerHTML=mid(list).map(id=>{const p=P[id];return '<button class="pick" data-pick="'+id+'" aria-label="Agregar '+esc(p.line+' '+p.name)+' a la caja"><span class="fld"><img src="'+cut(id)+'" alt="" loading="lazy"><span class="pk-n" aria-hidden="true"></span></span><b>'+p.name+'</b><span>'+p.line+'</span><span style="color:var(--ink)">'+money(p.price)+'</span></button>'}).join('');centerPicks();syncPicks();loopRail(picksEl,{center:()=>picksEl.querySelector('[data-pick="'+pkFirst+'"]:not([data-clone])')})}
+function syncPicks(){const cnt={};box.forEach(id=>cnt[id]=(cnt[id]||0)+1);picksEl.classList.toggle('full',box.length>=size);
+  picksEl.querySelectorAll('[data-pick]').forEach(b=>{const k=cnt[b.dataset.pick]||0;b.classList.toggle('in',k>0);b.querySelector('.pk-n').textContent=k?k:''})}
+pkFil.addEventListener('click',e=>{const b=e.target.closest('[data-f]');if(!b||b.dataset.f===fil)return;fil=b.dataset.f;pkFil.querySelectorAll('button').forEach(x=>x.setAttribute('aria-pressed',x===b));
+  b.scrollIntoView({block:'nearest',inline:'center',behavior:REDUCE?'auto':'smooth'});
+  picksEl.classList.add('swap');setTimeout(()=>{pkUser=false;drawPicks();picksEl.classList.remove('swap')},180)});
+drawPicks();
+/* si cambia el ancho (girar el teléfono) y nadie ha movido el carrusel, se vuelve a centrar */
+let pkUser=false;['pointerdown','wheel','touchstart','keydown'].forEach(t=>picksEl.addEventListener(t,()=>pkUser=true,{passive:true}));
+new ResizeObserver(()=>{if(!pkUser)centerPicks()}).observe(picksEl);
+/* vista: 'start' (elegir 6 o 12) o 'crate' (elegir vinos); el paso "Tamaño" regresa a elegir la cantidad sin perder los vinos */
+let view='start';
+const stSize=document.getElementById('stSize'),stWines=document.getElementById('stWines'),bxClear=document.getElementById('bxClear');
+function renderBox(){
+  let h='';for(let i=0;i<size;i++){const id=box[i];h+=id?'<div class="slot" style="--k:'+i+'"><img src="'+cut(id)+'" alt="'+esc(P[id].name)+'"><button class="x" data-rm="'+i+'" aria-label="Quitar '+esc(P[id].name)+'">×</button></div>':'<div class="slot empty" style="--k:'+i+'" aria-label="Lugar '+(i+1)+' vacío"></div>'}
+  slotsEl.innerHTML=h;slotsEl.style.setProperty('--n',size);slotsEl.classList.toggle('n12',size===12);
+  const {n,sub}=calc(),left=Math.max(0,6-n),full=n>=size,inC=view==='crate';
+  document.getElementById('boxCount').textContent=n+' de '+size;
+  document.getElementById('boxHint').textContent=left?(left>1?'Te faltan ':'Te falta ')+left+' para el 10%':(n<size?'10% aplicado. Quedan '+(size-n)+' lugares':'Caja completa, 10% aplicado');
+  document.getElementById('boxSub').textContent=n&&!full?money(sub):'';
+  document.getElementById('boxBar').style.width=Math.min(100,n/size*100)+'%';
+  bxClear.disabled=!n;bxClear.classList.toggle('on',n>0);
+  /* pasos */
+  const st=document.querySelectorAll('#steps li');
+  st[0].className=inC?'done':'on';st[1].className=inC?(full?'done':'on'):'';st[2].className=inC&&full?'on':'';st[3].className='';
+  stSize.disabled=!inC;stWines.disabled=inC||!n;
+  stSize.setAttribute('aria-label',inC?'Cambiar el tamaño de la caja (caja de '+size+')':'Tamaño');
+  document.getElementById('stepSize').innerHTML=inC?'Caja de '+size+'<span class="st-ch">Cambiar</span>':'6 o 12 botellas';
+  document.getElementById('stepTxt').textContent=inC?(full?'Caja completa':(size-n>1?'Te faltan ':'Te falta ')+(size-n)+' botella'+(size-n>1?'s':'')):(n?n+' de '+size+' elegidas':'Elige tus botellas');
+  /* al regresar a elegir la cantidad, la opción actual se marca */
+  document.querySelectorAll('[data-start]').forEach(b=>{const cur=n>0&&+b.dataset.start===size;b.classList.toggle('cur',cur);
+    b.querySelector('.bx-o-go>span').innerHTML=cur?'Seguir <span class="bx-o-x">con mis vinos</span>':'Elegir <span class="bx-o-x">mis vinos</span>'});
+  /* el siguiente paso aparece hasta completar la caja */
+  const fw=document.getElementById('crateFw');fw.classList.toggle('on',full);fw.inert=!full;
+  syncPicks();
+}
+/* carrusel de vinos para agregar: también se arrastra con el mouse; si se arrastró, el clic no agrega */
+{let pd=null;picksEl.addEventListener('pointerdown',e=>{if(e.pointerType!=='mouse'||e.button!==0)return;pd={x:e.clientX,s:picksEl.scrollLeft,moved:false,id:e.pointerId}});
+ picksEl.addEventListener('loopjump',e=>{if(pd)pd.s+=e.detail});
+ addEventListener('pointermove',e=>{if(!pd||e.pointerId!==pd.id)return;const dx=e.clientX-pd.x;if(!pd.moved&&Math.abs(dx)>5){pd.moved=true;picksEl.classList.add('drag')}if(pd.moved)picksEl.scrollLeft=pd.s-dx});
+ addEventListener('pointerup',e=>{if(!pd||e.pointerId!==pd.id)return;const was=pd.moved;pd=null;picksEl.classList.remove('drag');
+  if(was){const block=ev=>{ev.preventDefault();ev.stopPropagation()};picksEl.addEventListener('click',block,{capture:true,once:true});setTimeout(()=>picksEl.removeEventListener('click',block,{capture:true}),80)}})}
+picksEl.addEventListener('click',e=>{const b=e.target.closest('[data-pick]');if(!b)return;if(box.length>=size){b.animate([{transform:'translateX(0)'},{transform:'translateX(-4px)'},{transform:'translateX(4px)'},{transform:'none'}],{duration:260});return}box.push(b.dataset.pick);renderBox()});
+slotsEl.addEventListener('click',e=>{const b=e.target.closest('[data-rm]');if(!b)return;box.splice(+b.dataset.rm,1);renderBox()});
+/* limpiar: las botellas salen de los lugares y la caja queda vacía */
+bxClear.onclick=()=>{if(!box.length)return;const done=()=>{box.length=0;renderBox()};
+  if(REDUCE)return done();slotsEl.querySelectorAll('.slot:not(.empty) img').forEach((im,i)=>im.animate([{opacity:1,transform:'none'},{opacity:0,transform:'translateY(-14px)'}],{duration:260,delay:i*30,easing:'ease-in',fill:'forwards'}));
+  setTimeout(done,260+box.length*30)};
+function setSize(n){size=n;while(box.length>size)box.pop()}
+function fillAuto(){const sel=['terra','nebrp','charp','oto','champ','cabrp','prim','viog','pslac','chenin','conc','sbsb'];box.length=0;for(let i=0;i<size;i++)box.push(sel[i])}
+document.getElementById('autoFill').onclick=()=>{fillAuto();renderBox()};
+/* inicio: elegir 6 o 12 abre la selección; los lugares aparecen uno tras otro */
+const bxStart=document.getElementById('bxStart'),crateEl=document.getElementById('crate');
+function showCrate(){view='crate';bxStart.classList.add('out');
+  setTimeout(()=>{bxStart.hidden=true;crateEl.hidden=false;crateEl.classList.add('enter');renderBox();centerPicks();setTimeout(()=>crateEl.classList.remove('enter'),1500)},REDUCE?0:300)}
+function showStart(){view='start';crateEl.classList.remove('enter');crateEl.hidden=true;bxStart.hidden=false;bxStart.classList.add('out');renderBox();
+  setTimeout(()=>bxStart.classList.remove('out'),REDUCE?0:30)}
+function startBox(n,quick){setSize(n);if(quick)fillAuto();showCrate()}
+function resetStart(){box.length=0;setSize(6);showStart()}
+bxStart.addEventListener('click',e=>{const b=e.target.closest('[data-start]');if(b)startBox(+b.dataset.start)});
+document.getElementById('bxQuick').onclick=()=>startBox(6,true);
+stSize.onclick=()=>{if(view==='crate')showStart()};
+stWines.onclick=()=>{if(view==='start'&&box.length)showCrate()};
+
+/* ---- Tarjeta de regalo: lo que escribes aparece con tinta, letra por letra ---- */
+const gcDlg=document.getElementById('gcDlg'),gcF=['gcTo','gcMsg','gcFrom'].map(id=>document.getElementById(id));
+function ink(el){const m=el.previousElementSibling,v=el.value,pv=el._pv||'',now=performance.now();
+  let k=0;while(k<v.length&&k<pv.length&&v[k]===pv[k])k++;let s=0;while(s<v.length-k&&s<pv.length-k&&v[v.length-1-s]===pv[pv.length-1-s])s++;
+  const ot=el._t||[];el._t=ot.slice(0,k).concat(Array(v.length-k-s).fill(now),ot.slice(pv.length-s));el._pv=v;
+  if(!v){m.innerHTML='<span class="ph">'+esc(el.dataset.ph)+'</span>';return}
+  let h='',plain='';for(let i=0;i<v.length;i++){const age=now-(el._t[i]||0);if(age>700||REDUCE){plain+=v[i];continue}if(plain){h+=esc(plain);plain=''}h+='<span class="nw" style="animation-delay:'+(-Math.round(age))+'ms">'+esc(v[i])+'</span>'}
+  m.innerHTML=h+esc(plain)+(el.tagName==='TEXTAREA'&&v.endsWith('\n')?' ':'')}
+const REDUCE=matchMedia('(prefers-reduced-motion: reduce)').matches;
+gcF.forEach(el=>{el.addEventListener('input',()=>{ink(el);if(el.id==='gcMsg')document.getElementById('gcCount').textContent=el.value.length+'/180'});ink(el)});
+document.getElementById('gcMsg').addEventListener('keydown',e=>{const t=e.target;if(e.key==='Enter'&&t.value.split('\n').length>=5)e.preventDefault()});
+function openCard(){const g=gift||giftGet()||{};gcF[0].value=g.to||'';gcF[1].value=g.msg||'';gcF[2].value=g.from||'';gcF.forEach(el=>{el._pv='';el._t=[];ink(el);el._t=el._t.map(()=>0);ink(el)});
+  document.getElementById('gcCount').textContent=gcF[1].value.length+'/180';gcDlg.showModal();requestAnimationFrame(()=>requestAnimationFrame(()=>gcDlg.classList.add('on')));setTimeout(()=>gcF[gcF[0].value?1:0].focus({preventScroll:true}),420)}
+function closeCard(fast){gcDlg.classList.remove('on');if(fast||REDUCE)gcDlg.close();else setTimeout(()=>gcDlg.close(),320)}
+document.getElementById('bxCardBtn').onclick=openCard;
+document.getElementById('gcBack').onclick=closeCard;
+gcDlg.addEventListener('cancel',e=>{e.preventDefault();closeCard()});
+gcDlg.addEventListener('click',e=>{if(e.target===gcDlg)closeCard()});
+document.getElementById('gcOk').onclick=()=>{const g={to:gcF[0].value.trim(),msg:gcF[1].value.trim(),from:gcF[2].value.trim()};gift=(g.to||g.msg||g.from)?g:null;closeCard(true);showFinal()};
+document.getElementById('bxSkip').onclick=()=>{gift=null;showFinal()};
+
+/* ---- Final: la interfaz se va y entra la caja; las botellas caen una por una, luego la tarjeta, el total y el carrito ---- */
+function showFinal(){const {n,sub,disc,tot}=calc();
+  /* la caja de frente: tres vinos distintos al frente (los que más llevas) y dos asomando atrás; abajo, la lista completa */
+  const cnt={};box.forEach(id=>cnt[id]=(cnt[id]||0)+1);
+  const uniq=Object.keys(cnt).sort((a,b)=>cnt[b]-cnt[a]||box.indexOf(a)-box.indexOf(b));
+  const pref=[...uniq.filter(id=>BOT.has(id)),...uniq.filter(id=>!BOT.has(id))];
+  const front=[0,1,2].map(i=>pref[i%pref.length]),rest=pref.slice(3),back=[0,1].map(i=>rest.length?rest[i%rest.length]:pref[(i+1)%pref.length]);
+  const bimg=(id,x,cls,k)=>'<img class="kb-b '+cls+(BOT.has(id)?'':' nb')+'" src="'+cut(id)+'" alt="" style="left:'+(x/6).toFixed(3)+'%;--i:'+k+'">';
+  document.getElementById('bxBottles').innerHTML=back.map((id,i)=>bimg(id,[230,370][i],'bk',i)).join('')+front.map((id,i)=>bimg(id,[160,300,440][i],'fr',i+2)).join('');
+  document.getElementById('bxList').innerHTML=uniq.map(id=>'<li><span><b>'+cnt[id]+' ×</b> '+esc(P[id].name)+' <small>'+esc(P[id].line)+'</small></span><span class="price">'+money(P[id].price*cnt[id])+'</span></li>').join('');
+  document.getElementById('bxBoxN').textContent=size+' BOTELLAS · 750 ML';
+  document.getElementById('bxFinalK').textContent='Tu caja de '+size;
+  const mini=document.getElementById('bxMini');
+  if(gift){mini.hidden=false;mini.innerHTML=(gift.to?'<span class="mn-to">Para '+esc(gift.to)+'</span>':'')+(gift.msg?'<span class="mn-msg">'+esc(gift.msg)+'</span>':'')+(gift.from?'<span class="mn-from">'+esc(gift.from)+'</span>':'')}else mini.hidden=true;
+  bxFinal.style.setProperty('--nb',5);bxFinal.classList.toggle('has-card',!!gift);
+  document.getElementById('bSub').textContent=money(sub);document.getElementById('bDisc').textContent='−'+money(disc);document.getElementById('bTot').textContent=money(tot);
+  document.getElementById('boxAdd').textContent='Agregar caja al carrito · '+money(tot);
+  document.getElementById('bxFinalT').textContent=gift&&gift.to?'Lista para '+gift.to+'.':'Lista para salir del Valle.';
+  bxBuild.classList.add('out');
+  setTimeout(()=>{bxBuild.hidden=true;bxFinal.hidden=false;bxFinal.classList.remove('go');void bxFinal.offsetWidth;bxFinal.classList.add('go');
+    const top=cajaSec.getBoundingClientRect().top;if(top<0||top>innerHeight*.3)scrollTo({top:scrollY+top-24,behavior:REDUCE?'auto':'smooth'})},REDUCE?0:460)}
+function showBuild(){bxFinal.classList.remove('go');bxFinal.hidden=true;bxBuild.hidden=false;requestAnimationFrame(()=>bxBuild.classList.remove('out'));
+  const top=cajaSec.getBoundingClientRect().top;if(top<0)scrollTo({top:scrollY+top-24,behavior:REDUCE?'auto':'smooth'})}
+document.getElementById('bxEdit').onclick=showBuild;
+document.getElementById('boxAdd').onclick=()=>{if(gift)giftSet(gift);box.forEach(id=>add(id,1,true));gift=null;resetStart();showBuild();setTimeout(()=>openDrawer('cart'),250)};
+renderBox();
+
+/* ---------- Revelados ---------- */
+const io=new IntersectionObserver(es=>es.forEach(en=>{if(en.isIntersecting){en.target.classList.add('in');io.unobserve(en.target)}}),{rootMargin:'0px 0px -12% 0px'});
+document.querySelectorAll('.lines:not(.hero-t)').forEach(el=>io.observe(el));
+
+/* ---------- Valle: se expande y reproduce un tramo limpio del video de marca ---------- */
+const valT=document.getElementById('valT'),valle=document.getElementById('valle'),vs=document.getElementById('valleStick'),vv=document.getElementById('valleVid');
+const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+/* historia editorial: la sección queda fija y el scroll vertical cambia de pantalla. Cada pantalla tiene su tramo de scroll
+   (casi una pantalla completa, para que vaya despacio); al cruzar de tramo, la que sale se desvanece y la nueva aparece al centro */
+{const ed=document.getElementById('historia');
+ if(ed){const pan=[...ed.querySelectorAll('.ed-p')],n=pan.length;
+  /* la cifra de hoy cuenta desde cero cuando aparece su pantalla */
+  const count=p=>{const b=p.querySelector('.ed-num');if(!b)return;const N=+b.dataset.n,fmt=v=>Math.round(v).toLocaleString('es-MX');if(reduce){b.textContent=fmt(N);return}
+    const t0=performance.now()+700,T=1900;b.textContent=fmt(0);const st=now=>{const u=Math.min(1,Math.max(0,(now-t0)/T));b.textContent=fmt(N*(1-Math.pow(1-u,3)));if(u<1&&p.classList.contains('cur'))requestAnimationFrame(st);else if(u>=1)b.textContent=fmt(N)};requestAnimationFrame(st)};
+  /* la primera pantalla entra con su animación en cuanto la sección asoma (ni ya puesta ni tarde) */
+  let cur=-1,seen=false;
+  function show(i){if(i===cur)return;const old=pan[cur];
+    if(old){old.classList.remove('cur','on');old.classList.add('was');setTimeout(()=>{if(!old.classList.contains('cur'))old.classList.remove('was')},2000)}
+    cur=i;const p=pan[i];p.classList.remove('was','first');if(!old)p.classList.add('first');p.classList.add('cur');setTimeout(()=>{if(p.classList.contains('cur'))p.classList.add('on')},old?800:520);count(p)}
+  const de=document.documentElement;
+  const tick=()=>{const r=ed.getBoundingClientRect();de.classList.toggle('hdr-lock',r.top<=1&&r.bottom>=innerHeight-1);if(!seen)return;const total=r.height-innerHeight,pr=total>0?Math.min(1,Math.max(0,-r.top/total)):0;
+    show(Math.min(n-1,Math.floor(pr*n)))};
+  let raf=0;addEventListener('scroll',()=>{if(!raf)raf=requestAnimationFrame(()=>{raf=0;tick()})},{passive:true});addEventListener('resize',tick);tick();
+  /* la primera pantalla se revela cuando la sección entra a la vista */
+  new IntersectionObserver(es=>{if(es[0].isIntersecting&&!seen){seen=true;tick()}},{rootMargin:'0px 0px -20% 0px'}).observe(ed)}}
+/* El video del Valle es un video de ambiente (ver ambient() en cetto-base.js) */
+function valleTick(){
+  if(reduce){valT.classList.add('in');vs.style.setProperty('--ez',1);vs.style.setProperty('--to',1);vs.style.setProperty('--dim',.35);vs.style.setProperty('--ix','0%');vs.style.setProperty('--iy','0%');return}
+  const r=valle.getBoundingClientRect(),total=r.height-innerHeight,p=Math.min(1,Math.max(0,-r.top/total));
+  const e=Math.min(1,p/.55),ez=1-Math.pow(1-e,3);
+  vs.style.setProperty('--ix',(24*(1-ez))+'%');vs.style.setProperty('--iy',(16*(1-ez))+'%');
+  vs.style.setProperty('--sc',(1.12-.12*ez).toFixed(3));vs.style.setProperty('--ez',ez.toFixed(3));
+  const t=Math.min(1,Math.max(0,(p-.45)/.3));
+  vs.style.setProperty('--to',t.toFixed(3));valT.classList.toggle('in',t>.5);vs.style.setProperty('--dim',(t*.35).toFixed(3));
+}
+{let vRaf=0,vNear=true;new IntersectionObserver(es=>{vNear=es[0].isIntersecting;if(vNear)valleTick()},{rootMargin:'300px 0px'}).observe(valle);
+ addEventListener('scroll',()=>{if(vNear&&!vRaf)vRaf=requestAnimationFrame(()=>{vRaf=0;valleTick()})},{passive:true});valleTick()}
+
+/* ---------- Video de regalos ---------- */
+const gv=document.getElementById('giftVid');
+if(gv)new IntersectionObserver(es=>es.forEach(en=>{if(reduce)return;en.isIntersecting?gv.play().catch(()=>{}):gv.pause()}),{threshold:.35}).observe(gv);
+
+/* ---------- Experiencias: la cata se mueve al pasar el mouse; Angelo y Cetto van cambiando de foto ----------
+   En pantallas táctiles (sin hover) el video y las fotos avanzan solos cuando la tarjeta está a la vista */
+{const HOVER=matchMedia('(hover:hover) and (pointer:fine)').matches;
+ const cata=document.getElementById('exCata'),cv=cata&&cata.querySelector('.c-vid');
+ if(cv&&!reduce){
+   const on=()=>{clearTimeout(cv._t);if(!cv.getAttribute('src'))cv.src=heroSrc(cv.dataset.src);cv.play().then(()=>cata.classList.add('vid')).catch(()=>{})};
+   const off=()=>{cata.classList.remove('vid');clearTimeout(cv._t);cv._t=setTimeout(()=>cv.pause(),700)};
+   if(HOVER){cata.addEventListener('mouseenter',on);cata.addEventListener('mouseleave',off);cata.addEventListener('focus',on);cata.addEventListener('blur',off)}
+   else new IntersectionObserver(es=>es.forEach(en=>en.isIntersecting?on():off()),{threshold:.5}).observe(cata);
+ }
+ /* cards de la derecha: cada una muestra una experiencia y cambian solas, al azar, sin repetir la que está al lado.
+    La nueva entra con un fundido suave encima de la anterior; al pasar el mouse, esa card se queda quieta */
+ {const EXP=[
+   {h:'lacetto-experiencias.html#x-angelo',k:'La cava · recorrido privado',t:'Experiencia Angelo',m:'Sala VIP y degustación · $1,100 por persona',img:F('tijun.jpg',1200)},
+   {h:'lacetto-experiencias.html#x-cetto',k:'Terraza privada · 7 vinos',t:'Experiencia Cetto',m:'Vista a los viñedos y charcutería · $1,800 por persona',img:'media/x-cetto-pisa.jpg',pos:'50% 72%'},
+   {h:'lacetto-experiencias.html#x-donluis',k:'Entre las vides',t:'Experiencia Don Luis',m:'Viñedo y cuatro vinos a tu elección · $850 por persona',img:F('Diseno_sin_titulo_48.jpg',1200),pos:'62% 50%'},
+   {h:'lacetto-experiencias.html#eventos',k:'Eventos y bodas',t:'Celebra entre viñedos',m:'Cumpleaños, aniversarios, bodas o reuniones de empresa',img:'media/x-eventos-valle.jpg',pos:'50% 64%'},
+   {h:'lacetto-experiencias.html#cdmx',k:'Boutique CDMX · Lomas de Chapultepec',t:'El Valle, en la ciudad',m:'Catas y cursos guiados por sommeliers',img:'media/v-copa.jpg'},
+   {h:'lacetto-regalos.html#experiencia',k:'Para regalar',t:'Regala una experiencia',m:'Una visita al Valle, con tu mensaje',img:'media/m-regalo.jpg',pos:'52% 42%'}];
+  const cards=['xsA','xsB'].map(id=>document.getElementById(id)).filter(Boolean),cur=[],held=[false,false];
+  const face=e=>'<span class="xs-f"><img src="'+e.img+'" alt=""'+(e.pos?' style="object-position:'+e.pos+'"':'')+'><span class="xs-tx"><span class="xs-k">'+e.k+'</span><b class="xs-t">'+e.t+'</b><span class="xs-m">'+e.m+'</span></span></span>';
+  const set=(ci,ei,first)=>{const a=cards[ci],e=EXP[ei];cur[ci]=ei;a.href=e.h;a.setAttribute('aria-label',e.t+': '+e.m);
+    const old=[...a.querySelectorAll('.xs-f')];a.insertAdjacentHTML('afterbegin',face(e));const f=a.querySelector('.xs-f');
+    if(first){f.classList.add('on');return}
+    const go=()=>requestAnimationFrame(()=>{f.classList.add('on');old.forEach(o=>o.classList.remove('on'));setTimeout(()=>old.forEach(o=>o.remove()),1900)});
+    const im=f.querySelector('img');if(im.complete)go();else{im.onload=go;im.onerror=go}};
+  cards.forEach((a,i)=>{set(i,i,true);a.addEventListener('mouseenter',()=>held[i]=true);a.addEventListener('mouseleave',()=>held[i]=false);a.addEventListener('focus',()=>held[i]=true);a.addEventListener('blur',()=>held[i]=false)});
+  let turn=0,tm=null;
+  const tick=()=>{let ci=turn%cards.length;if(held[ci])ci=(ci+1)%cards.length;turn++;if(held[ci])return;
+    const pool=EXP.map((_,i)=>i).filter(i=>!cur.includes(i));set(ci,pool[Math.floor(Math.random()*pool.length)])};
+  if(cards.length&&!reduce){EXP.forEach(e=>{const i=new Image();i.src=e.img});
+    new IntersectionObserver(es=>{const v=es[0].isIntersecting;clearInterval(tm);if(v)tm=setInterval(tick,4200)},{threshold:.25}).observe(cards[0].parentElement)}}
+ /* cintilla de colecciones: los logos del sitio actual, cada uno lleva a su línea en la tienda */
+ {const tr=document.getElementById('hqTr');if(tr){
+  const T='lacetto-tienda.html?linea=';
+  const L=[['LOGOS-08.png','Reserva Privada',T+'reserva-privada'],['LOGOS-05.png','Península',T+'peninsula'],['Proyecto_nuevo.png','Uvas Orgánicas',T+'uvas-organicas'],['CONMEMORATIvos.png','Conmemorativos','lacetto-tienda.html'],
+   ['LOGOS-02.png','L.A. Cetto',T+'la-cetto'],['LOGOS-03.png','Sierra Blanca',T+'sierra-blanca'],['LOGOS-07_89f60f13-4c2e-4966-86cf-5e46599232a8.png','Boutique',T+'boutique'],
+   ['LOGOS_Mesa-de-trabajo-1.png','Don Luis',T+'don-luis'],['LOGOS-06.png','Estaciones',T+'estaciones'],['LOGOS-04.png','Champbrulé','lacetto-ficha.html?p=champ']];
+  const row=hide=>'<ul'+(hide?' aria-hidden="true"':' aria-label="Nuestras colecciones"')+'>'+L.map(([f,n,h])=>'<li><a href="'+h+'"'+(hide?' tabindex="-1"':'')+' aria-label="'+n+'"><img src="'+F(f,300)+'" alt="" loading="lazy"></a></li>').join('')+'</ul>';
+  tr.innerHTML=row(false)+row(true)}}
+}
+
+renderCart();
+
+/* Entradas suaves (.rise): esta página no usa observeReveals, así que las activa aquí */
+{const els=document.querySelectorAll('.rise');if(reduceM||!('IntersectionObserver' in window))els.forEach(e=>e.classList.add('in'));else{document.documentElement.classList.add('rv-on');const io=new IntersectionObserver(es=>es.forEach(en=>{if(en.isIntersecting){en.target.classList.add('in');io.unobserve(en.target)}}),{rootMargin:'0px 0px -12% 0px'});els.forEach(e=>io.observe(e))}}
+</script>
+</body>
+</html>
