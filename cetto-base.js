@@ -429,6 +429,14 @@ function wireChrome(opts){
     const on=()=>hdr.classList.toggle('solid',window.scrollY>(hero?hero.offsetHeight-80:10));
     addEventListener('scroll',on,{passive:true});on();
   }
+  /* Pie de página en celular: cada columna se abre y se cierra (en escritorio quedan abiertas) */
+  {const mq=matchMedia('(max-width:640px)');
+   document.querySelectorAll('footer .ft-col').forEach(col=>{const k=col.querySelector('.ft-k'),ul=col.querySelector('ul');if(!k||!ul)return;
+     const id='ftc-'+(col.getAttribute('aria-label')||'').toLowerCase().normalize('NFD').replace(/[^a-z]/g,'');ul.id=id;
+     const sync=()=>{if(mq.matches){k.setAttribute('role','button');k.tabIndex=0;k.setAttribute('aria-controls',id);k.setAttribute('aria-expanded',col.classList.contains('open'))}else{k.removeAttribute('role');k.removeAttribute('tabindex');k.removeAttribute('aria-controls');k.removeAttribute('aria-expanded')}};
+     const tog=()=>{if(!mq.matches)return;col.classList.toggle('open');sync()};
+     k.addEventListener('click',tog);k.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();tog()}});
+     mq.addEventListener('change',sync);sync()})}
   /* La barra se esconde al bajar y regresa al subir; arriba del todo, con un panel abierto o con el foco en ella siempre se ve.
      --hh (alto visible de la barra) deja que las barras fijas de cada página suban con ella */
   if(!opts.minimal){

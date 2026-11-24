@@ -220,7 +220,7 @@ textarea.msg.on{display:block}
 /* Valle (foto/video que se expande) */
 .valle{height:230vh;position:relative;background:var(--bg)}
 .valle .stick{position:sticky;top:0;height:100svh;overflow:hidden;display:grid;place-items:center}
-.valle .frame{position:absolute;inset:0;clip-path:inset(var(--iy,16%) var(--ix,24%) var(--iy,16%) var(--ix,24%));background:#3b352d}
+.valle .frame{position:absolute;inset:0;clip-path:inset(var(--it,var(--iy,16%)) var(--ix,24%) var(--ib,var(--iy,16%)) var(--ix,24%));background:#3b352d}
 .valle .frame video,.valle .frame img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transform:scale(var(--sc,1.12))}
 .valle .pre{position:absolute;inset:auto var(--m) var(--m) var(--m);display:flex;justify-content:space-between;align-items:flex-end;gap:24px;z-index:3;opacity:calc(1 - var(--to,0) * 1.6)}
 .valle .pre .it{font-size:clamp(20px,1.8vw,26px);max-width:18ch}
@@ -2383,4 +2383,42 @@ img.hm,.hs-box img{backface-visibility:hidden;will-change:transform}
   .vc.grow .vc-img img{transform:translateY(-22px) scale(1.12);filter:drop-shadow(5px 6px 5px rgba(46,33,20,.16)) drop-shadow(20px 22px 18px rgba(46,33,20,.15)) drop-shadow(40px 40px 36px rgba(46,33,20,.1))}
   .vc.grow .vc-sh{transform:translateX(-44%) scale(.66);opacity:.36}
   .vc.grow .vc-img img,.vc.grow .vc-sh{transition-duration:1.4s}
+}
+
+/* ===== Celular · Valle, Arma tu caja, pie de página y encabezado ===== */
+.bx-size{display:none}
+@media (max-width:900px){
+  /* Valle: la frase va justo debajo del cuadro inicial */
+  .valle .pre{inset:var(--pt,auto) var(--m) auto var(--m);align-items:center;text-align:center}
+  .valle .pre .it{max-width:none}
+  /* Arma tu caja: ya armando, sin los pasos; con la caja llena, sin el carrusel */
+  .bx-build.started .steps{display:none}
+  .bx-build.started .bx-size{display:inline-flex;order:5;flex-basis:100%;justify-content:center;margin-top:2px;font-size:11px}
+  .bx-build.full .pk-fil,.bx-build.full .picks,.bx-build.full .pk-auto{display:none}
+  /* Encabezado sin franja: la hamburguesa queda fija; el logo y los botones se esconden al bajar y vuelven al subir */
+  .hdr.solid{background:transparent;box-shadow:none;pointer-events:none}
+  .hdr.solid .burger,.hdr.solid .logo,.hdr.solid .r{pointer-events:auto}
+  .hdr.hide{transform:none}
+  .hdr .logo,.hdr .r{transition:opacity .35s var(--ease),transform .45s var(--ease),background-color .3s}
+  .hdr.hide .logo,.hdr.hide .r{opacity:0;transform:translateY(-16px);pointer-events:none!important}
+  /* sobre el contenido cada grupo flota en una pastilla clara y translúcida, para leerse también sobre fotos */
+  .hdr.solid .burger,.hdr.solid .logo,.hdr.solid .r{background:rgba(243,241,236,.86);-webkit-backdrop-filter:blur(12px) saturate(1.2);backdrop-filter:blur(12px) saturate(1.2);box-shadow:0 8px 22px -12px rgba(20,14,8,.4)}
+  .hdr.solid .burger{width:42px;height:42px;min-height:0;padding:0;margin-left:0;border-radius:50%;justify-content:center}
+  .hdr.solid .burger .lb{display:none}
+  .hdr.solid .logo{border-radius:999px;padding:5px 18px}
+  .hdr.solid .logo img{height:30px}
+  .hdr.solid .r{border-radius:999px;padding:2px 3px}
+  html.hdr-up{--hh:58px}
+}
+@media (max-width:640px){
+  /* Pie de página: columnas plegables */
+  .ft-top{grid-template-columns:minmax(0,1fr);gap:0}
+  .ft-about{margin-bottom:30px}
+  .ft-col{border-top:1px solid var(--fl)}
+  .ft-col:last-child{border-bottom:1px solid var(--fl)}
+  .ft-col .ft-k{display:flex;justify-content:space-between;align-items:center;margin:0;padding:19px 0;cursor:pointer;-webkit-tap-highlight-color:transparent}
+  .ft-col .ft-k::after{content:"";width:8px;height:8px;margin-right:4px;border-right:1px solid currentColor;border-bottom:1px solid currentColor;transform:translateY(-2px) rotate(45deg);transition:transform .35s var(--ease)}
+  .ft-col.open .ft-k::after{transform:translateY(2px) rotate(-135deg)}
+  .ft-col ul{display:none;padding:0 0 22px}
+  .ft-col.open ul{display:flex}
 }

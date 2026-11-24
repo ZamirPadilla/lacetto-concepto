@@ -133,7 +133,7 @@
       </div>
       <div class="crate" id="crate" hidden>
         <div class="crate-top">
-          <div class="crate-st" aria-live="polite"><b id="boxCount">0 de 6</b><span id="boxHint">Te faltan 6 para el 10%</span><span class="crate-sub" id="boxSub"></span></div>
+          <div class="crate-st" aria-live="polite"><b id="boxCount">0 de 6</b><button class="ul bx-size" id="bxSize" type="button">Cambiar tamaño</button><span id="boxHint">Te faltan 6 para el 10%</span><span class="crate-sub" id="boxSub"></span></div>
           <button class="bx-clear" id="bxClear" type="button" disabled><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2.6 8a5.4 5.4 0 1 0 1.6-3.8M2.4 2v3.4h3.4" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>Limpiar<span class="bx-clear-x"> caja</span></button>
         </div>
         <div class="bar"><i id="boxBar"></i></div>
@@ -824,6 +824,7 @@ new ResizeObserver(()=>{if(!pkUser)centerPicks()}).observe(picksEl);
 /* vista: 'start' (elegir 6 o 12) o 'crate' (elegir vinos); el paso "Tamaño" regresa a elegir la cantidad sin perder los vinos */
 let view='start';
 const stSize=document.getElementById('stSize'),stWines=document.getElementById('stWines'),bxClear=document.getElementById('bxClear');
+document.getElementById('bxSize').addEventListener('click',()=>stSize.click());
 function renderBox(){
   let h='';for(let i=0;i<size;i++){const id=box[i];h+=id?'<div class="slot" style="--k:'+i+'"><img src="'+cut(id)+'" alt="'+esc(P[id].name)+'"><button class="x" data-rm="'+i+'" aria-label="Quitar '+esc(P[id].name)+'">×</button></div>':'<div class="slot empty" style="--k:'+i+'" aria-label="Lugar '+(i+1)+' vacío"></div>'}
   slotsEl.innerHTML=h;slotsEl.style.setProperty('--n',size);slotsEl.classList.toggle('n12',size===12);
@@ -845,6 +846,9 @@ function renderBox(){
     b.querySelector('.bx-o-go>span').innerHTML=cur?'Seguir <span class="bx-o-x">con mis vinos</span>':'Elegir <span class="bx-o-x">mis vinos</span>'});
   /* el siguiente paso aparece hasta completar la caja */
   const fw=document.getElementById('crateFw');fw.classList.toggle('on',full);fw.inert=!full;
+  /* en celular: ya armando, se ocultan los pasos; con la caja llena, el carrusel (y el siguiente paso queda a la vista) */
+  const wasFull=bxBuild.classList.contains('full');bxBuild.classList.toggle('started',inC);bxBuild.classList.toggle('full',inC&&full);
+  if(inC&&full&&!wasFull&&matchMedia('(max-width:900px)').matches)setTimeout(()=>{const r=fw.getBoundingClientRect();if(r.bottom>innerHeight-20)fw.scrollIntoView({block:'end',behavior:'smooth'})},120);
   syncPicks();
 }
 /* carrusel de vinos para agregar: también se arrastra con el mouse; si se arrastró, el clic no agrega */
@@ -949,11 +953,15 @@ const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
   /* la primera pantalla se revela cuando la sección entra a la vista */
   new IntersectionObserver(es=>{if(es[0].isIntersecting&&!seen){seen=true;tick()}},{rootMargin:'0px 0px -20% 0px'}).observe(ed)}}
 /* El video del Valle es un video de ambiente (ver ambient() en cetto-base.js) */
+const mobV=matchMedia('(max-width:900px)');
 function valleTick(){
   if(reduce){valT.classList.add('in');vs.style.setProperty('--ez',1);vs.style.setProperty('--to',1);vs.style.setProperty('--dim',.35);vs.style.setProperty('--ix','0%');vs.style.setProperty('--iy','0%');return}
   const r=valle.getBoundingClientRect(),total=r.height-innerHeight,p=Math.min(1,Math.max(0,-r.top/total));
   const e=Math.min(1,p/.55),ez=1-Math.pow(1-e,3);
-  vs.style.setProperty('--ix',(24*(1-ez))+'%');vs.style.setProperty('--iy',(16*(1-ez))+'%');
+  if(mobV.matches){/* celular: arranca cuadrado, un poco arriba del centro, con la frase justo debajo */
+    const W=vs.clientWidth,H=vs.clientHeight,side=Math.min(W*.66,H*.5),top0=Math.max(76,(H-side)/2-H*.07),ix=(W-side)/2/W*100,it=top0/H*100,ib=Math.max(0,(H-top0-side)/H*100);
+    vs.style.setProperty('--ix',(ix*(1-ez))+'%');vs.style.setProperty('--it',(it*(1-ez))+'%');vs.style.setProperty('--ib',(ib*(1-ez))+'%');vs.style.setProperty('--pt',Math.round(top0+side+16)+'px')}
+  else{vs.style.setProperty('--ix',(24*(1-ez))+'%');vs.style.setProperty('--iy',(16*(1-ez))+'%')}
   vs.style.setProperty('--sc',(1.12-.12*ez).toFixed(3));vs.style.setProperty('--ez',ez.toFixed(3));
   const t=Math.min(1,Math.max(0,(p-.45)/.3));
   vs.style.setProperty('--to',t.toFixed(3));valT.classList.toggle('in',t>.5);vs.style.setProperty('--dim',(t*.35).toFixed(3));
