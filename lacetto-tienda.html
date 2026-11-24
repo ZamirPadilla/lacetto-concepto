@@ -485,7 +485,7 @@ const LINES={'reserva-privada':'Reserva Privada','don-luis':'Don Luis','boutique
 const LSLUG=Object.fromEntries(Object.entries(LINES).map(([k,v])=>[v,k]));
 const SIZES={s750:'750 ml',s375:'375 ml',s187:'187 ml',s250:'250 ml',sgal:'4 y 5 litros',s500:'500 g'};
 const FLAGS={premiados:'Con reconocimientos',organico:'Uvas orgánicas',disp:'Solo disponibles'};
-const TIPOS=[['todo','Todo'],['tinto','Tintos'],['blanco','Blancos'],['rosado','Rosados'],['espumoso','Espumoso'],['postre','Postre y destilados'],['estuche','Estuches'],['gourmet','Gourmet']];
+const TIPOS=[['todo','Todo'],['tinto','Tintos'],['blanco','Blancos'],['rosado','Rosados'],['espumoso','Espumosos'],['postre','Postre y destilados'],['estuche','Estuches'],['gourmet','Gourmet']];
 const TIPOTXT={
   todo:n=>'',
   tinto:n=>n+' tintos, del Gamay ligero de Otoño al Nebbiolo Reserva Privada.',
@@ -690,8 +690,8 @@ function renderEmpty(){
   const onlyQ=S.q&&c.length===1;
   const esc=t=>String(t).replace(/[<>&"]/g,'');
   const ideas=[['carne','Para carne'],['mariscos','Para mariscos'],['mole','Con mole'],['nebbiolo','Nebbiolo'],['rosado','Rosados'],['botellin','Botellines'],['regalo','Para regalar']];
-  $('tempty').innerHTML=(onlyQ?'<h2>No encontramos «'+esc(S.q)+'».</h2><p>Prueba con una uva, un tipo de vino o lo que vas a comer. También puedes filtrar por momento o estilo.</p>':'<h2>Ningún vino cumple todo eso.</h2><p>Prueba quitando un filtro. Estos son los que más abren la búsqueda:</p>')+
-    '<div class="sug">'+(onlyQ?'':sug.map(([k,v,l,m])=>'<button class="btn" data-rm="'+k+'" data-v="'+v+'">Quitar «'+l+'» · '+m+(m===1?' vino':' vinos')+'</button>').join(''))+'<button class="btn'+(onlyQ?' btn-ink':' btn-ink')+'" data-clear>Ver todo</button>'+(onlyQ?'<button class="btn" data-quiz>Encuentra tu vino</button>':'')+'</div>'+
+  $('tempty').innerHTML=(onlyQ?'<h2>No encontramos “'+esc(S.q)+'”.</h2><p>Prueba con una uva, un tipo de vino o lo que vas a comer. También puedes filtrar por momento o estilo.</p>':'<h2>Ningún vino cumple todo eso.</h2><p>Prueba quitando un filtro. Estos son los que más abren la búsqueda:</p>')+
+    '<div class="sug">'+(onlyQ?'':sug.map(([k,v,l,m])=>'<button class="btn" data-rm="'+k+'" data-v="'+v+'">Quitar “'+l+'” · '+m+(m===1?' vino':' vinos')+'</button>').join(''))+'<button class="btn'+(onlyQ?' btn-ink':' btn-ink')+'" data-clear>Ver todo</button>'+(onlyQ?'<button class="btn" data-quiz>Encuentra tu vino</button>':'')+'</div>'+
     (S.q?'<p class="alts">Búsquedas que sí funcionan: '+ideas.filter(([q])=>searchIds(q).length).map(([q,l])=>'<a href="'+PAGES.tienda+'?q='+encodeURIComponent(q)+'">'+l+'</a>').join(' · ')+'</p>':'');
 }
 const snapshot=()=>({tipo:S.tipo,q:S.q,max:S.max,sets:Object.fromEntries(Object.entries(S.sets).map(([k,s])=>[k,new Set(s)]))});

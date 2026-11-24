@@ -316,8 +316,8 @@
         <span class="btn btn-light">Reservar</span>
       </div>
     </a>
-    <a class="c-sm xs" id="xsA" href="lacetto-experiencias.html#x-angelo"><span class="xs-go" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
-    <a class="c-sm xs" id="xsB" href="lacetto-experiencias.html#x-cetto"><span class="xs-go" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
+    <a class="c-sm xs" id="xsA" aria-label="Experiencia Angelo" href="lacetto-experiencias.html#x-angelo"><span class="xs-go" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
+    <a class="c-sm xs" id="xsB" aria-label="Experiencia Cetto" href="lacetto-experiencias.html#x-cetto"><span class="xs-go" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
   </div>
 </section>
 
@@ -454,7 +454,7 @@ let vtCur='',vtSwap;
 function vtShow(k,first){if(k===vtCur)return;vtCur=k;const t=VT.find(x=>x[0]===k);
   {const nt=document.getElementById('vtNote'),tx=VNOTE[k];if(!VNOTE.premiados)VNOTE.premiados=nt.innerHTML;clearTimeout(nt._t);
    if(first){nt.innerHTML=tx||VNOTE.premiados;nt.classList.toggle('off',!tx)}else{nt.classList.add('off');if(tx)nt._t=setTimeout(()=>{nt.innerHTML=tx;nt.classList.remove('off')},320)}
-   const all=document.querySelector('.vt-all'),g=k==='gourmet';all.textContent=g?'Ver todo gourmet':'Ver todos los vinos';all.href=g?PAGES.tienda+'?tipo=gourmet':PAGES.tienda}
+   const all=document.querySelector('.vt-all'),g=k==='gourmet';all.textContent=g?'Ver productos gourmet':'Ver todos los vinos';all.href=g?PAGES.tienda+'?tipo=gourmet':PAGES.tienda}
   vtTabs.querySelectorAll('[role=tab]').forEach(b=>{const on=b.dataset.k===k;b.setAttribute('aria-selected',on);b.tabIndex=on?0:-1;if(on&&!first){const bs=vtTabs.querySelectorAll('[role=tab]');if(b===bs[bs.length-1])vtTabs.scrollTo({left:vtTabs.scrollWidth,behavior:'smooth'});else if(b===bs[0])vtTabs.scrollTo({left:0,behavior:'smooth'});else b.scrollIntoView({block:'nearest',inline:'nearest',behavior:'smooth'})}});
   vtRail.setAttribute('aria-labelledby','vtt-'+k);
   const draw=()=>{vtTrack.innerHTML=t[2]().map(vcard).join('');vtRail.scrollLeft=0;vtTrack.classList.remove('out');vtTrack.classList.remove('in');void vtTrack.offsetWidth;vtTrack.classList.add('in');vtProg()};

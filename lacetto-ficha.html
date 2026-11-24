@@ -544,7 +544,7 @@ const GOUD={
   use:['Ensaladas','Vegetales','Quesos','Carnes','Aderezos, marinados y reducciones'],ph:{_:'Mesa_de_trabajo_70-100.jpg'}},
  'Vinagre de Vino Tinto':{fam:'gvin',fx:'Vinagretas y marinados',at:[['Origen vinícola','Inspirado en la tradición mediterránea.'],['Ideal para ensaladas','Aporta frescura y vivacidad.'],['Perfecto para vegetales','Resalta sabores naturales.'],['Toque equilibrado','Acidez limpia y armoniosa.'],['Uso diario gourmet','Un básico indispensable en la cocina.']],
   use:['Vinagretas','Aderezos','Marinados','Ensaladas','Vegetales'],ph:{_:'Mesa_de_trabajo_49-100.jpg'}},
- 'Aceitunas Sevillana':{fam:'gacei',fx:'Aperitivos y tablas de quesos',at:[['Sabor mediterráneo','Un clásico para disfrutar en cualquier ocasión.'],['Ideales como aperitivo','Perfectas para compartir antes de una comida.'],['Acompañamiento versátil','Ideales para complementar tablas de quesos y embutidos.'],['Tradición gourmet','Un ingrediente clásico de la gastronomía mediterránea.'],['Perfectas para reuniones','Un aperitivo sencillo para disfrutar y compartir.']],
+ 'Aceitunas Sevillanas':{fam:'gacei',fx:'Aperitivos y tablas de quesos',at:[['Sabor mediterráneo','Un clásico para disfrutar en cualquier ocasión.'],['Ideales como aperitivo','Perfectas para compartir antes de una comida.'],['Acompañamiento versátil','Ideales para complementar tablas de quesos y embutidos.'],['Tradición gourmet','Un ingrediente clásico de la gastronomía mediterránea.'],['Perfectas para reuniones','Un aperitivo sencillo para disfrutar y compartir.']],
   use:['Aperitivos y tapas','Botanas para compartir','Tablas de quesos','Carnes frías','Ensaladas'],ph:{_:'Mesa_de_trabajo_13-100.jpg'}},
  'Aceitunas Manzanilla Misión':{fam:'gacei',fx:'Botanas, ensaladas y pizzas',at:[['Frescura natural','Perfil suave y equilibrado.'],['Ideales para aperitivos','Perfectas para compartir.'],['Perfectas con quesos','Combinaciones llenas de sabor.'],['Compañeras del vino','Maridaje natural y versátil.'],['Textura firme','Experiencia agradable en cada bocado.']],
   use:['Botana o aperitivo','Ensaladas','Pizzas','Recetas mediterráneas'],ph:{_:'Mesa_de_trabajo_8-100.jpg'}}};
@@ -562,7 +562,7 @@ const mem=isMember();
 const unitTot=u=>Math.round(p.price*u*(isWine(id)&&u>=6?.9:1)*(mem?1-MEMBER:1));
 
 /* ---------- Encabezado del producto ---------- */
-const TIPO={tinto:['tinto','Tintos'],blanco:['blanco','Blancos'],rosado:['rosado','Rosados'],espumoso:['espumoso','Espumoso'],postre:['postre','Postre y destilados'],destilado:['postre','Postre y destilados'],estuche:['estuche','Estuches'],gourmet:['gourmet','Gourmet']}[p.c]||['tinto','Vinos'];
+const TIPO={tinto:['tinto','Tintos'],blanco:['blanco','Blancos'],rosado:['rosado','Rosados'],espumoso:['espumoso','Espumosos'],postre:['postre','Postre y destilados'],destilado:['postre','Postre y destilados'],estuche:['estuche','Estuches'],gourmet:['gourmet','Gourmet']}[p.c]||['tinto','Vinos'];
 document.getElementById('crumbs').innerHTML='<a href="lacetto-home-concepto.html">Inicio</a><span aria-hidden="true">/</span><a href="'+PAGES.tienda+'">Vinos</a><span aria-hidden="true">/</span><a href="'+PAGES.tienda+'?tipo='+TIPO[0]+'">'+TIPO[1]+'</a><span aria-hidden="true">/</span><span aria-current="page">'+nbs(fullName)+'</span>';
 document.getElementById('pLine').textContent=nbs(p.line)+(p.type&&p.type!==p.line?' · '+p.type:'');
 document.getElementById('pName').innerHTML=p.name+(p.sub?' <small>'+p.sub+'</small>':'');
@@ -826,7 +826,7 @@ document.getElementById('more').style.gridTemplateColumns='repeat(4,minmax(0,1fr
   regalos:['Categoría','Regalos','Estuches, tarjetas de regalo y cajas armadas a tu gusto.','media/m-regalo.jpg','50% 50%',PAGES.regalos,'Ver los regalos'],
   gac:['Gourmet','Aceite de oliva extra virgen','Aceitunas seleccionadas y notas herbales, de 250 ml a 5 L.',F('Mesa_de_trabajo_38-100.jpg',900),'50% 45%',PAGES.ficha+'?p=ac750','Ver el aceite'],
   gvin:['Gourmet','Vinagres','Balsámico y de vino tinto, para vinagretas, aderezos y marinados.',F('Mesa_de_trabajo_70-100.jpg',900),'50% 45%',T_+'?tipo=gourmet','Ver gourmet'],
-  gacei:['Gourmet','Aceitunas','Sevillana y Manzanilla Misión, con hueso, para aperitivos y tablas.',F('Mesa_de_trabajo_13-100.jpg',900),'45% 50%',T_+'?tipo=gourmet','Ver gourmet']};
+  gacei:['Gourmet','Aceitunas','Sevillanas y Manzanilla Misión, con hueso, para aperitivos y tablas.',F('Mesa_de_trabajo_13-100.jpg',900),'45% 50%',T_+'?tipo=gourmet','Ver gourmet']};
  const SIB={'Reserva Privada':'dl','Don Luis':'rp','Estaciones':'sb','Sierra Blanca':'est','Champbrulé':'est','L.A. Cetto':'dl','Boutique':'rp','Península':'dl','Uvas Orgánicas':'rp'};
  const CAT={tinto:'blanco',blanco:'rosado',rosado:'champ',espumoso:'blanco',postre:'tinto',destilado:'tinto',gourmet:'tinto',estuche:'tinto'};
  const pick=GD?['gac','gvin','gacei'].filter(k=>k!==GD.fam).concat('tinto'):['premiada',SIB[p.line]||'rp',p.gift?'regalos':(CAT[p.c]||'regalos')];

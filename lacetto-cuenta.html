@@ -674,7 +674,7 @@ function renderBookings(){
   const today=iso(now),old=x=>x.date<today||x.status==='cancelada',bs=bookings().slice().sort((a,b)=>{const pa=old(a),pb=old(b);return pa!==pb?(pa?1:-1):(pa?b.date.localeCompare(a.date):a.date.localeCompare(b.date))});
   const el=$('bkList');el.className=bs.length?'ac-bks':'';
   el.innerHTML=bs.length?bs.map(bkHTML).join(''):
-    '<div class="ac-empty"><div><b>No tienes catas reservadas</b><p>Seis experiencias en el Valle de Guadalupe, de la Cata Clásica a un recorrido de tres horas por la bodega.</p></div><div class="acts"><a class="btn btn-ink" href="'+PAGES.exp+'#reservar">Reservar cata</a><a class="ul" href="'+PAGES.exp+'">Ver experiencias</a></div></div>';
+    '<div class="ac-empty"><div><b>No tienes catas reservadas</b><p>Seis experiencias en el Valle de Guadalupe, de la Cata Clásica a la Experiencia Cetto, de tres horas.</p></div><div class="acts"><a class="btn btn-ink" href="'+PAGES.exp+'#reservar">Reservar cata</a><a class="ul" href="'+PAGES.exp+'">Ver experiencias</a></div></div>';
 }
 
 $('bkList').addEventListener('click',e=>{

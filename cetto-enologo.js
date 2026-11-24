@@ -434,14 +434,14 @@ function gourmet(q){
   let h;
   if(isOil)h=lead('Nuestro <b>Aceite de Oliva Extra Virgen</b> es de aceitunas seleccionadas, con notas herbales, y ganó Plata en los International Awards Virtus 2026.')+p_('Úsalo en crudo para que luzca: sobre una ensalada, unos vegetales asados o pan recién horneado; también en marinados y cocciones suaves. Lo tenemos de 250 ml a 5 L.');
   else if(isVin)h=lead('Tenemos dos vinagres, y los dos nacen del vino.')+p_('El <b>balsámico</b>, de vinagre de vino y mosto de uva concentrado, equilibra dulzor y acidez: ideal para ensaladas, quesos, carnes y reducciones. El de <b>vino tinto</b>, de acidez limpia, es el básico para vinagretas, aderezos y marinados.');
-  else h=lead('Tenemos aceitunas <b>Sevillana</b> y <b>Manzanilla Misión</b>, con hueso, en frasco de 500 g.')+p_('Son el aperitivo perfecto antes de comer, con una copa de espumoso o de un blanco fresco.');
+  else h=lead('Tenemos aceitunas <b>sevillanas</b> y <b>Manzanilla Misión</b>, con hueso, en frasco de 500 g.')+p_('Son el aperitivo perfecto antes de comer, con una copa de espumoso o de un blanco fresco.');
   return R(h,{ids:(ids.length?ids:GOUR).filter(id=>P[id].ml===750||P[id].ml===500).slice(0,1),feat:true,ch:['¿Qué vino va con aceitunas?','Ver todo gourmet']});
 }
 function priceInfo(id){
   let h='';
   if(id)h+=lead('El '+B(id)+' cuesta '+price(id)+'; para socios del Club Cetto, '+money(memberPrice(P[id].price))+'.');
   else h+=lead('Así funciona la tienda:');
-  h+='<ul class="eno-ul"><li>10% de descuento al armar tu caja de 6 botellas de vino de 750 ml.</li><li>Envío gratis desde '+money(FREE)+'.</li><li>Hasta 3 meses sin intereses en compras desde $1,799.</li></ul>';
+  h+='<ul class="eno-ul"><li>10% de descuento al armar tu caja de 6 botellas de vino de 750 ml.</li><li>Envío gratis desde '+money(FREE)+'.</li><li>Hasta 3 meses sin intereses con tarjetas participantes.</li></ul>';
   return R(h,{ids:id?[id]:[],ch:id?chipsFor(id):['Recomiéndame un vino de menos de $300']});
 }
 function visit(){
@@ -459,7 +459,7 @@ function general(topic,q){
 function greet(ctx){
   if(ctx&&P[ctx]&&isW(ctx)){const vp=vinePh(ctx),mp=medPh(ctx);
     return R(lead('Buena elección: el '+B(ctx)+'.')+p_((mp?'Es '+mp+'. ':'')+(vp?cap(vp)+(oakPh(ctx)?' y '+oakPh(ctx):'')+'. ':'')+'Pregúntame lo que quieras: cómo servirlo, con qué acompañarlo o en qué se diferencia de otros vinos de la casa.'),{ch:chipsFor(ctx)})}
-  return R(lead('Bienvenido a la casa.')+p_('Soy el enólogo digital de L.A. Cetto. Conozco cada una de nuestras fichas, del viñedo a la copa. Cuéntame qué vas a cocinar, qué quieres celebrar o qué vino tienes en mente, y lo elegimos juntos.'),{ch:['¿Qué vino va con mole?','Algo para una carne asada','Un regalo de menos de $500','¿Qué es un vino encabezado?']});
+  return R(lead('Te damos la bienvenida a la casa.')+p_('Soy el enólogo digital de L.A. Cetto. Conozco cada una de nuestras fichas, del viñedo a la copa. Cuéntame qué vas a cocinar, qué quieres celebrar o qué vino tienes en mente, y lo elegimos juntos.'),{ch:['¿Qué vino va con mole?','Algo para una carne asada','Un regalo de menos de $500','¿Qué es un vino encabezado?']});
 }
 function fallback(){
   return R(lead('Perdona, no te entendí del todo.')+p_('Cuéntamelo de otra forma: qué vas a comer, para quién es el vino o cuál estás pensando abrir. También puedo explicarte un término, como taninos o crianza.'),{ch:['¿Qué vino va con pescado?','Compara el Nebbiolo y el Cabernet Reserva Privada','¿Qué son los taninos?']});
@@ -576,7 +576,7 @@ function catalog(){
   if(CATALOG)return CATALOG;
   const L=WINES.map(id=>{const f=fx(id),o=oak(id);return [id,nmS(id),P[id].type,price(id)+(P[id].out?' (agotado)':''),'uvas: '+grapes(id),st(id)?'estilo: '+EST[st(id)]:'',o?'crianza: '+o.t:'sin barrica','servir: '+temp(id),f&&f.a?'aromas: '+f.a.join(', '):'',P[id].mar?'maridaje: '+P[id].mar.replace(/\s+/g,' '):'',medN(id)?'reconocimientos: '+medN(id):'',vids(id).length?'videos de cata: '+vids(id).length:''].filter(Boolean).join(' | ')});
   const G=GOUR.map(id=>[id,nm(id)+' '+(P[id].sub||''),price(id)].join(' | '));
-  CATALOG='VINOS\n'+L.join('\n')+'\n\nGOURMET\n'+G.join('\n')+'\n\nTIENDA\n10% de descuento en caja de 6 botellas de 750 ml · envío gratis desde '+money(FREE)+' · hasta 3 meses sin intereses desde $1,799 · precio de socio del Club Cetto 5% menos · catas en el Valle de Guadalupe desde $250 por persona · Boutique L.A. Cetto en Lomas de Chapultepec (CDMX).';
+  CATALOG='VINOS\n'+L.join('\n')+'\n\nGOURMET\n'+G.join('\n')+'\n\nTIENDA\n10% de descuento en caja de 6 botellas de 750 ml · envío gratis desde '+money(FREE)+' · hasta 3 meses sin intereses con tarjetas participantes · precio de socio del Club Cetto 5% menos · catas en el Valle de Guadalupe desde $250 por persona · Boutique L.A. Cetto en Lomas de Chapultepec (CDMX).';
   return CATALOG;
 }
 function factsFor(q,ctx){
