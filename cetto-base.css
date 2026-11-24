@@ -2486,3 +2486,8 @@ img.hm,.hs-box img{backface-visibility:hidden;will-change:transform}
   #pRate,#pMedal,.ul-in{padding-block:4px;margin-block:-4px}
   input[type=checkbox],input[type=radio]{width:20px;height:20px}
 }
+
+/* Pantallas táctiles: el botón redondo de agregar va en la esquina superior izquierda (las medallas quedan a la derecha) */
+@media (hover:none){
+  .vc-add{top:clamp(12px,1.2vw,18px);left:clamp(12px,1.2vw,18px);right:auto;bottom:auto;width:44px;height:44px}
+}
