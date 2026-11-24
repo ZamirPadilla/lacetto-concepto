@@ -2024,7 +2024,7 @@ section.hx :focus-visible{outline-color:#F3F1EC}
 
 /* ===== Pantalla completa de verdad: Historia y Club Cetto miden toda la pantalla y la barra no les quita espacio =====
    Mientras la historia está fija, la barra se queda escondida (vuelve al salir de la sección) */
-html.hdr-lock .hdr:not(:focus-within){transform:translateY(-100%);box-shadow:none}
+/* (antes el encabezado se quedaba bloqueado arriba durante las fotos a pantalla completa del inicio; ahora vuelve al subir, como en el resto) */
 .clb{min-height:100vh;min-height:100svh}
 /* el final sobre las uvas (foto clara): un velo un poco más firme al centro para que la frase se lea */
 .ed-end::before{background:radial-gradient(ellipse at 50% 50%,rgba(10,9,8,.56),rgba(10,9,8,.3) 75%)}
@@ -2378,11 +2378,6 @@ img.hm,.hs-box img{backface-visibility:hidden;will-change:transform}
     transition:max-width .6s var(--ease),opacity .4s var(--ease),margin .6s var(--ease)}
   .eno-l.peek .eno-l-t{max-width:170px;opacity:1;margin-left:11px}
 }
-/* pantallas táctiles: la botella de la card a la vista crece sola (como el hover de escritorio) */
-@media (hover:none),(max-width:900px){
-  .vc.grow .vc-img img{transform:translateY(-22px) scale(1.12);filter:drop-shadow(5px 6px 5px rgba(46,33,20,.16)) drop-shadow(20px 22px 18px rgba(46,33,20,.15)) drop-shadow(40px 40px 36px rgba(46,33,20,.1))}
-  .vc.grow .vc-sh{transform:translateX(-44%) scale(.66);opacity:.36}
-  .vc.grow .vc-img img,.vc.grow .vc-sh{transition-duration:1.4s}
 }
 
 /* ===== Celular · Valle, Arma tu caja, pie de página y encabezado ===== */

@@ -467,13 +467,7 @@ vtTabs.addEventListener('keydown',e=>{const bs=[...vtTabs.querySelectorAll('[rol
 function vtProg(){const max=vtRail.scrollWidth-vtRail.clientWidth,vis=vtRail.clientWidth/vtRail.scrollWidth;vtBar.parentElement.style.visibility=max>4?'visible':'hidden';
   vtBar.style.width=(vis*100)+'%';vtBar.style.transform='translateX('+(max>0?vtRail.scrollLeft/max*(1/vis-1)*100:0)+'%)'}
 vtRail.addEventListener('scroll',()=>requestAnimationFrame(vtProg),{passive:true});addEventListener('resize',vtProg);
-/* En celular la botella de la card que queda a la vista crece sola después de un momento (en escritorio lo hace el hover) */
-{const touch=matchMedia('(hover:none),(max-width:900px)');let gio=null;
- const arm=()=>{if(gio)gio.disconnect();if(!touch.matches)return;
-   gio=new IntersectionObserver(es=>es.forEach(en=>{const c=en.target;clearTimeout(c._g);
-     if(en.intersectionRatio>=.75)c._g=setTimeout(()=>c.classList.add('grow'),1800);else c.classList.remove('grow')}),{threshold:[0,.75]});
-   vtTrack.querySelectorAll('.vc').forEach(c=>gio.observe(c))};
- new MutationObserver(arm).observe(vtTrack,{childList:true});arm()}
+
 /* Arrastrar con el mouse (en celular ya se desliza con el dedo); al soltar se acomoda en la card más cercana */
 let dg=null;
 vtRail.addEventListener('pointerdown',e=>{if(e.pointerType!=='mouse'||e.button!==0||e.target.closest('.vc-add'))return;dg={x:e.clientX,s:vtRail.scrollLeft,moved:false,id:e.pointerId}});
