@@ -276,6 +276,7 @@ function renderChrome(opts={}){
   <div class="l">
     <div class="m-top"><button class="close" data-close>${xIcon}Cerrar</button><a class="m-100" href="${PAGES.tray}" aria-label="100 años de la familia Cetto, ver la trayectoria">${c100('lock',{solid:true})}</a></div>
     <ul class="mprim">
+      <li><a href="${H}"${cur(opts,'home')}>Inicio</a></li>
       <li><a href="${PAGES.tienda}" data-p="vinos">Vinos</a></li>
       <li><a href="${PAGES.coleccion}" data-p="prem">Colección Premiada</a></li>
       <li><a href="${PAGES.tienda}?tipo=gourmet" data-p="gour">Gourmet</a></li>
@@ -462,6 +463,8 @@ function menuPanes(){
   /* sin hover el menú queda limpio (solo los links); el panel se abre al pasar por una sección y se cierra al salir del menú */
   const open=k=>{show(k,true);if(wide.matches)m.classList.add('xp')};
   const close=()=>{m.classList.remove('xp');pr.classList.remove('sel');pr.querySelectorAll('a.cur').forEach(a=>a.classList.remove('cur'))};
+  /* Inicio no tiene panel: al pasar por él se cierra el que esté abierto */
+  pr.querySelectorAll('a:not([data-p])').forEach(a=>a.addEventListener('mouseenter',()=>{clearTimeout(t);clearTimeout(ct);t=setTimeout(close,60)}));
   pr.querySelectorAll('a[data-p]').forEach(a=>{
     a.addEventListener('mouseenter',()=>{clearTimeout(t);clearTimeout(ct);t=setTimeout(()=>open(a.dataset.p),60)});
     a.addEventListener('mouseleave',()=>clearTimeout(t));
