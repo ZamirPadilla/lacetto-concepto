@@ -467,6 +467,13 @@ vtTabs.addEventListener('keydown',e=>{const bs=[...vtTabs.querySelectorAll('[rol
 function vtProg(){const max=vtRail.scrollWidth-vtRail.clientWidth,vis=vtRail.clientWidth/vtRail.scrollWidth;vtBar.parentElement.style.visibility=max>4?'visible':'hidden';
   vtBar.style.width=(vis*100)+'%';vtBar.style.transform='translateX('+(max>0?vtRail.scrollLeft/max*(1/vis-1)*100:0)+'%)'}
 vtRail.addEventListener('scroll',()=>requestAnimationFrame(vtProg),{passive:true});addEventListener('resize',vtProg);
+/* En celular la botella de la card que queda a la vista crece sola después de un momento (en escritorio lo hace el hover) */
+{const touch=matchMedia('(hover:none),(max-width:900px)');let gio=null;
+ const arm=()=>{if(gio)gio.disconnect();if(!touch.matches)return;
+   gio=new IntersectionObserver(es=>es.forEach(en=>{const c=en.target;clearTimeout(c._g);
+     if(en.intersectionRatio>=.75)c._g=setTimeout(()=>c.classList.add('grow'),1800);else c.classList.remove('grow')}),{threshold:[0,.75]});
+   vtTrack.querySelectorAll('.vc').forEach(c=>gio.observe(c))};
+ new MutationObserver(arm).observe(vtTrack,{childList:true});arm()}
 /* Arrastrar con el mouse (en celular ya se desliza con el dedo); al soltar se acomoda en la card más cercana */
 let dg=null;
 vtRail.addEventListener('pointerdown',e=>{if(e.pointerType!=='mouse'||e.button!==0||e.target.closest('.vc-add'))return;dg={x:e.clientX,s:vtRail.scrollLeft,moved:false,id:e.pointerId}});
@@ -578,8 +585,10 @@ function schedule(ms){clearTimeout(hTimer);hLeft=ms;hT0=performance.now();if(SL[
 /* Al terminar la entrada, la portada siempre se acorta. No mueve la página: durante el video la portada ocupa en el flujo
    lo mismo que ya acortada (un margen negativo le quita el sobrante y se encima a la sección de abajo), así que al acortarse
    solo descubre lo que tenía debajo */
-function endIntro(){if(introDone)return;introDone=true;heroVid.pause();hero.classList.add('short');
-  CP.forEach((c,j)=>{if(j)c.setAttribute('aria-label',j+' de '+NP)});}
+/* En celular el video también es un banner: al terminar los de producto vuelve a él, ahora con el copy completo */
+const mobH=matchMedia('(max-width:900px)'),vidLoop=()=>mobH.matches;
+function endIntro(){if(introDone)return;introDone=true;heroVid.pause();hero.classList.add('short');hero.classList.remove('intro');
+  CP.forEach((c,j)=>{if(vidLoop())c.setAttribute('aria-label',(j||SL.length)+' de '+SL.length);else if(j)c.setAttribute('aria-label',j+' de '+NP)});}
 /* el video de la casa cierra con el 100 (al terminar se queda un momento y luego pasa a los banners) */
 const h100=document.getElementById('hero100');h100.innerHTML=c100('full',{cls:'draw'});
 let h100on=false,h100T;
@@ -588,7 +597,8 @@ heroVid.addEventListener('timeupdate',()=>{if(!introDone&&SL[hCur].vid&&heroVid.
 function heroGo(i,{manual=false,first=false}={}){
   clearTimeout(h100T);
   if(!first&&hCur===0&&!introDone)i=i<0?NP:(i===0?0:1);           /* saliendo del video: siguiente → 1, anterior → el último */
-  else if(introDone)i=(((i-1)%NP)+NP)%NP+1;                          /* después: solo banners de producto */
+  else if(introDone)i=vidLoop()?((i%SL.length)+SL.length)%SL.length /* celular: el video sigue en la rotación */
+    :(((i-1)%NP)+NP)%NP+1;                                            /* escritorio: solo banners de producto */
   else i=(i+SL.length)%SL.length;
   if(!first){SL[hCur].el.classList.remove('on')}
   if(!first&&i!==0)endIntro();
@@ -597,7 +607,7 @@ function heroGo(i,{manual=false,first=false}={}){
   s.el.classList.add('on');if(s.img){const im=s.el.querySelector('img');im.style.animation='none';void im.offsetWidth;im.style.animation=''}
   heroCopy.setAttribute('aria-live',manual?'polite':'off');
   showCopy(i,first);tone();
-  const nx=introDone?(i%NP)+1:1;document.getElementById('heroNext').setAttribute('aria-label','Ver el siguiente banner ('+nx+' de '+NP+')');
+  const tot=introDone&&vidLoop()?SL.length:NP,nx=introDone?(vidLoop()?((i+1)%SL.length||SL.length):(i%NP)+1):1;document.getElementById('heroNext').setAttribute('aria-label','Ver el siguiente banner ('+nx+' de '+tot+')');
   if(s.vid){heroVid.currentTime=0;if(!reduceM&&!hUser&&hVisible)heroVid.play().catch(()=>schedule(SLIDE))}
   else{heroVid.pause();schedule(SLIDE)}
 }
@@ -659,7 +669,7 @@ new IntersectionObserver(es=>es.forEach(en=>{
     if(s.vid)heroVid.pause();else{clearTimeout(hTimer);hLeft=Math.max(600,hLeft-(performance.now()-hT0))}return}
   if(hUser||hHold)return;if(s.vid){if(!reduceM)heroVid.play().catch(()=>{})}else schedule(hLeft);
 }),{threshold:.15}).observe(hero);
-heroGo(0,{first:true});
+hero.classList.add('intro');heroGo(0,{first:true});
 /* En cuanto bajas (scroll, trackpad, dedo) durante el video, entran los banners y la portada se acorta */
 {const leave=()=>{if(introDone){removeEventListener('scroll',leave);return}if(scrollY>6&&hCur===0){heroGo(1)}};addEventListener('scroll',leave,{passive:true})}
 if(reduceM){heroVid.removeAttribute('autoplay');heroVid.pause();loadSlides()}
@@ -697,6 +707,11 @@ if(reduceM){heroVid.removeAttribute('autoplay');heroVid.pause();loadSlides()}
    clearTimeout(w._t);w._t=setTimeout(()=>{w.querySelector('.mo-cur').innerHTML=x.aw;w.querySelector('.mo-bw').innerHTML=x.bot;w.querySelector('.mo-info').innerHTML=x.info;
      w.querySelectorAll('.mo-dots i').forEach((d,k)=>d.classList.toggle('on',k===j));
      const im=w.querySelector('.mo-bw img'),done=()=>w.classList.remove('sw');if(im.complete)requestAnimationFrame(done);else{im.onload=im.onerror=done}},260)});
+ /* celular: deslizar sobre la botella cambia de vino; sobre la foto, de momento */
+ {let sx=null,sy=0,tw=null;
+  moTrack.addEventListener('touchstart',e=>{tw=e.target.closest('.mo-w');if(!tw||e.target.closest('button'))return;sx=e.touches[0].clientX;sy=e.touches[0].clientY},{passive:true});
+  moTrack.addEventListener('touchend',e=>{if(sx==null||!tw)return;const dx=e.changedTouches[0].clientX-sx,dy=e.changedTouches[0].clientY-sy;sx=null;
+    if(Math.abs(dx)>40&&Math.abs(dy)<60){const bt=tw.querySelector('.mo-wa[data-d="'+(dx<0?1:-1)+'"]');if(bt)bt.click()}},{passive:true})}
  /* el nombre del momento se ve unos segundos y luego cede su lugar a la frase en cursiva (al volver a ese momento, empieza de nuevo) */
  let cur=-1,qT=0,vis=false;
  const arm=()=>{clearTimeout(qT);const p=moTrack.children[cur];if(!p||!vis||p.classList.contains('q'))return;qT=setTimeout(()=>p.classList.add('q'),3800)};

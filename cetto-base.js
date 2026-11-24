@@ -404,7 +404,10 @@ function wireChrome(opts){
   document.getElementById('openCart').onclick=()=>openDrawer('cart');
   /* Enólogo digital: en páginas con portada aparece al bajar un poco, para no encimarse con las flechas del banner */
   {const b=document.getElementById('enoL');if(b){b.onclick=()=>{b.classList.add('load');openEno().finally(()=>b.classList.remove('load'))};
-    if(document.querySelector('[data-hero]')){const t=()=>b.classList.toggle('wait',scrollY<innerHeight*.45);t();addEventListener('scroll',t,{passive:true})}}}
+    /* en celular, la primera vez que aparece se presenta con su nombre unos segundos y luego queda solo el ícono */
+    const peek=()=>{if(b._pk||!matchMedia('(max-width:640px)').matches)return;b._pk=1;let seen=null;try{seen=sessionStorage.getItem('enoPeek');sessionStorage.setItem('enoPeek','1')}catch(_){}
+      if(seen)return;setTimeout(()=>{b.classList.add('peek');setTimeout(()=>b.classList.remove('peek'),4200)},700)};
+    if(document.querySelector('[data-hero]')){const t=()=>{b.classList.toggle('wait',scrollY<innerHeight*.45);if(!b.classList.contains('wait'))peek()};t();addEventListener('scroll',t,{passive:true})}else setTimeout(peek,1600)}}
   /* 100 años: en la barra el logo se alterna con el 100 (que se dibuja cada vez que entra); en el menú y en el pie se dibuja al verse */
   {const lg=document.querySelector('.hdr .logo'),still=matchMedia('(prefers-reduced-motion: reduce)').matches||CAPTURE;
    if(lg&&!still){let alt=false;setInterval(()=>{if(document.hidden)return;if(document.querySelector('.hero.end100,.ld100')){if(alt){alt=false;lg.classList.remove('alt')}return}alt=!alt;lg.classList.toggle('alt',alt)},5200)}

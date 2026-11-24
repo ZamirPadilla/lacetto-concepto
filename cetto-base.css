@@ -2345,3 +2345,42 @@ img.hm,.hs-box img{backface-visibility:hidden;will-change:transform}
   #vtTabs [role=tab]{padding-block:9px}#vtTabs{margin-block:-9px}
   #fOpen,#fClose,#qzClose,.opts .more,#medalTag a,#ytSoc a,#crumbs a,.crumbs a,.pg-demo-l,nav[aria-label="Ayuda"] a{padding-block:9px;margin-block:-9px}
 }
+
+/* ===== Celular · ajustes del inicio (escritorio no cambia) ===== */
+@media (max-width:900px){
+  /* portada: en la entrada del video solo el título; el copy completo aparece cuando el video vuelve como banner */
+  .hero.intro .hcopy-c .hero-side{display:none}
+  /* flechas de los banners más discretas y sin botón de pausa */
+  .hero-next{width:36px;height:36px;background-color:transparent!important;-webkit-backdrop-filter:none!important;backdrop-filter:none!important;opacity:.85}
+  .hero-prev{right:calc(var(--m) + 36px + 6px)}
+  .hero-next .ar{width:15px;height:15px}
+  .hero-next .ring circle{opacity:.28}.hero-next .ring .p{opacity:.7}
+  .hero-pp{display:none!important}
+  #valle .v-pp{display:none}
+  /* momentos: deslizar de lado sobre la botella cambia de vino (lo atiende el script, no el carrusel) */
+  .mo-w{touch-action:pan-y}
+  /* líneas: el botón centrado */
+  .ln-cta{left:50%;right:auto;transform:translateX(-50%)}
+}
+@media (max-width:640px){
+  :root{--m:12px}
+  /* cards más grandes a lo ancho y a lo alto */
+  .vc{flex-basis:86%;aspect-ratio:64/100}
+  /* avance del carrusel y "Ver todos los vinos" debajo, ambos al centro */
+  .vt-foot{flex-direction:column;justify-content:center;align-items:center;gap:18px}
+  .vt-all{position:static}
+  /* Enólogo: círculo oscuro con filo dorado; la primera vez se presenta con su nombre */
+  .eno-l{width:auto;min-width:52px;height:52px;padding:0 15px;justify-content:flex-start;gap:0;
+    box-shadow:inset 0 0 0 1px rgba(201,173,120,.5),0 16px 32px -14px rgba(20,14,8,.62)}
+  .eno-l-ic{color:#D4BC8C}
+  .eno-l-ic svg{width:22px;height:22px}
+  .eno-l .eno-l-t{display:inline-block;max-width:0;overflow:hidden;opacity:0;margin-left:0;white-space:nowrap;font:500 11px/1 var(--sans);letter-spacing:.14em;text-transform:uppercase;
+    transition:max-width .6s var(--ease),opacity .4s var(--ease),margin .6s var(--ease)}
+  .eno-l.peek .eno-l-t{max-width:170px;opacity:1;margin-left:11px}
+}
+/* pantallas táctiles: la botella de la card a la vista crece sola (como el hover de escritorio) */
+@media (hover:none),(max-width:900px){
+  .vc.grow .vc-img img{transform:translateY(-22px) scale(1.12);filter:drop-shadow(5px 6px 5px rgba(46,33,20,.16)) drop-shadow(20px 22px 18px rgba(46,33,20,.15)) drop-shadow(40px 40px 36px rgba(46,33,20,.1))}
+  .vc.grow .vc-sh{transform:translateX(-44%) scale(.66);opacity:.36}
+  .vc.grow .vc-img img,.vc.grow .vc-sh{transition-duration:1.4s}
+}
