@@ -223,19 +223,28 @@ body.dk footer.ft{transition:color 1s var(--ease)}
 body.dk.lt footer.ft{--fc:var(--ink);--fc2:var(--ink2);--fc3:var(--ink3);--fl:var(--line)}
 
 @media (max-width:900px){
-  /* celular: cada banner ocupa una pantalla de scroll y recorta su escena, que queda fija; al subir, el siguiente
-     se descubre de abajo hacia arriba sobre el actual (lo hace el navegador al hacer scroll, sin JS: no tiembla) */
-  .cp-stick{height:auto}
-  .cp-stage{position:relative;height:calc(var(--n,4) * 100svh);overflow:visible}
+  /* celular: la escena se queda (sticky) y cada vino nuevo se descubre de abajo hacia arriba sobre el anterior.
+     El barrido lo mueve el propio scroll con transform (animación ligada al scroll, en la GPU): sin JS ni capas fijas,
+     que en iPhone se repintaban tarde y dejaban franjas grises */
+  .cp-stick{height:calc((var(--n,4) - 1) * 100svh + 100lvh);timeline-scope:--cp1,--cp2,--cp3,--cp4,--cp5,--cp6}
+  .cp-stage{position:sticky;top:0;height:100lvh;overflow:hidden}
   .cp-panels{position:absolute;inset:0}
-  .cp-panel{position:absolute;left:0;right:0;top:calc(var(--i,0) * 100svh);bottom:auto;height:100svh;overflow:visible;clip:rect(0,auto,auto,0);clip-path:inset(0)!important;visibility:visible!important;will-change:auto}
-  .cp-in{position:fixed;top:0;left:0;right:0;bottom:auto;height:100lvh}
+  .cp-panel{position:absolute;inset:0;overflow:hidden;clip-path:none!important;visibility:visible!important;will-change:transform}
+  .cp-in{position:absolute;inset:0;will-change:transform}
+  .cp-spc{display:block;position:absolute;left:0;width:1px;height:100svh;top:calc(var(--k) * 100svh);pointer-events:none;visibility:hidden}
+  .cp-panel:not(:first-child){animation:cpOut linear both;animation-range:entry 0% entry 100%}
+  .cp-panel:not(:first-child)>.cp-in{animation:cpIn linear both;animation-range:entry 0% entry 100%}
+  .cp-panel:nth-child(2),.cp-panel:nth-child(2)>.cp-in{animation-timeline:--cp1}
+  .cp-panel:nth-child(3),.cp-panel:nth-child(3)>.cp-in{animation-timeline:--cp2}
+  .cp-panel:nth-child(4),.cp-panel:nth-child(4)>.cp-in{animation-timeline:--cp3}
+  .cp-panel:nth-child(5),.cp-panel:nth-child(5)>.cp-in{animation-timeline:--cp4}
+  .cp-panel:nth-child(6),.cp-panel:nth-child(6)>.cp-in{animation-timeline:--cp5}
   .cp-panel+.cp-panel::after{content:"";position:absolute;z-index:10;left:0;right:0;top:0;height:1px;background:linear-gradient(90deg,rgba(255,255,255,0),rgba(255,255,255,.16) 25%,rgba(255,255,255,.16) 75%,rgba(255,255,255,0));pointer-events:none}
   .cp-cut{display:none}
   /* la botella al centro y más grande; el nombre de fondo detrás de ella, nítido */
-  .cp-b{bottom:auto;top:calc(62px + 2svh);height:min(58svh,calc(100svh - 341px))}
-  .cp-sh{bottom:auto;top:calc(62px + 2svh + min(58svh,calc(100svh - 341px)) - 12px);width:36vw}
-  .cp-word{top:calc(62px + 2svh + min(29svh,calc(50svh - 170px)));font-size:clamp(100px,28vw,210px);background:linear-gradient(180deg,rgba(238,233,225,.22) 0%,rgba(238,233,225,.07) 70%,rgba(238,233,225,.01) 100%);-webkit-background-clip:text;background-clip:text}
+  .cp-b{bottom:auto;top:calc(62px + 2svh);height:min(63svh,calc(100svh - 318px))}
+  .cp-sh{bottom:auto;top:calc(62px + 2svh + min(63svh,calc(100svh - 318px)) - 12px);width:38vw}
+  .cp-word{top:calc(62px + 2svh + min(31.5svh,calc(50svh - 159px)));font-size:clamp(100px,28vw,210px);background:linear-gradient(180deg,rgba(238,233,225,.22) 0%,rgba(238,233,225,.07) 70%,rgba(238,233,225,.01) 100%);-webkit-background-clip:text;background-clip:text}
   .cp-panel.lit .cp-word{opacity:1;filter:none}
   /* el texto se ancla a la pantalla chica (con la barra del navegador visible), arriba del botón flotante */
   .cp-l{left:var(--m);right:var(--m);width:auto;top:auto;bottom:calc(100lvh - 100svh + 84px + env(safe-area-inset-bottom))}
@@ -247,7 +256,7 @@ body.dk.lt footer.ft{--fc:var(--ink);--fc2:var(--ink2);--fc3:var(--ink3);--fl:va
   .cpl-hd,.cpl-grid{grid-template-columns:minmax(0,1fr)}
   .wr{gap:14px 18px}
   .cpl-c:nth-child(2){margin-top:0}
-  .c3-canvas{width:86vw;top:38%;height:64svh}
+  .c3-canvas{width:100vw;top:45%;height:82svh}
   .c3-n{top:auto;bottom:calc(92px + env(safe-area-inset-bottom));width:auto;left:var(--m)!important;right:var(--m)!important;text-align:left!important;transform:translateY(18px)}
   .c3-n.on{transform:none}
   .c3-n.r p{margin-left:0}
@@ -311,6 +320,18 @@ body.dk.lt .cp-yt .cp-h2 em{color:var(--ink)}
 .yt-x{position:absolute;right:0;top:-44px;color:#fff;font:500 11px/1 var(--sans);letter-spacing:.14em;text-transform:uppercase;padding:12px 0}
 @media (max-width:1100px){.yt-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
 @media (max-width:900px){.yt-split{grid-template-columns:minmax(0,1fr);min-height:0}.yt-ph{order:-1;min-height:0;aspect-ratio:16/10}.yt-grid{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;margin-inline:calc(var(--m) * -1);padding-inline:var(--m);scroll-padding-inline:var(--m);scrollbar-width:none}.yt-grid::-webkit-scrollbar{display:none}.yt-grid li{flex:0 0 70vw;scroll-snap-align:start}.cp-yt .vd-play{width:64px;height:64px;margin:-32px 0 0 -32px}.cp-yt .vd-play::before{left:26px;top:21px;border-width:11px 0 11px 17px}}
+@media (min-width:901px){.cp-spc{display:none}}
+@keyframes cpOut{from{transform:translate3d(0,100%,0)}to{transform:none}}
+@keyframes cpIn{from{transform:translate3d(0,-100%,0)}to{transform:none}}
+@supports not (animation-timeline:view()){
+  @media (max-width:900px){
+    .cp-stick{height:auto}
+    .cp-stage{position:relative;height:auto;overflow:visible}
+    .cp-panels{position:relative}
+    .cp-panel{position:sticky;top:0;height:100svh;inset:auto}
+    .cp-spc{display:none}
+  }
+}
 </style>
 </head>
 <body class="dk">
@@ -470,6 +491,7 @@ const W=[
 ];
 const st=$('cpStick'),track=$('cpTrack'),stage=st.querySelector('.cp-stage'),cut=$('cpCut');
 st.style.setProperty('--n',W.length);
+for(let k=1;k<W.length;k++){const sp=document.createElement('i');sp.className='cp-spc';sp.setAttribute('aria-hidden','true');sp.style.setProperty('--k',k);sp.style.viewTimelineName='--cp'+k;st.appendChild(sp)}
 track.innerHTML=W.map((w,i)=>{const p=P[w.id],H='h2';
   const media=CP_FOTOS?'<img class="cp-ph" src="media/cp/cp-'+w.id+'.jpg" alt="'+p.line+' '+p.name+'"'+(i?' loading="lazy"':'')+'>'
     :'<span class="cp-word" aria-hidden="true">'+w.word+'</span><i class="cp-sh" aria-hidden="true"></i><img class="cp-b" src="media/cp/b-'+w.id+'.png" alt="'+p.line+' '+p.name+'"'+(i?' loading="lazy"':'')+'>';
@@ -494,7 +516,7 @@ function updStick(){if(mqM.matches){panels.forEach(el=>{el.style.clipPath='';el.
   cut.style.opacity=edge<0?0:1;if(edge>=0)cut.style.top=edge+'%'}
 light(0,1500);
 /* móvil: cada banner se enciende al verse */
-{const pio=new IntersectionObserver(es=>es.forEach(en=>{if(en.isIntersecting&&mqM.matches)light(panels.indexOf(en.target),500)}),{threshold:.45});panels.forEach(p=>pio.observe(p))}
+{const pio=new IntersectionObserver(es=>es.forEach(en=>{if(en.isIntersecting&&mqM.matches)light(panels.indexOf(en.target),700)}),{threshold:.02});panels.forEach(p=>pio.observe(p))}
 
 /* ---------- 2. Las dos líneas ---------- */
 const lineList=ids=>ids.filter(id=>P[id]).map((id,k)=>'<li style="--i:'+(3+k)+'"><a href="'+PAGES.ficha+'?p='+id+'"><b>'+P[id].name+'</b><span>'+(P[id].medals?P[id].medals+' reconocimientos':money(P[id].price))+'</span></a></li>').join('');

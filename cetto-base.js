@@ -393,7 +393,7 @@ function closeAll(){const wasOpen=document.querySelector('.drawer.on,#pnav.on,#s
 /* ---------- Buscador ---------- */
 const nrm=s=>(s||'').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'');
 const opener=()=>{const o=document.activeElement,prev=lastFocus;return o&&o.closest&&o.closest('.drawer,#pnav')?(prev||document.getElementById('openMenu')):o};
-function openSearch(){const o=opener();closeAll();lastFocus=o;const d=document.getElementById('search');d.inert=false;d.classList.add('on');d.setAttribute('aria-hidden','false');document.getElementById('scrim').classList.add('on');document.body.style.overflow='hidden';['openSearch','openSearchM'].forEach(k=>{const b=document.getElementById(k);if(b)b.setAttribute('aria-expanded','true')});setTimeout(()=>document.getElementById('sInput').focus(),80)}
+function openSearch(){const o=opener();closeAll();lastFocus=o;const d=document.getElementById('search');d.inert=false;d.classList.add('on');d.setAttribute('aria-hidden','false');document.getElementById('scrim').classList.add('on');document.body.style.overflow='hidden';['openSearch','openSearchM'].forEach(k=>{const b=document.getElementById(k);if(b)b.setAttribute('aria-expanded','true')});/* el foco va en el mismo toque: así iOS abre el teclado de inmediato */const si=document.getElementById('sInput');si.focus({preventScroll:true});setTimeout(()=>{if(document.activeElement!==si)si.focus({preventScroll:true})},80)}
 function closeSearch(quiet){const d=document.getElementById('search');if(!d||!d.classList.contains('on'))return;d.classList.remove('on');d.inert=true;d.setAttribute('aria-hidden','true');['openSearch','openSearchM'].forEach(k=>{const b=document.getElementById(k);if(b)b.setAttribute('aria-expanded','false')});if(!quiet){document.getElementById('scrim').classList.remove('on');document.body.style.overflow='';if(lastFocus&&!lastFocus.closest('[inert]'))lastFocus.focus();lastFocus=null}}
 function runSearch(q){
   const words=nrm(q).split(/\s+/).filter(Boolean),res=document.getElementById('sRes'),all=document.getElementById('sAll');
@@ -404,7 +404,7 @@ function runSearch(q){
 }
 function wireChrome(opts){
   ['openSearch','openSearchM'].forEach(k=>{const b=document.getElementById(k);if(b)b.onclick=openSearch});
-  document.querySelectorAll('[data-search]').forEach(a=>a.addEventListener('click',e=>{e.preventDefault();setTimeout(openSearch,10)}));
+  document.querySelectorAll('[data-search]').forEach(a=>a.addEventListener('click',e=>{e.preventDefault();e.stopImmediatePropagation();openSearch()}));
   document.getElementById('sInput').addEventListener('input',e=>runSearch(e.target.value));
   document.getElementById('sInput').addEventListener('keydown',e=>{if(e.key==='Enter'&&e.target.value.trim())location.href=PAGES.tienda+'?q='+encodeURIComponent(e.target.value.trim())});
   if(location.hash==='#buscar')setTimeout(openSearch,200);
@@ -452,7 +452,16 @@ function wireChrome(opts){
     const set=up=>{if(hdr.classList.contains('hide')===up)return;hdr.classList.toggle('hide',up);de.classList.toggle('hdr-up',up)};
     window.hdrShow=(ms=900)=>{set(false);acc=0;hold=performance.now()+ms};
     window.hdrHide=(ms=900)=>{set(true);acc=0;hold=performance.now()+ms};
-    addEventListener('scroll',()=>{const y=scrollY,dy=y-lastY;lastY=y;
+    /* celular: el botón de menú y los íconos toman el tono de lo que tienen debajo (vidrio oscuro sobre fondos oscuros y fotos) */
+    {const mq=matchMedia('(max-width:900px)');let raf=0;
+     const lum=c=>{const m=String(c).match(/[\d.]+/g);if(!m||m.length<3)return null;const a=m.length>3?+m[3]:1;if(a<.5)return null;return .299*m[0]+.587*m[1]+.114*m[2]};
+     const probe=()=>{raf=0;if(!mq.matches||!hdr.classList.contains('solid')){hdr.classList.remove('on-dark');return}
+       let L=null;for(const el of document.elementsFromPoint(32,32)){if(hdr.contains(el)||el.closest('.drawer,#search,#scrim,.eno,.toast'))continue;
+         for(let e=el;e&&e!==document.documentElement;e=e.parentElement){if(e.tagName==='IMG'||e.tagName==='VIDEO'||e.tagName==='CANVAS'){L=70;break}const v=lum(getComputedStyle(e).backgroundColor);if(v!=null){L=v;break}}
+         if(L!=null)break}
+       if(L==null)L=lum(getComputedStyle(document.body).backgroundColor);hdr.classList.toggle('on-dark',L!=null&&L<120)};
+     addEventListener('scroll',()=>{if(!raf)raf=requestAnimationFrame(probe)},{passive:true});addEventListener('resize',probe);setTimeout(probe,300)}
+    addEventListener('scroll',()=>{const y=scrollY,dy=y-lastY;lastY=y;hdr.classList.toggle('scr',y>=140);
       if(y<140||document.querySelector('.drawer.on,#search.on,#pnav.on')||hdr.querySelector(':focus-visible')){set(false);acc=0;return}
       if(performance.now()<hold)return;
       acc=(Math.sign(dy)===Math.sign(acc)?acc:0)+dy;

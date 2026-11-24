@@ -384,6 +384,44 @@
   .gband::after{background:linear-gradient(180deg,rgba(16,12,9,.1),rgba(16,12,9,.7))}
 }
 @media (prefers-reduced-motion:reduce){.xc>img{transform:none}.sq>*{opacity:1;transform:none;transition:none}.seq-media>img,.seq-media>video,.seq-steps li{transition:none}.bk-flow.in{animation:none}}
+/* ===== Celular · Así es la visita como historias ===== */
+@media (max-width:900px){
+  .seq-side{display:flex;flex-direction:column}
+  .seq-dots{display:flex!important;position:static;transform:none;width:auto;order:-1;gap:6px;padding:0 var(--m) 16px;margin:0}
+  .seq-dots i{flex:1;height:2px;border-radius:2px;background:rgba(43,44,45,.14);position:relative;overflow:hidden}
+  .seq-dots i::after{content:"";position:absolute;inset:0;background:var(--ink);transform:scaleX(0);transform-origin:0 50%}
+  .seq-dots i.done::after{transform:none}
+  .seq-dots i.on::after{animation:seqFill 5.2s linear forwards}
+  .seq-dots.hold i.on::after{animation-play-state:paused}
+  @keyframes seqFill{to{transform:none}}
+  .seq-steps{position:relative;display:flex;gap:10px;overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;scrollbar-width:none;padding:0 var(--m);scroll-padding:0 var(--m);overscroll-behavior-x:contain}
+  .seq-steps::-webkit-scrollbar{display:none}
+  .seq-steps li{position:relative;flex:0 0 86%;scroll-snap-align:center;aspect-ratio:3/4.2;padding:24px 22px;display:flex;flex-direction:column;justify-content:flex-end;align-items:flex-start;text-align:left;color:#fff;overflow:hidden;background:#1b1410}
+  .seq-steps li::after{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(14,10,7,0) 40%,rgba(14,10,7,.84) 100%);pointer-events:none}
+  .seq-steps .vm{position:absolute;inset:0;margin:0;aspect-ratio:auto;background:#1b1410}
+  .seq-steps .n,.seq-steps h3,.seq-steps p{position:relative;z-index:2}
+  .seq-steps .n{color:rgba(255,255,255,.78)}
+  .seq-steps h3{color:#fff;margin:10px 0 8px;font-size:30px}
+  .seq-steps p{color:rgba(255,255,255,.9);font-size:14.5px;line-height:1.55;max-width:none}
+}
+/* ===== Celular · Reserva en línea: tarjetas grandes que se deslizan, con el nombre y el precio sobre la foto ===== */
+@media (max-width:900px){
+  .bk-exp{display:flex;gap:10px;overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;scrollbar-width:none;margin-inline:calc(var(--m) * -1);padding:4px var(--m) 8px;scroll-padding:0 var(--m);overscroll-behavior-x:contain}
+  .bk-exp::-webkit-scrollbar{display:none}
+  .bk-c{flex:0 0 76%;scroll-snap-align:start;aspect-ratio:3/4;justify-content:flex-end;padding:20px 18px;overflow:hidden;color:#fff;background:#1b1410}
+  .bk-c .ph{position:absolute;inset:0;aspect-ratio:auto}
+  .bk-c .ph::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(14,10,7,.05) 30%,rgba(14,10,7,.84) 100%);pointer-events:none}
+  .bk-c b,.bk-c .w,.bk-c .op{position:relative;z-index:2}
+  .bk-c b{margin:0;font-size:27px;color:#fff}
+  .bk-c .w{margin-top:6px;font-size:13.5px;color:rgba(255,255,255,.86)}
+  .bk-c .op{margin-top:10px;color:rgba(255,255,255,.72)}
+  .bk-c .op .price{color:#fff;font-size:16px}
+  .bk-c .ck{z-index:3}
+  /* Celebra entre viñedos: la foto de orilla a orilla y más alta */
+  .ev-band{aspect-ratio:4/5;margin-inline:calc(var(--m) * -1)}
+}
+/* tableta: tarjetas de la visita y de la reserva más angostas */
+@media (min-width:600px) and (max-width:900px){.seq-steps li{flex-basis:54%}.bk-c{flex-basis:42%}}
 </style>
 </head>
 <body>
@@ -751,6 +789,20 @@ document.querySelectorAll('#seqSteps video').forEach(v=>{vio.observe(v);const li
   ppBtn(v.parentElement,'el video: '+li.querySelector('h3').textContent,()=>stopped(v),off=>{v._user=off;if(off)v.pause();else{loadV(v);v.play().catch(()=>{})}})});
 ppBtn(document.getElementById('seqMedia'),'los videos de la visita',()=>seqStop,off=>{seqStop=off;if(off)seqMedia.forEach(m=>m.tagName==='VIDEO'&&m.pause());else setSeq(seqI)});
 new IntersectionObserver(([en])=>{if(!en.isIntersecting)seqMedia.forEach(m=>m.tagName==='VIDEO'&&m.pause());else setSeq(seqI)},{threshold:0}).observe(document.getElementById('seqMedia'));
+/* celular: la visita como historias que se deslizan de lado; avanzan solas, se detienen al tocarlas
+   y el video del paso a la vista es el único que corre */
+{const mob=matchMedia('(max-width:900px)'),ol=document.getElementById('seqSteps'),box=document.getElementById('seqDots'),DUR=5200;
+ let cur=0,timer=null,hold=false,vis=false,ht;
+ const mark=i=>{cur=i;seqSteps.forEach((s,j)=>s.classList.toggle('cur',j===i));seqDots.forEach((d,j)=>{d.classList.toggle('done',j<i);d.classList.remove('on')});void box.offsetWidth;if(seqDots[i])seqDots[i].classList.add('on');
+   seqSteps.forEach((s,j)=>{const v=s.querySelector('video');if(!v)return;if(j===i&&vis&&!reduceMotion){loadV(v);v.play().catch(()=>{})}else v.pause()})};
+ const go=i=>{const li=seqSteps[(i+seqSteps.length)%seqSteps.length];ol.scrollTo({left:li.offsetLeft-(ol.clientWidth-li.offsetWidth)/2,behavior:'smooth'})};
+ const arm=()=>{clearTimeout(timer);if(!mob.matches||!vis||hold||reduceMotion)return;timer=setTimeout(()=>go(cur+1),DUR)};
+ ol.addEventListener('scroll',()=>{if(!mob.matches)return;const c=ol.scrollLeft+ol.clientWidth/2;let best=0,bd=1e9;
+   seqSteps.forEach((s,j)=>{const d=Math.abs(s.offsetLeft+s.offsetWidth/2-c);if(d<bd){bd=d;best=j}});if(best!==cur){mark(best);arm()}},{passive:true});
+ ol.addEventListener('touchstart',()=>{hold=true;clearTimeout(timer);clearTimeout(ht);box.classList.add('hold')},{passive:true});
+ ol.addEventListener('touchend',()=>{clearTimeout(ht);ht=setTimeout(()=>{hold=false;box.classList.remove('hold');mark(cur);arm()},2600)},{passive:true});
+ seqDots.forEach((d,j)=>d.addEventListener('click',()=>{if(mob.matches)go(j)}));
+ new IntersectionObserver(([en])=>{vis=en.isIntersecting;if(mob.matches){mark(cur);arm()}},{threshold:.5}).observe(ol)}
 
 /* ---------- Reserva ---------- */
 const ST={e:0,pk:false,d:null,t:null,g:2,code:null,pay:false,busy:false};
