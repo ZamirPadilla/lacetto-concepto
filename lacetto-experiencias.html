@@ -343,6 +343,17 @@
   #catas .sp-ph{aspect-ratio:4/3}
   .sp-tx{padding:clamp(44px,9vw,72px) var(--m) clamp(56px,11vw,88px)}
   .xc{min-height:0}
+  /* Don Luis y Ángelo en celular: cada dato con más aire y un tamaño más contenido */
+  .xp-list{gap:20px;margin-top:30px;max-width:32ch}
+  .xp-list span{font-size:16px;line-height:1.45}
+  .sp-p{font-size:14.5px}
+  /* Experiencia Cetto en celular: menos texto a la vista y más aire entre bloques */
+  .xc-in{padding-top:120px;padding-bottom:40px;gap:30px}
+  .xc h3{font-size:clamp(40px,11vw,54px)}
+  .xc-l p{font-size:16px;line-height:1.5;margin-top:16px}
+  .xc-list{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:12px 20px;padding-top:22px;border-top:1px solid rgba(243,238,230,.2)}
+  .xc-list li{font:400 13.5px/1.4 var(--sans);letter-spacing:.01em;color:rgba(243,238,230,.84)}
+  .xc-buy{margin-top:30px;padding-top:24px;border-top:1px solid rgba(243,238,230,.2);justify-content:space-between;gap:16px}
   .seq-hd{display:block}.seq-hd p{margin-top:14px}
   .seq-run{height:auto}
   .seq-stage{position:static;height:auto;display:block}
@@ -381,7 +392,7 @@
 <main>
 <!-- Portada -->
 <section class="x-hero" data-hero aria-labelledby="xT">
-  <video id="heroV" muted playsinline autoplay loop preload="auto" poster="media/hero-hd.jpg" aria-hidden="true"><source src="media/hero-hd.mp4?v=3#t=11.5" type="video/mp4"></video>
+  <video id="heroV" muted playsinline autoplay loop preload="auto" poster="media/hero-hd.jpg" aria-hidden="true"><source src="media/hero-hd.mp4?v=4#t=11.5" type="video/mp4"></video>
   <button class="vctl" type="button" id="heroCtl" aria-pressed="false" aria-label="Pausar video"><svg class="pa" width="10" height="10" viewBox="0 0 10 10" aria-hidden="true"><path d="M2 1h2v8H2zM6 1h2v8H6z" fill="currentColor"/></svg><svg class="pl" width="10" height="10" viewBox="0 0 10 10" aria-hidden="true"><path d="M2 1l7 4-7 4z" fill="currentColor"/></svg><span>Pausar</span></button>
   <div class="hin">
     <div class="duo-line"><span class="cap">Experiencias</span><span class="rule"></span><span class="it">Valle de Guadalupe</span></div>
@@ -484,7 +495,7 @@
       <div class="seq-media" id="seqMedia">
       <img class="on" src="media/x-porton-hq.webp" alt="" loading="lazy" style="object-position:60% 62%">
       <video aria-hidden="true" muted playsinline preload="none" poster="media/v-uvas.jpg" data-src="media/v-uvas.mp4" data-seg="0,11.8,1"></video>
-      <video aria-hidden="true" muted playsinline preload="none" poster="media/hero-hd.jpg" data-src="media/hero-hd.mp4?v=3#t=8" data-seg="8,11.3,.8"></video>
+      <video aria-hidden="true" muted playsinline preload="none" poster="media/hero-hd.jpg" data-src="media/hero-hd.mp4?v=4#t=8" data-seg="8,11.3,.8"></video>
       <video aria-hidden="true" muted playsinline preload="none" poster="media/v-mesa.jpg" data-src="media/v-mesa.mp4" data-seg="0,13.8,1"></video>
       <img src="media/club-copas.jpg" alt="" loading="lazy" style="object-position:30% 50%">
     </div>
@@ -492,7 +503,7 @@
         <ol class="seq-steps" id="seqSteps">
       <li class="on"><div class="vm"><img src="media/x-porton-hq.webp" alt="Portón de piedra con buganvilias a la entrada" loading="lazy" style="object-position:60% 62%"></div><span class="n">Paso 1</span><h3>La llegada</h3><p>Carretera Tecate–Ensenada km 73.5. Entre buganvilias y con la sierra enfrente, empieza la visita.</p></li>
       <li><div class="vm"><video muted playsinline preload="none" poster="media/v-uvas.jpg" data-src="media/v-uvas.mp4" data-seg="0,11.8,1"></video></div><span class="n">Paso 2</span><h3>El viñedo</h3><p>Caminas entre las vides, con el cielo, la sierra y la tierra del Valle alrededor. Aquí empieza cada botella.</p></li>
-      <li><div class="vm"><video muted playsinline preload="none" poster="media/hero-hd.jpg" data-src="media/hero-hd.mp4?v=3#t=8" data-seg="8,11.3,.8"></video></div><span class="n">Paso 3</span><h3>La bodega</h3><p>En las experiencias privadas recorres la bodega: barricas de roble y botellas en guarda.</p></li>
+      <li><div class="vm"><video muted playsinline preload="none" poster="media/hero-hd.jpg" data-src="media/hero-hd.mp4?v=4#t=8" data-seg="8,11.3,.8"></video></div><span class="n">Paso 3</span><h3>La bodega</h3><p>En las experiencias privadas recorres la bodega: barricas de roble y botellas en guarda.</p></li>
       <li><div class="vm"><video muted playsinline preload="none" poster="media/v-mesa.jpg" data-src="media/v-mesa.mp4" data-seg="0,13.8,1"></video></div><span class="n">Paso 4</span><h3>La cata</h3><p>Cuatro copas en las degustaciones. En las experiencias privadas, tú eliges los vinos.</p></li>
       <li><div class="vm"><img src="media/club-copas.jpg" alt="Copa grabada con el logo de Cetto en la mesa" loading="lazy" style="object-position:30% 50%"></div><span class="n">Paso 5</span><h3>Para llevar</h3><p>Te vas con un llavero y tu copa. Y si encontraste tu vino, lo pides en línea y te llega a casa.</p></li>
     </ol>
@@ -671,8 +682,8 @@ document.getElementById('xProds').innerHTML=['nebrp','charp','sang','champ'].map
 /* Datos reales de lacetto.mx/pages/conoce-los-vinedos-cetto. Horarios: propuesta. */
 const EXP=[
  {id:'clasica',n:'Cata Clásica',k:'Degustación de 4 vinos',p:250,f:'Para tu primera visita',im:'media/v-copa.jpg',w:[2,2],meta:'2 copas de blanco y 2 de tinto',src:'media/v-copa.mp4',seg:[0,17.9,1],pos:'50% 50%',where:'En la copa'},
- {id:'rp',n:'Cata Reserva Privada',k:'Degustación de 4 vinos',p:400,f:'Para conocer la Reserva Privada',im:'media/rg-cava.jpg',w:[2,2],meta:'2 copas de blanco y 2 de tinto',src:'media/hero-hd.mp4?v=3',seg:[5.1,6.8,.6],pos:'34% 50%',where:'En la cava',line:['reserva-privada','Vinos Reserva Privada']},
- {id:'boutique',n:'Cata Boutique',k:'Degustación de 4 vinos',p:550,f:'Para quien prefiere los tintos',im:'media/v-mesa.jpg',w:[1,3],meta:'1 copa de blanco y 3 de tinto',src:'media/hero-hd.mp4?v=3',seg:[12.6,14.8,1],pos:'58% 50%',where:'En la cava',line:['boutique','Vinos Boutique']},
+ {id:'rp',n:'Cata Reserva Privada',k:'Degustación de 4 vinos',p:400,f:'Para conocer la Reserva Privada',im:'media/rg-cava.jpg',w:[2,2],meta:'2 copas de blanco y 2 de tinto',src:'media/hero-hd.mp4?v=4',seg:[5.1,6.8,.6],pos:'34% 50%',where:'En la cava',line:['reserva-privada','Vinos Reserva Privada']},
+ {id:'boutique',n:'Cata Boutique',k:'Degustación de 4 vinos',p:550,f:'Para quien prefiere los tintos',im:'media/v-mesa.jpg',w:[1,3],meta:'1 copa de blanco y 3 de tinto',src:'media/hero-hd.mp4?v=4',seg:[12.6,14.8,1],pos:'58% 50%',where:'En la cava',line:['boutique','Vinos Boutique']},
  {id:'donluis',n:'Experiencia Don Luis',k:'Viñedo y 4 vinos a tu elección',p:850,f:'Para elegir tus propios vinos',im:'https://www.lacetto.mx/cdn/shop/files/DSC0259.jpg?width=700'},
  {id:'angelo',n:'Experiencia Angelo',k:'Recorrido privado y sala VIP',p:1100,f:'Para tu grupo, en privado',im:'https://www.lacetto.mx/cdn/shop/files/tijun.jpg?width=700'},
  {id:'cetto',n:'Experiencia Cetto',k:'Privada · 7 vinos · 3 horas',p:1800,f:'Para celebrar algo especial',im:'https://www.lacetto.mx/cdn/shop/files/DSC07921.jpg?width=700'}

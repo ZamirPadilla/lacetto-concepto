@@ -60,8 +60,9 @@ body.dk{background:#121110;color:#EEE9E1;--dk:#121110;--dk2:#1A1917;--lt:#EEE9E1
 /* ---------- 1. Portada: la escena se queda y cada banner nuevo se descubre de abajo hacia arriba ---------- */
 .cp-stick{position:relative;height:calc(var(--n,4) * 100svh)}
 .cp-stage{position:sticky;top:0;height:100svh;overflow:hidden;background:var(--dk)}
-.cp-panel{position:absolute;inset:0;overflow:hidden;background:radial-gradient(56% 70% at 50% 56%,var(--c1),var(--c2) 76%);will-change:clip-path}
-.cp-panel::before{content:"";position:absolute;inset:-50%;background-image:var(--grain);opacity:.15;mix-blend-mode:overlay;pointer-events:none;z-index:1}
+.cp-panel{position:absolute;inset:0;overflow:hidden;will-change:clip-path}
+.cp-in{position:absolute;inset:0;background:radial-gradient(56% 70% at 50% 56%,var(--c1),var(--c2) 76%)}
+.cp-in::before{content:"";position:absolute;inset:-50%;background-image:var(--grain);opacity:.15;mix-blend-mode:overlay;pointer-events:none;z-index:1}
 .cp-ph{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 50%}
 .cp-panel.has-ph::after{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(90deg,rgba(10,8,7,.6) 0%,rgba(10,8,7,0) 34%,rgba(10,8,7,0) 66%,rgba(10,8,7,.6) 100%)}
 /* la botella al centro */
@@ -222,14 +223,24 @@ body.dk footer.ft{transition:color 1s var(--ease)}
 body.dk.lt footer.ft{--fc:var(--ink);--fc2:var(--ink2);--fc3:var(--ink3);--fl:var(--line)}
 
 @media (max-width:900px){
-  .cp-word{top:34%;font-size:clamp(100px,28vw,210px)}
+  /* celular: cada banner ocupa una pantalla de scroll y recorta su escena, que queda fija; al subir, el siguiente
+     se descubre de abajo hacia arriba sobre el actual (lo hace el navegador al hacer scroll, sin JS: no tiembla) */
   .cp-stick{height:auto}
-  .cp-stage{position:relative;height:auto;overflow:visible}
-  .cp-panel{position:relative;inset:auto;height:100svh;min-height:560px;clip-path:none!important;visibility:visible!important;will-change:auto}
+  .cp-stage{position:relative;height:calc(var(--n,4) * 100svh);overflow:visible}
+  .cp-panels{position:absolute;inset:0}
+  .cp-panel{position:absolute;left:0;right:0;top:calc(var(--i,0) * 100svh);bottom:auto;height:100svh;overflow:visible;clip:rect(0,auto,auto,0);clip-path:inset(0)!important;visibility:visible!important;will-change:auto}
+  .cp-in{position:fixed;top:0;left:0;right:0;bottom:auto;height:100lvh}
+  .cp-panel+.cp-panel::after{content:"";position:absolute;z-index:10;left:0;right:0;top:0;height:1px;background:linear-gradient(90deg,rgba(255,255,255,0),rgba(255,255,255,.16) 25%,rgba(255,255,255,.16) 75%,rgba(255,255,255,0));pointer-events:none}
   .cp-cut{display:none}
-  .cp-b{bottom:auto;top:10svh;height:50svh}
-  .cp-sh{bottom:auto;top:calc(10svh + 50svh - 12px)}
-  .cp-l{left:var(--m);right:var(--m);width:auto;bottom:calc(92px + env(safe-area-inset-bottom))}
+  /* la botella al centro y más grande; el nombre de fondo detrás de ella, nítido */
+  .cp-b{bottom:auto;top:calc(62px + 2svh);height:min(58svh,calc(100svh - 341px))}
+  .cp-sh{bottom:auto;top:calc(62px + 2svh + min(58svh,calc(100svh - 341px)) - 12px);width:36vw}
+  .cp-word{top:calc(62px + 2svh + min(29svh,calc(50svh - 170px)));font-size:clamp(100px,28vw,210px);background:linear-gradient(180deg,rgba(238,233,225,.22) 0%,rgba(238,233,225,.07) 70%,rgba(238,233,225,.01) 100%);-webkit-background-clip:text;background-clip:text}
+  .cp-panel.lit .cp-word{opacity:1;filter:none}
+  /* el texto se ancla a la pantalla chica (con la barra del navegador visible), arriba del botón flotante */
+  .cp-l{left:var(--m);right:var(--m);width:auto;top:auto;bottom:calc(100lvh - 100svh + 84px + env(safe-area-inset-bottom))}
+  .cp-tx h1,.cp-tx h2{margin-top:10px}
+  .cp-tx h2.long{font-size:clamp(36px,10.6vw,54px)}
   .cp-r{display:none}
   .cp-tx h1,.cp-tx h2{font-size:clamp(48px,13vw,66px)}
   .cp-buy{margin-top:22px}
@@ -462,12 +473,12 @@ st.style.setProperty('--n',W.length);
 track.innerHTML=W.map((w,i)=>{const p=P[w.id],H='h2';
   const media=CP_FOTOS?'<img class="cp-ph" src="media/cp/cp-'+w.id+'.jpg" alt="'+p.line+' '+p.name+'"'+(i?' loading="lazy"':'')+'>'
     :'<span class="cp-word" aria-hidden="true">'+w.word+'</span><i class="cp-sh" aria-hidden="true"></i><img class="cp-b" src="media/cp/b-'+w.id+'.png" alt="'+p.line+' '+p.name+'"'+(i?' loading="lazy"':'')+'>';
-  return '<article class="cp-panel" style="--c1:'+w.c1+';--c2:'+w.c2+';z-index:'+(i+1)+'">'+media+
+  return '<article class="cp-panel" style="--c1:'+w.c1+';--c2:'+w.c2+';--i:'+i+';z-index:'+(i+1)+'"><div class="cp-in">'+media+
     '<div class="cp-tx cp-l"><span class="cp-k">'+String(i+1).padStart(2,'0')+' / '+String(W.length).padStart(2,'0')+'</span>'+
-    '<'+H+'>'+p.name+'</'+H+'><span class="cp-line">'+p.line+'</span>'+
+    '<'+H+(p.name.length>12?' class="long"':'')+'>'+p.name+'</'+H+'><span class="cp-line">'+p.line+'</span>'+
     '<div class="cp-buy"><span class="cp-pr">'+money(p.price)+'</span><button class="ul" type="button" data-add="'+w.id+'" aria-label="Agregar '+p.line+' '+p.name+' al carrito">Agregar al carrito</button><a class="ul" href="'+PAGES.ficha+'?p='+w.id+'">Ver ficha</a></div></div>'+
     '<div class="cp-tx cp-r"><span class="cp-aw">'+p.medals+' reconocimientos internacionales</span><p class="cp-q">'+(HL[w.id]||p.q)+'</p>'+
-    '<ul class="cp-notes" aria-label="Notas de cata">'+w.notes.map(n=>'<li>'+n+'</li>').join('')+'</ul></div></article>'}).join('');
+    '<ul class="cp-notes" aria-label="Notas de cata">'+w.notes.map(n=>'<li>'+n+'</li>').join('')+'</ul></div></div></article>'}).join('');
 const panels=[...track.querySelectorAll('.cp-panel')];let raf=0;
 /* secuencia de cada banner: primero la botella y el nombre de fondo; un momento después, el texto (y el nombre se difumina) */
 const lit=new Set();

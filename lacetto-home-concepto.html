@@ -41,7 +41,7 @@
 <section class="hero" id="hero" aria-roledescription="carrusel" aria-label="Destacados" data-hero>
   <h1 class="sr">L.A. Cetto, vinos de familia del Valle de Guadalupe</h1>
   <div class="hero-media" id="heroMedia">
-    <video class="hm on" id="heroVid" muted playsinline autoplay preload="auto" poster="media/hero-hd.jpg" aria-hidden="true"><source src="media/hero-hd.mp4?v=3" type="video/mp4"></video>
+    <video class="hm on" id="heroVid" muted playsinline autoplay preload="auto" poster="media/hero-hd.jpg" aria-hidden="true"><source src="media/hero-hd.mp4?v=4" type="video/mp4"></video>
   </div>
   <div class="hero-in" id="heroCopy" aria-live="off"></div>
   <!-- El video cierra con el 100: unos segundos antes del final se va el texto y se dibuja el logo de los 100 años -->
@@ -601,7 +601,7 @@ function heroGo(i,{manual=false,first=false}={}){
   if(s.vid){heroVid.currentTime=0;if(!reduceM&&!hUser&&hVisible)heroVid.play().catch(()=>schedule(SLIDE))}
   else{heroVid.pause();schedule(SLIDE)}
 }
-heroVid.addEventListener('ended',()=>{if(h100on)h100T=setTimeout(()=>{if(SL[hCur].vid)heroGo(hCur+1)},1900);else heroGo(hCur+1)});
+heroVid.addEventListener('ended',()=>{if(h100on)h100T=setTimeout(()=>{if(SL[hCur].vid)heroGo(hCur+1)},350);else heroGo(hCur+1)});
 heroVid.addEventListener('playing',()=>setTimeout(loadSlides,2500),{once:true});
 /* Botones de anterior y siguiente, teclado (← →) y deslizar en celular */
 document.getElementById('heroNext').onclick=()=>heroGo(hCur+1,{manual:true});
